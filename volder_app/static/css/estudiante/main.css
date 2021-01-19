@@ -1,0 +1,272 @@
+html.sr .load-hidden {
+    visibility: hidden;
+}
+
+/****************************************************/
+
+/**/    /**/    /**/    /**/
+/**/                    /**/
+/**/    /* HEADER */    /**/
+/**/                    /**/
+/**/    /**/    /**/    /**/
+
+
+
+header{
+    background-color: rgb(97, 93, 89);
+}
+header .celular{
+    display: none;
+
+}
+header .pc{
+    height: 40px;
+}
+header .pc p{
+
+    font-size: 20px;
+    color: white;
+    text-shadow: 0  1px 0 #dddddd,
+    0  2px 0 #a3a3a3,
+    0  3px 0 #8d8d8d, 
+    0  4px 0 #6b6b6b, 
+    0 5px 0 #666666,
+    0 6px 0 #5e5e5e;
+
+}
+
+/**/    /**/    /**/    /**/
+/**/                    /**/
+/**/  /* FIN HEADER */  /**/
+/**/                    /**/
+/**/    /**/    /**/    /**/
+
+
+/*******************************************/
+
+
+/**/    /**/    /**/    /**/
+/**/                    /**/
+/**/   /* CELULAR */    /**/
+/**/                    /**/
+/**/    /**/    /**/    /**/
+
+
+
+
+@media (max-width: 768px) {
+    header .celular{
+        display: block;
+    }
+    header .pc{
+        display: none;
+    }
+    .contenedor{
+        display:none;
+    }
+    .compañeros .pefil{
+        margin: auto;
+    }
+}
+
+/**/    /**/    /**/    /**/
+/**/                    /**/
+/**/ /* FIN CELULAR */  /**/
+/**/                    /**/
+/**/    /**/    /**/    /**/
+
+
+/****************************************************/
+
+
+/**/    /**/    /**/    /**/    /**/
+/**/                            /**/
+/**/     /* DERECHA INDEX */    /**/
+/**/                            /**/
+/**/    /**/    /**/    /**/    /**/
+
+
+.icon{
+    color: black;
+}
+#botones{
+    text-decoration: none;
+    border-radius: 5%;
+}
+#botones:hover{
+    transition: 0.5s linear;
+ 
+    background-color: #8282825b;
+}
+#botones i{
+    float: left;
+}
+#botones span{
+    float: left;
+    margin-left: 10px;
+}
+
+
+/**/    /**/    /**/    /**/    /**/
+/**/                            /**/
+/**/   /* FIN DERECHA INDEX */  /**/
+/**/                            /**/
+/**/    /**/    /**/    /**/    /**/
+
+
+/****************************************************************/
+
+/**/    /**/    /**/    /**/    /**/
+/**/                            /**/
+/**/  /* CONTENEDORES INDEX */  /**/
+/**/                            /**/
+/**/    /**/    /**/    /**/    /**/
+
+.tarea{
+    height: 800px;
+    overflow-y: auto;
+    scrollbar-color: transparent;
+    scrollbar-width: thin;
+}
+.trabajos{
+    border-radius: 20px;
+ }
+.border{
+    border-radius: 10px;
+}
+.contenedor, .container{
+
+    height: 90vh;
+    overflow-y: scroll;
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+}
+#nav-header{
+    position: sticky;
+    top: 0px; 
+ }
+#nav, #container, #container-comentario{ 
+    position: sticky;
+    top: 20px; 
+}
+
+
+/**/    /**/    /**/    /**/    /**/   /**/
+/**/                                   /**/
+/**/    /* FIN CONTENEDORES INDEX */   /**/
+/**/                                   /**/
+/**/    /**/    /**/    /**/    /**/   /**/
+
+
+/***************************************************************/
+
+.sibitulo p{
+    color:#6c757d;
+    display: inline-block;
+}
+.subitulo-right, .boton-right{
+    float: right;
+}
+
+.container .perfil .foto{
+    display:block;
+    margin:auto;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+.container .perfil .nombre, .curso{
+    text-align: center;
+}
+
+
+.compañeros .foto-compañeros{
+    display:block;
+    float: left;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+.compañeros .nick{
+    font-size: smaller;
+    margin-left: 40px;
+}
+
+/****************************************************/
+
+
+/**/    /**/    /**/    /**/    /**/
+/**/                            /**/
+/**/    /* TRABAJO.HTML */      /**/
+/**/                            /**/
+/**/    /**/    /**/    /**/    /**/
+
+
+
+.mid-tarea{
+    height: auto;
+}
+#container-comentario{
+    height: 85vh !important;
+}
+.comentarios{
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+.comentario{
+    margin-top: 10px;
+}
+.comentario .nombre{
+    font-size: 10px;
+}
+.comentario .mensaje{
+    font-size: 10px;
+}
+.mensaje-recibido-profesor{
+    background-color:rgba(63, 63, 62, 0.233);
+}
+.comentario-respuesta{
+    display: block;
+    float: right;
+}
+.comentario-form input{
+    
+    height: 20px;
+    position: sticky;
+}
+.input-texto{
+    font-size: 10px;
+}
+.input-sudmit{
+    height: 30px;
+}
+
+
+
+
+
+
+/**/    /**/    /**/    /**/    /**/
+/**/                            /**/
+/**/   /* FIN TRABAJO.HTML */   /**/
+/**/                            /**/
+/**/    /**/    /**/    /**/    /**/
+
+
+/****************************************************/
+
+
+
+
+
+
+
+
+
+
+
+/**/    /**/    /**/    /**/
+/**/                    /**/
+/**/  /* FIN TRABAJO*/  /**/
+/**/                    /**/
+/**/    /**/    /**/    /**/

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="{% static 'sitio_web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="container" style="margin-top: 13%">
+        
+                <div class="col-sm-12 col-lg-9 " style="margin: auto">
+                    
+                    <div class="card">
+                        <div class="card-body" >
+                            <div class="card-title" style="text-align: center;">
+                                <h2>ingresa tus credenciales</h2>
+                            </div>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <table style="margin:auto; margin-bottom: 10px;">
+                                    {{ form.as_table }}
+                                </table>
+                                <a href="{% url 'home' %}" class="btn btn-outline-primary float-left" >Ir al inicio</a>
+                               
+                                
+                                <input type="submit" value="Iniciar sesion" class="btn btn-success float-right">
+                                <a href="" class="btn btn-secondary float-right" style="margin-right: 10px;">¿olviste tu contraseña?</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+           
+
+        </div>
+
+    </body>
+</html>

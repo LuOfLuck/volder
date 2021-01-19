@@ -1,0 +1,74 @@
+{% extends 'volder/base.html' %}
+{% load static %}
+{% block content %}
+<div class="mid-tarea mid-contenido-animacion border col-10 col-md-7 mx-auto my-5 px-4 py-3">
+    
+    <h4 class="text-center">Trabajo Practico N°12</h4><hr>
+    <span>Fechas de entreaga: 12/12/2021 </span>
+    <a href="" class="btn float-right">marcar como entregado <i class="fas fa-check"></i></a><hr>
+    <h5 class="text-center">Resolver las siguientes actividades:<hr></h5>
+    <p>
+        1.- Desarrolle el tema LA ESCULTURA GÓTICA, atendiendo a los siguientes epígrafes:<br>
+        a) Características generales<br>
+        b) Ejemplos más representativos <br>
+ 
+        2.- Analice y comente la lámina A, identificando la obra propuesta, el estilo artístico al que pertenece
+        y su ubicación temporal.<br>
+ 
+        3.- Defina y/o caracterice brevemente 6 de los 8 términos siguientes (no más de cinco líneas para
+        cada uno): Plateresco, Romanticismo, Fauvismo, Op-Art, orden corintio, catacumba, pináculo,
+        collage.<br>
+
+        4.- De los 5 artistas que se proponen, elija 3, explicando su época, características y obras más
+        significativas (no más de diez líneas para cada uno): Lisipo, Juan de Herrera, Eiffel, Donatello,
+        Mondrian
+    </p> 
+</div>
+
+<div id="container-comentario" class="container-comentario container-animacion  col-10 col-md-2 my-4 py-3 border border-secondary">
+    <h5 class="text-center"> Comentarios</h5><hr>
+    <div class="comentarios">
+        <div class="comentario mensaje-recibido col-md-11 border">
+            <h6 class="nombre"> Roberto Galeano </h6>
+            <span class="mensaje">
+                hola. perdon no entendi la 5.
+            </span>
+        </div>
+        <div class="comentario mensaje-recibido mensaje-recibido-profesor col-md-11 border">
+            <h6 class="nombre"> Duarte Nicolas </h6>
+            <span class="mensaje">
+                La respuesta esta en el pdf :v
+            </span>
+        </div>
+        <div class="comentario mensaje-recibido col-md-11 border">
+            <h6 class="nombre"> Roberto Galeano </h6>
+            <span class="mensaje">
+                ¿posta?
+            </span>
+        </div>
+        <div class="comentario mensaje-enviado col-md-11 border">
+            <h6 class="nombre"> Tu </h6>
+            <span class="mensaje">
+                ah SOS RE TROL
+            </span>
+        </div>
+              
+  
+        <div class="comentario mensaje-enviado col-md-11 border">
+            <h6 class="nombre"> Tu </h6>
+            <span class="mensaje">
+                 SOS RE TROL
+            </span>
+        </div>
+    </div>
+
+    <div class="enviar-comentario float-bottom">
+        <form action="" method="POST"> {% csrf_token %}
+            <input type="text" class="input-texto col-md-8">
+            <button type="submit" class="input-sudmit btn"><i class="fas fa-dove"></i></button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

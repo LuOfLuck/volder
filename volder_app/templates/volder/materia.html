@@ -3,10 +3,14 @@
 {% block content %}
 
 <div class="mid-tarea mid-contenido-animacion border col-10 col-md-7 mx-auto my-5 px-4 py-3">
+    <h3 id="materias" class="text-center col-12 pt-3">{{materia.nombre}}</h3>  <hr>
     {% for trabajo in trabajos %}
-    <p>{{trabajo}}</p>
+    <div class="trabajos col-10 border p-2 my-2 mx-auto">
+        <h5 class="titulo text-center">{{trabajo.titulo}}</h5>
+    </div>
     {% endfor %}
 </div>
-<div id="container-comentario" class="container-comentario container-animacion  col-10 col-md-2 my-4 py-3 border border-secondary">
-</div>
+
+{% include 'volder/perfil_alumno.html' %}
+
 {% endblock %}

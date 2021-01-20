@@ -1,0 +1,32 @@
+{% load static %}
+<div id="container"class="container container-animacion col-10 col-md-2 my-4 border border-secondary">
+
+    <div class="perfil">
+
+        <img class="foto mt-3" src="{% static 'img/fotoPerfil.jpg' %}">
+
+        <div class="nombre">
+            <p>{{user.estudiante.nombre}} {{user.estudiante.apellido}}</p>
+        </div>
+        <div class="curso">
+            <p>{{user.estudiante.curso.curso}} {{user.estudiante.curso.division}}</p>
+        </div>
+    </div>
+    <hr>
+
+    <div class="compañeros compañeros-animacion row py-1">
+        {% for compañero in compañero %}
+            <div class="perfil col-6 col-md-12">
+                
+                <img class="foto-compañeros" src="{% static 'img/fotoPerfil.jpg' %}">
+
+                <div class="nick">
+                    <p>{{compañero}}</p>
+                    <hr>
+                </div>
+                
+            </div>
+        {% endfor %}
+    </div>
+
+</div>

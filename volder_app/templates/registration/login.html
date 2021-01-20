@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="{% static 'sitio_web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
 
     <body>
@@ -14,18 +14,15 @@
                     <div class="card">
                         <div class="card-body" >
                             <div class="card-title" style="text-align: center;">
-                                <h2>ingresa tus credenciales</h2>
+                                <h2>ingresa tus credenciales</h2><hr>
                             </div>
                             <form action="" method="POST">
                                 {% csrf_token %}
-                                <table style="margin:auto; margin-bottom: 10px;">
+                                <table class="mx-auto my-4" style="margin-bottom: 10px;">
                                     {{ form.as_table }}
                                 </table>
-                                <a href="{% url 'home' %}" class="btn btn-outline-primary float-left" >Ir al inicio</a>
-                               
-                                
                                 <input type="submit" value="Iniciar sesion" class="btn btn-success float-right">
-                                <a href="" class="btn btn-secondary float-right" style="margin-right: 10px;">¿olviste tu contraseña?</a>
+                                <a href="" class="btn btn-secondary" style="margin-right: 10px;">¿olviste tu contraseña?</a>
                             </form>
                         </div>
                     </div>

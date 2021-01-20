@@ -4,7 +4,7 @@
 <div class="mid-tarea mid-contenido-animacion border col-10 col-md-7 mx-auto my-5 px-4 py-3">
     
     <h4 class="text-center">{{trabajo.titulo}}</h4><hr>
-    <span>Fechas de entreaga: {{trabajo.fecha_de_entrega}} </span>
+    <span>Fechas de entrega: {{trabajo.fecha_de_entrega}} </span>
     <a href="" class="btn float-right">marcar como entregado <i class="fas fa-check"></i></a><hr>
     <h5 class="text-center">{{trabajo.consigna}}<hr></h5>
     
@@ -13,47 +13,60 @@
     
 </div>
     
-<div id="container-comentario" class="container-comentario container-animacion  col-10 col-md-2 my-4 py-3 border border-secondary">
+<div id="container-comentario" class="container-comentario container-animacion  col-10 col-md-2 mx-auto my-4 py-3 border border-secondary">
     <h5 class="text-center"> Comentarios</h5><hr>
     <div class="comentarios">
-        <div class="comentario mensaje-recibido col-md-11 border">
+        <div class="comentario mensaje-recibido col-10 col-md-11 border">
             <h6 class="nombre"> Roberto Galeano </h6>
             <span class="mensaje">
                 hola. perdon no entendi la 5.
             </span>
         </div>
-        <div class="comentario mensaje-recibido mensaje-recibido-profesor col-md-11 border">
+        <div class="comentario mensaje-recibido mensaje-recibido-profesor col-10  col-md-11 border">
             <h6 class="nombre"> Duarte Nicolas </h6>
             <span class="mensaje">
                 La respuesta esta en el pdf :v
             </span>
         </div>
-        <div class="comentario mensaje-recibido col-md-11 border">
+        <div class="comentario mensaje-recibido col-10 col-md-11 border">
             <h6 class="nombre"> Roberto Galeano </h6>
             <span class="mensaje">
                 ¿posta?
             </span>
         </div>
-        <div class="comentario mensaje-enviado col-md-11 border">
+        <div class="comentario mensaje-recibido col-10 col-md-11 border">
+            <h6 class="nombre"> Roberto Galeano </h6>
+            <span class="mensaje">
+                hola. perdon no entendi la 5.
+            </span>
+        </div>
+        <div class="comentario mensaje-recibido mensaje-recibido-profesor col-10  col-md-11 border">
+            <h6 class="nombre"> Duarte Nicolas </h6>
+            <span class="mensaje">
+                La respuesta esta en el pdf :v
+            </span>
+        </div>
+        <div class="comentario mensaje-recibido col-10 col-md-11 border">
+            <h6 class="nombre"> Roberto Galeano </h6>
+            <span class="mensaje">
+                ¿posta?
+            </span>
+        </div>
+        <div class="comentario mensaje-enviado float-right col-10 col-md-11 border">
             <h6 class="nombre"> Tu </h6>
             <span class="mensaje">
                 ah SOS RE TROL
             </span>
         </div>
               
-  
-        <div class="comentario mensaje-enviado col-md-11 border">
-            <h6 class="nombre"> Tu </h6>
-            <span class="mensaje">
-                 SOS RE TROL
-            </span>
-        </div>
     </div>
 
-    <div class="enviar-comentario float-bottom">
+    <div class="enviar-comentario float-top col-12 mb-3">
         <form action="" method="POST"> {% csrf_token %}
-            <input type="text" class="input-texto col-md-8">
-            <button type="submit" class="input-sudmit btn"><i class="fas fa-dove"></i></button>
+            <div class="row mx-auto">
+            <input type="text" class="input-texto col-10 col-md-9">
+            <button type="submit" class="input-sudmit btn col-2"><i class="fas fa-dove"></i></button>
+            </div>
         </form>
     </div>
 

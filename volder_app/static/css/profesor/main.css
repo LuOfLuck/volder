@@ -123,13 +123,28 @@ header .pc p{
 /**/    /**/    /**/    /**/    /**/
 
 .tarea{
-    height: 800px;
-    overflow-y: auto;
-    scrollbar-color: transparent;
-    scrollbar-width: thin;
+    height: 300px;
 }
 .trabajos{
     border-radius: 20px;
+    height: 220px;
+ }
+ .añadir-trabajo{
+    background-color: rgba(131, 131, 131, 0.356);
+ }
+ .mini-titulo{
+    color: rgba(0, 0, 0, 0.534);
+ }
+ .añadir-trabajo img{
+    height: 150px; 
+    width: 150px;
+    border-radius: 50%; 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
  }
 .border{
     border-radius: 10px;

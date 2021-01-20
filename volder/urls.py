@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('estudiante/', include('volder_app.urls')),
-    path('', LoginView.as_view(template_name='registration/login.html'), name="login"),
+    path('profesor/', include('profesor.urls')),
+    path('', LoginView.as_view(template_name='registration/login.html', redirect_authenticated_user=True), name="login"),
     path('logout/', LogoutView.as_view(template_name='registration/logout.html'), name="logout"),
 ]

@@ -20,7 +20,7 @@ def main(request):
         }
         return render(request, "volder/main.html",cont)
     except:
-        return redirect("/login/")
+        return redirect("/profesor/")
     
 
 

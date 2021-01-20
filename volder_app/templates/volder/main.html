@@ -19,7 +19,7 @@
                         <p class="subitutlo text-muted">{{trabajo.fecha_de_subida}} | {{trabajo.fecha_de_entrega}}</p>
                         <hr>
                         <span>  {{trabajo}}  </span><br><br>
-                        <a href="trabajo/{{trabajo.id}}" class="btn btn-outline-primary float-right">ver mas</a>
+                        <a href="{% url 'trabajo' trabajo.id %}" class="btn btn-outline-primary float-right">ver mas</a>
 
                     </div>
                 {% endif %}

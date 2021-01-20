@@ -1,0 +1,74 @@
+{% extends 'profesor/base.html' %}
+{% load static %}
+{% block content %}
+<div class="mid-contenido mid-contenido-animacion col-10 col-md-10 mx-auto my-4 px-4">
+    <h2 id="inicio" class="text-center my-4">inicio</h2> <hr>
+
+    <div class="tarea tarea-animacion col-12 col-md-12  border mx-auto my-2" >
+
+        <h3 class="text-center col-12 pt-3">ultimos trabajos</h3> <hr>
+
+            <h4 class="titulo text-center">matematicas</h4>
+            <p class="subitutlo text-muted">12/12/2001 | 12/12/202</p>
+            <hr>
+            <span>  funcion lineal  </span><br><br>
+            <a href="" class="btn btn-outline-primary float-right">ver mas</a>
+
+    </div>
+
+    <div class="row">
+        
+        <div class="añadir-trabajo trabajos-animacion col-10 col-md-5 border my-2 mx-auto">
+            <h4 class="mini-titulo text-center my-2">nuevo trabajo</h4><hr>
+            <a href="{% url 'añadir_trabajo' %}"><img src="{% static 'img/mas.png' %} " class="mx-auto"></a>
+        </div>
+
+        <div class="trabajos trabajos-animacion col-10 col-md-5 border my-2 mx-auto p-3">
+                            
+            <h4 class="titulo text-center">Lengua</h4>
+            <p class="subitutlo text-muted">12/12/2012 | 12/12/1014</p>
+            <hr>
+            <span>  Lectura estaticas  </span><br><br>
+            <a href="" class="btn btn-outline-primary float-right">ver mas</a>
+
+        </div>
+        <div class="trabajos trabajos-animacion col-10 col-md-5 border my-2 mx-auto p-3">
+                            
+            <h4 class="titulo text-center">Lengua</h4>
+            <p class="subitutlo text-muted">12/12/2012 | 12/12/1014</p>
+            <hr>
+            <span>  Lectura estaticas  </span><br><br>
+            <a href="" class="btn btn-outline-primary float-right">ver mas</a>
+
+        </div>
+        <div class="trabajos trabajos-animacion col-10 col-md-5 border my-2 mx-auto p-3">
+                            
+            <h4 class="titulo text-center">Lengua</h4>
+            <p class="subitutlo text-muted">12/12/2012 | 12/12/1014</p>
+            <hr>
+            <span>  Lectura estaticas  </span><br><br>
+            <a href="" class="btn btn-outline-primary float-right">ver mas</a>
+
+        </div>
+        <div class="trabajos trabajos-animacion col-10 col-md-5 border my-2 mx-auto p-3">
+                            
+            <h4 class="titulo text-center">Lengua</h4>
+            <p class="subitutlo text-muted">12/12/2012 | 12/12/1014</p>
+            <hr>
+            <span>  Lectura estaticas  </span><br><br>
+            <a href="" class="btn btn-outline-primary float-right">ver mas</a>
+
+        </div>
+        <div class="trabajos trabajos-animacion col-10 col-md-5 border my-2 mx-auto p-3">
+                            
+            <h4 class="titulo text-center">Lengua</h4>
+            <p class="subitutlo text-muted">12/12/2012 | 12/12/1014</p>
+            <hr>
+            <span>  Lectura estaticas  </span><br><br>
+            <a href="" class="btn btn-outline-primary float-right">ver mas</a>
+
+        </div>
+    </div>
+    
+</div>
+{% endblock %}

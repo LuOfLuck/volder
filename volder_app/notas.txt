@@ -1,0 +1,3 @@
+cosas resultas:
+-aparecen las mismas materias de otros cursos en el html
+-si subimos a un trabajo de a una materia no se repite a ls diferentes cursos

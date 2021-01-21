@@ -5,9 +5,12 @@ from usuarios.models import *
 
 def main(request):
 
-    try:
-        request.user.estudiante
-        ultimos_trabajos = Trabajo.objects.all()
+        try:
+            request.user.estudiante
+        except:
+            return redirect("/profesor/")
+        
+        ultimos_trabajos = Trabajo.objects.all().order_by("-fecha_de_subida")
        
         id_curso = request.user.estudiante.curso.id
         materias = Materia.objects.filter(curso=id_curso)
@@ -19,29 +22,37 @@ def main(request):
             "compañero":compañero,
         }
         return render(request, "volder/main.html",cont)
-    except:
-        return redirect("/profesor/")
-    
+
 
 
 
 def trabajo(request, id_trabajo):
-
     trabajo = Trabajo.objects.get(id=id_trabajo)
+    if request.user.estudiante.curso != trabajo.materia.curso:
+        return redirect("/estudiante/")
+    if request.method == "POST":
+        comentario = request.POST['comentario']
+        coment = Comentario(autor=request.user, comentario=comentario, trabajo=trabajo)
+        coment.save()
 
+    
+    comentarios = Comentario.objects.filter(trabajo=trabajo)
     cont = {
     "trabajo":trabajo,
+    "comentarios":comentarios,
     }
 
     return render(request, "volder/trabajo.html", cont)
 
 def materia(request, id_materia):
-    
-    id_curso = request.user.estudiante.curso.id
-    compañero = Estudiante.objects.filter(curso=id_curso)
-
     materia = Materia.objects.get(id=id_materia)
     trabajos = Trabajo.objects.filter(materia = materia)
+    if request.user.estudiante.curso != materia.curso:
+        return redirect("/estudiante/")
+
+
+    id_curso = request.user.estudiante.curso.id
+    compañero = Estudiante.objects.filter(curso=id_curso)
 
     cont = {
         "trabajos":trabajos,

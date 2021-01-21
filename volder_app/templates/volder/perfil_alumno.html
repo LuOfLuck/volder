@@ -15,11 +15,15 @@
     <hr>
 
     <div class="compañeros compañeros-animacion row py-1">
+        <div class="mx-auto mb-3">
+            <h5>compañeros: </h5><hr>
+        </div>
+      
         {% for compañero in compañero %}
             <div class="perfil col-6 col-md-12">
                 
                 <img class="foto-compañeros" src="{% static 'img/fotoPerfil.jpg' %}">
-
+              
                 <div class="nick">
                     <p>{{compañero}}</p>
                     <hr>

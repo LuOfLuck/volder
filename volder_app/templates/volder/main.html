@@ -16,7 +16,7 @@
                     <div class="trabajos trabajos-animacion col-10 col-md-5 border my-2 mx-auto p-3">
                         
                         <h4 class="titulo text-center">{{trabajo.materia}}</h4>
-                        <p class="subitutlo text-muted">{{trabajo.fecha_de_subida}} | {{trabajo.fecha_de_entrega}}</p>
+                        <p class="subitutlo text-muted">Del {{trabajo.fecha_de_subida|date:'d/m/Y'}} | Para el: {{trabajo.fecha_de_entrega|date:'d/m/Y'}}</p>
                         <hr>
                         <span>  {{trabajo}}  </span><br><br>
                         <a href="{% url 'trabajo' trabajo.id %}" class="btn btn-outline-primary float-right">ver mas</a>

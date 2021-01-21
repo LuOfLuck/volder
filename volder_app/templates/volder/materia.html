@@ -8,8 +8,8 @@
     <div class="trabajos-materia col-10 border p-2 my-4 mx-auto">
         <h5 class="titulo text-center">{{trabajo.titulo}}</h5>               
 
-        <span class="subitutlo text-muted text-left"> {{trabajo.fecha_de_subida}} </span>  
-        <span class="subitutlo text-muted float-right">{{trabajo.fecha_de_entrega}}</span>
+        <span class="subitutlo text-muted text-left">Del: {{trabajo.fecha_de_subida|date:'d/m/Y'}} </span>  
+        <span class="subitutlo text-muted float-right">para el: {{trabajo.fecha_de_entrega|date:'d/m/Y'}}</span>
         <hr>
         <span>  {{trabajo.consigna}}  </span><br>
         <a href="{% url 'trabajo' trabajo.id %}" class="btn btn-outline-primary float-right">ver mas</a>

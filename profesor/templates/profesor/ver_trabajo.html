@@ -4,72 +4,118 @@
 <div id="vista" class="mid-tarea mid-contenido-animacion border col-10 col-md-7 mx-auto my-5 px-4 py-3">
 
     <h4 class="text-center">{{trabajo.titulo}}</h4>
+
     <a id="icon" onclick="editar()" class="btn float-right"> editar <i class="fas fa-pencil-alt"></i></a><hr>
 
     <span>Fechas de entrega: {{trabajo.fecha_de_entrega}}</span>
+    
     <span class="btn float-right"> {{trabajo.tipo_de_trabajo}}</span><hr>
+    
     <h5 class="text-center">{{trabajo.consigna}}<hr></h5>
-      {{ trabajo.contenido|linebreaks }}
+    
+    {{ trabajo.contenido|linebreaks }}
+    
     <hr>
+    
     <span> fuentes: {{trabajo.fuentes}} </span>
+
 </div>
 
 <div id="edicion" class="mid-tarea border col-10 col-md-7 mx-auto my-5 px-4 py-3">
+    
     <a id="icon" onclick="cancelar()" class="btn float-right"> cancelar <i class="fas fa-pencil-alt"></i></a>
+    
     <form action="" method="POST"> {% csrf_token %}
+    
         <div class="form-group col-5 col-md-6 mx-auto">
+    
             <input type="text" class="form-control" name="titulo" id="inputAddress" value="{{trabajo.titulo}}" placeholder="titulo" required>
+    
         </div>
+    
         <div class="form-row">
 
             <div class="form-group col-6">
+    
                 <label class="text-muted" for="fecha">Fecha de entrega:</label>
+    
                 <input type="date" class="form-control" name="fecha_de_entrega" min="{{trabajo.fecha_de_subida|date:'Y-m-d'}}" id="fecha" required>
+    
             </div>
 
             <div class="form-group col-6">
+    
                 <label class="text-muted" for="inputState">Estilo de trabajo:</label>    
+    
                 <select id="inputState" class="form-control" name="tipo_de_trabajo" required>
+    
                     {% for tipo in tipo %}
-                        <option>{{tipo}}</option>
+    
+                    <option>{{tipo}}</option>
+    
                     {% endfor %}
+    
                 </select>
+    
             </div>
+    
         </div>
+    
         <div class="form-group col-6 mx-auto">
+    
             <label class="text-muted" for="inputState">Consigna:</label>
+    
             <input type="text" class="form-control" name="consigna" id="inputAddress" value="{{trabajo.consigna}}" placeholder="consigna" required>
+    
         </div><hr>
+    
         <div class="form-group">
+    
             <label for="textarea-contendio">Escriba la actividad:</label>
+    
             <textarea class="form-control" name="contenido" id="textarea-contendio" rows="8">
+    
                 {{ trabajo.contenido }}
+    
             </textarea>
+    
         </div>
+    
         <div class="form-group col-12 mx-auto">
+    
             <label class="text-muted" for="inputState">Fuentes:</label>
+    
             <input type="text" class="form-control" name="fuentes" id="inputAddress" value="{{trabajo.fuentes}}" placeholder="fuentes..." required>
+    
         </div>
+    
         <div class="form-row">
+    
             <input type="submit" class="btn btn-outline-success col-12" value="actualizar">
+    
         </div>
-    </form>
-    <hr>
+    
+    </form><hr>
+
 </div>
 
 
 <script>
-    var edicion = document.getElementById('edicion');
+    
+    var edicion = document.getElementById('edicion');  
     var vista = document.getElementById('vista');
-        edicion.style.display = 'none';
+    edicion.style.display = 'none';
+    
     function editar(){
         vista.style.display = 'none';
         edicion.style.display = 'block';
     }
+    
     function cancelar(){
         vista.style.display = 'block';
         edicion.style.display = 'none';
     }
+
 </script>
 
 
@@ -102,13 +148,46 @@
     </div>
 
     <div class="enviar-comentario float-top col-12 mb-3">
-        <form action="" method="POST"> {% csrf_token %}
+        <form id="enviar-datos" method="POST"> {% csrf_token %}
             <div class="row mx-auto">
-            <input type="text" name="comentario" class="input-texto col-10 col-md-9">
-            <button type="submit" class="input-sudmit btn col-2" required><i class="fas fa-dove"></i></button>
+            <input type="text" name="comentario" class="input-texto col-10 col-md-9" required>
+           
             </div>
         </form>
+        <button  onclick="enviar()" class="btn col-2" ><i class="fas fa-dove"></i></button>
     </div>
+
+    <script>
+            function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        
+        function enviar(){
+            var form = new FormData(document.getElementById('enviar-datos'));
+            console.log(form)
+            // fetch('{{trabajo.id}}',{
+            //     method: 'POST',
+            //     body: form,
+            //     headers:{
+            //         "X-CSRFToken": getCookie('csrftoken'),
+                    
+            //     }
+            // })
+
+        }
+    </script>
 
 </div>
 

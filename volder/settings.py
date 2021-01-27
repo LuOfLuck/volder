@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'volder_app',
     'usuarios',
-    'profesor'
+    'profesor',
+    'preceptor',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

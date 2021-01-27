@@ -1,0 +1,111 @@
+{% extends 'preceptor/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="col-10 p-4">
+
+    <div class="row col-12">
+
+            <h4 class="float-center">Seleccione curso a gestionar:</h4>
+            
+            <form action="" method="POST">{% csrf_token %}
+           
+                <select name="curso" class="form">
+
+                    <option value="{{curso.id}}" selected>
+                    
+                        {{curso}}
+                    
+                    </option>
+
+                    {% for cursos in cursosPreceptor %}
+                        
+                        <option value="{{cursos.id}}">
+                        
+                            {{cursos}}
+
+                        </option>
+
+                    {% endfor%}
+                
+                </select>
+
+                <button type="submit"><i class="fas fa-wrench"></i></button>
+
+            </form>
+    </div>
+    
+    <h3 class="text-center col-12 pt-3">{{curso}}</h3> <hr>
+
+    <div class="col-10 mx-auto my-5 border estudiantes">
+        
+        <h2 class="text-center text-muted">estudiantes:</h2><hr>
+        
+        <div class="row">
+        
+            <div class="col-5 mx-auto my-3 border agragar-estudiantes">
+        
+                <a href="{% url 'agregar_estudiante' curso.id  %}">
+        
+                    <h4><img src="{% static 'img/mas.png' %}" class="logo">
+        
+                        agragar estudiantes
+        
+                    </h4>
+        
+                </a>
+        
+            </div>
+        
+            {% for estudiante in estudiantes%}
+        
+                <div class="col-5 mx-auto my-3 border">
+        
+                    <h4 class="text-muted text-center"> {{estudiante}}</h4>
+        
+                </div>
+        
+            {% endfor %}
+                                    
+        </div>
+    
+    </div>
+        
+    <div class="col-10 mx-auto my-5 border estudiantes">
+        
+        <h2 class="text-center text-muted">Materias:</h2><hr>
+
+        <div class="row">
+        
+            <div class="col-5 mx-auto my-3 border agragar-estudiantes">
+        
+                <a href="{% url 'agregar_materia' curso.id %}">
+        
+                    <h4><img src="{% static 'img/mas.png' %}" class="logo">
+        
+                        agragar materia
+        
+                    </h4>
+        
+                </a>
+        
+            </div>
+        
+            {% for materia in materias%}
+        
+                <div class="col-5 mx-auto my-3 border">
+        
+                    <h4 class="text-muted text-center"> {{materia.nombre}}</h4>
+        
+                </div>
+        
+            {% endfor %}
+            
+        </div>
+     
+    </div>
+
+</div>
+
+{% endblock %}

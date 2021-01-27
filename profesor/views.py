@@ -1,14 +1,10 @@
 from django.shortcuts import render, redirect
 from usuarios.models import *
 from datetime import datetime
-
+from volder_app.decorators import *
 # Create your views here.
-
+@RequiredUserAttribute(attribute = 'profesor', redirect_to_url = '/preceptor/')
 def main(request):
-    try:
-        request.user.profesor
-    except:
-        return redirect("/estudiante/")
 
     trabajos = Trabajo.objects.all().order_by("-fecha_de_subida")
 
@@ -16,23 +12,14 @@ def main(request):
         if trabajo.materia.profesor == request.user.profesor:
             ultimo_trabajo = trabajo
             break
-    
-
     cont = {
         "trabajos":trabajos,
         "ultimo_trabajo":ultimo_trabajo,
     }
-
     return render(request, "profesor/main.html", cont)
 
+@RequiredUserAttribute(attribute = 'profesor', redirect_to_url = '/preceptor/')
 def añadir_trabajo(request):
-
-    try:
-        request.user.profesor
-    except:
-        return redirect("/estudiante/")
-
-    
 
     if request.method == "POST":
         titulo = request.POST['titulo']
@@ -46,7 +33,6 @@ def añadir_trabajo(request):
         trabajo.save()
         return redirect("/profesor/")
 
-
     now = datetime.now()
     materias = Materia.objects.all()
     tipo = TipoDeTarea.objects.all()
@@ -56,22 +42,14 @@ def añadir_trabajo(request):
         "tipo":tipo,
         "now":now,
     }
-
     return render(request, "profesor/añadir_trabajo.html",  cont)
-    
+
+@RequiredUserAttribute(attribute = 'profesor', redirect_to_url = '/preceptor/')   
 def ver_trabajo(request,id_trabajo):
-    
-    try:
-        request.user.profesor
-    except:
-        return redirect("/estudiante/")
-   
 
     trabajo = Trabajo.objects.get(id=id_trabajo)
-    
     if request.user.profesor != trabajo.materia.profesor:
         return redirect("/profesor/")
-
 
 
     comentarios = Comentario.objects.filter(trabajo=trabajo)

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Cursoos(models.Model):
     curso = models.CharField(max_length=10, null=True, blank=True)
     division = models.CharField(max_length=10, null=True, blank=True)
@@ -13,7 +14,6 @@ class Estudiante(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     dni = models.IntegerField(unique=True)
-    email = models.EmailField(unique=True)
     curso = models.ForeignKey(Cursoos, on_delete = models.CASCADE, null=True, blank=True)
     def __str__(self):
         nombre_y_apellido = self.nombre + " " + self.apellido
@@ -25,6 +25,15 @@ class Profesor(models.Model):
     apellido = models.CharField(max_length=50)
     dni = models.IntegerField(unique=True)
     email = models.EmailField(unique=True)
+    def __str__(self):
+        nombre_y_apellido = self.nombre + " " + self.apellido
+        return nombre_y_apellido
+
+class Preceptor(models.Model):
+    user = models.OneToOneField(User, on_delete = models.CASCADE)
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
+    cursos = models.ManyToManyField(Cursoos)
     def __str__(self):
         nombre_y_apellido = self.nombre + " " + self.apellido
         return nombre_y_apellido

@@ -1,0 +1,65 @@
+{% extends 'preceptor/base.html' %}
+{% load static %}
+{% block content %}
+
+<form action="" method="POST" class="col-8 p-3 my-5 mx-auto border border-secondary"> {% csrf_token %}
+    
+    <h4 class="text-center text-muted">Agregar Materia</h4> <hr>
+    
+    <div class="form-row align-items-center">
+    
+        <div class="col-sm-4 my-1 mx-auto">
+    
+            <label  for="inlineFormInputName">Nombre materia:</label>
+    
+            <input type="text" name="nombre" class="form-control" id="inlineFormInputName" placeholder="Nombre">
+    
+        </div>
+    
+        <div class="col-sm-4 my-1 mx-auto">
+    
+            <label  for="inlineFormInputGroupUsername">Profesor:</label>
+    
+            <select name="profesor" class="form-control">
+
+                {% for profesor in profesores %}
+
+                    <option value="{{profesor.id}}">
+
+                        {{profesor}}
+
+                    </option>
+
+                {% endfor %}
+
+            </select>
+    
+        </div>
+    
+        <div class="col-auto my-1 mx-auto">
+
+            <label></label>
+    
+            <button type="submit" class="form-control btn btn-primary">Nueva materia</button>
+    
+        </div>
+
+        {% if messages %}
+    
+            {%for messages in messages%}
+            
+                <div class="notification">
+                
+                <p class="alert text-center my-3"> {{messages}} </p> 
+                
+                </div>
+        
+            {% endfor %}
+    
+        {% endif %}
+    
+    </div>
+
+</form>
+
+{% endblock %}

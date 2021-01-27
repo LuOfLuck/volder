@@ -1,14 +1,9 @@
 from django.shortcuts import render, redirect
 from usuarios.models import *
-
+from .decorators import *
 # Create your views here.
-
+@RequiredUserAttribute(attribute = 'estudiante', redirect_to_url = '/profesor/')
 def main(request):
-
-        try:
-            request.user.estudiante
-        except:
-            return redirect("/profesor/")
         
         ultimos_trabajos = Trabajo.objects.all().order_by("-fecha_de_subida")
        
@@ -25,7 +20,7 @@ def main(request):
 
 
 
-
+@RequiredUserAttribute(attribute = 'estudiante', redirect_to_url = '/profesor/')
 def trabajo(request, id_trabajo):
     trabajo = Trabajo.objects.get(id=id_trabajo)
     if request.user.estudiante.curso != trabajo.materia.curso:
@@ -44,6 +39,8 @@ def trabajo(request, id_trabajo):
 
     return render(request, "volder/trabajo.html", cont)
 
+
+@RequiredUserAttribute(attribute = 'estudiante', redirect_to_url = '/profesor/')
 def materia(request, id_materia):
     materia = Materia.objects.get(id=id_materia)
     trabajos = Trabajo.objects.filter(materia = materia)

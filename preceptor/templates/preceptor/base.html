@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en"  class="sr">
 <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/profesor/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/preceptor/main.css' %}">
     <script src="{% static 'js/scrollreveal.js' %}"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -11,57 +11,46 @@
 </head>
 <body>
     {% include 'volder/carga.html' %}
+<header>
 
-    <header>
-
-        <div class="celular"> 
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="">Volder online</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-              
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav">
-                    <div class="nav-item active">
-                        <a href="{% url 'home' %}" class="col-3 btn btn-outline-success mx-3">Inicio </a>
-                        <a href="#materias" class="col-3 btn btn-outline-success mx-3">Materias </a>
-                        <a href="" class="col-3 btn btn-outline-success mx-3">Grupos </a>
-                        <a href="" class="col-3 btn btn-outline-success mx-3">Noticias </a>
-                        <a href="" class="col-3 btn btn-outline-success mx-3">ajustes </a>
-                        <a href="" class="col-3 btn btn-outline-success mx-3">sobre nosotors </a>
-                        <a href="" class="col-3 btn btn-outline-success mx-3">Cerrar sesion </a>
-                    </div>
-                  </ul>
+    <div class="celular"> 
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="">Volder online</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <div class="nav-item active">
+                    <a href="{% url 'home_preceptor' %}" class="col-3 btn btn-outline-success mx-3">Inicio </a>
+    
+                    <a href="" class="col-3 btn btn-outline-success mx-3">Noticias </a>
+                    <a href="" class="col-3 btn btn-outline-success mx-3">ajustes </a>
+                    <a href="" class="col-3 btn btn-outline-success mx-3">sobre nosotors </a>
+                    <a href="" class="col-3 btn btn-outline-success mx-3">Cerrar sesion </a>
                 </div>
-            </nav>
-        </div> 
+              </ul>
+            </div>
+        </nav>
+    </div> 
 
-        <div id="nav-header" class="pc text-center header-animacion">
-            <p>volder online</p>
-        </div>
+    <div id="nav-header" class="pc text-center header-animacion">
+        <p>volder online</p>
+    </div>
 
-    </header>
+</header>
 
     <div class="main row">
 
-        <div id="nav" class="contenedor contenedor-animacion col-2 my-4  mx-auto  border border-secondary">
+        <div id="nav" class="contenedor contenedor-animacion col-2 my-4  border border-secondary">
 
-            <a href="{% url 'home_profesor' %}" id="botones"class="row my-3">
+            <a href="{% url 'home_preceptor' %}" id="botones"class="row my-3">
                 <button  class="col-11 btn mx-auto boton-animacion">
                     <i class="fas fa-home"></i><span>Inicio</span>
                 </button>
             </a>
-            <a href="" id="botones" class="row my-3">
-                <button  class="col-11 btn mx-auto boton-animacion" >
-                    <i class="fas fa-book"></i><span> Materias </span>
-                </button>
-            </a>
-            <a href="" id="botones" class="row my-3">
-                <button  class="col-11 btn mx-auto boton-animacion">
-                    <i class="fas fa-users"></i><span> Grupos </span>
-                </button>
-            </a>
+
             <a href=""  id="botones" class="row my-3">
                 <button  class="col-11 btn mx-auto boton-animacion">
                     <i class="far fa-newspaper"></i><span> Noticias </span>
@@ -91,11 +80,16 @@
 
     </div>
    <footer class="footer" style="background-color: black;">
-      <br>
+    <br>
+    <br>
+    <br>
+    <br>      <br>
       <br>
       <br>
       <br>
    </footer>
+
+
    <script src="{% static 'js/animaciones-alumno.js' %}"></script>
    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -76,3 +76,14 @@ def ver_trabajo(request,id_trabajo):
     }
     return render(request, "profesor/ver_trabajo.html", cont)
     
+def grupos(request):
+    return render(request, "profesor/grupos.html")
+def trabajo_grupal(request):
+    return render(request, "profesor/trabajo_grupal.html")
+def proyecto(request):
+    return render(request, "profesor/proyecto.html")
+def gestionar_grupo(request):
+    return render(request, "profesor/gestionar_grupo.html")
+
+def noticias_profesor(request):
+    return render(request, "profesor/noticias_profesor.html")

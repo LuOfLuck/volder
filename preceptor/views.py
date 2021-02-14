@@ -7,7 +7,7 @@ import string
 import random
 # Create your views here.
 
-@RequiredUserAttribute(attribute = 'preceptor', redirect_to_url = '/estudiante/')
+@RequiredUserAttribute(attribute = 'preceptor', redirect_to_url = '/secretario/')
 def main(request):
     preceptor_user = Preceptor.objects.get(user=request.user)
 
@@ -33,7 +33,7 @@ def main(request):
     
 
 
-@RequiredUserAttribute(attribute = 'preceptor', redirect_to_url = '/estudiante/')
+@RequiredUserAttribute(attribute = 'preceptor', redirect_to_url = '/secretario/')
 def agregar_estudiante(request, curso):
     curso = Cursoos.objects.get(id=curso)
     preceptor_user = Preceptor.objects.get(user=request.user)
@@ -77,7 +77,7 @@ def agregar_estudiante(request, curso):
     return render(request, "preceptor/agregar_estudiante.html",{"curso":curso})
 
 
-@RequiredUserAttribute(attribute = 'preceptor', redirect_to_url = '/estudiante/')
+@RequiredUserAttribute(attribute = 'preceptor', redirect_to_url = '/secretario/')
 def agregar_materia(request,id_curso):
     #validamos si el preceptor no esta modificando la url para dañar la bbdd
     preceptor_user = Preceptor.objects.get(user=request.user)

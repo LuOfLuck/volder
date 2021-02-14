@@ -1,0 +1,86 @@
+{% extends 'secretario/base.html' %}
+{% load static %}
+{% block content %}
+<div class="mid-contenido mid-contenido-animacion border col-10 col-md-9 mx-auto my-4 px-4">
+    <h2 class="text-muted text-center"> Agregar preceptor</h2><hr>
+    <form  action="" method="POST" class="my-3">  {% csrf_token %} 
+        
+        <div class="row">
+        
+            <div class="col-md-5 mx-auto">
+        
+                <label for="validationTooltip01">Nombre</label>
+        
+                <input type="text" class="form-control border " name="nombre" placeholder="Nombre" required>
+        
+            </div>
+        
+              <div class="col-md-5 mx-auto">
+        
+          
+                  <label for="validationTooltip02">Apellido</label>
+          
+                  <input type="text" class="form-control  border " name="apellido" placeholder="Apellido" required>
+         
+              </div>  
+        </div>
+        
+        <div class="row">
+        
+            <div class="col-md-11 mx-auto">
+          
+                <label for="validationTooltip01">Email</label>
+            
+                <input type="email" class="form-control  border " name="email" placeholder="@Email"required>
+      
+            </div>
+        
+        </div>
+        
+        <div class="row">
+          
+            <div class="col-md-5 mx-auto">
+          
+                <label for="validationTooltip01">DNI</label>
+          
+                <input type="number" class="form-control border " name="dni" placeholder="DNI" required>
+          
+            </div>
+            <div class="col-md-5 mx-auto">
+                
+                <label for="">cursos:</label>
+
+                <select class="form-control col-10 " name="cursos" multiple>
+                    {% for curso in cursos %}
+                        <option value="{{curso.id}}">{{curso}}</option>
+                    {% endfor %}
+                </select>
+               
+            </div>
+        </div>
+        <div class="col-md-5 mx-auto">  
+            
+            <label for="sa"> &nbsp</label> <br>
+          
+            <button class="btn btn-outline-primary" type="submit">Submit form</button>
+        
+      
+        </div>
+        
+        {% if messages %}
+        
+            {%for messages in messages%}
+            
+                <div class="notification">
+                
+                  <p class="alert text-center my-3"> {{messages}} </p> 
+                
+                </div>
+        
+            {% endfor %}
+        
+        {% endif %}
+        
+    </form>
+</div>
+{% endblock %}

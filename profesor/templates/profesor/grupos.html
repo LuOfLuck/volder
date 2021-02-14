@@ -1,0 +1,52 @@
+{% extends 'profesor/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="mid-contenido mid-contenido-animacion col-10 col-md-10 mx-auto my-4 px-4">
+    <h2 id="inicio" class="text-center my-4">inicio</h2> <hr>
+
+    <div class="tarea tarea-animacion col-12 col-md-12  border mx-auto my-2 p-2" >
+
+        <h3 class="text-center col-12 pt-3">¿que son los trabajos grupales?</h3> <hr>
+
+   
+            <p class="subitutlo text-muted">Explicacion breve:</p>
+            <hr>
+            
+            <span>  Los trabajos grupales es una forma de diferente de dar actividades.<br>
+                    Creando un trabajo grupal podra dividir a los alumnos en pequeños grupos donde cada grupo tendra su actividad correspondiente<br>
+                    Cada division de trabajo tendra su propio chat de manera privada<br>
+                    de igual modo la actividad general tiene un chat para todos los estudiantes incluidos dentro del proyecto. <br>
+                    Tambien se puede utilizar para dar modelos de evaluacion a estudiantes expecificos sin tener la necesidad de que todos los alumnos la reciban<br>
+                    para crear una actividad grupal de click en <a href="{% url 'trabajo_grupal' %}">nuevo trabajo trabajo grupal</a> siga los pasos que de igual manera estaran detallados en los formularios<br>
+            </span><br>
+            <p class="subitutlo text-muted">nota:</p>
+            <span> a continuacion nos referiremos a "trabajo grupal" como <b>proyecto</b> </span>
+        
+
+    </div>
+
+    <div class="row">
+        
+        <div class="añadir-trabajo trabajos-animacion col-10 col-md-5 border my-2 mx-auto">
+            <h4 class="mini-titulo text-center my-2">nuevo trabajo trabajo grupal</h4><hr>
+            <a href="{% url 'trabajo_grupal' %}"><img src="{% static 'img/mas.png' %} " class="mx-auto"></a>
+        </div>
+        
+  
+        <div class="trabajos trabajos-animacion col-10 col-md-5 border my-2 mx-auto p-3">
+                            
+            <h4 class="titulo text-center">Construcciones moviles</h4>
+            <p class="subitutlo text-muted"></p>
+            <hr>
+            <span>  grupos de alumno: 0  </span><br>
+            <span>  Trabajos dados: 0  </span>
+            <a href="{% url 'proyecto' %}" class="btn btn-outline-primary float-right">ver mas</a>
+            
+        </div>
+
+    </div>
+    
+</div>
+
+{% endblock %}

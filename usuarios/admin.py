@@ -9,6 +9,7 @@ class TrabajoAdmin(admin.ModelAdmin):
 admin.site.register(Estudiante)
 admin.site.register(Profesor)
 admin.site.register(Preceptor)
+admin.site.register(Secretario)
 admin.site.register(Cursoos)
 admin.site.register(Materia, MateriaAdmin)
 admin.site.register(TipoDeTarea)

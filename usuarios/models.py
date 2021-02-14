@@ -24,7 +24,7 @@ class Profesor(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     dni = models.IntegerField(unique=True)
-    email = models.EmailField(unique=True)
+
     def __str__(self):
         nombre_y_apellido = self.nombre + " " + self.apellido
         return nombre_y_apellido
@@ -33,7 +33,16 @@ class Preceptor(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
-    cursos = models.ManyToManyField(Cursoos)
+    cursos = models.ManyToManyField(Cursoos, null=True, blank=True)
+    dni = models.IntegerField(unique=True, null=True, blank=True)
+    def __str__(self):
+        nombre_y_apellido = self.nombre + " " + self.apellido
+        return nombre_y_apellido
+        
+class Secretario(models.Model):
+    user = models.OneToOneField(User, on_delete = models.CASCADE)
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
     def __str__(self):
         nombre_y_apellido = self.nombre + " " + self.apellido
         return nombre_y_apellido

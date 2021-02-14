@@ -1,0 +1,116 @@
+{% extends 'profesor/base.html' %}
+{% load static %}
+{% block content %}
+<div class="mid-contenido mid-contenido-animacion border col-10 col-md-9 mx-auto my-4 px-4">
+    
+    <div id="abrir-popou" class="col-md-4 border mx-auto my-3">
+   
+        <h5 class="text-muted text-center"> crear publicacion</h5>
+   
+    </div>
+
+</div>
+
+
+<div class="cont-popou">
+
+    <div class="cont-poput-form col-6 pb-0 px-4 pt-4">
+
+        <h3 class="text-muted text-center">crear publicacion</h3><i id="cerrar-popou"class="far fa-times-circle cerrar-poput"></i><hr>
+
+        <form action="" method="POST" class="formulario-publicacion"> {% csrf_token %}
+
+            <div class="row">
+              
+                <div class="col-md-6 mx-auto">
+
+                    <input type="text" class="form-control text-center" id="titulo" name="titulo" placeholder="Titulo..." requerid>
+            
+                </div>
+            
+            </div>
+            
+ 
+            <div class="contenido">
+                <div class="col-md-12"><br>
+                   
+                    <textarea id="mensaje" name="mensaje" class="form-control" rows="3" placeholder="¿que estas pensando, Lu?..."required></textarea>
+                
+                </div>
+
+                <div class="col-md-12"><br>
+
+                    <input type="url"  name="url" id="input-url" class="form-control input-url" placeholder="https://www.website.com/">
+
+                </div>
+                <img id="input-imagen-zone" class="my-3">
+
+            </div>
+            
+            <div class="row">
+
+                <div class="form-grup col-3 mx-auto">   
+                
+                    <label for="input-imagen"><i class="far fa-image"></i></label>
+                
+                    <input type="file" name="imagen" accept="image/*" id="input-imagen">
+                
+                </div>
+                
+                <div class="form-grup col-3 mx-auto">
+                
+                    <label for="input-url" class="label-url"><i class="fas fa-link"></i></label>
+                
+                </div>
+                
+                <div class="form-grup col-3 mx-auto">
+                
+                    <button class="btn input-sudmit" type="submit"><i class="input-sudmit-icon far fa-paper-plane"></i></button>
+                
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+    document.getElementById('abrir-popou').addEventListener("click", function(){
+        document.querySelector(".cont-popou").style.display = "flex";
+        console.log("abrir")
+    });
+    document.querySelector('.cerrar-poput').addEventListener("click", function(){
+        document.querySelector(".cont-popou").style.display = "none";
+        console.log("cerrar")
+    });
+    document.querySelector('.label-url').addEventListener("click", function(){
+        inputUrl = document.querySelector(".input-url");
+        
+        if (inputUrl.style.display != "block"){
+            inputUrl.style.display = "block";
+        }else{
+            inputUrl.style.display = "none";
+        }
+    });
+    const $seleccionArchivos = document.querySelector("#input-imagen"),
+    $imagenPrevisualizacion = document.querySelector("#input-imagen-zone");
+
+    $seleccionArchivos.addEventListener("change", () => {
+    const archivos = $seleccionArchivos.files;
+    if (!archivos || !archivos.length) {
+        $imagenPrevisualizacion.src = "";
+        $imagenPrevisualizacion.style.display= "none";
+        return;
+    }
+    const primerArchivo = archivos[0];
+    const objectURL = URL.createObjectURL(primerArchivo); 
+    $imagenPrevisualizacion.src = objectURL;
+    $imagenPrevisualizacion.style.display= "block";
+});
+</script>
+
+
+{% endblock %}

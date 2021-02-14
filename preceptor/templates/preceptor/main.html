@@ -5,36 +5,42 @@
 
 <div class="col-10 p-4">
 
-    <div class="row col-12">
+    <form action="" method="POST" class="col-8 ml-auto">{% csrf_token %}
 
-            <h4 class="float-center">Seleccione curso a gestionar:</h4>
-            
-            <form action="" method="POST">{% csrf_token %}
-           
-                <select name="curso" class="form">
+        <div class="form-row align-items-center">
+        
+            <label class="h4 text-muted col-7">seleccione curso a gestionar:</label>
+        
+            <select name="curso" class="form form-control col-3 mx-1">
 
-                    <option value="{{curso.id}}" selected>
-                    
-                        {{curso}}
-                    
-                    </option>
-
-                    {% for cursos in cursosPreceptor %}
+                        <option value="{{curso.id}}" selected>
                         
-                        <option value="{{cursos.id}}">
+                            {{curso}}
                         
-                            {{cursos}}
-
                         </option>
 
-                    {% endfor%}
-                
-                </select>
+                        {% for cursos in cursosPreceptor %}
+                                
+                            {% if curso != cursos %}
+                                
+                                <option value="{{cursos.id}}">
+                                
+                                    {{cursos}}
 
-                <button type="submit"><i class="fas fa-wrench"></i></button>
+                                </option>
+                            {% endif %}
 
-            </form>
-    </div>
+                        {% endfor%}
+                    
+            </select>
+        
+            <button type="submit" class="form-control col-1 mx-1"><i class="fas fa-wrench"></i></button>
+        
+        </div>
+    
+    </form>
+
+
     
     <h3 class="text-center col-12 pt-3">{{curso}}</h3> <hr>
 

@@ -4,8 +4,8 @@
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/profesor/main.css' %}">
     <script src="{% static 'js/scrollreveal.js' %}"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -24,13 +24,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav">
                     <div class="nav-item active">
-                        <a href="{% url 'home' %}" class="col-3 btn btn-outline-success mx-3">Inicio </a>
+                        <a href="{% url 'home_profesor' %}" class="col-3 btn btn-outline-success mx-3">Inicio </a>
                         <a href="#materias" class="col-3 btn btn-outline-success mx-3">Materias </a>
-                        <a href="" class="col-3 btn btn-outline-success mx-3">Grupos </a>
-                        <a href="" class="col-3 btn btn-outline-success mx-3">Noticias </a>
-                        <a href="" class="col-3 btn btn-outline-success mx-3">ajustes </a>
-                        <a href="" class="col-3 btn btn-outline-success mx-3">sobre nosotors </a>
-                        <a href="" class="col-3 btn btn-outline-success mx-3">Cerrar sesion </a>
+                        <a href="{% url 'grupos' %}" class="col-3 btn btn-outline-success mx-3">Grupos </a>
+                        <a href="{% url 'noticias_profesor' %}" class="col-3 btn btn-outline-success mx-3">Noticias </a>
+                        <a href="#" class="col-3 btn btn-outline-success mx-3">ajustes </a>
+                        <a href="#" class="col-3 btn btn-outline-success mx-3">sobre nosotors </a>
+                        <a href="#" class="col-3 btn btn-outline-success mx-3">Cerrar sesion </a>
                     </div>
                   </ul>
                 </div>
@@ -45,34 +45,34 @@
 
     <div class="main row">
 
-        <div id="nav" class="contenedor contenedor-animacion col-2 my-4  mx-auto  border border-secondary">
+        <div id="nav" class="contenedor contenedor-animacion col-2 my-4  border border-secondary">
 
             <a href="{% url 'home_profesor' %}" id="botones"class="row my-3">
                 <button  class="col-11 btn mx-auto boton-animacion">
                     <i class="fas fa-home"></i><span>Inicio</span>
                 </button>
             </a>
-            <a href="" id="botones" class="row my-3">
+            <a href="#" id="botones" class="row my-3">
                 <button  class="col-11 btn mx-auto boton-animacion" >
                     <i class="fas fa-book"></i><span> Materias </span>
                 </button>
             </a>
-            <a href="" id="botones" class="row my-3">
+            <a href="{% url 'grupos' %}" id="botones" class="row my-3">
                 <button  class="col-11 btn mx-auto boton-animacion">
                     <i class="fas fa-users"></i><span> Grupos </span>
                 </button>
             </a>
-            <a href=""  id="botones" class="row my-3">
+            <a href="{% url 'noticias_profesor' %}"  id="botones" class="row my-3">
                 <button  class="col-11 btn mx-auto boton-animacion">
                     <i class="far fa-newspaper"></i><span> Noticias </span>
                 </button>
             </a>
-            <a href="" id="botones" class="row my-3">
+            <a href="#" id="botones" class="row my-3">
                 <button  class="col-11 btn mx-auto boton-animacion">
                     <i class="fas fa-wrench"></i><span>ajustes</span>
                 </button>
             </a>
-            <a href="" id="botones" class="row my-3">
+            <a href="#" id="botones" class="row my-3">
                 <button  class="col-11 btn mx-auto boton-animacion">
                     <i class="fas fa-user"></i> <span> nosotros </span>
                 </button>
@@ -97,9 +97,9 @@
       <br>
    </footer>
    <script src="{% static 'js/animaciones-alumno.js' %}"></script>
-   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+   <script src="{% static 'js/jquery-3.4.1.slim.min.js' %}" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   <script src="{% static 'js/popper.min.js' %}" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+   <script src="{% static 'js/bootstrap.min.js' %}" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
    
 </body>
 </html>

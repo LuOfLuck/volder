@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# c:/Users/alumno/PycharmProjects/SELIU/venv/Scripts/activate.bat
 """Django's command-line utility for administrative tasks."""
 import os
 import sys

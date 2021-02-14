@@ -123,8 +123,9 @@ header .pc p{
 /**/    /**/    /**/    /**/    /**/
 
 .tarea{
-    height: 300px;
+    height: auto;
 }
+
 .trabajos{
     border-radius: 20px;
     height: 220px;
@@ -291,3 +292,137 @@ header .pc p{
 /**/  /* FIN TRABAJO*/  /**/
 /**/                    /**/
 /**/    /**/    /**/    /**/
+
+
+
+
+/**/    /**/    /**/    /**/
+/**/                    /**/
+/**/    /* PROYECTO*/   /**/
+/**/                    /**/
+/**/    /**/    /**/    /**/
+
+
+.proyecto-boton-derecha{
+    float: right;
+}
+
+
+
+
+
+/**/    /**/    /**/    /**/
+/**/                    /**/
+/**/ /* FIN PROYECTO*/  /**/
+/**/                    /**/
+/**/    /**/    /**/    /**/
+
+
+/**/    /**/    /**/    /**/    /**/
+/**/                            /**/
+/**/     /* POPOU NOTIFIC */    /**/
+/**/                            /**/
+/**/    /**/    /**/    /**/    /**/
+#abrir-popou{
+    box-shadow: 5px -2px 10px rgb(171, 173, 173);
+}
+.cont-popou{
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0, 0, .5);
+    position: absolute;
+    top:0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+}
+.cont-poput-form{
+
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 10px -4px 10px rgba(94, 94, 94, 0.479);
+    
+}
+.cerrar-poput{
+    color: rgb(104, 104, 104);
+    font-size: 2rem;
+    position: absolute;
+    top: 20px;
+    right:20px;
+    cursor: pointer;
+}
+.contenido{
+    max-height: 40vh;
+    overflow-y: auto;
+    border-bottom: 1px solid rgba(102, 102, 102, 0.363);
+    
+}
+.mensaje{
+    border: 0px  !important;
+    padding: 3rem;
+}
+.formulario-publicacion textarea{
+  border: 0; 
+  /* border-bottom: 1px solid rgb(150, 150, 150); */
+  font-size: 1.2rem;
+}
+
+.formulario-publicacion #titulo{
+  border: 0; 
+  border-bottom: 1px solid rgba(94, 94, 94, 0.363); 
+  font-size: 1.2rem;
+}
+
+.formulario-publicacion #input-imagen {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    }
+.formulario-publicacion #input-url{
+    display: none;
+    border:0px;
+    border-bottom: 1px solid rgb(150, 150, 150); 
+    font-size: 1rem;
+    width: 100%;
+    }
+#input-imagen-zone{
+    width: 80%;
+    height: 300px;
+    display: none;
+    margin:auto
+}
+.formulario-publicacion label[for="input-imagen"], .formulario-publicacion label[for="input-url"], .input-sudmit-icon   {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: black;
+    display: inline-block;
+    transition: linear all .5s;
+    cursor: pointer;
+    padding: 15px 40px;
+    text-align: center;
+  
+    }
+.formulario-publicacion label[for="input-imagen"]:hover, .formulario-publicacion label[for="input-url"]:hover, .input-sudmit-icon:hover{
+    font-size: 2rem;
+    color: rgb(93, 93, 204);
+}
+.formulario-publicacion label[for="input-url"]{
+    float: center;
+}
+.formulario-publicacion .input-sudmit-icon {
+    height: 0px !important;
+}
+
+
+
+/**/    /**/    /**/    /**/    /**/
+/**/                            /**/
+/**/   /* FIN POPOU NOTIFIC */  /**/
+/**/                            /**/
+/**/    /**/    /**/    /**/    /**/
+
+/****************************************************/

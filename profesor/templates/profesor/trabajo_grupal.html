@@ -1,0 +1,82 @@
+{% extends 'profesor/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="mid-contenido mid-contenido-animacion col-10 col-md-10 mx-auto my-4 px-4">
+    <h2 id="inicio" class="text-center my-4">inicio</h2> <hr>
+
+    <div class="tarea tarea-animacion col-12 col-md-12  border mx-auto my-2 p-2" >
+
+        <h3 class="text-center col-12 pt-3">¿como crear un Proyecto y como funciona?</h3> <hr>
+
+   
+            <p class="subitutlo text-muted">Explicacion breve:</p>
+            <hr>
+            
+            <span>  
+                Para crear un proyecto debe de indicar el titulo, una breve descripcion de que se tratara y al curso que esta dirigida.<br>
+                Al crear un proyecto podra entrar a el y crear grupos de alumnos donde seleccionara el los estudiantes que quiere que este en ese grupo <em>(evidentemente cada grupo de alumno solo servira para el proyecto al que este incluido).</em><br>
+                Los grupos de alumno no tienen limite de estudiantes, sinembargo solo se podran agregar estudiantes del curso que selecciono posteriormente.<br>
+                Cuando cree un grupo de alumnos podra dar 1 o varias actividades, cada actividad contara con un chat exclusivo para ese actividad del grupo.<br>
+                Aun asi cada proyecto tendra un chat general.
+             
+            </span>
+        
+
+    </div>
+ <form action="" method="POST" class="col-12 p-3 my-5 mx-auto border border-secondary"> {% csrf_token %}
+    
+    <h4 class="text-center text-muted">Agregar Materia</h4> <hr>
+    
+    <div class="form-row align-items-center">
+    
+        <div class="col-sm-4 my-1 mx-auto">
+    
+            <label  for="inlineFormInputName">Nombre del proyecto:</label>
+    
+            <input type="text" name="nombre" class="form-control" id="inlineFormInputName" placeholder="Nombre del proyecto">
+    
+        </div>
+    
+        <div class="col-sm-4 my-1 mx-auto">
+    
+            <label  for="inlineFormInputGroupUsername">Materia y Curso al que se dirige el proyecto:</label>
+    
+            <select name="profesor" class="form-control">
+
+              
+
+                    <option value="">
+
+                        <p>matermaticas 1ro-2da</p>
+
+                    </option>
+                    <option value="">
+
+                        <p>Fisica 1ro-2da</p>
+
+                    </option>
+
+            </select>
+    
+        </div>
+    
+    </div>
+
+    
+    <div class="form-group">
+    
+        <label for="textarea-contendio">descripcion del proyecto:</label>
+
+        <textarea class="form-control col-10 mx-auto" name="descripcion" id="textarea-contendio" rows="5">
+
+
+        </textarea>
+
+    </div>
+    <div class="form-group">
+        <input type="sudmit" class="btn btn-outline-primary enviar"value="Crear proyecto">
+    </div>
+</form>
+</div>
+{% endblock %}

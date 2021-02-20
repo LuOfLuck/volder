@@ -3,19 +3,28 @@
 {% block content %}
 
 <div class="mid-tarea mid-contenido-animacion border col-10 col-md-7 mx-auto my-5 px-4 py-3">
+    
     <h3 id="materias" class="text-center col-12 pt-3">{{materia.nombre}}</h3>  <hr>
+    
     {% for trabajo in trabajos %}
-    <div class="trabajos-materia col-10 border p-2 my-4 mx-auto">
-        <h5 class="titulo text-center">{{trabajo.titulo}}</h5>               
+    
+        <div class="trabajos-materia col-10 border p-2 my-4 mx-auto">
+        
+            <h5 class="titulo text-center">{{trabajo.titulo}}</h5>               
 
-        <span class="subitutlo text-muted text-left">Del: {{trabajo.fecha_de_subida|date:'d/m/Y'}} </span>  
-        <span class="subitutlo text-muted float-right">para el: {{trabajo.fecha_de_entrega|date:'d/m/Y'}}</span>
-        <hr>
-        <span>  {{trabajo.consigna}}  </span><br>
-        <a href="{% url 'trabajo' trabajo.id %}" class="btn btn-outline-primary float-right">ver mas</a>
+        
+            <span class="subitutlo text-muted text-left">Del: {{trabajo.fecha_de_subida|date:'d/m/Y'}} </span>  
+        
+            <span class="subitutlo text-muted float-right">para el: {{trabajo.fecha_de_entrega|date:'d/m/Y'}}</span><hr>
+        
+            <span>  {{trabajo.consigna}}  </span><br>
+        
+            <a href="{% url 'trabajo' trabajo.id %}" class="btn btn-outline-primary float-right">ver mas</a>
 
-    </div>
+        </div>
+        
     {% endfor %}
+
 </div>
 
 {% include 'volder/perfil_alumno.html' %}

@@ -1,18 +1,23 @@
 {% load static %}
-<div id="container"class="container container-animacion col-10 col-md-2 my-4 border border-secondary">
+<div id="container"class="container container-animacion col-10 col-md-2 my-4 border" style=" box-shadow: 10px -4px 10px rgb(171, 173, 173);">
 
     <div class="perfil">
 
-        <img class="foto mt-3" src="{% static 'img/fotoPerfil.jpg' %}">
+        <img class="foto mt-3" src="{{user.estudiante.imageURL}}">
 
         <div class="nombre">
+        
             <p>{{user.estudiante.nombre}} {{user.estudiante.apellido}}</p>
+        
         </div>
+        
         <div class="curso">
+        
             <p>{{user.estudiante.curso.curso}} {{user.estudiante.curso.division}}</p>
+        
         </div>
-    </div>
-    <hr>
+   
+    </div><hr>
 
     <div class="compañeros compañeros-animacion row py-1">
         <div class="mx-auto mb-3">
@@ -20,17 +25,21 @@
         </div>
       
         {% for compañero in compañero %}
+        
             <div class="perfil col-6 col-md-12">
                 
-                <img class="foto-compañeros" src="{% static 'img/fotoPerfil.jpg' %}">
+                <img class="foto-compañeros" src="{{compañero.imageURL}}">
               
                 <div class="nick">
-                    <p>{{compañero}}</p>
-                    <hr>
+            
+                    <p>{{compañero}}</p><hr>
+                
                 </div>
                 
             </div>
+   
         {% endfor %}
+   
     </div>
 
 </div>

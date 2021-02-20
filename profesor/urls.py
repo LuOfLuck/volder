@@ -11,5 +11,7 @@ urlpatterns = [
     path('trabajo_grupal/', login_required(views.trabajo_grupal), name="trabajo_grupal"),
     path('proyecto/', login_required(views.proyecto), name="proyecto"),
     path('gestionar_grupo/', login_required(views.gestionar_grupo), name="gestionar_grupo"),
-    path('noticias_profesor/', login_required(views.noticias_profesor), name="noticias_profesor"),
+    path('noticias/', login_required(views.noticias_profesor), name="noticias_profesor"),
+    path('ajustes/', login_required(views.ajustes_profesor), name="ajustes_profesor"),
+    path('materias/', login_required(views.materias_profesor), name="materias_profesor"),
 ]

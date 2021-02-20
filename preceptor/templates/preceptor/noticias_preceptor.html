@@ -1,0 +1,315 @@
+{% extends 'preceptor/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="mid-contenido mid-contenido-animacion border col-10 col-md-9 mx-auto my-4 px-4">
+
+    <div id="abrir-popou" class="col-md-4 border mx-auto my-3">
+   
+        <h5 class="text-muted text-center"> crear publicacion</h5>
+   
+    </div>
+        
+    {% if messages %}
+        
+        {%for messages in messages%}
+        
+            <div class="notification">
+            
+            <p class="alert text-center my-3"> {{messages}} </p> 
+            
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+    <div class="row botones-filtros" role="group" aria-label="Basic mixed styles example">
+        <button type="button" onclick="ocultar(), mostrarSecretario()" id="boton-secretario" class="col">Secretarios</button>
+        <button type="button"  onclick="ocultar(), mostrarProfesor()"  id="boton-profesor" class="col">profesores</button>
+        <button type="button" onclick="ocultar(), mostrarPreceptor()" id="boton-preceptor" class="col">tu</button>
+    </div>
+
+    <div id="contenedor-secretario">
+    {% for noticia in secretario_noticias %}
+
+        <div class="col-md-10 publicaciones border mx-auto my-5">
+
+            <div class="row publicaciones-top my-1 ">
+
+                <div class="col-md-2 publicaciones-top-foto my-3  p-0">
+
+                    <img src="{{noticia.user.secretario.imageURL}}">
+
+                </div>
+
+                <div class="col-md-6 publicaciones-top-nick my-1  p-0">
+        
+                    <h4 class="text-muted"> Secretario: {{noticia.user.secretario.apellido}} {{noticia.user.secretario.nombre}} </h4>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 publicaciones-titulo mx-auto my-2 ">
+
+                <h3 class="text-center text-muted">{{noticia}}</h3><hr>
+
+            </div>
+
+            <div class="publicaciones-contenido">
+
+                <p>
+                    {{ noticia.mensaje|linebreaks }}
+                </p>
+
+            </div>
+            {% if noticia.url %}
+            
+                <div class="publicaciones-link">
+
+                    <p> 
+                        link:
+                        <a href="#">{{noticia.url}}</a>
+                    </p>
+
+                </div>
+
+            {% endif %}
+            
+            {% if noticia.imagen %}
+
+                <div class="publicaciones-imagen">
+
+                    <img src="{{ noticia.imagen.url }}">
+
+                </div>
+
+            {% endif%}
+
+            <div class="publicaciones-comentarios">
+
+                <a href="#" class="btn mx-auto my-2 col-6"> Comentarios </a>
+
+            </div>
+
+        
+        </div>
+
+    {% endfor %}
+    </div>
+    <div id="contenedor-profesor">
+    {% for noticia in profesor_noticia_filtrada %}
+          
+        <div class="col-md-10 publicaciones border mx-auto my-5">
+
+            <div class="row publicaciones-top my-1 ">
+
+                <div class="col-md-2 publicaciones-top-foto my-3  p-0">
+
+                    <img src="{{noticia.user.profesor.imageURL}}">
+
+                </div>
+
+                <div class="col-md-6 publicaciones-top-nick my-1  p-0">
+        
+                    <h4 class="text-muted"> Profesor: {{noticia.user.profesor.apellido}} {{noticia.user.profesor.nombre}}</h4>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 publicaciones-titulo mx-auto my-2 ">
+
+                <h3 class="text-center text-muted">{{noticia}}</h3><hr>
+
+            </div>
+
+            <div class="publicaciones-contenido">
+
+                <p>
+                    {{ noticia.mensaje|linebreaks }}
+                </p>
+
+            </div>
+            {% if noticia.url %}
+            
+                <div class="publicaciones-link">
+
+                    <p> 
+                        link:
+                        <a href="#">{{noticia.url}}</a>
+                    </p>
+
+                </div>
+
+            {% endif %}
+            
+            {% if noticia.imagen %}
+
+                <div class="publicaciones-imagen">
+
+                    <img src="{{ noticia.imagen.url }}">
+
+                </div>
+
+            {% endif%}
+
+            <div class="publicaciones-comentarios">
+
+                <a href="#" class="btn mx-auto my-2 col-6"> Comentarios </a>
+
+            </div>
+
+        
+        </div>
+
+    {% endfor %}
+    </div>
+    <div id="contenedor-preceptor">
+    {% for noticia in preceptor_noticias %}
+
+        <div class="col-md-10 publicaciones border mx-auto my-5">
+
+            <div class="row publicaciones-top my-1 ">
+
+                <div class="col-md-2 publicaciones-top-foto my-3  p-0">
+
+                    <img src="{{noticia.user.preceptor.imageURL}}">
+
+                </div>
+
+                <div class="col-md-6 publicaciones-top-nick my-1  p-0">
+        
+                    <h4 class="text-muted"> Tu</h4>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 publicaciones-titulo mx-auto my-2 ">
+
+                <h3 class="text-center text-muted">{{noticia}}</h3><hr>
+
+            </div>
+
+            <div class="publicaciones-contenido">
+
+                <p>
+                    {{ noticia.mensaje|linebreaks }}
+                </p>
+
+            </div>
+            {% if noticia.url %}
+            
+                <div class="publicaciones-link">
+
+                    <p> 
+                        link:
+                        <a href="#">{{noticia.url}}</a>
+                    </p>
+
+                </div>
+
+            {% endif %}
+            
+            {% if noticia.imagen %}
+
+                <div class="publicaciones-imagen">
+
+                    <img src="{{ noticia.imagen.url }}">
+
+                </div>
+
+            {% endif%}
+
+            <div class="publicaciones-comentarios">
+
+                <a href="#" class="btn mx-auto my-2 col-6"> Comentarios </a>
+
+            </div>
+
+        
+        </div>
+
+    {% endfor %}
+    </div>
+</div>
+
+
+<div class="cont-popou">
+
+    <div class="cont-poput-form col-6 pb-0 px-4 pt-4">
+
+        <h3 class="text-muted text-center">crear publicacion</h3><i id="cerrar-popou"class="far fa-times-circle cerrar-poput"></i><hr>
+
+        <form action="" method="POST" class="formulario-publicacion" > {% csrf_token %}
+
+            <div class="row">
+              
+                <div class="col-md-6 mx-auto">
+
+                    <input type="text" class="form-control text-center" id="titulo" maxlength="50" name="titulo" placeholder="Titulo..." requerid>
+            
+                </div>
+            
+            </div>
+            
+ 
+            <div class="contenido">
+                <div class="col-md-12"><br>
+                   
+                    <textarea id="mensaje" name="mensaje" class="form-control" rows="3" maxlength="1999" placeholder="¿que estas pensando, Lu?..."required></textarea>
+                
+                </div>
+
+                <div class="col-md-12"><br>
+
+                    <input type="url"  name="url" id="input-url" class="form-control input-url" maxlength="200" placeholder="https://www.website.com/">
+
+                </div>
+                {{user.profesor}}
+                <select class="form-control" name="cursos" multiple>
+                    {% for curso in preceptor_cursos %}
+                        <option value="{{curso.id}}">{{curso}}</option>
+                    {% endfor %}
+                </select>
+
+                <img id="input-imagen-zone" class="my-3">
+
+            </div>
+            
+            <div class="row">
+
+                <div class="form-grup col-3 mx-auto">   
+                
+                    <label for="input-imagen"><i class="far fa-image"></i></label>
+                
+                    <input type="file" name="imagen" accept="image/*" id="input-imagen">
+                
+                </div>
+                
+                <div class="form-grup col-3 mx-auto">
+                
+                    <label for="input-url" class="label-url"><i class="fas fa-link"></i></label>
+                
+                </div>
+                
+                <div class="form-grup col-3 mx-auto">
+                
+                    <button class="btn input-sudmit" type="submit"><i class="input-sudmit-icon far fa-paper-plane"></i></button>
+                
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="{% static 'js/botones-noticia.js' %}"></script>
+
+
+{% endblock %}

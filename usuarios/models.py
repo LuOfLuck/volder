@@ -15,19 +15,35 @@ class Estudiante(models.Model):
     apellido = models.CharField(max_length=50)
     dni = models.IntegerField(unique=True)
     curso = models.ForeignKey(Cursoos, on_delete = models.CASCADE, null=True, blank=True)
+    foto =  models.ImageField(upload_to="fotos_de_perfil/estudiante", null=True, blank=True)
     def __str__(self):
         nombre_y_apellido = self.nombre + " " + self.apellido
         return nombre_y_apellido
+    @property
+    def imageURL(self):
+        try:
+            url = self.foto.url
+        except:
+            url = "/static/img/fotoPerfil.jpg"
+        return url
 
 class Profesor(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     dni = models.IntegerField(unique=True)
+    foto =  models.ImageField(upload_to="fotos_de_perfil/profesor", null=True, blank=True)
 
     def __str__(self):
         nombre_y_apellido = self.nombre + " " + self.apellido
         return nombre_y_apellido
+    @property
+    def imageURL(self):
+        try:
+            url = self.foto.url
+        except:
+            url = "/static/img/fotoPerfil.jpg"
+        return url
 
 class Preceptor(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
@@ -35,17 +51,53 @@ class Preceptor(models.Model):
     apellido = models.CharField(max_length=50)
     cursos = models.ManyToManyField(Cursoos, null=True, blank=True)
     dni = models.IntegerField(unique=True, null=True, blank=True)
+    foto =  models.ImageField(upload_to="fotos_de_perfil/preceptor", null=True, blank=True)
     def __str__(self):
         nombre_y_apellido = self.nombre + " " + self.apellido
         return nombre_y_apellido
-        
+    @property
+    def imageURL(self):
+        try:
+            url = self.foto.url
+        except:
+            url = "/static/img/fotoPerfil.jpg"
+        return url
+
 class Secretario(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
+    foto =  models.ImageField(upload_to="fotos_de_perfil/secretario", null=True, blank=True)
     def __str__(self):
         nombre_y_apellido = self.nombre + " " + self.apellido
         return nombre_y_apellido
+    @property
+    def imageURL(self):
+        try:
+            url = self.foto.url
+        except:
+            url = "/static/img/fotoPerfil.jpg"
+        return url
+
+    def total_preceptores(self):
+        preceptores = Preceptor.objects.all()
+        total_preceptores = sum([1 for preceptor in preceptores])
+        return total_preceptores
+
+    def total_cursos(self):
+        cursos = Cursoos.objects.all()
+        total_cursos = sum([1 for curso in cursos])
+        return total_cursos
+
+    def total_profesores(self):
+        profesores = Profesor.objects.all()
+        total_profesores = sum([1 for profesor in profesores])
+        return total_profesores
+
+    def total_estudiantes(self):
+        estudiantes = Estudiante.objects.all()
+        total_estudiantes = sum([1 for estudiante in estudiantes])
+        return total_estudiantes
 
 class Materia(models.Model):
     nombre = models.CharField(max_length=50)
@@ -55,7 +107,12 @@ class Materia(models.Model):
     def __str__(self):
         nombre_y_curso = self.nombre + " " + str(self.curso)
         return nombre_y_curso
-
+    @property
+    def total_trabajos(self):
+        trabajos = self.trabajo_set.all()
+        total_trabajos = sum([1 for trabajo in trabajos])
+        return total_trabajos
+        
 class TipoDeTarea(models.Model):
     tipo = models.CharField(max_length=50)
     def __str__(self):

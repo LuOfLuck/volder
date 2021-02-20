@@ -3,9 +3,10 @@ from django.contrib.auth.models import User
 from volder_app.decorators import RequiredUserAttribute
 from django.contrib import messages
 from usuarios.models import Profesor, Preceptor, Cursoos
-from noticias.models import SecretarioNoticia
+from noticias.models import SecretarioNoticia, PreceptorNoticia, ProfesorNoticia
 import string
 import random
+
 # Create your views here.
 @RequiredUserAttribute(attribute = 'secretario', redirect_to_url = '/estudiante/')
 def main(request):
@@ -21,7 +22,7 @@ def agregar_preceptor(request):
                 return ''.join(random.choice(string.ascii_letters) for x in range(y))    
             valores = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<=>@#%.&+"
             password = ""
-            usuario = request.POST['nombre'].strip() + random_char(10)
+            usuario = request.POST['nombre'].strip() +   random_char(10)
             password =  password.join([random.choice(valores) for i in range(18)])
             email = request.POST['email']
             user = User.objects.create_user(usuario, email, password)
@@ -30,9 +31,7 @@ def agregar_preceptor(request):
             apellido = request.POST['apellido']
             dni = request.POST['dni']
             cursos = request.POST.getlist('cursos')
-            print(cursos)
             usuario = User.objects.get(username=usuario)
-            print(usuario)
             preceptor = Preceptor(user=usuario, nombre=nombre, apellido=apellido, dni=dni)
             preceptor.save()
             for cursos in cursos:
@@ -84,14 +83,37 @@ def noticias(request):
             mensaje = request.POST['mensaje']
             url = request.POST['url']
             imagen = request.POST['imagen']
-            noticia = SecretarioNoticia(user=request.user, titulo=titulo, mensaje=mensaje, url=url, imagen=imagen)
+            try:
+                preceptor = request.POST['preceptor']
+            except:
+                preceptor = False
+            try:
+                profesor = request.POST['profesor']
+            except:
+                profesor = False
+            try:
+                estudiante = request.POST['estudiante']
+            except:
+                estudiante = False
+            noticia = SecretarioNoticia(user=request.user, titulo=titulo, mensaje=mensaje, url=url, imagen=imagen, preceptor=preceptor, profesor=profesor, estudiante=estudiante)
             noticia.save()
+
             messages.success(request, f'publicacion completada')
         except:
             messages.success(request, f'error al publicar')
 
-    noticias = SecretarioNoticia.objects.all()
+    secretario_noticias = SecretarioNoticia.objects.all()
+    preceptor_noticias = PreceptorNoticia.objects.all()
+    profesor_noticias = ProfesorNoticia.objects.all()
     cont = {
-        "noticias":noticias
+        "secretario_noticias":secretario_noticias,
+        "preceptor_noticias":preceptor_noticias,
+        "profesor_noticias":profesor_noticias,
     }   
     return render(request, "secretario/noticias.html", cont)
+
+def ajustes_secretario(request):
+    return render(request, "secretario/ajustes_secretario.html")
+
+def secretario_cursos(request):
+    return render(request, "secretario/cursos.html")

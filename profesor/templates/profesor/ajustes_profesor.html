@@ -1,0 +1,50 @@
+{% extends 'profesor/base.html' %}
+{% load static %}
+{% block content %}
+<div class="mid-contenido mid-contenido-animacion border col-10 col-md-9 mx-auto my-4 p-4">
+    <h2 class="text-muted text-center"> Ajustes </h2><hr>
+    <div class="row">
+        <div class="col-5 mx-auto">
+            <p class=" h4 text-muted">Informacion personal: </p>
+            <div class="informacion-personal border p-3">
+
+                <div class="foto row">
+                    <img src="{{user.profesor.imageURL}}">
+                </div>
+
+                <div class="nombre row ">
+                    <p class="mx-auto"> {{user.profesor.apellido}}  {{user.profesor.nombre}}  </p>
+                </div>
+               
+                <div class="email row">
+                    <p> Email de contancto: {{user.email}} </p>
+                </div>
+                <div class="username row">
+                    <p>Nombre de usuario: {{user}} </p>
+                </div>
+                <div class="clave row">
+                    <p> Contraseña: *********** </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-5 mx-auto">
+            <p class=" h4 text-muted">Notificaciones: </p>
+            <div class="notificaciones border p-3">
+                <div class="notificiones- row">
+                    <p> Comentarios: *activadas* </p>
+                </div>  
+                <div class="notificiones- row">
+                    <p> Nuevo mensajes: *activadas* </p>
+                </div>  
+                <div class="notificiones- row">
+                    <p> Nueva publicaciones(secretario): *activadas* </p>
+                </div>  
+                <div class="notificiones- row">
+                    <p> Nueva publicaciones(preceptor): *activadas* </p>
+                </div>  
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

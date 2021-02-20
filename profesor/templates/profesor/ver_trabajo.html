@@ -120,45 +120,62 @@
 
 
     
-<div id="container-comentario" class="container-comentario container-animacion  col-10 col-md-2 mx-auto my-4 py-3 border border-secondary">
+<div id="container-comentario" class="container-comentario container-animacion  col-10 col-md-2 mx-auto my-4 py-3 border ">
+    
     <h5 class="text-center"> Comentarios</h5><hr>
+    
     <div class="comentarios">
+    
         {% for comentario in comentarios %}
            
             {% if comentario.autor.estudiante %}
-                <div class="comentario mensaje-recibido col-10 col-md-11 border">
+    
+                <div class="comentario mensaje-recibido col-10 col-md-11 my-2 ">
+        
                     <h6 class="nombre"> {{comentario.autor.estudiante}} </h6>
+        
                     <span class="mensaje">
+        
                         {{comentario}}
+        
                     </span>
+        
                 </div>
+
             {% elif comentario.autor.profesor %}
-                <div class="comentario mensaje-enviado float-right col-10 col-md-11 border">
+    
+                <div class="comentario mensaje-enviado float-right col-10 col-md-11 my-2 border">
+        
                     <h6 class="nombre"> Tu </h6>
+        
                     <span class="mensaje">
+        
                         {{comentario}}
+        
                     </span>
+        
                 </div>
+
             {% endif %}
 
         {% endfor %}
-       
-
               
     </div>
 
     <div class="enviar-comentario float-top col-12 mb-3">
-        <form id="enviar-datos" method="POST"> {% csrf_token %}
-            <div class="row mx-auto">
-            <input type="text" name="comentario" class="input-texto col-10 col-md-9" required>
-           
-            </div>
-        </form>
-        <button  onclick="enviar()" class="btn col-2" ><i class="fas fa-dove"></i></button>
+      
+            <form id="enviar-datos" method="POST" class="row"> {% csrf_token %}
+      
+                <input type="text" name="comentario" class="form-control input-texto col-10" placeholder="comentario..." required>
+                
+                <i onclick="enviar()" class="fas fa-dove btn col-2"></i>
+
+            </form>
+    
     </div>
 
     <script>
-            function getCookie(name) {
+        function getCookie(name) {
             var cookieValue = null;
             if (document.cookie && document.cookie !== '') {
                 var cookies = document.cookie.split(';');
@@ -176,15 +193,14 @@
         
         function enviar(){
             var form = new FormData(document.getElementById('enviar-datos'));
-            console.log(form)
-            // fetch('{{trabajo.id}}',{
-            //     method: 'POST',
-            //     body: form,
-            //     headers:{
-            //         "X-CSRFToken": getCookie('csrftoken'),
-                    
-            //     }
-            // })
+
+            fetch('{{trabajo.id}}',{
+                method: 'POST',
+                body: form,
+                headers:{
+                    "X-CSRFToken": getCookie('csrftoken'),  
+                }
+            })
 
         }
     </script>

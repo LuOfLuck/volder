@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from usuarios.models import *
+from noticias.models import SecretarioNoticia, PreceptorNoticia, ProfesorNoticia
 from .decorators import *
 # Create your views here.
 @RequiredUserAttribute(attribute = 'estudiante', redirect_to_url = '/profesor/')
@@ -42,6 +43,7 @@ def trabajo(request, id_trabajo):
 
 @RequiredUserAttribute(attribute = 'estudiante', redirect_to_url = '/profesor/')
 def materia(request, id_materia):
+
     materia = Materia.objects.get(id=id_materia)
     trabajos = Trabajo.objects.filter(materia = materia)
     if request.user.estudiante.curso != materia.curso:
@@ -58,3 +60,27 @@ def materia(request, id_materia):
     }
 
     return render(request, "volder/materia.html", cont)
+
+@RequiredUserAttribute(attribute = 'estudiante', redirect_to_url = '/profesor/')
+def noticias_estudiante(request):
+    secretario_noticias = SecretarioNoticia.objects.all()
+    preceptor_noticias = PreceptorNoticia.objects.filter(curso = request.user.estudiante.curso)
+    profesor_noticias_defaul = ProfesorNoticia.objects.all()
+    profesor_noticias = []
+    for noticia in profesor_noticias_defaul:
+        noticia_cursos = noticia.materia.filter()
+        for noticia_curso in noticia_cursos:
+            if noticia_curso.curso == request.user.estudiante.curso:
+                profesor_noticias += [noticia]
+                break
+       
+
+    cont = {
+        "secretario_noticias":secretario_noticias,
+        "preceptor_noticias":preceptor_noticias,
+        "profesor_noticias":profesor_noticias,
+    }
+    return render (request, "volder/noticias_estudiante.html",cont)
+
+def ajustes_estudiante(request):
+    return render (request, "volder/ajustes_estudiante.html")

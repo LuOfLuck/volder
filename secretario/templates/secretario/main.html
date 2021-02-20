@@ -7,20 +7,20 @@
     <div class="row my-3">
         <div class="totales cursos-totales col-10 col-md-5 border mx-auto my-3">
             <h5 class="text-muted">cursos:</h5>
-            <p>la escuela cuenta con 10 cursos en funcionamiento. <a href="" class="">inspeccionar</a></p>
+            <p>la escuela cuenta con {{user.secretario.total_cursos}} cursos en funcionamiento. <a href="{% url 'secretario_cursos' %}" class="">inspeccionar</a></p>
         </div>
         <div class="totales preceptores-totales col-10 col-md-5 border mx-auto my-3">
             <h5 class="text-muted">preceptores:</h5>
-            <p>la escuela cuenta con 0 preceptores creados. puede <a href="{% url 'agregar_preceptor' %}">agregar</a> o <a href="">inspeccionar</a></p>
+            <p>la escuela cuenta con {{user.secretario.total_preceptores}} preceptores creados. puede <a href="{% url 'agregar_preceptor' %}">agregar</a> o <a href="">inspeccionar</a></p>
         </div>
 
         <div class="totales profesores-totales col-10 col-md-5 border mx-auto my-3">
             <h5 class="text-muted">profesores:</h5>
-            <p>la escuela cuenta con 0 profesores creados. puede <a href="{% url 'agregar_profesor' %}">agregar</a> o <a href="">inspeccionar</a></p>
+            <p>la escuela cuenta con {{user.secretario.total_profesores}} profesores creados. puede <a href="{% url 'agregar_profesor' %}">agregar</a> o <a href="">inspeccionar</a></p>
         </div>
         <div class="totales estudiante-totales col-10 col-md-5 border mx-auto my-3">
             <h5 class="text-muted">estudiantes:</h5>
-            <p>la escuela cuenta con 0 estudiantes creados. puede <a href="">agregar</a> o <a href="">inspeccionar</a></p>
+            <p>la escuela cuenta con {{user.secretario.total_estudiantes}} estudiantes creados. puede <a href="">agregar</a> o <a href="">inspeccionar</a></p>
         </div>
         <br><br><br><br><br><br><br><br>
     </div>

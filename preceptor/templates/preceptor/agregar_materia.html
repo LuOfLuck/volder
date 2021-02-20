@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<form action="" method="POST" class="col-8 p-3 my-5 mx-auto border border-secondary"> {% csrf_token %}
+<form action="" method="POST" class="col-8 p-3 my-5 mx-auto border form-agregar"> {% csrf_token %}
     
     <h4 class="text-center text-muted">Agregar Materia</h4> <hr>
     
@@ -12,7 +12,7 @@
     
             <label  for="inlineFormInputName">Nombre materia:</label>
     
-            <input type="text" name="nombre" class="form-control" id="inlineFormInputName" placeholder="Nombre">
+            <input type="text" name="nombre" maxlength="50" class="form-control" id="inlineFormInputName" placeholder="Nombre">
     
         </div>
     

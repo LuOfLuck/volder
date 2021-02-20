@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<form  action="" method="POST" class="col-8 my-5 p-4 mx-auto border border-secondary">  {% csrf_token %} 
+<form  action="" method="POST" class="col-8 my-5 p-4 mx-auto border form-agregar">  {% csrf_token %} 
     <h4 class="text-center text-muted">Agregar Estudiante</h4> <hr>
   
     <div class="row">
@@ -11,7 +11,7 @@
     
             <label for="validationTooltip01">Nombre</label>
     
-            <input type="text" class="form-control border border-primary" name="nombre" placeholder="Nombre" required>
+            <input type="text" class="form-control border" name="nombre"  maxlength="50" placeholder="Nombre" required>
     
         </div>
     
@@ -20,7 +20,7 @@
       
               <label for="validationTooltip02">Apellido</label>
       
-              <input type="text" class="form-control  border border-primary" name="apellido" placeholder="Apellido"  required>
+              <input type="text" class="form-control  border" name="apellido" maxlength="50"  placeholder="Apellido"  required>
      
           </div>  
     </div>
@@ -31,7 +31,7 @@
       
             <label for="validationTooltip01">Email</label>
         
-            <input type="email" class="form-control  border border-primary" name="email" placeholder="@Email"required>
+            <input type="email" class="form-control  border" name="email" placeholder="@Email"required>
   
         </div>
     
@@ -43,7 +43,7 @@
       
             <label for="validationTooltip01">DNI</label>
       
-            <input type="number" class="form-control border border-primary" name="dni" placeholder="DNI" required>
+            <input type="number" class="form-control border" name="dni" maxlength="8" placeholder="DNI" required>
       
         </div>
         <div class="col-md-5 mx-auto">  

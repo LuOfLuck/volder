@@ -1,12 +1,13 @@
 {% load static %}
 <style>
+
     *, *::after,*::before{
         margin: 0;  
         padding: 0;
         -webkit-box-sezing: border-box;
         -moz-box-sezing: border-box;
         box-sezing: border-box;
-        }
+    }
     #barracarga{
         background-color:rgb(255, 255, 255);
         height: 100%;
@@ -16,14 +17,12 @@
         -o-transition: all 1s ease;
         transition: all 1s ease;
         z-index:1000;
-        }
+    }
 
     #cargando{
         border: 15px solid #ccc;
         border-top-color: rgb(151, 150, 150);
         border-radius: 100%;
-        
-
         height: 100px;
         width: 100px;
         position: absolute;
@@ -34,20 +33,27 @@
         margin:auto;
         -webkit-animation: rotate  2s linear infinite;
         animation: rotate  2s linear infinite;
-        }
+    }
     @-webkit-keyframes rotate  {
         from {-webkit-transform: rotate(0deg);}
         to {-webkit-transform: rotate(360deg);}
-        }
+    }
 
 </style>
+
 <div id="barracarga"> 
+    
     <div id="cargando"></div>
+
 </div>
+
 <script>
    window.onload = function(){
-       var contenedor = document.getElementById('barracarga');
-       contenedor.style.visibility = 'hidden';
-       contenedor.style.opacity = '0'
+      
+        var contenedor = document.getElementById('barracarga');
+        
+        contenedor.style.visibility = 'hidden';
+        
+        contenedor.style.opacity = '0'
    }
 </script>

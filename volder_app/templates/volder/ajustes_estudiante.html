@@ -1,0 +1,87 @@
+{% extends 'volder/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="mid-contenido mid-contenido-animacion border col-10 col-md-9 mx-auto my-4 p-4">
+    <h2 class="text-muted text-center"> Ajustes </h2><hr>
+    <div class="row">
+        <div class="col-5 mx-auto">
+            <p class=" h4 text-muted">Informacion personal: </p>
+            <div class="informacion-personal border p-3">
+
+                <div class="foto row">
+                    <img src="{{user.estudiante.imageURL}}">
+                </div>
+
+                <div class="nombre row ">
+                    <p class="mx-auto"> {{user.estudiante.apellido}}  {{user.estudiante.nombre}}  </p>
+                </div>
+                <div class="curso row">
+                    <p> Curso: {{user.estudiante.curso.curso}}</p>
+                </div>
+                <div class="divison row">
+                    <p> Division: {{user.estudiante.curso.division}}</p>
+                </div>
+                <div class="email row">
+                    <p> Email de contancto: {{user.email}} </p>
+                </div>
+                <div class="username row">
+                    <p>Nombre de usuario: {{user}} </p>
+                </div>
+                <div class="clave row">
+                    <p> Contraseña: *********** </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-5 mx-auto">
+            <p class=" h4 text-muted">Notificaciones: </p>
+            <div id="activadas" class="notificaciones border p-3">
+                <div class="notificiones- row">
+                    <p> Nuevo trabajo: *activadas* </p>
+                </div>  
+                <div class="notificiones- row">
+                    <p> Nuevo mensaje: *activadas* </p>
+                </div>  
+                <div class="notificiones- row">
+                    <p> Nueva publicacion(secretario): *activadas* </p>
+                </div>  
+                <div class="notificiones- row">
+                    <p> Nueva publicacion(preceptor): *activadas* </p>
+                </div>  
+                <div class="notificiones- row">
+                    <p> Nueva publicacion(profesor): *activadas* </p>
+                </div>
+                  <button onclick="Notification.permission = 'denied', notifyMe()">apagar</button>
+            </div>
+        
+                <div id="desactivadas"class=" desactivadas">
+                    <button class="btn" onclick="Notification.requestPermission(),   notifyMe()" >¿desea activar las notificaciones?</button>
+                </div>
+          
+        </div>
+    </div>
+</div>
+<script>
+    
+    desactivada = document.getElementById("desactivadas");
+    activada = document.getElementById("activadas");
+    desactivada.style.display = "none";
+    activada.style.display = "none";
+
+
+    function notifyMe() {
+        if (!("Notification" in window)) {
+            alert("Este navegador no soporta las notificaciones del sistema");
+        }
+        else if (Notification.permission === "granted") {
+            activada.style.display = "block";
+            desactivada.style.display = "none";
+        }
+        else {
+            activada.style.display = "none";
+            desactivada.style.display = "block";
+        }
+   }
+   notifyMe()
+       </script>
+{% endblock %}

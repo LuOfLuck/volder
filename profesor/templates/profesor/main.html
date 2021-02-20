@@ -2,10 +2,10 @@
 {% load static %}
 {% block content %}
 
-<div class="mid-contenido mid-contenido-animacion col-10 col-md-10 mx-auto my-4 px-4">
+<div class=" mid-contenido-animacion col-9 mx-auto my-4 px-4">
     <h2 id="inicio" class="text-center my-4">inicio</h2> <hr>
 
-    <div class="tarea tarea-animacion col-12 col-md-12  border mx-auto my-2" >
+    <div class="tarea tarea-animacion col-12 col-md-12  border mx-auto my-2 py-2" >
 
         <h3 class="text-center col-12 pt-3">ultimo trabajos</h3> <hr>
 
@@ -13,16 +13,22 @@
             <p class="subitutlo text-muted"> del: {{ ultimo_trabajo.fecha_de_subida|date:'Y-m-d'}} | para el: {{ ultimo_trabajo.fecha_de_entrega|date:'Y-m-d' }}</p>
             <hr>
             
-            <span>  {{ultimo_trabajo}}  </span><br><br>
-            <a href="{% url 'ver_trabajo' ultimo_trabajo.id %}" class="btn btn-outline-primary float-right">ver mas</a>
+            <p>  {{ultimo_trabajo}}  </p><br><br>
+            <a href="{% url 'ver_trabajo' ultimo_trabajo.id %}" class="btn btn-outline-primary">ver mas</a>
 
     </div>
 
     <div class="row">
         
         <div class="añadir-trabajo trabajos-animacion col-10 col-md-5 border my-2 mx-auto">
-            <h4 class="mini-titulo text-center my-2">nuevo trabajo</h4><hr>
-            <a href="{% url 'añadir_trabajo' %}"><img src="{% static 'img/mas.png' %} " class="mx-auto"></a>
+            <div class="añadir-trabajo-titulo">
+                <h4 class="mini-titulo text-center my-2">nuevo trabajo</h4><hr>
+            </div>
+            <div class="añadir-trabajo-imagen">
+                <a href="{% url 'añadir_trabajo' %}" class="text-center">
+                    <img src="{% static 'img/mas.png' %} " >
+                </a>
+            </div>
         </div>
         
         {% for trabajo in trabajos %}

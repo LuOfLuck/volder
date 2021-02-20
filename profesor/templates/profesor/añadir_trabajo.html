@@ -2,21 +2,22 @@
 {% load static %}
 
 {% block content %}
-<div class="mid-tarea mid-contenido-animacion border col-10 col-md-9 mx-auto my-5 px-4 py-3">
-    <form action="" method="POST">
-        {% csrf_token %}
-        <div class="form-group row">
+<form action="" method="POST" class="col-10 col-md-9 mx-auto my-5"> {% csrf_token %}
+    <div class="form-group row">
 
-            <h4 class="text-center">Materia:</h4>
-            <select class="form-control col-3" name="materia" id="materia" required>
-              {% for materia in materia %}
-                {% if materia.profesor == user.profesor %}
-                  <option value="{{materia.id}}">{{materia}}</option>
-                {% endif%}
-              {% endfor %}
-            </select>
+        <h4 class="text-muted text-center">Materia:</h4>
+        <select class="form-control col-3" name="materia" id="materia" required>
+          {% for materia in materia %}
+           
+              <option value="{{materia.id}}">{{materia}}</option>
 
-        </div>
+          {% endfor %}
+        </select>
+
+    </div>
+    <div class="mid-tarea mid-contenido-animacion col border my-2 px-4 py-3">
+
+   
         <div class="form-group col-md-6 mx-auto">
           <h4 class="text-muted text-center" for="inputAddress">Titulo del trabajo:</h4>
           <input type="text" class="form-control" name="titulo" id="inputAddress" placeholder="Funcion cuadratica..." required>
@@ -53,9 +54,9 @@
        
        
         <hr>
-        <span class="text-muted"> fuentes: <input type="text" name="fuentes" class="col-md-9"></span>
+        <span class="text-muted"> fuentes: <input type="text" name="fuentes" class="form-control col-md-9"></span>
         <button type="submit" class="btn btn-primary">enviar</button>
-    </form>
-</div>
     
+    </div>
+</form>  
 {% endblock %}

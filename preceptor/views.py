@@ -1,8 +1,11 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
-from usuarios.models import Preceptor, Cursoos, Estudiante, Materia, Profesor
-from volder_app.decorators import RequiredUserAttribute
 from django.contrib import messages
+from django.core.files.storage import FileSystemStorage
+from usuarios.models import Preceptor, Cursoos, Estudiante, Materia, Profesor
+from noticias.models import SecretarioNoticia, PreceptorNoticia, ProfesorNoticia
+from volder_app.decorators import RequiredUserAttribute
+
 import string
 import random
 # Create your views here.
@@ -112,3 +115,58 @@ def agregar_materia(request,id_curso):
 
     return render(request, "preceptor/agregar_materia.html", cont)
     
+def noticias_preceptor(request):
+
+
+    secretario_noticias = SecretarioNoticia.objects.filter(preceptor = True)
+    preceptor_noticias = PreceptorNoticia.objects.filter(user= request.user)
+    profesor_noticias = ProfesorNoticia.objects.all()
+    profesor_noticia_filtrada = []
+    preceptor_user = Preceptor.objects.get(user=request.user)
+    preceptor_cursos = preceptor_user.cursos.filter()
+
+    for profesor_noticia in profesor_noticias:
+        profesor_noticia_cursos = profesor_noticia.materia.filter()
+     
+        for profesor_noticia_curso in profesor_noticia_cursos:
+            if profesor_noticia_curso.curso ==  preceptor_cursos[0]:
+                profesor_noticia_filtrada += [profesor_noticia]
+                break
+    if request.method == "POST":
+        try:
+            if request.method == 'POST' and request.FILES['imagen']:
+                imagen = request.FILES['imagen']
+                fs = FileSystemStorage()
+                filename = fs.save(imagen.name, imagen)
+                uploaded_file_url = fs.url(filename)
+                print(imagen)
+                print(uploaded_file_url)
+            titulo = request.POST['titulo']
+            mensaje = request.POST['mensaje']
+            url = request.POST['url']
+            imagen = request.FILE['imagen']
+           
+            cursos = request.POST.getlist('cursos')
+            noticia = PreceptorNoticia(user=request.user, titulo=titulo, mensaje=mensaje, imagen=imagen, url=url)
+            noticia.save()
+            for curso in cursos:
+                curso = Cursoos.objects.get(id=curso)
+                noticia.curso.add(curso)
+            messages.success(request, f'Publicacion completa con exito')
+
+
+        except:
+            messages.success(request, f'error al publicar. Intente de nuevo mas tarde')
+       
+
+    cont = {
+        "secretario_noticias":secretario_noticias,
+        "preceptor_noticias":preceptor_noticias,
+        "profesor_noticia_filtrada":profesor_noticia_filtrada,
+        "preceptor_cursos":preceptor_cursos,
+
+    }
+    return render(request, "preceptor/noticias_preceptor.html", cont)
+
+def ajustes_preceptor(request):
+    return render(request, "preceptor/ajustes_preceptor.html")

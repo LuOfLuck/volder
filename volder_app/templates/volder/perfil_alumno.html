@@ -27,15 +27,15 @@
         {% for compañero in compañero %}
         
             <div class="perfil col-6 col-md-12">
-                
+                <a href="{% url 'mensajes' compañero.user_id %}">
                 <img class="foto-compañeros" src="{{compañero.imageURL}}">
-              
+                
                 <div class="nick">
             
                     <p>{{compañero}}</p><hr>
                 
                 </div>
-                
+                </a>
             </div>
    
         {% endfor %}

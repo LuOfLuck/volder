@@ -25,6 +25,7 @@
                   <ul class="navbar-nav">
                     <div class="nav-item active">
                         <a href="{% url 'home_secretario' %}" class="col-3 btn btn-outline-success mx-3">Inicio </a>
+                        <a href="{% url 'bandeja_de_entrada' %}" class="col-3 btn btn-outline-success mx-3">buzon </a>
                         <a href="{% url 'noticias' %}" class="col-3 btn btn-outline-success mx-3">Noticias </a>
                         <a href="" class="col-3 btn btn-outline-success mx-3">ajustes </a>
                         <a href="" class="col-3 btn btn-outline-success mx-3">sobre nosotors </a>
@@ -48,6 +49,11 @@
             <a href="{% url 'home_secretario' %}" id="botones"class="col-12 btn boton-animacion my-3">
               
                     <i class="fas fa-home"></i><span>Inicio</span>
+                
+            </a>
+            <a href="{% url 'bandeja_de_entrada' %}" id="botones"class="col-12 btn boton-animacion my-3">
+              
+                <i class="fas fa-inbox"></i><span>mensajes</span>
                 
             </a>
             <a href="{% url 'noticias' %}"  id="botones" class="col-12 btn boton-animacion my-3">

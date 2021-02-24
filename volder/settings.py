@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'preceptor',
     'secretario',
     'noticias',
+    'mensajes',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

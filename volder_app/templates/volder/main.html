@@ -50,7 +50,7 @@
         
                 <div class="sibitulo col-12">
         
-                    <p>profesor: {{materia.profesor}}</p>
+                    <p>profesor: <a href="{% url 'mensajes' materia.profesor.user_id %}">{{materia.profesor}} </a> </p>
         
                     <p class="subitulo-right">tipo: aula</p>
         

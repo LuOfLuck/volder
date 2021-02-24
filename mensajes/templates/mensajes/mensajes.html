@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"  class="sr">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mensaje.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    {% include 'volder/carga.html' %}
+
+    <header>
+
+        <div id="nav-header" class="pc text-center">
+            <p>volder online</p>
+        </div>
+
+    </header>
+
+    <div class="main row">
+        <div class="container col-12 col-md-8 mx-auto border my-4">
+            <div class="row receptor my-3">
+                <div class="receptor-imagen col-2 ">
+                    <img src="{{receptor.imageURL}}">
+                </div>
+                <div class="receptor-nombre col-8">
+                    <h4 class="text-muted">{{receptor}}</h4>
+                </div>
+            </div> <hr>
+            <div class="contenedor-mensajes mx-2">
+                {% for mensaje in mensajes %}
+                    {% if mensaje.autor != user %}  
+                    <div class="row mensaje-entrante my-3">
+                            
+                        <div class="foto">
+                            <img src="{{receptor.imageURL}}">
+                        </div>
+    
+                        <div class="mensaje border mx-2">
+                            <p>{{mensaje.mensaje|linebreaks}}</p> <br>
+                        </div>
+                
+                    </div>
+                    {% else %}
+                    <div class="row mensaje-enviado  my-3 ml-auto pr-3">
+                        <div class="mensaje border  ml-auto ">
+                            <p>{{mensaje.mensaje|linebreaks}} </p> 
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                
+        </div>
+            <form action="" method="POST"> {% csrf_token %}
+        
+                <div class="row my-3">
+            
+                    <textarea name="mensaje" class="form-control col-10 col-md-9 mx-auto"></textarea>
+            
+                    <button type="submit"  class="input-sudmit btn col-2 mx-auto" required><i class="fas fa-dove"></i></button>
+            
+                </div>
+            
+            </form>
+    
+        </div>
+    </div>
+    
+   <footer class="footer my-2" style="background-color: rgb(97, 93, 89); display: block;">
+      <br>
+      <br>
+      <br>
+      <br>
+   </footer>
+   <script src="{% static 'js/jquery-3.4.1.slim.min.js' %}" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   <script src="{% static 'js/bootstrap.min.js' %}" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+   
+</body>
+</html>

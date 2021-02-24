@@ -8,6 +8,16 @@ class Cursoos(models.Model):
     def __str__(self):
         curso_y_division = self.curso + "-" + self.division
         return curso_y_division
+ 
+    @property
+    def total_estudiantes(self):
+        estudiantes = self.estudiante_set.all()
+        total_estudiantes = sum([1 for estudiante in estudiantes])
+        return total_estudiantes
+    def total_materias(self):
+        materias = self.materia_set.all()
+        total_materias = sum([1 for materia in materias])
+        return total_materias
 
 class Estudiante(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
@@ -16,6 +26,10 @@ class Estudiante(models.Model):
     dni = models.IntegerField(unique=True)
     curso = models.ForeignKey(Cursoos, on_delete = models.CASCADE, null=True, blank=True)
     foto =  models.ImageField(upload_to="fotos_de_perfil/estudiante", null=True, blank=True)
+
+    class Meta():
+        ordering = ['apellido']
+
     def __str__(self):
         nombre_y_apellido = self.nombre + " " + self.apellido
         return nombre_y_apellido
@@ -33,6 +47,9 @@ class Profesor(models.Model):
     apellido = models.CharField(max_length=50)
     dni = models.IntegerField(unique=True)
     foto =  models.ImageField(upload_to="fotos_de_perfil/profesor", null=True, blank=True)
+
+    class Meta():
+        ordering = ['apellido']
 
     def __str__(self):
         nombre_y_apellido = self.nombre + " " + self.apellido
@@ -52,6 +69,8 @@ class Preceptor(models.Model):
     cursos = models.ManyToManyField(Cursoos, null=True, blank=True)
     dni = models.IntegerField(unique=True, null=True, blank=True)
     foto =  models.ImageField(upload_to="fotos_de_perfil/preceptor", null=True, blank=True)
+    class Meta():
+        ordering = ['apellido']
     def __str__(self):
         nombre_y_apellido = self.nombre + " " + self.apellido
         return nombre_y_apellido
@@ -104,6 +123,8 @@ class Materia(models.Model):
     curso = models.ForeignKey(Cursoos, on_delete = models.CASCADE, null=True, blank=True)
     profesor = models.ForeignKey(Profesor, on_delete = models.CASCADE, null=True, blank=True)
     trabajos_entregados = models.IntegerField(null=True, blank=True)
+    class Meta():
+        ordering = ['nombre']
     def __str__(self):
         nombre_y_curso = self.nombre + " " + str(self.curso)
         return nombre_y_curso
@@ -112,7 +133,7 @@ class Materia(models.Model):
         trabajos = self.trabajo_set.all()
         total_trabajos = sum([1 for trabajo in trabajos])
         return total_trabajos
-        
+
 class TipoDeTarea(models.Model):
     tipo = models.CharField(max_length=50)
     def __str__(self):

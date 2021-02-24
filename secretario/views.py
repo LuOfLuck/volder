@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from volder_app.decorators import RequiredUserAttribute
 from django.contrib import messages
-from usuarios.models import Profesor, Preceptor, Cursoos
+from usuarios.models import Profesor, Preceptor, Cursoos, Estudiante, Materia
 from noticias.models import SecretarioNoticia, PreceptorNoticia, ProfesorNoticia
+from mensajes.models import Grupo_chat
 import string
 import random
 
@@ -116,4 +117,19 @@ def ajustes_secretario(request):
     return render(request, "secretario/ajustes_secretario.html")
 
 def secretario_cursos(request):
-    return render(request, "secretario/cursos.html")
+    cursos = Cursoos.objects.all().order_by("curso")
+    return render(request, "secretario/cursos.html", {"cursos":cursos})
+
+def inspeccionar_curso(request, id_curso):
+    curso = Cursoos.objects.get(id=id_curso)
+    estudiantes = Estudiante.objects.filter(curso=curso)
+    materias = Materia.objects.filter(curso=curso)
+    preceptores = Preceptor.objects.filter(cursos=curso)
+    cont = {
+        "curso":curso,
+        "estudiantes":estudiantes,
+        "materias":materias,
+        "preceptores":preceptores,
+    }
+    return render(request, "secretario/inspeccionar_curso.html", cont)
+

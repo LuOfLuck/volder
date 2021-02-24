@@ -1,10 +1,17 @@
 {% extends 'secretario/base.html' %}
 {% load static %}
 {% block content %}
-<div class="mid-contenido mid-contenido-animacion border col-10 col-md-9 mx-auto my-4 px-4">
-    <div class="totales cursos-totales col-10 col-md-5 border mx-auto my-3">
-        <h5 class="text-muted">1ro 2da:</h5>
-        <p>  <a href="{% url 'secretario_cursos' %}" class="">inspeccionar</a></p>
+
+    <div class="mid-contenido mid-contenido-animacion border col-10 col-md-9 mx-auto my-4 px-4">
+        <div class="row">
+        {% for curso in cursos %}
+            <div class="totales cursos-totales col-10 col-md-5 border mx-auto my-3">
+                <h5 class="text-muted">{{curso}}:</h5>
+                <p> un total de {{curso.total_materias}} materias, {{curso.total_estudiantes}} estudiantes <a href="{% url 'inspeccionar_curso' curso.id %}">inspeccionar</a></p>
+            
+            </div>
+        {% endfor %}
+        </div>
     </div>
-</div>
+
 {% endblock %}

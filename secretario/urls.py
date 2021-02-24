@@ -12,6 +12,8 @@ urlpatterns = [
     path('noticias', login_required(views.noticias), name="noticias"),
     path('ajustes', login_required(views.ajustes_secretario), name="ajustes_secretario"),
     path('cursos', login_required(views.secretario_cursos), name="secretario_cursos"),
+    path('inspeccionar_curso/<int:id_curso>', login_required(views.inspeccionar_curso), name="inspeccionar_curso"),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

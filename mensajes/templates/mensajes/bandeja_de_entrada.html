@@ -1,0 +1,120 @@
+{% extends extend %}
+{% load static %}
+{% block content %}
+    <style>
+        .charla{
+            box-shadow: 4px -4px 5px rgba(85, 85, 85, 0.349);
+        }
+        .charla img{
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            display: block;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+    <div class="mid-contenido mid-contenido-animacion border col-10 col-md-9 mx-auto my-4 p-4">
+        {% for grupo in grupos %}
+            <div class="row">
+                    <div class="charla col-10 mx-auto border my-2 p-2">
+                        <div class="row">
+                            {% if user != grupo.persona1 %}
+                                {% if grupo.persona1.secretario %}
+                                 
+                                    <div class="col-2">
+                                        <img src="{{grupo.persona1.secretario.imageURL}}" alt="">
+                                    </div>
+                                    <div class="col-8">
+                                            <p class="h5"> secretario: </p>   
+                                            <a class="text-center" href="{{grupo.persona1.id}}"> 
+                                                {{grupo.persona1.secretario}} 
+                                            </a>
+                                    </div>
+                                {% elif grupo.persona1.preceptor  %}
+                                    <div class="col-2">
+                                        <img src="{{grupo.persona1.preceptor.imageURL}}" alt="">
+                                    </div>
+                                    <div class="col-8">
+                                            <p class="h5"> preceptor: </p> 
+                                            <a href="{{grupo.persona1.id}}"> 
+                                                {{grupo.persona1.preceptor}} 
+                                            </a>  
+                                    </div>
+                                {% elif grupo.persona1.profesor  %}
+                                    <div class="col-2">
+                                        <img src="{{grupo.persona1.profesor.imageURL}}" alt="">
+                                    </div>
+                                    <div class="col-8">
+                                            <p class="h5"> profesor: </p> 
+                                            <a href="{{grupo.persona1.id}}"> 
+                                                    {{grupo.persona1.profesor}} 
+                                            </a>  
+                                    </div>                     
+                                {% else  %}
+                                    <div class="col-2">
+                                        <img src="{{grupo.persona1.estudiante.imageURL}}" alt="">
+                                    </div>
+                                    <div class="col-8">
+                                        <p class="h5"> estudiante:</p>    
+                                        <a href="{{grupo.persona1.id}}"> 
+                                            {{grupo.persona1.estudiante}} 
+                                        </a>  
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                {% if grupo.persona2.secretario %}     
+                                    <div class="col-2">
+                                        <img src="{{grupo.persona2.secretario.imageURL}}" alt="">
+                                    </div>
+                                    <div class="col-8">
+                                            <p class="h5"> secretario: </p>   
+                                            <a class="text-center" href="{{grupo.persona2.id}}"> 
+                                                {{grupo.persona2.secretario}} 
+                                            </a>
+                                    </div>
+                                {% elif grupo.persona2.preceptor  %}
+                                    <div class="col-2">
+                                       <img src="{{grupo.persona2.preceptor.imageURL}}" alt="">
+                                    </div>
+                                    <div class="col-8">
+                                            <p class="h5"> preceptor: </p> 
+                                            <a href="{{grupo.persona2.id}}"> 
+                                                {{grupo.persona2.preceptor}} 
+                                            </a>  
+                                    </div>
+                                {% elif grupo.persona2.profesor  %}
+                                    <div class="col-2">
+                                        <img src="{{grupo.persona2.profesor.imageURL}}" alt="">
+                                    </div>
+                                    <div class="col-8">
+                                            <p class="h5"> profesor: </p> 
+                                            <a href="{{grupo.persona2.id}}"> 
+                                                    {{grupo.persona2.profesor}} 
+                                            </a>  
+                                    </div>
+                            
+                                {% elif grupo.persona2.estudiante  %}
+                                    <div class="col-2">
+                                        <img src="{{grupo.persona2.estudiante.imageURL}}" alt="">
+                                    </div>
+                                    <div class="col-8">
+                                        <p class="h5"> estudiante:</p>    
+                                        <a href="{{grupo.persona2.id}}"> 
+                                            {{grupo.persona2.estudiante}} 
+                                        </a> 
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+            
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

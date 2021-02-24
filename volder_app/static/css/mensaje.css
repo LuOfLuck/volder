@@ -1,0 +1,92 @@
+html.sr .load-hidden {
+    visibility: hidden;
+}
+.row{
+    margin: 0px !important;
+    padding: 0px !important; 
+}
+#nav, #container{ 
+    position: sticky;
+    top: 20px; 
+}
+.border{
+    border-radius: 20px;
+}
+
+
+/****************************************************/
+
+/**/    /**/    /**/    /**/
+/**/                    /**/
+/**/    /* HEADER */    /**/
+/**/                    /**/
+/**/    /**/    /**/    /**/
+
+
+
+header{
+    background-color: rgb(97, 93, 89);
+}
+
+header .pc{
+    height: 40px;
+}
+header .pc p{
+
+    font-size: 20px;
+    color: white;
+    text-shadow: 0  1px 0 #dddddd,
+    0  2px 0 #a3a3a3,
+    0  3px 0 #8d8d8d, 
+    0  4px 0 #6b6b6b, 
+    0 5px 0 #666666,
+    0 6px 0 #5e5e5e;
+
+}
+
+/**/    /**/    /**/    /**/
+/**/                    /**/
+/**/  /* FIN HEADER */  /**/
+/**/                    /**/
+/**/    /**/    /**/    /**/
+
+
+/*******************************************/
+
+.main{
+    height: auto;
+}
+.receptor-imagen img{
+    margin:auto;
+}
+.receptor-imagen img, .mensaje-entrante img{
+    height: 50px;
+    width: 50px ;
+    border-radius: 50%;
+    display: block;
+}
+.contenedor-mensajes{
+    height: 50vh;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+.mensaje-enviado{
+    max-width: 70%;
+    margin-left:auto;
+}
+.mensaje{
+    padding: 1rem;
+
+}
+.mensaje p{
+    margin-bottom: 0px;
+}
+
+@media(max-width: 768px){
+    .mensaje-entrante img{
+        display: none;
+    }
+    .mensaje p{
+        font-size: 0.8rem;
+    }
+}

@@ -7,7 +7,7 @@ document.querySelector('.cerrar-poput').addEventListener("click", function(){
     document.getElementById("body").style.overflow ="auto";
 });
 document.querySelector('.label-url').addEventListener("click", function(){
-    inputUrl = document.querySelector(".input-url");
+    inputUrl = document.querySelector("#id_url");
     
     if (inputUrl.style.display != "block"){
         inputUrl.style.display = "block";
@@ -15,7 +15,7 @@ document.querySelector('.label-url').addEventListener("click", function(){
         inputUrl.style.display = "none";
     }
 });
-const $seleccionArchivos = document.querySelector("#input-imagen"),
+const $seleccionArchivos = document.querySelector("#id_imagen"),
 $imagenPrevisualizacion = document.querySelector("#input-imagen-zone");
 
 $seleccionArchivos.addEventListener("change", () => {
@@ -45,6 +45,7 @@ estiloCLick = `
     color: white;
     
 `
+botonSecretario.style = estiloCLick;
 function mostrarSecretario(){
     contenedorSecretario.style.display = "block";
     botonSecretario.style = estiloCLick;

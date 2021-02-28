@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
 from usuarios.models import Preceptor, Cursoos, Estudiante, Materia, Profesor
 from noticias.models import SecretarioNoticia, PreceptorNoticia, ProfesorNoticia
+from noticias.forms import FormPreceptorNoticia
 from volder_app.decorators import RequiredUserAttribute
 
 import string
@@ -133,37 +134,22 @@ def noticias_preceptor(request):
                 profesor_noticia_filtrada += [profesor_noticia]
                 break
     if request.method == "POST":
-        try:
-            if request.method == 'POST' and request.FILES['imagen']:
-                imagen = request.FILES['imagen']
-                fs = FileSystemStorage()
-                filename = fs.save(imagen.name, imagen)
-                uploaded_file_url = fs.url(filename)
-                print(imagen)
-                print(uploaded_file_url)
-            titulo = request.POST['titulo']
-            mensaje = request.POST['mensaje']
-            url = request.POST['url']
-            imagen = request.FILE['imagen']
-           
-            cursos = request.POST.getlist('cursos')
-            noticia = PreceptorNoticia(user=request.user, titulo=titulo, mensaje=mensaje, imagen=imagen, url=url)
-            noticia.save()
-            for curso in cursos:
-                curso = Cursoos.objects.get(id=curso)
-                noticia.curso.add(curso)
+        form = FormPreceptorNoticia(request.POST, request.FILES)
+        if form.is_valid():
+            model = form.save(commit=False)
+            model.user = request.user
+            model.save()
+
+
             messages.success(request, f'Publicacion completa con exito')
 
-
-        except:
-            messages.success(request, f'error al publicar. Intente de nuevo mas tarde')
-       
-
+    formualario = FormPreceptorNoticia()
     cont = {
         "secretario_noticias":secretario_noticias,
         "preceptor_noticias":preceptor_noticias,
         "profesor_noticia_filtrada":profesor_noticia_filtrada,
         "preceptor_cursos":preceptor_cursos,
+        "formulario":formualario,
 
     }
     return render(request, "preceptor/noticias_preceptor.html", cont)

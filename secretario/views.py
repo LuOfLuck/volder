@@ -2,9 +2,11 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from volder_app.decorators import RequiredUserAttribute
 from django.contrib import messages
+from django.forms import modelformset_factory
 from usuarios.models import Profesor, Preceptor, Cursoos, Estudiante, Materia
 from noticias.models import SecretarioNoticia, PreceptorNoticia, ProfesorNoticia
 from mensajes.models import Grupo_chat
+from noticias.forms import FormSecreatarioNoticia
 import string
 import random
 
@@ -79,37 +81,25 @@ def agregar_profesor(request):
 @RequiredUserAttribute(attribute = 'secretario', redirect_to_url = '/estudiante/')
 def noticias(request):
     if request.method == "POST":
-        try:
-            titulo = request.POST['titulo']
-            mensaje = request.POST['mensaje']
-            url = request.POST['url']
-            imagen = request.POST['imagen']
+        form = FormSecreatarioNoticia(request.POST, request.FILES)
+        if form.is_valid():
             try:
-                preceptor = request.POST['preceptor']
+                model = form.save(commit=False)
+                model.user = request.user
+                model.save()
+                messages.success(request, f'publicacion completada')
             except:
-                preceptor = False
-            try:
-                profesor = request.POST['profesor']
-            except:
-                profesor = False
-            try:
-                estudiante = request.POST['estudiante']
-            except:
-                estudiante = False
-            noticia = SecretarioNoticia(user=request.user, titulo=titulo, mensaje=mensaje, url=url, imagen=imagen, preceptor=preceptor, profesor=profesor, estudiante=estudiante)
-            noticia.save()
-
-            messages.success(request, f'publicacion completada')
-        except:
-            messages.success(request, f'error al publicar')
+                messages.success(request, f'error al publicar')
 
     secretario_noticias = SecretarioNoticia.objects.all()
     preceptor_noticias = PreceptorNoticia.objects.all()
     profesor_noticias = ProfesorNoticia.objects.all()
+    formulario = FormSecreatarioNoticia()
     cont = {
         "secretario_noticias":secretario_noticias,
         "preceptor_noticias":preceptor_noticias,
         "profesor_noticias":profesor_noticias,
+        "formulario":formulario,
     }   
     return render(request, "secretario/noticias.html", cont)
 

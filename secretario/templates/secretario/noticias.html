@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="mid-contenido mid-contenido-animacion border col-10 col-md-9 mx-auto my-4 px-4">
- 
+
     
     <div id="abrir-popou" class="col-md-4 border mx-auto my-3">
    
@@ -11,79 +11,84 @@
    
     </div>
 
+
     <div class="row botones-filtros" role="group" aria-label="Basic mixed styles example">
         <button type="button" onclick="ocultar(), mostrarSecretario()" id="boton-secretario" class="col">secretario</button>
         <button type="button" onclick="ocultar(), mostrarPreceptor()" id="boton-preceptor" class="col">preceptor</button>
         <button type="button" onclick="ocultar(), mostrarProfesor()" id="boton-profesor" class="col">profesor</button>
     </div>
-
+    {% if messages %}
+        {% for messages in messages %}
+            <p class="text-center"> {{messages}} </p>
+        {% endfor %}
+    {% endif %}
     <div id="contenedor-secretario">
-    {% for noticia in secretario_noticias %}
+        {% for noticia in secretario_noticias %}
 
-        <div class="col-md-10 publicaciones border mx-auto my-5">
+            <div class="col-md-10 publicaciones border mx-auto my-5">
 
-            <div class="row publicaciones-top my-1 ">
+                <div class="row publicaciones-top my-1 ">
 
-                <div class="col-md-2 publicaciones-top-foto my-3  p-0">
+                    <div class="col-md-2 publicaciones-top-foto my-3  p-0">
 
-                    <img src="{{noticia.user.secretario.imageURL}}">
+                        <img src="{{noticia.user.secretario.imageURL}}">
 
-                </div>
+                    </div>
 
-                <div class="col-md publicaciones-top-nick my-1  p-0">
-        
-                    <h4 class="text-muted"> Secretario: {{noticia.user.secretario.apellido}} {{noticia.user.secretario.nombre}} </h4>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-6 publicaciones-titulo mx-auto my-2 ">
-
-                <h3 class="text-center text-muted">{{noticia}}</h3><hr>
-
-            </div>
-
-            <div class="publicaciones-contenido">
-
-                <p>
-                    {{ noticia.mensaje|linebreaks }}
-                </p>
-
-            </div>
-            {% if noticia.url %}
+                    <div class="col-md publicaciones-top-nick my-1  p-0">
             
-                <div class="publicaciones-link">
+                        <h4 class="text-muted"> Secretario: {{noticia.user.secretario.apellido}} {{noticia.user.secretario.nombre}} </h4>
 
-                    <p> 
-                        link:
-                        <a href="#">{{noticia.url}}</a>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 publicaciones-titulo mx-auto my-2 ">
+
+                    <h3 class="text-center text-muted">{{noticia}}</h3><hr>
+
+                </div>
+
+                <div class="publicaciones-contenido">
+
+                    <p>
+                        {{ noticia.mensaje|linebreaks }}
                     </p>
 
                 </div>
+                {% if noticia.url %}
+                
+                    <div class="publicaciones-link">
 
-            {% endif %}
-            
-            {% if noticia.imagen %}
+                        <p> 
+                            link:
+                            <a href="#">{{noticia.url}}</a>
+                        </p>
 
-                <div class="publicaciones-imagen">
+                    </div>
 
-                    <img src="{{ noticia.imagen.url }}">
+                {% endif %}
+                
+                {% if noticia.imagen %}
+
+                    <div class="publicaciones-imagen">
+
+                        <img src="{{ noticia.imagen.url }}">
+
+                    </div>
+
+                {% endif%}
+
+                <div class="publicaciones-comentarios">
+
+                    <a href="#" class="btn mx-auto my-2 col-6"> Comentarios </a>
 
                 </div>
 
-            {% endif%}
-
-            <div class="publicaciones-comentarios">
-
-                <a href="#" class="btn mx-auto my-2 col-6"> Comentarios </a>
-
+            
             </div>
 
-        
-        </div>
-
-    {% endfor %}
+        {% endfor %}
     </div>
     <div id="contenedor-preceptor">
     {% for noticia in preceptor_noticias %}
@@ -226,17 +231,17 @@
 
 <div class="cont-popou">
 
-    <div class="cont-poput-form col-6 pb-0 px-4 pt-4">
+    <div class="cont-poput-form col-12 col-md-6 pb-0 px-4 pt-4">
 
         <h3 class="text-muted text-center">crear publicacion</h3><i id="cerrar-popou"class="far fa-times-circle cerrar-poput"></i><hr>
 
-        <form action="" method="POST" class="formulario-publicacion"> {% csrf_token %}
+        <form action="" method="POST" enctype="multipart/form-data" class="formulario-publicacion"> {% csrf_token %}
 
             <div class="row">
               
                 <div class="col-md-6 mx-auto">
 
-                    <input type="text" class="form-control text-center" id="titulo" name="titulo" placeholder="Titulo..." requerid>
+                    {{formulario.titulo}}
             
                 </div>
             
@@ -246,7 +251,7 @@
                
                 <div class="col-md-12"><br>
                    
-                    <textarea id="mensaje" name="mensaje" class="form-control" rows="3" placeholder="¿que estas pensando, Lu?..."required></textarea>
+                    {{formulario.mensaje}}
                 
                 </div>
                
@@ -258,7 +263,7 @@
                
                         <label class="custom-control-label1" for="customControlInline1">Preceptores:</label>
                
-                        <input type="checkbox" name="preceptor" value="True" class="custom-control-input1" id="customControlInline1"> 
+                        {{formulario.preceptor}}
                
                     </div>
                     
@@ -266,15 +271,15 @@
                
                         <label class="custom-control-label2" for="customControlInline2">Profesores:</label>
                
-                        <input type="checkbox" name="profesor" value="True" class="custom-control-input2" id="customControlInline2">&nbsp; &nbsp; &nbsp; &nbsp; 
-               
+                        {{formulario.profesor}}
+
                     </div>
                
                     <div class="mx-auto">
                
                         <label class="custom-control-label3" for="customControlInline3">Estudiantes:</label>
                
-                        <input type="checkbox" name="estudiante" value="True" class="custom-control-input3" id="customControlInline3">&nbsp; &nbsp; &nbsp; &nbsp; 
+                        {{formulario.estudiante}}&nbsp; &nbsp; &nbsp; &nbsp; 
                
                     </div>
                
@@ -282,7 +287,7 @@
                
                 <div class="col-md-12"><br>
 
-                    <input type="url"  name="url" id="input-url" class="form-control input-url" placeholder="https://www.website.com/">
+                    {{formulario.url}}
 
                
                 </div>
@@ -295,15 +300,15 @@
 
                 <div class="form-grup col-3 mx-auto">   
                 
-                    <label for="input-imagen"><i class="far fa-image"></i></label>
+                    <label for="id_imagen"><i class="far fa-image"></i></label>
                 
-                    <input type="file" name="imagen" accept="image/*" id="input-imagen">
+                    {{formulario.imagen}}
                 
                 </div>
                 
                 <div class="form-grup col-3 mx-auto">
                 
-                    <label for="input-url" class="label-url"><i class="fas fa-link"></i></label>
+                    <label for="id_url" class="label-url"><i class="fas fa-link"></i></label>
                 
                 </div>
                 

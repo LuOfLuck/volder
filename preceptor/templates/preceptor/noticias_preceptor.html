@@ -243,14 +243,14 @@
 
         <h3 class="text-muted text-center">crear publicacion</h3><i id="cerrar-popou"class="far fa-times-circle cerrar-poput"></i><hr>
 
-        <form action="" method="POST" class="formulario-publicacion" > {% csrf_token %}
+        <form action="" method="POST" enctype="multipart/form-data" class="formulario-publicacion" > {% csrf_token %}
 
             <div class="row">
               
                 <div class="col-md-6 mx-auto">
 
-                    <input type="text" class="form-control text-center" id="titulo" maxlength="50" name="titulo" placeholder="Titulo..." requerid>
-            
+                    {{formulario.titulo}}
+
                 </div>
             
             </div>
@@ -259,21 +259,15 @@
             <div class="contenido">
                 <div class="col-md-12"><br>
                    
-                    <textarea id="mensaje" name="mensaje" class="form-control" rows="3" maxlength="1999" placeholder="¿que estas pensando, Lu?..."required></textarea>
-                
+                    {{formulario.mensaje}}
+
                 </div>
 
                 <div class="col-md-12"><br>
 
-                    <input type="url"  name="url" id="input-url" class="form-control input-url" maxlength="200" placeholder="https://www.website.com/">
-
+                    {{formulario.url}}
                 </div>
-                {{user.profesor}}
-                <select class="form-control" name="cursos" multiple>
-                    {% for curso in preceptor_cursos %}
-                        <option value="{{curso.id}}">{{curso}}</option>
-                    {% endfor %}
-                </select>
+                {{formulario.curso}}
 
                 <img id="input-imagen-zone" class="my-3">
 
@@ -283,15 +277,14 @@
 
                 <div class="form-grup col-3 mx-auto">   
                 
-                    <label for="input-imagen"><i class="far fa-image"></i></label>
+                    <label for="id_imagen"><i class="far fa-image"></i></label>
                 
-                    <input type="file" name="imagen" accept="image/*" id="input-imagen">
-                
+                    {{formulario.imagen}}
                 </div>
                 
                 <div class="form-grup col-3 mx-auto">
                 
-                    <label for="input-url" class="label-url"><i class="fas fa-link"></i></label>
+                    <label for="id_url" class="label-url"><i class="fas fa-link"></i></label>
                 
                 </div>
                 

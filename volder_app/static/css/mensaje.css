@@ -81,12 +81,29 @@ header .pc p{
 .mensaje p{
     margin-bottom: 0px;
 }
-
-@media(max-width: 768px){
+.exit{
+    color:rgb(116, 116, 116);
+    font-size: 2rem;
+    padding: 1rem;
+    border: 1px solid;
+    border-radius: 50%;
+    transition: all .5s;
+}
+.exit:hover{
+    color: white;
+    background-color: rgb(116, 116, 116);
+}
+.container{
+    margin-top: 50px;
+}
+@media(max-width: 767px){
     .mensaje-entrante img{
         display: none;
     }
     .mensaje p{
         font-size: 0.8rem;
+    }
+    .container{
+        margin-top: 0px;
     }
 }

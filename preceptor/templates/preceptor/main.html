@@ -68,7 +68,15 @@
         
                 <div class="col-5 mx-auto my-3 border">
         
-                    <h4 class="text-muted text-center"> {{estudiante}}</h4>
+                    <h4 class="text-muted text-center"> 
+                        
+                        <a href="{% url 'mensajes' estudiante.user_id %}">  
+                        
+                            {{estudiante}}
+                        
+                        </a>
+                        
+                    </h4>
         
                 </div>
         

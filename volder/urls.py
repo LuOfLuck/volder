@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LogoutView, LoginView
+from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -29,6 +30,7 @@ urlpatterns = [
     path('mensajes/', include('mensajes.urls')),
     path('', LoginView.as_view(template_name='registration/login.html', redirect_authenticated_user=True), name="login"),
     path('logout/', LogoutView.as_view(template_name='registration/logout.html'), name="logout"),
+    path('change-password/', auth_views.PasswordChangeView.as_view(template_name='change-password.html'), name="password_change")
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

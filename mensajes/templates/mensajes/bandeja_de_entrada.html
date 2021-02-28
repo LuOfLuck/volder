@@ -16,6 +16,17 @@
         }
     </style>
     <div class="mid-contenido mid-contenido-animacion border col-10 col-md-9 mx-auto my-4 p-4">
+        {% if messages %}
+            {%for messages in messages%}
+            
+            <div class="notification">
+            
+                <p class="h2 text-muted text-center my-5"> {{messages}} </p> 
+            
+            </div>
+
+            {% endfor %}    
+        {% endif %}
         {% for grupo in grupos %}
             <div class="row">
                     <div class="charla col-10 mx-auto border my-2 p-2">

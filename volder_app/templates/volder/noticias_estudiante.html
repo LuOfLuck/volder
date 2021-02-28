@@ -7,13 +7,9 @@
     
 
     <div class="row botones-filtros" role="group" aria-label="Basic mixed styles example">
-    
-        <button type="button" onclick=" mostrarSecretario()" class="btn border col-3 mx-auto">secretarios</button>
-   
-        <button type="button" onclick="mostrarPreceptor()" class="btn border col-3 mx-auto">preceptores</button>
-   
-        <button type="button" onclick=" mostrarProfesor()" class="btn border col-3 mx-auto">profesores</button>
-   
+        <button type="button" onclick="ocultar(), mostrarSecretario()" id="boton-secretario" class="col">secretario</button>
+        <button type="button" onclick="ocultar(), mostrarPreceptor()" id="boton-preceptor" class="col">preceptor</button>
+        <button type="button" onclick="ocultar(), mostrarProfesor()" id="boton-profesor" class="col">profesor</button>
     </div>
 
     <div id="contenedor-secretario">
@@ -222,31 +218,44 @@
     </div>
 </div>
 
-
 <script>
+    
+contenedorSecretario = document.getElementById("contenedor-secretario");
+contenedorPreceptor = document.getElementById("contenedor-preceptor");
+contenedorProfesor = document.getElementById("contenedor-profesor");
+botonSecretario = document.getElementById("boton-secretario");
+botonProfesor = document.getElementById("boton-profesor");
+botonPreceptor = document.getElementById("boton-preceptor");
+estiloCLick = `
+    background-color: rgba(89, 89, 182, 0.795);
+    box-shadow: 0 3px rgba(68, 68, 184, 0.795);;
+    border: none;
+    transform: translateY(4px);
+    color: white;
+    
+`
+botonSecretario.style = estiloCLick;
+function mostrarSecretario(){
+    contenedorSecretario.style.display = "block";
+    botonSecretario.style = estiloCLick;
+}
+function mostrarProfesor(){
+    contenedorProfesor.style.display = "block";
+    botonProfesor.style= estiloCLick;
+}
+function mostrarPreceptor(){
+    contenedorPreceptor.style.display = "block";
+    botonPreceptor.style= estiloCLick;
+}
 
-    contenedorSecretario = document.getElementById("contenedor-secretario");
-    contenedorPreceptor = document.getElementById("contenedor-preceptor");
-    contenedorProfesor = document.getElementById("contenedor-profesor");
-
-    function mostrarSecretario(){
-        contenedorSecretario.style.display = "block";
-        contenedorProfesor.style.display = "none";
-        contenedorPreceptor.style.display = "none";
-
-    }
-    function mostrarProfesor(){
-        contenedorProfesor.style.display = "block";
-        contenedorSecretario.style.display = "none";
-        contenedorPreceptor.style.display = "none";
-    }
-    function mostrarPreceptor(){
-        contenedorPreceptor.style.display = "block";
-        contenedorSecretario.style.display = "none";
-        contenedorProfesor.style.display = "none";
-    }
-
-
+function ocultar(){
+    contenedorSecretario.style.display = "none";
+    contenedorPreceptor.style.display = "none";
+    contenedorProfesor.style.display = "none";
+    botonProfesor.style -= estiloCLick;
+    botonPreceptor.style -= estiloCLick;
+    botonSecretario.style -= estiloCLick;
+}
 </script>
 
 {% endblock %}

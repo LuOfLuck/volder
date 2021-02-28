@@ -304,6 +304,26 @@ header .pc p{
 /**/    /**/    /**/    /**/    /**/
 
 /****************************************************/
+.botones-filtros button{
+   
+    background-color: transparent;
+   
+    border: 1px solid rgb(170, 170, 170);
+    border-top-left-radius: 100px !important;
+    border-bottom-right-radius: 100px !important;
+    padding: 10px;
+    box-shadow: 0 5px #999;
+    text-decoration: none;
+   
+}
+.botones-filtros, .informacion-materias button:focus{
+    outline:none;
+}
+
+.botones-filtros button:hover{
+    background-color:rgba(97, 93, 89, 0.636);
+   
+}
 #contenedor-preceptor, #contenedor-profesor{
     display: none;
 }

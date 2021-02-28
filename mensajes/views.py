@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import messages
 from usuarios.models import Secretario, Preceptor, Profesor, Estudiante
 from mensajes.models import Grupo_chat, Mensajes
 # Create your views here.
@@ -67,6 +68,9 @@ def bandeja_de_entrada(request):
     except:
         pass
 
+
+    if grupos == []:
+        messages.success(request, f'Aun no tiene mensajes :(')
     cont = {
         "grupos":grupos,
         "extend":extend,

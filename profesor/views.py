@@ -3,7 +3,8 @@ from usuarios.models import *
 from datetime import datetime
 from volder_app.decorators import *
 from django.contrib import messages
-from noticias.models import SecretarioNoticia, PreceptorNoticia, ProfesorNoticia
+from noticias.models import SecretarioNoticia, PreceptorNoticia, ProfesorNoticia, ProfesorNoticiaComentarios
+from noticias.forms import FormProfesorNoticia
 from usuarios.models import Estudiante
 from django.core.mail import send_mail
 from django.conf import settings
@@ -12,12 +13,13 @@ from django.conf import settings
 def main(request):
 
     trabajos = Trabajo.objects.all().order_by("-fecha_de_subida")
-
+    materias = Materia.objects.filter(profesor = request.user.profesor)
     for trabajo in trabajos:
         if trabajo.materia.profesor == request.user.profesor:
             ultimo_trabajo = trabajo
             break
     cont = {
+        "materias":materias,
         "trabajos":trabajos,
         "ultimo_trabajo":ultimo_trabajo,
     }
@@ -120,19 +122,17 @@ def gestionar_grupo(request):
 def noticias_profesor(request):
 
     if request.method == "POST":
-        try:
-            titulo = request.POST['titulo']
-            mensaje = request.POST['mensaje']
-            url = request.POST['url']
-            imagen = request.POST['imagen']
-            materias = request.POST.getlist('materia')
-            noticia = ProfesorNoticia(user=request.user, titulo=titulo, mensaje=mensaje, imagen=imagen, url=url)
-            noticia.save()
+        form = FormProfesorNoticia(request.POST, request.FILES)
+        if form.is_valid():
+            model = form.save(commit=False)
+            model.user = request.user
+            model.save()
+            materias = request.POST.getlist('materias')     
             for materia in materias:
-                materia = Materia.objects.get(id=materia)
-                noticia.materia.add(materia)
-
-        except:
+                materia = Materia.objects.get(id=materia)            
+                model.materia.add(materia)
+            messages.success(request, f'Publicacion completa con exito')
+        else:
             messages.success(request, f'error al publicar')
 
     secretario_noticias = SecretarioNoticia.objects.filter(profesor = True).order_by("-created")
@@ -143,13 +143,15 @@ def noticias_profesor(request):
     
     for materia in materias:
         preceptor_noticias += PreceptorNoticia.objects.filter(curso=materia.curso)
-        
+    preceptor_noticias = set(preceptor_noticias)
+    formulario = FormProfesorNoticia()
 
     cont = {
         "secretario_noticias":secretario_noticias,
         "preceptor_noticias":preceptor_noticias,
         "profesor_noticias":profesor_noticias,
         "materias":materias,
+        "formulario":formulario,
     }
 
     return render(request, "profesor/noticias_profesor.html", cont)
@@ -159,5 +161,70 @@ def ajustes_profesor(request):
     return render(request, "profesor/ajustes_profesor.html")
 
 @RequiredUserAttribute(attribute = 'profesor', redirect_to_url = '/preceptor/') 
-def materias_profesor(request):
-    return render(request, "profesor/materias_profesor.html")
+def ver_materia(request, id_materia):
+    materia = Materia.objects.get(id = id_materia)
+
+    if request.user.profesor != materia.profesor:
+        return redirect("/profesor/")
+    #protegemos la url
+
+    trabajos = Trabajo.objects.filter(materia = materia)
+    noticias = ProfesorNoticia.objects.filter(materia = materia)
+
+    cont = {
+        "materia":materia,
+        "noticias":noticias,
+        "trabajos":trabajos,
+    }
+    return render(request, "profesor/ver_materia.html", cont)
+
+def ver_noticia_profesor(request, id_noticia):
+    noticia = ProfesorNoticia.objects.get(id=id_noticia)
+    if noticia.user != request.user:
+        return redirect("/profesor/")
+    #protegemos la url
+    comentarios = ProfesorNoticiaComentarios.objects.filter(noticia=noticia)
+    formulario = FormProfesorNoticia(instance=noticia)
+    materias = Materia.objects.filter(profesor=request.user.profesor)
+    materias_de_noticias = []
+    materias_de_noticias += noticia.materia.filter()
+
+    if request.method == "POST":
+        # Actualizamos el formulario con los datos recibidos
+        formulario =  FormProfesorNoticia(request.POST, request.FILES, instance=noticia)
+        # Si el formulario es válido...
+        if formulario.is_valid():
+            # Guardamos el formulario pero sin confirmarlo,
+            # así conseguiremos una instancia para manejarla
+            instancia = formulario.save(commit=False)
+            # Podemos guardarla cuando queramos
+            instancia.user = request.user
+            instancia.save()
+            materias_recibidas = request.POST.getlist('materias')
+
+            for materias_de_noticia in materias_de_noticias:
+                instancia.materia.remove(materias_de_noticia)
+            materias_de_noticias = []
+            for materia_recibidas in materias_recibidas:           
+                materia_recibidas = Materia.objects.get(id=materia_recibidas) 
+                materias_de_noticias +=  [materia_recibidas]        
+                instancia.materia.add(materia_recibidas)
+
+
+            
+        else:
+            try:
+                comentario = request.POST["comentario"]
+                nuevo_comentario = ProfesorNoticiaComentarios(user= request.user, mensaje=comentario, noticia=noticia)
+                nuevo_comentario.save()
+            except:
+                print("error")
+    
+    cont = {
+        "noticia":noticia,
+        "comentarios":comentarios,
+        "formulario":formulario,
+        "materias":materias,
+        "materias_de_noticias":materias_de_noticias,
+    }
+    return render(request, "profesor/ver_noticia_profesor.html", cont)

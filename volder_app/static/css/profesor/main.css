@@ -8,6 +8,7 @@ html.sr .load-hidden {
 *{
     outline: none;
 }
+
 /****************************************************/
 
 /**/    /**/    /**/    /**/
@@ -139,16 +140,11 @@ header .pc p{
     box-shadow: 10px -4px 10px rgb(171, 173, 173);
 }
 
-.tarea{
+.tarea, .materias .materias-materia, .titulo p{
     height: auto;
     box-shadow: 5px -2px 5px rgb(171, 173, 173);
+}
 
-}
-.tarea a{
-    position: absolute;
-    bottom: 25px;
-    right: 50px;
-}
 .trabajos, .añadir-trabajo{
     border-radius: 20px;
     height: auto;
@@ -221,6 +217,19 @@ header .pc p{
 .compañeros .nick{
     font-size: smaller;
     margin-left: 40px;
+}
+
+.titulo p{
+    border: 1px solid rgba(133, 133, 133, 0.308);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+
+@media (max-width: 768px) {
+    .desaparecer{
+        display:none;
+    }
 }
 
 /****************************************************/
@@ -388,18 +397,27 @@ header .pc p{
     padding: 3rem;
 }
 .formulario-publicacion textarea{
-  border: 0; 
-  /* border-bottom: 1px solid rgb(150, 150, 150); */
-  font-size: 1.2rem;
-}
-
-.formulario-publicacion #titulo{
-  border: 0; 
-  border-bottom: 1px solid rgba(94, 94, 94, 0.363); 
-  font-size: 1.2rem;
-}
-
-.formulario-publicacion #input-imagen {
+    border: 1px solid rgba(117, 117, 117, 0.5); 
+    font-size: 1.2rem;
+    min-height: 100px;
+    max-height: 100px;
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .formulario-publicacion #id_titulo{
+    border: 0; 
+    width: 100%;
+    border-bottom: 1px solid rgba(94, 94, 94, 0.363); 
+    font-size: 1.2rem;
+    margin:auto;
+  }
+  .formulario-publicacion textarea,
+  .formulario-publicacion #id_titulo,
+  .formulario-publicacion #id_url{
+      outline: none;
+  }
+  .formulario-publicacion #id_imagen {
     width: 0.1px;
     height: 0.1px;
     opacity: 0;
@@ -407,20 +425,13 @@ header .pc p{
     position: absolute;
     z-index: -1;
     }
-.formulario-publicacion #input-url{
-    display: none;
-    border:0px;
-    border-bottom: 1px solid rgb(150, 150, 150); 
-    font-size: 1rem;
-    width: 100%;
-    }
 #input-imagen-zone{
     width: 80%;
     height: 300px;
     display: none;
     margin:auto
 }
-.formulario-publicacion label[for="input-imagen"], .formulario-publicacion label[for="input-url"], .input-sudmit-icon   {
+.formulario-publicacion label[for="id_imagen"], .formulario-publicacion label[for="id_url"], .input-sudmit-icon   {
     font-size: 1.5rem;
     font-weight: 600;
     color: black;
@@ -431,16 +442,24 @@ header .pc p{
     text-align: center;
   
     }
-.formulario-publicacion label[for="input-imagen"]:hover, .formulario-publicacion label[for="input-url"]:hover, .input-sudmit-icon:hover{
+.formulario-publicacion label[for="id_imagen"]:hover, .formulario-publicacion label[for="id_url"]:hover, .input-sudmit-icon:hover{
     font-size: 2rem;
     color: rgb(93, 93, 204);
 }
-.formulario-publicacion label[for="input-url"]{
+.formulario-publicacion label[for="id_url"]{
     float: center;
 }
 .formulario-publicacion .input-sudmit-icon {
     height: 0px !important;
 }
+.formulario-publicacion #id_url{
+    display: none;
+    border:0px;
+    border-bottom: 1px solid rgb(150, 150, 150); 
+    font-size: 1rem;
+    width: 100%;
+    }
+
 
 
 
@@ -450,6 +469,53 @@ header .pc p{
 /**/                            /**/
 /**/    /**/    /**/    /**/    /**/
 
+/****************************************************/
+/****************************************************/
+
+
+
+/**/    /**/    /**/    /**/    /**/
+/**/                            /**/
+/**/   /* FIN POPOU NOTIFIC */  /**/
+/**/                            /**/
+/**/    /**/    /**/    /**/    /**/
+.imagen a{
+    display:none;
+}
+
+#id_titulo{
+    text-align: center;
+    font-size: 1.3rem;
+}
+#id_titulo, #id_mensaje,#id_url, #id_materia{
+    padding: 1rem;
+    border: 1px solid rgba(126, 126, 126, 0.384);
+    border-radius: 10px;
+}
+#id_titulo, #id_mensaje,#id_materia{
+    width: 100%;
+}
+#id_url{
+    width: 70%;
+}
+#id_titulo:focus, #id_mensaje:focus,#id_url:focus, #id_imagen:focus,#id_materia:focus{
+    border: 3px solid rgba(39, 224, 209, 0.555);
+    border-radius: 10px !important;
+
+}
+
+.comentario-persona-nombre p{
+    margin-bottom: 0px;
+}
+
+
+/**/    /**/    /**/    /**/    /**/
+/**/                            /**/
+/**/   /* FIN POPOU NOTIFIC */  /**/
+/**/                            /**/
+/**/    /**/    /**/    /**/    /**/
+
+/****************************************************/
 /****************************************************/
 
 .botones-filtros button{
@@ -489,7 +555,7 @@ header .pc p{
     bottom: 25%;
     margin: auto;
 }
-.publicaciones-imagen img{
+.publicaciones-imagen img, .imagen img{
     width: 100%;
     height: 400px;
     border-radius: 10px;
@@ -506,6 +572,27 @@ header .pc p{
 
 #contenedor-profesor{
     display:none;
+}
+@media (max-width: 768px) {
+    .publicaciones-top-foto img{
+        height: 35px;
+        width: 35px;
+
+    }
+    .publicaciones-top-nick h4{
+        font-size: 0.7rem;
+    }
+    .publicaciones-imagen img, .imagen img{
+        height: 200px;
+    }
+    .publicaciones-titulo h3{
+        font-size: 1rem;
+    }
+    .publicaciones-contenido p,
+    .publicaciones-link p,
+    {
+        font-size: 0.6rem;
+    }
 }
 
 /**/    /**/    /**/    /**/    /**/

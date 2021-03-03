@@ -302,18 +302,27 @@ header .pc p{
     padding: 3rem;
 }
 .formulario-publicacion textarea{
-  border: 0; 
-  /* border-bottom: 1px solid rgb(150, 150, 150); */
-  font-size: 1.2rem;
-}
-
-.formulario-publicacion #titulo{
-  border: 0; 
-  border-bottom: 1px solid rgba(94, 94, 94, 0.363); 
-  font-size: 1.2rem;
-}
-
-.formulario-publicacion #input-imagen {
+    border: 1px solid rgba(117, 117, 117, 0.5); 
+    font-size: 1.2rem;
+    min-height: 100px;
+    max-height: 100px;
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .formulario-publicacion #id_titulo{
+    border: 0; 
+    width: 100%;
+    border-bottom: 1px solid rgba(94, 94, 94, 0.363); 
+    font-size: 1.2rem;
+    margin:auto;
+  }
+  .formulario-publicacion textarea,
+  .formulario-publicacion #id_titulo,
+  .formulario-publicacion #id_url{
+      outline: none;
+  }
+  .formulario-publicacion #id_imagen {
     width: 0.1px;
     height: 0.1px;
     opacity: 0;
@@ -321,20 +330,13 @@ header .pc p{
     position: absolute;
     z-index: -1;
     }
-.formulario-publicacion #input-url{
-    display: none;
-    border:0px;
-    border-bottom: 1px solid rgb(150, 150, 150); 
-    font-size: 1rem;
-    width: 100%;
-    }
 #input-imagen-zone{
     width: 80%;
     height: 300px;
     display: none;
     margin:auto
 }
-.formulario-publicacion label[for="input-imagen"], .formulario-publicacion label[for="input-url"], .input-sudmit-icon   {
+.formulario-publicacion label[for="id_imagen"], .formulario-publicacion label[for="id_url"], .input-sudmit-icon   {
     font-size: 1.5rem;
     font-weight: 600;
     color: black;
@@ -345,17 +347,23 @@ header .pc p{
     text-align: center;
   
     }
-.formulario-publicacion label[for="input-imagen"]:hover, .formulario-publicacion label[for="input-url"]:hover, .input-sudmit-icon:hover{
+.formulario-publicacion label[for="id_imagen"]:hover, .formulario-publicacion label[for="id_url"]:hover, .input-sudmit-icon:hover{
     font-size: 2rem;
     color: rgb(93, 93, 204);
 }
-.formulario-publicacion label[for="input-url"]{
+.formulario-publicacion label[for="id_url"]{
     float: center;
 }
 .formulario-publicacion .input-sudmit-icon {
     height: 0px !important;
 }
-
+.formulario-publicacion #id_url{
+    display: none;
+    border:0px;
+    border-bottom: 1px solid rgb(150, 150, 150); 
+    font-size: 1rem;
+    width: 100%;
+    }
 
 
 /**/    /**/    /**/    /**/    /**/
@@ -420,6 +428,25 @@ header .pc p{
 
 #contenedor-profesor, #contenedor-preceptor{
     display:none;
+}
+@media (max-width: 768px) {
+    .publicaciones-top-foto img{
+        height: 35px;
+        width: 35px;
+
+    }
+    .publicaciones-top-nick h4{
+        font-size: 0.7rem;
+    }
+    .publicaciones-imagen img{
+        height: 200px;
+    }
+    .publicaciones-titulo h3{
+        font-size: 1rem;
+    }
+    .publicaciones-contenido p{
+        font-size: 0.6rem;
+    }
 }
 
 /**/    /**/    /**/    /**/    /**/

@@ -37,13 +37,13 @@
 
             <div class="row publicaciones-top my-1 ">
 
-                <div class="col-md-2 publicaciones-top-foto my-3  p-0">
+                <div class="col-2 publicaciones-top-foto my-2 mx-auto  p-0">
 
                     <img src="{{noticia.user.secretario.imageURL}}">
 
                 </div>
 
-                <div class="col-md-6 publicaciones-top-nick my-1  p-0">
+                <div class="col-9 publicaciones-top-nick my-1 mx-auto  p-0">
         
                     <h4 class="text-muted"> Secretario: {{noticia.user.secretario.apellido}} {{noticia.user.secretario.nombre}} </h4>
 
@@ -239,7 +239,7 @@
 
 <div class="cont-popou">
 
-    <div class="cont-poput-form col-6 pb-0 px-4 pt-4">
+    <div class="cont-poput-form col-11 col-md-6 py-4">
 
         <h3 class="text-muted text-center">crear publicacion</h3><i id="cerrar-popou"class="far fa-times-circle cerrar-poput"></i><hr>
 
@@ -247,7 +247,7 @@
 
             <div class="row">
               
-                <div class="col-md-6 mx-auto">
+                <div class="col-6 mx-auto">
 
                     {{formulario.titulo}}
 
@@ -263,12 +263,16 @@
 
                 </div>
 
-                <div class="col-md-12"><br>
 
+                <label for="seleccion-de-cursos">¿que cursos quieren que vean este publicacion?</label>
+                <select class="form-control" name="cursos" id="seleccion-de-cursos" required multiple>
+                    {% for preceptor_curso in preceptor_cursos %}
+                        <option value="{{preceptor_curso.id}}">{{preceptor_curso}}</option>
+                    {% endfor %}
+                </select>
+                <div class="col-md-12"><br>
                     {{formulario.url}}
                 </div>
-                {{formulario.curso}}
-
                 <img id="input-imagen-zone" class="my-3">
 
             </div>
@@ -280,6 +284,7 @@
                     <label for="id_imagen"><i class="far fa-image"></i></label>
                 
                     {{formulario.imagen}}
+                    
                 </div>
                 
                 <div class="form-grup col-3 mx-auto">

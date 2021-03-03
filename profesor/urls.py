@@ -13,5 +13,6 @@ urlpatterns = [
     path('gestionar_grupo/', login_required(views.gestionar_grupo), name="gestionar_grupo"),
     path('noticias/', login_required(views.noticias_profesor), name="noticias_profesor"),
     path('ajustes/', login_required(views.ajustes_profesor), name="ajustes_profesor"),
-    path('materias/', login_required(views.materias_profesor), name="materias_profesor"),
+    path('materia/<int:id_materia>', login_required(views.ver_materia), name="ver_materia"),
+    path('noticias/<int:id_noticia>', login_required(views.ver_noticia_profesor), name="ver_noticia_profesor"),
 ]

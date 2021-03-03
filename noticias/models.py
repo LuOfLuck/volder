@@ -28,7 +28,7 @@ class PreceptorNoticia(models.Model):
     mensaje = models.CharField(max_length=1999)
     url = models.URLField(max_length=200, null=True, blank=True)
     imagen = models.ImageField(upload_to="noticias/preceptor", null=True, blank=True)
-    curso = models.ManyToManyField(Cursoos)
+    curso = models.ManyToManyField(Cursoos, null=True, blank=True)
     created = models.DateField(auto_now_add=True)
 
     class Meta():
@@ -41,10 +41,10 @@ class PreceptorNoticia(models.Model):
 class ProfesorNoticia(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, null=True, blank=True)
     titulo = models.CharField(max_length=50)
-    mensaje = models.CharField(max_length=1999)
-    url = models.CharField(max_length=200, null=True, blank=True)
+    mensaje = models.TextField(max_length=1999)
+    url = models.URLField(max_length=200, null=True, blank=True)
     imagen = models.ImageField(upload_to="noticias/profesor", null=True, blank=True)
-    materia = models.ManyToManyField(Materia)
+    materia = models.ManyToManyField(Materia, null=True, blank=True)
     created = models.DateField(auto_now_add=True)
 
     class Meta():
@@ -53,3 +53,16 @@ class ProfesorNoticia(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class ProfesorNoticiaComentarios(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE, null=True, blank=True)
+    mensaje = models.TextField(max_length=400)
+    noticia= models.ForeignKey(ProfesorNoticia, on_delete = models.CASCADE, null=True, blank=True)
+
+    class Meta():
+        verbose_name = "Profesor Comenario"
+        verbose_name_plural = "Profesores Comentarios"
+
+    def __str__(self):
+        devuelve = f"{self.user} comento en {self.noticia}: {self.mensaje}"
+        return devuelve

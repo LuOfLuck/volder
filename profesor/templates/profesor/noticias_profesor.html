@@ -1,7 +1,7 @@
 {% extends 'profesor/base.html' %}
 {% load static %}
 {% block content %}
-<div class="mid-contenido mid-contenido-animacion border col-10 col-md-9 mx-auto my-4 px-4">
+<div class="mid-contenido mid-contenido-animacion border col col-md-9 mx-auto my-4 px-4">
  
     
     <div id="abrir-popou" class="col-md-4 border mx-auto my-3">
@@ -15,7 +15,19 @@
         <button type="button" onclick="ocultar(), mostrarPreceptor()" id="boton-preceptor" class="col ">preceptor</button>
         <button type="button" onclick="ocultar(), mostrarProfesor()" id="boton-profesor" class="col ">tu</button>
     </div>
+    {% if messages %}
+        
+        {%for messages in messages%}
+        
+            <div class="notification">
+            
+            <p class="alert text-center my-3"> {{messages}} </p> 
+            
+            </div>
 
+        {% endfor %}
+
+    {% endif %}
     <div id="contenedor-secretario">
 
         {% for noticia in secretario_noticias %}
@@ -46,19 +58,14 @@
 
                 <div class="publicaciones-contenido">
 
-                    <p>
-                        {{ noticia.mensaje|linebreaks }}
-                    </p>
+                    <p>{{ noticia.mensaje|linebreaks }}</p>
 
                 </div>
                 {% if noticia.url %}
                 
                     <div class="publicaciones-link">
 
-                        <p> 
-                            link:
-                            <a href="#">{{noticia.url}}</a>
-                        </p>
+                        <p> link: <a href="#">{{noticia.url}}</a> </p>
 
                     </div>
 
@@ -93,13 +100,13 @@
 
                 <div class="row publicaciones-top my-1 ">
 
-                    <div class="col-md-2 publicaciones-top-foto my-3  p-0">
+                    <div class="col-2 publicaciones-top-foto my-3  p-0">
 
                         <img src="{{noticia.user.preceptor.imageURL}}">
 
                     </div>
 
-                    <div class="col-md publicaciones-top-nick my-1  p-0">
+                    <div class="col publicaciones-top-nick my-1  p-0">
             
                         <h4 class="text-muted"> Preceptor: {{noticia.user.preceptor.apellido}} {{noticia.user.preceptor.nombre}} </h4>
 
@@ -109,25 +116,20 @@
 
                 <div class="col-md-6 publicaciones-titulo mx-auto my-2 ">
 
-                    <h4 class="text-center text-muted">{{noticia}}</h4><hr>
+                    <h3 class="text-center text-muted">{{noticia}}</h3><hr>
 
                 </div>
 
                 <div class="publicaciones-contenido">
 
-                    <p>
-                        {{ noticia.mensaje|linebreaks }}
-                    </p>
+                    <p>{{ noticia.mensaje|linebreaks }}</p>
 
                 </div>
                 {% if noticia.url %}
                 
                     <div class="publicaciones-link">
 
-                        <p> 
-                            link:
-                            <a href="#">{{noticia.url}}</a>
-                        </p>
+                        <p> link: <a href="#">{{noticia.url}}</a>  </p>
 
                     </div>
 
@@ -184,18 +186,14 @@
 
                 <div class="publicaciones-contenido">
 
-                    <p>
-                        {{ noticia.mensaje|linebreaks }}
-                    </p>
+                    <p>{{ noticia.mensaje|linebreaks }} </p>
 
                 </div>
                 {% if noticia.url %}
                 
                     <div class="publicaciones-link">
 
-                        <p> 
-                            link:
-                            <a href="#">{{noticia.url}}</a>
+                        <p> link:<a href="#">{{noticia.url}}</a>
                         </p>
 
                     </div>
@@ -229,18 +227,18 @@
 
 <div class="cont-popou">
 
-    <div class="cont-poput-form col-6 pb-0 px-4 pt-4">
+    <div class="cont-poput-form col-11 col-md-6 pb-0 px-4 pt-4">
 
         <h3 class="text-muted text-center">crear publicacion</h3><i id="cerrar-popou"class="far fa-times-circle cerrar-poput"></i><hr>
 
-        <form action="" method="POST" class="formulario-publicacion"> {% csrf_token %}
+        <form action="" method="POST" enctype="multipart/form-data" class="formulario-publicacion" > {% csrf_token %}
 
             <div class="row">
               
-                <div class="col-md-6 mx-auto">
+                <div class="col-6 mx-auto">
 
-                    <input type="text" class="form-control text-center" id="titulo" maxlength="50" name="titulo" placeholder="Titulo..." requerid>
-            
+                    {{formulario.titulo}}
+
                 </div>
             
             </div>
@@ -249,23 +247,20 @@
             <div class="contenido">
                 <div class="col-md-12"><br>
                    
-                    <textarea id="mensaje" name="mensaje" class="form-control" rows="3" maxlength="1999" placeholder="¿que estas pensando, Lu?..."required></textarea>
-                
-                </div>
-
-                <div class="col-md-12"><br>
-
-                    <input type="url"  name="url" id="input-url" class="form-control input-url" maxlength="200" placeholder="https://www.website.com/">
+                    {{formulario.mensaje}}
 
                 </div>
-                
+
+
                 <label for="seleccion-de-cursos">¿que cursos quieren que vean este publicacion?</label>
-                <select class="form-control" name="materia" id="seleccion-de-cursos" multiple>
+                <select class="form-control" name="materias" id="seleccion-de-cursos" required multiple>
                     {% for materia in materias %}
                         <option value="{{materia.id}}">{{materia}}</option>
                     {% endfor %}
                 </select>
-
+                <div class="col-md-12"><br>
+                    {{formulario.url}}
+                </div>
                 <img id="input-imagen-zone" class="my-3">
 
             </div>
@@ -274,15 +269,15 @@
 
                 <div class="form-grup col-3 mx-auto">   
                 
-                    <label for="input-imagen"><i class="far fa-image"></i></label>
+                    <label for="id_imagen"><i class="far fa-image"></i></label>
                 
-                    <input type="file" name="imagen" accept="image/*" id="input-imagen">
-                
+                    {{formulario.imagen}}
+                    
                 </div>
                 
                 <div class="form-grup col-3 mx-auto">
                 
-                    <label for="input-url" class="label-url"><i class="fas fa-link"></i></label>
+                    <label for="id_url" class="label-url"><i class="fas fa-link"></i></label>
                 
                 </div>
                 
@@ -300,7 +295,6 @@
 
 </div>
 
-<!-- {% include 'volder/botones_noticias.html' %} -->
 <script src="{% static 'js/botones-noticia.js' %}"></script>
 
 {% endblock %}

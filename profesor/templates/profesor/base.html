@@ -25,13 +25,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav">
                     <div class="nav-item active">
-                        <a href="{% url 'home_profesor' %}" class="col-3 btn btn-outline-success mx-3">Inicio </a>
+                        <a href="{% url 'home_profesor' %}#inicio" class="col-3 btn btn-outline-success mx-3">Inicio </a>
                         <a href="{% url 'bandeja_de_entrada' %}" id="botones"class="col-12 btn boton-animacion my-3">
               
                             <i class="fas fa-inbox"></i><span>mensajes</span>
                             
                         </a>
-                        <a href="{% url 'materias_profesor' %}" class="col-3 btn btn-outline-success mx-3">Materias </a>
+                        <a href="{% url 'home_profesor'  %}#materia" class="col-3 btn btn-outline-success mx-3">Materias </a>
                         <!-- <a href="{% url 'grupos' %}" class="col-3 btn btn-outline-success mx-3">Grupos </a> -->
                         <a href="{% url 'noticias_profesor' %}" class="col-3 btn btn-outline-success mx-3">Noticias </a>
                         <a href="{% url 'ajustes_profesor' %}" class="col-3 btn btn-outline-success mx-3">ajustes </a>
@@ -53,12 +53,12 @@
 
         <div id="nav" class="contenedor contenedor-animacion col-2 my-4 p-0 border mx-auto">
 
-            <a href="{% url 'home_profesor' %}" id="botones"class="col-12 btn mx-auto boton-animacio my-3">
+            <a href="{% url 'home_profesor' %}#inicio" id="botones"class="col-12 btn mx-auto boton-animacio my-3">
               
                     <i class="fas fa-home"></i><span>Inicio</span>
               
             </a>
-            <a href="{% url 'materias_profesor' %}" id="botones" class="col-12 btn mx-auto boton-animacion my-3">
+            <a href="{% url 'home_profesor'  %}#materia" id="botones" class="col-12 btn mx-auto boton-animacion my-3">
                 
                 <i class="fas fa-book"></i><span> Materias </span>
                

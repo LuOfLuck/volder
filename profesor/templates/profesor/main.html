@@ -2,19 +2,21 @@
 {% load static %}
 {% block content %}
 
-<div class=" mid-contenido-animacion col-9 mx-auto my-4 px-4">
-    <h2 id="inicio" class="text-center my-4">inicio</h2> <hr>
-
-    <div class="tarea tarea-animacion col-12 col-md-12  border mx-auto my-2 py-2" >
-
-        <h3 class="text-center col-12 pt-3">ultimo trabajos</h3> <hr>
-
-            <h4 class="titulo text-center">{{ultimo_trabajo.materia}}</h4>
-            <p class="subitutlo text-muted"> del: {{ ultimo_trabajo.fecha_de_subida|date:'Y-m-d'}} | para el: {{ ultimo_trabajo.fecha_de_entrega|date:'Y-m-d' }}</p>
-            <hr>
-            
-            <p>  {{ultimo_trabajo}}  </p><br><br>
-            <a href="{% url 'ver_trabajo' ultimo_trabajo.id %}" class="btn btn-outline-primary">ver mas</a>
+<div class=" mid-contenido-animacion col col-md-9 mx-auto my-4 px-4">
+    
+    <p id="inicio" class="h2 text-muted text-center my-4">inicio</p> <hr>
+    
+    <div class="tarea tarea-animacion col-12  border mx-auto my-2 py-2" >
+    
+        <p class="h3 text-muted text-center col-12 pt-3">ultimo trabajos</p> <hr>
+    
+        <p class="h4 text-muted titulo text-center">{{ultimo_trabajo.materia}}</p>
+    
+        <p class="subitutlo text-muted"> del: {{ ultimo_trabajo.fecha_de_subida|date:'Y-m-d'}} | para el: {{ ultimo_trabajo.fecha_de_entrega|date:'Y-m-d' }}</p><hr>   
+    
+        <p>  {{ultimo_trabajo}}  </p><br><br>
+    
+        <a href="{% url 'ver_trabajo' ultimo_trabajo.id %}" class="btn btn-outline-primary">ver mas</a>
 
     </div>
 
@@ -22,7 +24,7 @@
         
         <div class="añadir-trabajo trabajos-animacion col-10 col-md-5 border my-2 mx-auto">
             <div class="añadir-trabajo-titulo">
-                <h4 class="mini-titulo text-center my-2">nuevo trabajo</h4><hr>
+                <p class="h4 text-muted mini-titulo text-center my-2">nuevo trabajo</p><hr>
             </div>
             <div class="añadir-trabajo-imagen">
                 <a href="{% url 'añadir_trabajo' %}" class="text-center">
@@ -32,21 +34,50 @@
         </div>
         
         {% for trabajo in trabajos %}
+            
             {% if trabajo.materia.profesor == user.profesor %}
         
                 <div class="trabajos trabajos-animacion col-10 col-md-5 border my-2 mx-auto p-3">
                                     
-                    <h4 class="titulo text-center">{{trabajo.materia}}</h4>
-                    <p class="subitutlo text-muted">Del: {{ trabajo.fecha_de_subida|date:'Y-m-d' }} | para: {{trabajo.fecha_de_entrega|date:'Y-m-d'}}</p>
-                    <hr>
+                    <p class="h4 text-muted titulo text-center">{{trabajo.materia}}</p>
+            
+                    <p class="subitutlo text-muted">Del: {{ trabajo.fecha_de_subida|date:'Y-m-d' }} | para: {{trabajo.fecha_de_entrega|date:'Y-m-d'}}</p><hr>
+                
                     <span>  {{trabajo}}  </span><br><br>
+                
                     <a href="{% url 'ver_trabajo' trabajo.id %}" class="btn btn-outline-primary float-right">ver mas</a>
 
                 </div>
 
+            
             {% endif %}
+        
         {% endfor %}
 
+    </div><hr>
+    
+    <div id="materia" class="materias row mt-5">
+        
+        <div class="titulo col-12">
+        
+            <p class="h2 text-muted text-center titulo-p"> Tus materias</p>
+        
+        </div>
+        
+        {% for materia in materias %}
+            
+            <div class="materias-materia col-12 col-md-5 border mx-auto my-2">
+            
+                <p class="h4 text-muted text-center col-12 my-2">{{materia.nombre}}</p><hr>
+            
+                <p >curso: {{materia.curso}}</p>
+
+                <a href="{% url 'ver_materia' materia.id %}" class="btn btn-outline-primary float-right my-2">inspeccionar</a>
+
+            </div>
+        
+        {% endfor %}
+    
     </div>
     
 </div>

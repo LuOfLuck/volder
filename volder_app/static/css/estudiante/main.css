@@ -131,7 +131,8 @@ header .pc p{
 
 }
 .tarea{
-    height: 800px;
+    height:auto;
+    max-height: 800px;
     overflow-y: auto;
     scrollbar-color: transparent;
     scrollbar-width: thin;
@@ -159,6 +160,7 @@ header .pc p{
     position: sticky;
     top: 20px; 
 }
+
 
 
 /**/    /**/    /**/    /**/    /**/   /**/
@@ -200,6 +202,11 @@ header .pc p{
 .compañeros .nick{
     font-size: smaller;
     margin-left: 40px;
+}
+@media (max-width: 426px) {
+    .subitulo-right{
+        float: left;
+    }
 }
 
 /****************************************************/
@@ -280,9 +287,11 @@ header .pc p{
 
 
 .trabajos-materia{
-    height: 200px;
+    height: auto;
 }
-
+.trabajos-materia a{
+    text-align: right;
+} 
 
 
 

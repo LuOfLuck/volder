@@ -133,15 +133,21 @@ def noticias_preceptor(request):
             if profesor_noticia_curso.curso ==  preceptor_cursos[0]:
                 profesor_noticia_filtrada += [profesor_noticia]
                 break
+
     if request.method == "POST":
         form = FormPreceptorNoticia(request.POST, request.FILES)
         if form.is_valid():
             model = form.save(commit=False)
             model.user = request.user
             model.save()
-
-
+            cursos = request.POST.getlist('cursos')     
+            for curso in cursos:
+                curso = Cursoos.objects.get(id=curso)            
+                model.curso.add(curso)
             messages.success(request, f'Publicacion completa con exito')
+        else:
+            messages.success(request, f'algo a salido mal :/')
+
 
     formualario = FormPreceptorNoticia()
     cont = {

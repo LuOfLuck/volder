@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<div class="mid-contenido-animacion col-10 col-md-7 mx-auto my-4 px-4">
+<div class="mid-contenido-animacion col-12 col-md-7 mx-auto my-4 px-4">
     
     <h2 id="inicio" class="text-center my-4">inicio</h2> <hr>
 
@@ -44,32 +44,56 @@
         
         {% for materia in materias %}
             
-            <div class="trabajos col-10 border p-2 my-2 mx-auto">
+            <div class="trabajos col-12 border p-2 my-2 mx-auto">
         
                 <h4 class="titulo text-center">{{materia.nombre}}</h4>
         
-                <div class="sibitulo col-12">
+                <div class="sibitulo row">
+                    <div class="col-12 col-sm">
+                        <p>profesor: <a href="{% url 'mensajes' materia.profesor.user_id %}">{{materia.profesor}} </a> </p>
         
-                    <p>profesor: <a href="{% url 'mensajes' materia.profesor.user_id %}">{{materia.profesor}} </a> </p>
+                    </div>
+                    <div class="col-12 col-sm">
+                        <p class="subitulo-right">tipo: aula</p>
         
-                    <p class="subitulo-right">tipo: aula</p>
-        
+                    </div>
+                    
+                   
                 </div>
     
-                <div class="sibitulo col-12">
+                <div class="sibitulo row">
+                   
+                    <div class="col-12 col-sm">
+                   
+                        <p>trabajos entregado: 0</p>
+                   
+                    </div>
+                   
+                    <div class="col-12 col-sm">
+                   
+                        <p class="subitulo-right">trabajos pendientes: {{materia.trabajos_entregados}}</p>
     
-                    <p>trabajos entregado: 0</p>
+                    </div>
+                    
     
-                    <p class="subitulo-right">trabajos pendientes: {{materia.trabajos_entregados}}</p>
-    
+                    
                 </div>
     
-                <div class="sibitulo col-12">
-    
-                    <p>trabajos totales: {{materia.total_trabajos}}</p>
-    
-                    <a href="materia/{{materia.id}}" class="boton-right btn btn-outline-primary">ver trabajos</a>
-    
+                <div class="sibitulo row">
+
+                    <div class="col-12 col-sm">
+
+                        <p>trabajos totales: {{materia.total_trabajos}}</p>
+
+                    </div>
+
+                    <div class="col-12 col-sm">
+
+                        <a href="materia/{{materia.id}}" class="boton-right btn btn-outline-primary">ver trabajos</a>
+
+                    </div>
+                   
+                   
                 </div>
     
             </div>

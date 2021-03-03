@@ -132,7 +132,7 @@
     
                 <div class="comentario mensaje-recibido col-10 col-md-11 my-2 ">
         
-                    <h6 class="nombre"> {{comentario.autor.estudiante}} </h6>
+                    <h6 class="nombre"> <a href="{% url 'mensajes' comentario.autor.id %}"> {{comentario.autor.estudiante}} </a> </h6>
         
                     <span class="mensaje">
         

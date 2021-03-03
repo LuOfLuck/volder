@@ -1,0 +1,188 @@
+{% extends 'profesor/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class=" mid-contenido-animacion border trabajos col col-md-9 mx-auto my-4 px-4">
+
+    <div class="row">
+
+        <div class="col col-md-10 mx-auto my-3 py-5 trabajo">
+           
+            <div id="vista">
+  
+                <a id="icon" onclick="editar()" class="btn float-right"> editar <i class="fas fa-pencil-alt"></i></a><hr>
+
+                <div class="col col-md-6 mx-auto">
+
+                    <p class="h2 text-center text-muted">{{noticia}}</p>
+                    
+                </div>
+
+                <div class="publicacion my-3">
+
+                    <div class="cuerpo">
+                    
+                        <p> {{noticia.mensaje|linebreaks}} </p>
+
+                        <p> url: <a href="{{noticia.url}}">{{noticia.url}}</a></p>
+                    
+                    </div>
+                    
+                    <div class="imagen">
+                    
+                        {% if noticia.imagen %}
+
+                            <img src="{{noticia.imagen.url}}" alt="{{noticia}}">
+                        
+                        {% endif %}
+
+                    </div>
+                
+                </div>
+            
+                <div class="comentario my-3">
+             
+                    <div class="titulo col">
+             
+                        <p class="h3 text-muted ">comentarios:</p>
+             
+                    </div>
+             
+                    <div class="comentarios p-3 col col-md-10 mx-auto border">
+             
+                        {% for comentario in comentarios %}
+             
+                           <div class="comentario-persona">
+                                
+                                <div class="comentario-persona-nombre">
+
+                                    <a href="{% url 'mensajes' comentario.user.id %}"><p class="h5 text-muted">{{comentario.user}}:</p></a>
+                            
+                                </div>
+
+                
+                                <div class="comentario-persona-mensaje ml-2">
+                
+                                    <p>  {{comentario.mensaje}} </p> <hr>
+                
+                                </div>
+                
+                            </div>
+                
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="nuevo-comentario p-3 col col-md-10 mx-auto border">
+                       
+                        <form action="" method="POST">{% csrf_token %}
+                            
+                            <div class="row">
+                            
+                                <textarea name="comentario" rows="2" class="form-control col-8 mx-auto" required></textarea>
+                            
+                                <button class="btn"><i class="far fa-paper-plane"></i></button>
+                        
+                            </div>
+                   
+                        </form>
+                   
+                    </div>
+                
+                </div>
+
+            </div>
+            
+            <div id="edicion">
+                
+                <a id="icon" onclick="cancelar()" class="btn float-right"> cancelar <i class="fas fa-pencil-alt"></i></a><hr>
+            
+                <form action="" method="POST"  enctype="multipart/form-data"> {% csrf_token %}
+
+                    <div class="form-grup col col-md-6 mx-auto">
+
+                       
+                       {{formulario.titulo}}
+
+                    </div>
+
+                    <div class="publicacion my-3 form-grup">
+
+                        <div class="cuerpo">
+                            
+                            {{formulario.mensaje}}
+                            
+                            <div class="form-group  my-2">
+                        
+                                {{formulario.url}}
+
+                            </div>
+                            
+                            <div class="form-group  my-2">
+                                
+                                <select id="id_materia" name="materias" multiple required>
+                                    
+                                    {% for materia in materias %}
+                                   
+                                        <option value="{{materia.id}}" {% for materia2 in materias_de_noticias %} {% ifequal materia materia2 %} selected   {% endifequal %} {% endfor %}>{{materia}}</option>
+
+                                    {% endfor %}
+
+                                </select>
+
+                            
+                            </div>
+                        
+                        </div>
+                        
+                        <div class="imagen">
+                        
+                            {% if noticia.imagen %}
+
+                                <label for="id_imagen"><img src="{{noticia.imagen.url}}" alt="{{noticia}}"> </label>
+                    
+                            {% endif %}
+
+                            {{formulario.imagen}}
+                            
+
+                        </div>
+                    
+                    </div>
+                
+                    <button type="sudmit" class="btn btn-outline-primary">actualizar</button>
+
+                </form>
+           
+            </div>
+            
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    vista = document.getElementById("vista");
+   
+    edicion = document.getElementById("edicion");
+   
+    vista.style.display ="none";
+   
+    function editar(){
+        edicion.style.display ="block"; 
+        vista.style.display ="none";
+    }   
+   
+    function cancelar(){
+        edicion.style.display ="none"; 
+        vista.style.display ="block";
+    }   
+ 
+
+</script>
+{% endblock %}

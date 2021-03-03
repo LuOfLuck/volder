@@ -1,0 +1,89 @@
+{% extends 'profesor/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class=" mid-contenido-animacion border trabajos col col-md-9 mx-auto my-4 px-4">
+        
+        {% if trabajos %}
+        
+            <div class="row">
+                
+                <div class="col-12 titulo p-3 my-3">
+                    
+                    <p class="h2 text-center text-muted">Trabajos <span class="desaparecer"> de {{materia}} </span></p>
+
+                </div>
+
+                {% for trabajo in trabajos %}
+                
+                    <div class="col-10 col-md-5 mx-auto my-3 border trabajos ">
+
+                        <p class="h4 text-muted text-center mt-2">{{trabajo}}</p><hr>
+
+                        <p class="subitutlo text-muted">Del: {{ trabajo.fecha_de_subida|date:'Y-m-d' }} | para: {{trabajo.fecha_de_entrega|date:'Y-m-d'}}</p><hr>
+                
+                        <span>  {{trabajo }}  </span><br><br>
+                    
+                        <a href="{% url 'ver_trabajo' trabajo.id %}" class="btn btn-outline-primary float-right mb-2">ver mas</a>
+    
+                    </div>
+                        
+                {% endfor %}
+        
+            </div>
+
+        {% else %}
+
+            <div class="notification">
+            
+                <p class="h2 text-muted text-center my-5"> no hay trabajos <a href="{% url 'añadir_trabajo' %}">¿publicar?</a></p> 
+                
+            </div>
+        
+        {% endif %}
+        
+
+        
+        {% if noticias %}
+
+            
+            <div class="row">
+                
+                <div class="col-12 p-3 my-3 titulo">
+                    
+                    <p class="h2 text-center text-muted">Noticias</p>
+
+                </div>
+                    
+
+                {% for noticia in noticias %}    
+            
+                    <div class="col-10 col-md-5 mx-auto my-3 border trabajos">
+
+                        <p class="h4 text-muted text-center my-2">{{noticia.titulo}}</p><hr>
+
+                        <p>{{noticia.mensaje|truncatewords:"30"|linebreaks}}</p>
+
+                        <a href="{% url 'ver_noticia_profesor' noticia.id %}" class="btn btn-outline-primary float-right mb-2">ver completo</a>
+    
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+        <div class="notification">
+            
+            <p class="h2 text-muted text-center my-5"> no hay ninguna noticia <a href="{% url 'noticias_profesor' %}">¿publicar?</a></p> 
+            
+        </div>
+
+        {% endif %}
+    </div>
+
+{% endblock %}

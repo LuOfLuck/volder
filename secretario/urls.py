@@ -13,6 +13,7 @@ urlpatterns = [
     path('ajustes', login_required(views.ajustes_secretario), name="ajustes_secretario"),
     path('cursos', login_required(views.secretario_cursos), name="secretario_cursos"),
     path('inspeccionar_curso/<int:id_curso>', login_required(views.inspeccionar_curso), name="inspeccionar_curso"),
+    path('ver_noticia/<int:id_noticia>', login_required(views.ver_noticia_secretario), name="ver_noticia_secretario"),
 
 ]
 

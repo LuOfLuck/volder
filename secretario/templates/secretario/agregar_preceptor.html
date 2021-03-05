@@ -43,7 +43,7 @@
           
                 <label for="validationTooltip01">DNI</label>
           
-                <input type="number" class="form-control border " name="dni" placeholder="DNI" required>
+                <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="8" class="form-control border " name="dni" placeholder="DNI" required>
           
             </div>
             <div class="col-md-5 mx-auto">

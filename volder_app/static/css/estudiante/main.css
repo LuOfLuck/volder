@@ -366,7 +366,25 @@ header .pc p{
     background-color:rgba(45, 127, 182, 0.774);
     color:white;
 }
+@media (max-width: 768px) {
+    .publicaciones-top-foto img{
+        height: 35px;
+        width: 35px;
 
+    }
+    .publicaciones-top-nick h4{
+        font-size: 0.7rem;
+    }
+    .publicaciones-imagen img{
+        height: 200px;
+    }
+    .publicaciones-titulo h3{
+        font-size: 0.9rem;
+    }
+    .publicaciones-contenido p,.publicaciones-link p{
+        font-size: 0.8rem;
+    }
+}
 
 /**/    /**/    /**/    /**/    /**/
 /**/                            /**/

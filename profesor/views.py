@@ -209,9 +209,6 @@ def ver_noticia_profesor(request, id_noticia):
                 materia_recibidas = Materia.objects.get(id=materia_recibidas) 
                 materias_de_noticias +=  [materia_recibidas]        
                 instancia.materia.add(materia_recibidas)
-
-
-            
         else:
             try:
                 comentario = request.POST["comentario"]

@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 class Cursoos(models.Model):
     curso = models.CharField(max_length=10, null=True, blank=True)
     division = models.CharField(max_length=10, null=True, blank=True)
+    class Meta():
+        ordering = ['curso']
     def __str__(self):
         curso_y_division = self.curso + "-" + self.division
         return curso_y_division
@@ -148,6 +150,9 @@ class Trabajo(models.Model):
     consigna = models.CharField(max_length=50)
     contenido = models.TextField()
     fuentes = models.CharField(max_length=50)
+    class Meta():
+        ordering = ['fecha_de_subida']
+        
     def __str__(self):
         return self.titulo
    

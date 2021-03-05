@@ -3,15 +3,15 @@
 {% block content %}
 
 
-<div class="mid-contenido mid-contenido-animacion border col-10 col-md-9 mx-auto my-4 px-4 py-2">
+<div class="mid-contenido mid-contenido-animacion border col col-md-9 mx-auto my-4 px-4 py-2">
 
-    <form action="" method="POST" class="col-8 ml-auto">{% csrf_token %}
+    <form action="" method="POST" class="col">{% csrf_token %}
 
-        <div class="form-row align-items-center">
+        <div class="form-row ">
         
-            <label class="h4 text-muted col-7">seleccione curso a gestionar:</label>
+            <p class="h4 text-muted col-12 col-md-7">seleccione curso a gestionar:</p>
         
-            <select name="curso" class="form form-control col-3 mx-1">
+            <select name="curso" class="form form-control col-8 col-md-3 mx-1">
 
                         <option value="{{curso.id}}" selected>
                         
@@ -34,7 +34,7 @@
                     
             </select>
         
-            <button type="submit" class="form-control col-1 mx-1"><i class="fas fa-wrench"></i></button>
+            <button type="submit" class="form-control col-3 col-md-1 mx-1"><i class="fas fa-wrench"></i></button>
         
         </div>
     
@@ -42,7 +42,7 @@
 
 
     
-    <h3 class="text-center col-12 pt-3">{{curso}}</h3> <hr>
+    <h3 class="text-center text-muted col-12 pt-5">{{curso}}</h3> <hr>
 
     <div class="col-10 mx-auto my-5 border estudiantes">
         
@@ -50,15 +50,11 @@
         
         <div class="row">
         
-            <div class="col-5 mx-auto my-3 border agragar-estudiantes">
+            <div class="col-10 col-md-5 mx-auto my-3 border agragar-estudiantes">
         
                 <a href="{% url 'agregar_estudiante' curso.id  %}">
         
-                    <h4><img src="{% static 'img/mas.png' %}" class="logo">
-        
-                        agragar estudiantes
-        
-                    </h4>
+                    <p class="h4 "><img src="{% static 'img/mas.png' %}" class="logo"> agragar estudiantesm</p>
         
                 </a>
         
@@ -66,7 +62,7 @@
         
             {% for estudiante in estudiantes%}
         
-                <div class="col-5 mx-auto my-3 border">
+                <div class="col-10 col-md-5 mx-auto my-3 border">
         
                     <h4 class="text-muted text-center"> 
                         
@@ -92,15 +88,11 @@
 
         <div class="row">
         
-            <div class="col-5 mx-auto my-3 border agragar-estudiantes">
+            <div class="col-10 col-md-5 mx-auto my-3 border agragar-estudiantes">
         
                 <a href="{% url 'agregar_materia' curso.id %}">
         
-                    <h4><img src="{% static 'img/mas.png' %}" class="logo">
-        
-                        agragar materia
-        
-                    </h4>
+                    <h4><img src="{% static 'img/mas.png' %}" class="logo">agragar materia </h4>
         
                 </a>
         
@@ -108,9 +100,9 @@
         
             {% for materia in materias%}
         
-                <div class="col-5 mx-auto my-3 border">
+                <div class="col-10 col-md-5 mx-auto my-3 border">
         
-                    <h4 class="text-muted text-center"> {{materia.nombre}}</h4>
+                    <h4 class="text-muted text-center"><a href="{% url 'ver_materia_preceptor' materia.id %}"> {{materia.nombre}} </a></h4>
         
                 </div>
         

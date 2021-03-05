@@ -8,7 +8,7 @@ class FormSecreatarioNoticia(forms.ModelForm):
 
         model = SecretarioNoticia
         widgets = {
-            'titulo': forms.TextInput(attrs={'placeholder': 'Titulo...'}),
+            'titulo': forms.TextInput(attrs={'placeholder': 'Titulo'}),
             'mensaje': forms.Textarea(attrs={'placeholder': '¿en que estas pensando?...'}),
             'url': forms.TextInput(attrs={'placeholder': 'https://www.volder.online'}),
         }
@@ -19,7 +19,7 @@ class FormPreceptorNoticia(forms.ModelForm):
 
         model = PreceptorNoticia
         widgets = {
-            'titulo': forms.TextInput(attrs={'placeholder': 'Titulo...'}),
+            'titulo': forms.TextInput(attrs={'placeholder': 'Titulo'}),
             'mensaje': forms.Textarea(attrs={'placeholder': '¿en que estas pensando?...'}),
             'url': forms.TextInput(attrs={'placeholder': 'https://www.volder.online'}),
         }
@@ -30,7 +30,7 @@ class FormProfesorNoticia(forms.ModelForm):
 
         model = ProfesorNoticia
         widgets = {
-            'titulo': forms.TextInput(attrs={'placeholder': 'Titulo...'}),
+            'titulo': forms.TextInput(attrs={'placeholder': 'Titulo'}),
             'mensaje': forms.Textarea(attrs={'placeholder': '¿en que estas pensando?...'}),
             'url': forms.TextInput(attrs={'placeholder': 'https://www.volder.online'}),
         }

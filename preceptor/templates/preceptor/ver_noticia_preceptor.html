@@ -1,8 +1,48 @@
-{% extends 'profesor/base.html' %}
-
+{% extends 'preceptor/base.html' %}
 {% load static %}
-
 {% block content %}
+<style>
+*{
+    outline: none;
+}
+
+#id_titulo{
+    text-align: center;
+    font-size: 1.3rem;
+}
+#id_titulo, #id_mensaje,#id_url, #id_materia{
+    padding: 1rem;
+    border: 1px solid rgba(126, 126, 126, 0.384);
+    border-radius: 10px;
+}
+#id_titulo, #id_mensaje,#id_materia{
+    width: 100%;
+}
+#id_url{
+    width: 70%;
+}
+#id_titulo:focus, #id_mensaje:focus,#id_url:focus, #id_imagen:focus,#id_materia:focus{
+    border: 3px solid rgba(39, 224, 209, 0.555);
+    border-radius: 10px !important;
+
+}
+
+.comentario-persona-nombre p{
+    margin-bottom: 0px;
+}
+.imagen img{
+    width: 100%;
+    height: 400px;
+}
+@media (max-width: 768px) {
+    .imagen img{
+        width: 100%;
+        height: 50%;
+    }
+}
+
+
+</style>
 
 <div class=" mid-contenido-animacion border trabajos col col-md-9 mx-auto my-4 px-4">
 
@@ -26,8 +66,12 @@
                     
                         <p> {{noticia.mensaje|linebreaks}} </p>
 
-                        <p> url: <a href="{{noticia.url}}">{{noticia.url}}</a></p>
+                        {% if noticia.url %}
+
+                            <p> url: <a href="{{noticia.url}}">{{noticia.url}}</a></p>
                     
+                        {% endif %}
+
                     </div>
                     
                     <div class="imagen">
@@ -81,9 +125,9 @@
                             
                             <div class="row">
                             
-                                <textarea name="comentario" rows="2" class="form-control col-8 mx-auto" required></textarea>
+                                <textarea name="comentario" rows="2" class="form-control col-10 mx-auto" placeholder="Escribe un comentario..." required></textarea>
                             
-                                <button class="btn"><i class="far fa-paper-plane"></i></button>
+                                <button class="btn"><i class="mx-auto far fa-paper-plane"></i></button>
                         
                             </div>
                    
@@ -122,12 +166,12 @@
                             
                             <div class="form-group  my-2">
                                 
-                                <select id="id_materia" name="materias" multiple required>
+                                <select id="id_materia" name="cursos" multiple required>
                                     
-                                    {% for materia in materias %}
+                                    {% for curso in cursos %}
                                    
-                                        <option value="{{materia.id}}" {% for materia2 in materias_de_noticias %} {% ifequal materia materia2 %} selected   {% endifequal %} {% endfor %}>{{materia}}</option>
-
+                                        <option value="{{curso.id}}"  {% for curso2 in cursos_de_noticias %} {% ifequal curso curso2 %} selected   {% endifequal %} {% endfor %}>{{curso}}</option>
+                                       
                                     {% endfor %}
 
                                 </select>

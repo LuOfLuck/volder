@@ -4,7 +4,7 @@ from volder_app.decorators import RequiredUserAttribute
 from django.contrib import messages
 from django.forms import modelformset_factory
 from usuarios.models import Profesor, Preceptor, Cursoos, Estudiante, Materia
-from noticias.models import SecretarioNoticia, PreceptorNoticia, ProfesorNoticia
+from noticias.models import SecretarioNoticia, SecretarioNoticiaComentarios, PreceptorNoticia, ProfesorNoticia
 from mensajes.models import Grupo_chat
 from noticias.forms import FormSecreatarioNoticia
 import string
@@ -102,6 +102,27 @@ def noticias(request):
         "formulario":formulario,
     }   
     return render(request, "secretario/noticias.html", cont)
+
+def ver_noticia_secretario(request, id_noticia):
+    noticia = SecretarioNoticia.objects.get(id=id_noticia)
+    comentarios = SecretarioNoticiaComentarios.objects.filter(noticia=noticia)
+    formulario = FormSecreatarioNoticia(instance=noticia)
+    if request.method == "POST":
+        # Actualizamos el formulario con los datos recibidos
+        formulario =   FormSecreatarioNoticia(request.POST, request.FILES, instance=noticia)
+        # Si el formulario es válido...
+        if formulario.is_valid():
+            instancia = formulario.save(commit=False)
+            # Podemos guardarla cuando queramos
+            instancia.user = request.user
+            instancia.save()
+            
+    cont = {
+        "noticia":noticia,
+        "comentarios":comentarios,
+        "formulario":formulario,
+    }
+    return render(request, "secretario/ver_noticia_secretario.html", cont)
 
 def ajustes_secretario(request):
     return render(request, "secretario/ajustes_secretario.html")

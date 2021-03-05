@@ -1,0 +1,26 @@
+*,.row{
+    margin: 0;
+    padding: 0;
+}
+.main{
+    height: 100vh;
+}
+.card-title h2{
+    font-size:2rem;
+    }
+
+@media(max-width: 767px){
+    .main{
+        background-color: red;
+    }
+    .card-title h2{
+    font-size:3.5rem;
+    }
+    label{
+        font-size:2rem;
+    }
+    input{
+        height: 3rem;
+        width: auto;
+    }
+}

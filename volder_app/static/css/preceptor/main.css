@@ -2,7 +2,10 @@
 html.sr .load-hidden {
     visibility: hidden;
 }
-
+*, .row{
+    padding:0px;
+    margin:0px;
+}
 
 /****************************************************/
 
@@ -126,7 +129,11 @@ header .pc p{
 /**/  /* CONTENEDORES INDEX */  /**/
 /**/                            /**/
 /**/    /**/    /**/    /**/    /**/
-
+.titulo p{
+    border: 1px solid rgba(133, 133, 133, 0.308);
+    border-radius: 10px;
+    padding: 1rem;
+}
 
  
 .border{
@@ -142,9 +149,8 @@ header .pc p{
 .estudiantes{
     overflow-y: auto;
     height: 300px;
-    box-shadow: 5px -2px 5px rgb(171, 173, 173);
 }
-.form-agregar{
+.form-agregar, .estudiantes, .titulo p{
     box-shadow: 5px -2px 5px rgb(171, 173, 173);
 }
 .agragar-estudiantes{
@@ -194,44 +200,6 @@ header .pc p{
 }
 .mid-tarea{
     height: auto;
-}
-#container-comentario{
-    height: 85vh !important;
-}
-.comentarios{
-    height: 60vh;
-    overflow-y: scroll;
-}
-.comentario{
-    margin-top: 10px;
-}
-.comentario .nombre{
-    font-size: 10px;
-}
-.comentario .mensaje{
-    font-size: 10px;
-}
-.mensaje-enviado{
-    background-color:rgba(63, 63, 62, 0.233);
-}
-.comentario-respuesta{
-    display: block;
-    float: right;
-}
-.enviar-comentario{
-    margin-top: 10px;
-    position:absolute;
-    bottom: 0px;
-}
-.comentario-form input{
-    height: 20px;
-    position: sticky;
-}
-.input-texto{
-    font-size: 10px;
-}
-.input-sudmit{
-    height: 30px;
 }
 
 
@@ -442,10 +410,13 @@ header .pc p{
         height: 200px;
     }
     .publicaciones-titulo h3{
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
-    .publicaciones-contenido p{
-        font-size: 0.6rem;
+    .publicaciones-contenido p, .publicaciones-link p{
+        font-size: 0.8rem;
+    }
+    .desaparecer{
+        display:none;
     }
 }
 

@@ -42,6 +42,7 @@ header .pc p{
 
 }
 
+
 /**/    /**/    /**/    /**/
 /**/                    /**/
 /**/  /* FIN HEADER */  /**/
@@ -476,12 +477,9 @@ header .pc p{
 
 /**/    /**/    /**/    /**/    /**/
 /**/                            /**/
-/**/   /* FIN POPOU NOTIFIC */  /**/
+/**/   /* FORMULARIO NOTICI */  /**/
 /**/                            /**/
 /**/    /**/    /**/    /**/    /**/
-.imagen a{
-    display:none;
-}
 
 #id_titulo{
     text-align: center;
@@ -577,7 +575,6 @@ header .pc p{
     .publicaciones-top-foto img{
         height: 35px;
         width: 35px;
-
     }
     .publicaciones-top-nick h4{
         font-size: 0.7rem;
@@ -586,12 +583,11 @@ header .pc p{
         height: 200px;
     }
     .publicaciones-titulo h3{
-        font-size: 1rem;
+        font-size: 0.9;
     }
     .publicaciones-contenido p,
-    .publicaciones-link p,
-    {
-        font-size: 0.6rem;
+    .publicaciones-link p{
+        font-size: 0.8rem;
     }
 }
 

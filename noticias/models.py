@@ -22,6 +22,19 @@ class SecretarioNoticia(models.Model):
     def __str__(self):
         return self.titulo
 
+class SecretarioNoticiaComentarios(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE, null=True, blank=True)
+    mensaje = models.TextField(max_length=400)
+    noticia= models.ForeignKey(SecretarioNoticia, on_delete = models.CASCADE, null=True, blank=True)
+
+    class Meta():
+        verbose_name = "Secretario Comenario"
+        verbose_name_plural = "Secretarioes Comentarios"
+
+    def __str__(self):
+        devuelve = f"{self.user} comento en {self.noticia}: {self.mensaje}"
+        return devuelve
+
 class PreceptorNoticia(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, null=True, blank=True)
     titulo = models.CharField(max_length=50)
@@ -37,6 +50,19 @@ class PreceptorNoticia(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class PreceptorNoticiaComentarios(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE, null=True, blank=True)
+    mensaje = models.TextField(max_length=400)
+    noticia= models.ForeignKey(PreceptorNoticia, on_delete = models.CASCADE, null=True, blank=True)
+
+    class Meta():
+        verbose_name = "Preceptor Comenario"
+        verbose_name_plural = "Preceptores Comentarios"
+
+    def __str__(self):
+        devuelve = f"{self.user} comento en {self.noticia}: {self.mensaje}"
+        return devuelve
 
 class ProfesorNoticia(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, null=True, blank=True)

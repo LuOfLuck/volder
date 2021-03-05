@@ -28,6 +28,7 @@ urlpatterns = [
     path('preceptor/', include('preceptor.urls')),
     path('secretario/', include('secretario.urls')),
     path('mensajes/', include('mensajes.urls')),
+    path('noticias/', include('noticias.urls')),
     path('', LoginView.as_view(template_name='registration/login.html', redirect_authenticated_user=True), name="login"),
     path('logout/', LogoutView.as_view(template_name='registration/logout.html'), name="logout"),
     path('change-password/', auth_views.PasswordChangeView.as_view(template_name='change-password.html'), name="password_change")

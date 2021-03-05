@@ -106,4 +106,7 @@ header .pc p{
     .container{
         margin-top: 0px;
     }
+    .receptor-nombre{
+        text-align: center;
+    }
 }

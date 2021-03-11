@@ -15,6 +15,16 @@ import random
 def main(request):
     return render(request, "secretario/main.html")
     
+@RequiredUserAttribute(attribute = 'secretario', redirect_to_url = '/estudiante/')
+def ver_preceptores(request):
+
+    preceptores = Preceptor.objects.all()
+
+
+    cont = {
+        "usuarios":preceptores,
+    }
+    return render (request, "secretario/inspeccionar.html",cont)
 
 @RequiredUserAttribute(attribute = 'secretario', redirect_to_url = '/estudiante/')
 def agregar_preceptor(request):
@@ -50,6 +60,33 @@ def agregar_preceptor(request):
     }
     return render(request, "secretario/agregar_preceptor.html", cont)
 
+@RequiredUserAttribute(attribute = 'secretario', redirect_to_url = '/estudiante/')
+def ver_profesores(request):
+
+    profesores = Profesor.objects.all()
+    materias = Materia.objects.all()
+
+    cont = {
+        "usuarios":profesores,
+        "materias":materias,
+    }
+    return render (request, "secretario/inspeccionar.html",cont)
+
+@RequiredUserAttribute(attribute = 'secretario', redirect_to_url = '/estudiante/')
+def ver_estudiantes(request):
+
+    estudiante = Estudiante.objects.all().order_by("curso")
+    
+    if request.method == "POST":
+        dni = request.POST["dni"]
+        print(dni)
+        estudiante = Estudiante.objects.filter(dni = dni)
+
+    cont = {
+        "usuarios":estudiante,
+       
+    }
+    return render (request, "secretario/inspeccionar.html",cont)
 
 @RequiredUserAttribute(attribute = 'secretario', redirect_to_url = '/estudiante/')
 def agregar_profesor(request):
@@ -110,10 +147,10 @@ def ver_noticia_secretario(request, id_noticia):
     if request.method == "POST":
         # Actualizamos el formulario con los datos recibidos
         formulario =   FormSecreatarioNoticia(request.POST, request.FILES, instance=noticia)
-        # Si el formulario es válido...
+
         if formulario.is_valid():
             instancia = formulario.save(commit=False)
-            # Podemos guardarla cuando queramos
+            # Creamos pero no guardamos para hacer ediciones
             instancia.user = request.user
             instancia.save()
             

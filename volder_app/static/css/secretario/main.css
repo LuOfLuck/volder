@@ -341,6 +341,9 @@ header .pc p{
     .publicaciones-contenido p,.publicaciones-link p{
         font-size: 0.8rem;
     }
+    .desaparecer{
+        display:none;
+    }
 }
 
 

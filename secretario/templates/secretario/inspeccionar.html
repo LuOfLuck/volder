@@ -1,0 +1,109 @@
+{% extends 'preceptor/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="mid-contenido mid-contenido-animacion border trabajos col col-md-9 mx-auto my-4 px-4">
+
+    <form action="" method="POST"> {% csrf_token %}
+    
+        <div class="col-12 col-md-6 ml-auto my-4">
+         
+            <div class="row">
+            
+                <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" class="col-8 form-control border " name="dni" maxlength="8" placeholder="DNI" required>
+
+                <button class="col-3 mx-auto  btn btn-outline-primary" type="submit">Submit form</button>
+           
+            </div>
+        
+        </div>
+
+    </form>
+
+    <div class="perfil row">
+
+        {% for usuario in usuarios %}
+
+            <div class="col-12 col-md-5 mx-auto">
+
+                <div class="informacion-personal border p-3 my-4">
+
+                    <div class="foto col-12">
+
+                        <img src="{{usuario.imageURL}}">
+
+                    </div>
+
+                    <div class="nombre col-12 ">
+
+                        <p class="mx-auto"> <a href="{% url 'mensajes' usuario.user.id %}">  {{usuario.apellido}}  {{usuario.nombre}}  </a>  </p>
+
+                    </div>
+
+                    
+                    <div class="email col-12">
+                        
+                        <p> Email de contancto: {{usuario.user.email}} </p>
+                        
+                    </div>
+                    
+                    <div class="dni col-12 ">
+
+                        <p class="mx-auto"> DNI: {{usuario.dni}}  </a>  </p>
+
+                    </div>
+
+                    <div class="username col-12">
+
+                        <p>Nombre de usuario: {{usuario.user}}</p>
+
+                    </div>
+
+                    <div class="curso col-12">
+
+                        <p>
+
+                        {% if usuario.cursos %}
+                            
+                            cursos:
+                    
+                            {% for curso in usuario.cursos.all %}
+                            
+                                <a href="{% url 'inspeccionar_curso' curso.id %}"> {{curso}} </a> /
+                                
+                            {% endfor %}
+                        
+                        {% elif materias %}
+                        
+                            materias:
+                        
+                            {% for materia in materias %}
+                        
+                                {% if usuario == materia.profesor %}
+                        
+                                    <a href="{% url 'ver_materia_preceptor' materia.id %}"> {{materia}} </a> /
+                        
+                                {% endif %}
+                        
+                            {% endfor %}
+
+                        {% else %}
+
+                            curso: <a href="{% url 'inspeccionar_curso' usuario.curso.id %}"> {{usuario.curso}} </a> 
+                        
+                        
+                        {% endif %}
+                    
+                        </p>
+                
+                    </div>
+
+                </div>
+            
+            </div>  
+
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

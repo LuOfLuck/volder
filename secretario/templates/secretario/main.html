@@ -3,24 +3,41 @@
 {% block content %}
 
 <div class="mid-contenido mid-contenido-animacion border col col-md-9 mx-auto my-4 px-4">
+ 
     <h2 class="text-muted text-center"> E.E.S.T N°1021</h2><hr>
+ 
     <div class="row my-3">
+ 
         <div class="totales cursos-totales col-10 col-md-5 border mx-auto my-3">
+ 
             <h5 class="text-muted">cursos:</h5>
+ 
             <p>la escuela cuenta con {{user.secretario.total_cursos}} cursos en funcionamiento. <a href="{% url 'secretario_cursos' %}" class="">inspeccionar</a></p>
+ 
         </div>
+ 
         <div class="totales preceptores-totales col-10 col-md-5 border mx-auto my-3">
+      
             <h5 class="text-muted">preceptores:</h5>
-            <p>la escuela cuenta con {{user.secretario.total_preceptores}} preceptores creados. puede <a href="{% url 'agregar_preceptor' %}">agregar</a> o <a href="">inspeccionar</a></p>
+      
+            <p>la escuela cuenta con {{user.secretario.total_preceptores}} preceptores creados. puede <a href="{% url 'agregar_preceptor' %}">agregar</a> o <a href="{% url 'ver_preceptores' %}">inspeccionar</a></p>
+      
         </div>
 
         <div class="totales profesores-totales col-10 col-md-5 border mx-auto my-3">
+   
             <h5 class="text-muted">profesores:</h5>
-            <p>la escuela cuenta con {{user.secretario.total_profesores}} profesores creados. puede <a href="{% url 'agregar_profesor' %}">agregar</a> o <a href="">inspeccionar</a></p>
+   
+            <p>la escuela cuenta con {{user.secretario.total_profesores}} profesores creados. puede <a href="{% url 'agregar_profesor' %}">agregar</a> o <a href="{% url 'ver_profesores' %}">inspeccionar</a></p>
+   
         </div>
+
         <div class="totales estudiante-totales col-10 col-md-5 border mx-auto my-3">
+       
             <h5 class="text-muted">estudiantes:</h5>
-            <p>la escuela cuenta con {{user.secretario.total_estudiantes}} estudiantes creados. puede <a href="">agregar</a> o <a href="">inspeccionar</a></p>
+       
+            <p>la escuela cuenta con {{user.secretario.total_estudiantes}} estudiantes creados. <a href="{% url 'ver_estudiantes' %}">inspeccionar</a></p>
+       
         </div>
     </div>
 </div>

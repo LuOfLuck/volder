@@ -1,52 +1,105 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="{% static 'css/login.css' %}" >
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    </head>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <body>
-        
-     
+	<title>Document</title>
 
-        <div class="row main" >
+	<link rel="icon" href="{% static 'img/icon-volder.png' %}">
+	<link rel="stylesheet" href="{% static 'css/estilo-login.css' %}">
+</head>
+<body>
+	<header>
+		<div class="vold-logo">
+			<img src="{% static 'img/volder-logo.png' %}" alt="Volder Logo" title="Volder">
+		</div>
+		<a href="http://luofluck.rf.gd/volder" target="_blank">
+			<div class="sobre-volder">
+				<p>¿Cómo funciona Volder?</p>
+			</div>
+		</a>
+	</header>
 
-            <div class="card col-md-10 col-lg-6 my-auto mx-auto">
-            
-                <div class="card-body" >
-        
-                    <div class="card-title" style="text-align: center;">
-        
-                        <h2>ingresa tus credenciales</h2><hr>
-        
-                    </div>
-        
-                    <form action="" method="POST">
-        
-                        {% csrf_token %}
-        
-                        <table class="mx-auto my-4">
-        
-                            {{ form.as_table }}
-        
-                        </table>
-        
-                        <input type="submit" value="Iniciar sesion" class="btn btn-success float-right">
-        
-                        <a href="{% url 'password_change' %}" class="btn btn-secondary mr-1">¿olviste tu contraseña?</a>
-        
-                    </form>
-        
-                </div>
-        
+	<div class="main">
+
+        <div class="login">
+
+            <div class="form-top">
+
+                <p>Iniciar Sesión</p>
+
             </div>
-        
+
+            <form action="" method="POST">{% csrf_token %}
+
+                <label for="id_username">Usuario</label>
+
+                {{ form.username}}
+
+                <label for="id_password">Contraseña</label>
+
+                {{ form.password}}
+
+                <div class="forget-pass">
+
+                    <a href="{% url 'password_change' %}">¿Olvidaste la contraseña?</a>
+
+                </div>
+
+                <input type="submit" value="Enviar" name="Enviar">
+
+            </form>
+
         </div>
-        <script src="{% static 'js/jquery-3.4.1.slim.min.js' %}" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-   
-        <script src="{% static 'js/bootstrap.min.js' %}" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    
-    </body>
+
+    </div>
+
+	<footer>
+
+        <div class="footer">
+
+            <div class="col-foot redes">
+
+                <div class="top-redes">
+
+                    <p>Redes</p>
+
+                </div>
+
+                <div class="redes-img">
+
+                    <img src="{% static 'img/instagram.png' %}" alt="Instagram" title="Instagram">
+
+                    <p>Instagram</p>
+
+                    <img src="{% static 'img/youtube.png' %}" alt="Youtube" title="Youtube">
+
+                    <p>Youtube</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-foot politicas">
+
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita perspiciatis facilis culpa quidem qui. Illum, illo alias error saepe laborum, odio autem fugit quos, blanditiis veritatis nesciunt, qui id pariatur.</p>
+
+            </div>
+
+            <div class="col-foot foot-email">
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium sint dignissimos corrupti, tempora vero libero facilis sit, asperiores excepturi fugiat ducimus officia magnam fugit quo quas recusandae inventore cupiditate natus!</p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom"></div>
+
+    </footer>
+
+</body>
 
 </html>

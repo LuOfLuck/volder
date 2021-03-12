@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from volder_app.decorators import RequiredUserAttribute
 from django.contrib import messages
@@ -19,6 +19,9 @@ def main(request):
 def ver_preceptores(request):
 
     preceptores = Preceptor.objects.all()
+    if request.method == "POST":
+        dni = request.POST["dni"]
+        preceptores = Preceptor.objects.filter(dni = dni)
 
 
     cont = {
@@ -65,6 +68,9 @@ def ver_profesores(request):
 
     profesores = Profesor.objects.all()
     materias = Materia.objects.all()
+    if request.method == "POST":
+        dni = request.POST["dni"]
+        profesores = Profesor.objects.filter(dni = dni)
 
     cont = {
         "usuarios":profesores,
@@ -79,7 +85,6 @@ def ver_estudiantes(request):
     
     if request.method == "POST":
         dni = request.POST["dni"]
-        print(dni)
         estudiante = Estudiante.objects.filter(dni = dni)
 
     cont = {
@@ -140,8 +145,13 @@ def noticias(request):
     }   
     return render(request, "secretario/noticias.html", cont)
 
+
+@RequiredUserAttribute(attribute = 'secretario', redirect_to_url = '/estudiante/')
 def ver_noticia_secretario(request, id_noticia):
     noticia = SecretarioNoticia.objects.get(id=id_noticia)
+    if noticia.user != request.user:
+        return redirect("/preceptor/")
+
     comentarios = SecretarioNoticiaComentarios.objects.filter(noticia=noticia)
     formulario = FormSecreatarioNoticia(instance=noticia)
     if request.method == "POST":
@@ -164,10 +174,12 @@ def ver_noticia_secretario(request, id_noticia):
 def ajustes_secretario(request):
     return render(request, "secretario/ajustes_secretario.html")
 
+@RequiredUserAttribute(attribute = 'secretario', redirect_to_url = '/estudiante/')
 def secretario_cursos(request):
     cursos = Cursoos.objects.all().order_by("curso")
     return render(request, "secretario/cursos.html", {"cursos":cursos})
 
+@RequiredUserAttribute(attribute = 'secretario', redirect_to_url = '/estudiante/')
 def inspeccionar_curso(request, id_curso):
     curso = Cursoos.objects.get(id=id_curso)
     estudiantes = Estudiante.objects.filter(curso=curso)

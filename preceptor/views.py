@@ -14,18 +14,17 @@ import random
 @RequiredUserAttribute(attribute = 'preceptor', redirect_to_url = '/secretario/')
 def main(request):
     preceptor_user = Preceptor.objects.get(user=request.user)
-
-    if request.method == "POST":
-        cursosPreceptor = preceptor_user.cursos.filter()
+    cursosPreceptor = preceptor_user.cursos.filter()
+    
+    if request.method == "POST":    
         curso = request.POST['curso']
         estudiantes = Estudiante.objects.filter(curso=curso)
         materias = Materia.objects.filter(curso=curso)
-        
     else:
-        cursosPreceptor = preceptor_user.cursos.filter()
         curso = cursosPreceptor[0].id
         estudiantes = Estudiante.objects.filter(curso=curso)
         materias = Materia.objects.filter(curso=curso)
+        
     curso = Cursoos.objects.get(id=curso)
     cont = {
         "cursosPreceptor":cursosPreceptor,

@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%tm*iyqk)xi$kydt60))$-b23#@)^!qy-1jhe8)enba#27%aqj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'https://luofluck.pythonanywhere.com/']
 
 
 # Application definition
@@ -140,6 +140,6 @@ EMAIL_USE_TLS = True
 
 EMAIL_PORT = 587
 
-EMAIL_HOST_USER="email@gmail.com"
+EMAIL_HOST_USER="tuemail@gmail.com"
 
-EMAIL_HOST_PASSWORD = "aquivalacontraseña" 
+EMAIL_HOST_PASSWORD = "tupassword" 

@@ -10,13 +10,14 @@
     
         <div class="trabajos-materia col-10 border p-2 my-4 mx-auto">
         
-            <h5 class="titulo text-center">{{trabajo.titulo}}</h5>               
+            <h5 class="titulo text-center">{{trabajo.titulo}}</h5>   <hr>            
 
-        
-            <span class="subitutlo text-muted text-left">Del: {{trabajo.fecha_de_subida|date:'d/m/Y'}} </span>  
-        
-            <span class="subitutlo text-muted float-right">para el: {{trabajo.fecha_de_entrega|date:'d/m/Y'}}</span><hr>
-        
+            <div class="row subitutlo">
+                <p class="col-12 col-md-6 text-muted text-left">Del: {{trabajo.fecha_de_subida|date:'d/m/Y'}} </p>  
+            
+                <p class="col-12 col-md-6 text-muted text-derecha">para el: {{trabajo.fecha_de_entrega|date:'d/m/Y'}}</p>
+            </div>
+            <hr>
             <p class="mb-5">  {{trabajo.consigna}}  </p>
             <a href="{% url 'trabajo' trabajo.id %}" class="btn btn-outline-primary">ver mas</a>
            
@@ -26,9 +27,6 @@
     {% endfor %}
 
 </div>
-
-djmlsafashfklabfhlkjgjfgdlfsgfkljudgfdgfsdgfd
-
 
 {% include 'volder/perfil_alumno.html' %}
 

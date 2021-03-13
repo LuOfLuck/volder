@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from usuarios.models import *
+from usuarios.forms import FormEstudiante
 from noticias.models import SecretarioNoticia, PreceptorNoticia, ProfesorNoticia
-from .decorators import *
+from volder_app.decorators import *
 # Create your views here.
 @RequiredUserAttribute(attribute = 'estudiante', redirect_to_url = '/profesor/')
 def main(request):
-        
         ultimos_trabajos = Trabajo.objects.all().order_by("-fecha_de_subida")
-       
         id_curso = request.user.estudiante.curso.id
         materias = Materia.objects.filter(curso=id_curso)
         compañero = Estudiante.objects.filter(curso=id_curso)
@@ -76,6 +75,7 @@ def noticias_estudiante(request):
        
 
     cont = {
+       
         "secretario_noticias":secretario_noticias,
         "preceptor_noticias":preceptor_noticias,
         "profesor_noticias":profesor_noticias,
@@ -83,4 +83,32 @@ def noticias_estudiante(request):
     return render (request, "volder/noticias_estudiante.html",cont)
 
 def ajustes_estudiante(request):
-    return render (request, "volder/ajustes_estudiante.html")
+
+
+    if request.method == "POST":
+        formulario =  FormEstudiante(request.POST, request.FILES, instance=request.user.estudiante)
+        if formulario.is_valid():
+            instancia = formulario.save(commit=False)
+            # Podemos guardarla cuando queramos
+            instancia.user = request.user
+            instancia.curso = request.user.estudiante.curso
+            instancia.dni = request.user.estudiante.dni
+            instancia.save()
+            try:
+                username = request.POST["username_new"]
+                email = request.POST["email"]
+                user = request.user
+                user.username = username
+                user.email = email
+                user.save()
+            except:
+                pass
+        else:
+            print("error")
+    formulario = FormEstudiante(instance=request.user.estudiante)
+
+
+    cont = {
+        "formulario":formulario,
+    }
+    return render (request, "volder/ajustes_estudiante.html", cont)

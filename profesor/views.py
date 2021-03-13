@@ -190,14 +190,10 @@ def ver_noticia_profesor(request, id_noticia):
     materias_de_noticias += noticia.materia.filter()
 
     if request.method == "POST":
-        # Actualizamos el formulario con los datos recibidos
         formulario =  FormProfesorNoticia(request.POST, request.FILES, instance=noticia)
-        # Si el formulario es válido...
+
         if formulario.is_valid():
-            # Guardamos el formulario pero sin confirmarlo,
-            # así conseguiremos una instancia para manejarla
             instancia = formulario.save(commit=False)
-            # Podemos guardarla cuando queramos
             instancia.user = request.user
             instancia.save()
             materias_recibidas = request.POST.getlist('materias')

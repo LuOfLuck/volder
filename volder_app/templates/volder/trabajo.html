@@ -1,15 +1,13 @@
 {% extends 'volder/base.html' %}
 {% load static %}
 {% block content %}
-<div class="mid-contenido mid-contenido-animacion border col col-md-7 mx-auto my-5 px-4 py-3">
+<div class="mid-contenido mid-contenido-animacion border col-12 col-md-7 mx-auto my-5 px-4 py-3">
     
-    <h4 class="text-center">{{trabajo.titulo}}</h4><hr>
+    <h4 class="text-center text-muted">{{trabajo.titulo}}</h4><hr>
     
-    <span>Fechas de entrega: {{trabajo.fecha_de_entrega}} </span>
+    <span>Fechas de entrega: {{trabajo.fecha_de_entrega|date:'d/m/Y'}} </span>
     
-    <a href="" class="btn float-right">marcar como entregado <i class="fas fa-check"></i></a><hr>
-    
-    <h5 class="text-center">{{trabajo.consigna}}<hr></h5>
+    <h5 class="text-center text-muted mt-2">{{trabajo.consigna}}<hr></h5>
     
     <span> {{ trabajo.contenido|linebreaks }} </span><hr>
     
@@ -17,7 +15,7 @@
 
 </div>
     
-<div id="container-comentario" class="container-comentario container-animacion  col col-md-2 mx-auto my-4 py-3 border">
+<div id="container-comentario" class="container-comentario container-animacion  col-12 col-md-2 mx-auto my-4 py-3 border">
     
     <h5 class="text-center"> Comentarios</h5><hr>
     
@@ -27,7 +25,7 @@
     
             {% if comentario.autor.profesor %}
         
-                <div class="comentario mensaje-recibido mensaje-recibido-profesor col-10  col-md-11 border">
+                <div class="comentario mensaje-recibido mensaje-recibido-profesor col-10 my-2 col-md-11 border">
             
                     <h6 class="nombre"> {{comentario.autor.profesor}} </h6>
             
@@ -41,7 +39,7 @@
             
             {% elif comentario.autor.estudiante == user.estudiante %}
         
-                <div class="comentario mensaje-enviado float-right col-10 col-md-11">
+                <div class="comentario mensaje-enviado float-right my-2 col-10 col-md-11">
             
                     <h6 class="nombre"> Tu </h6>
             
@@ -55,9 +53,9 @@
         
             {% else %}
         
-                <div class="comentario mensaje-recibido col-10 col-md-11">
+                <div class="comentario mensaje-recibido col-10 my-2 col-md-11">
             
-                    <h6 class="nombre"> {{comentario.autor.estudiante}} </h6>
+                    <h6 class="nombre"> {{comentario.autor.estudiante}} {{comentario.autor.preceptor}} {{comentario.autor.secretario}} </h6>
             
                     <span class="mensaje">
             

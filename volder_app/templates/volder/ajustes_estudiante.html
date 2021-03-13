@@ -5,10 +5,12 @@
 <div class="mid-contenido mid-contenido-animacion border col col-md-9 mx-auto my-4 p-4">
     <h2 class="text-muted text-center"> Ajustes </h2><hr>
     <div class="row">
-        <div class="col-12 col-md-5 mx-auto">
+        <div id="vista" class=" col-12 col-md-5 mx-auto">
             <p class=" h4 text-muted">Informacion personal: </p>
             <div class="informacion-personal border p-3">
-
+                <div class="editar-perfil">
+                    <a id="icon" onclick="editar()" class="btn"> editar <i class="fas fa-pencil-alt"></i></a>
+                </div>
                 <div class="foto row">
                     <img src="{{user.estudiante.imageURL}}">
                 </div>
@@ -28,9 +30,49 @@
                 <div class="username row">
                     <p>Nombre de usuario: {{user}} </p>
                 </div>
-                <div class="clave row">
-                    <p> Contraseña: *********** </p>
-                </div>
+            </div>
+        </div>
+        <div id="editar" class="edicion col-12 col-md-5 mx-auto">
+            <p class=" h4 text-muted">vista de editar: </p>
+            <div class="informacion-personal border p-3">
+                <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    {{formulario.user}}
+                    {{formulario.dni}}
+                    {{formulario.curso}}
+                    <div class="editar-perfil">
+                        <a id="icon" onclick="vista()" class="btn"> cancelar <i class="fas fa-pencil-alt"></i></a>
+                    </div>
+                   
+                    <div class="foto row">
+                        <img src="{{user.estudiante.imageURL}}">
+                        
+                    </div>
+             
+                    <div class="foto row">
+                        
+                       {{formulario.foto}}
+                    </div>
+                    <div class="nombre row ">
+                        <p class="mx-auto"> {{formulario.nombre}}  {{formulario.apellido}}  </p>
+                    </div>
+                    <div class="curso row">
+                        <p> Curso: {{user.estudiante.curso.curso}}</p>
+                    </div>
+                    <div class="divison row">
+                        <p> Division: {{user.estudiante.curso.division}}</p>
+                    </div>
+                    <div class="email row">
+                        <label for="id_email">email:</label>
+                        <input type="email" name="email" class="form-control" id="id_email" minlength="10" value="{{user.email}}" required>
+                        
+                    </div>
+                    <div class="username row">
+                        <label for="id_username_new">Nombre de usuario:</label>
+                        <input type="text" name="username_new" class="form-control" id="id_username_new" minlength="8" value="{{user}}" required>
+                    </div>
+                    <a href="{% url 'password_change' %}" target="_blank" class="btn btn-outline-primary">cambiar contraseña </a>
+                    <input type="submit" class="my-2 btn btn-outline-primary" value="Enviar">
+                </form>
             </div>
         </div>
         <div class="col-12 col-md-5 mx-auto">
@@ -53,35 +95,25 @@
                 </div>
                   <button onclick="Notification.permission = 'denied', notifyMe()">apagar</button>
             </div>
-        
-                <div id="desactivadas"class=" desactivadas">
-                    <button class="btn" onclick="Notification.requestPermission(),   notifyMe()" >¿desea activar las notificaciones?</button>
-                </div>
+
           
         </div>
     </div>
 </div>
 <script>
     
-    desactivada = document.getElementById("desactivadas");
-    activada = document.getElementById("activadas");
-    desactivada.style.display = "none";
-    activada.style.display = "none";
+    var vistaa = document.getElementById("vista");
+    var edicion = document.getElementById("editar");
+    vistaa.style.display = "none";
 
+    function editar(){
+        edicion.style.display = "block";
+        vistaa.style.display = "none";
+    }
+    function vista(){
+        edicion.style.display = "none";
+        vistaa.style.display = "block";
+    }
 
-    function notifyMe() {
-        if (!("Notification" in window)) {
-            alert("Este navegador no soporta las notificaciones del sistema");
-        }
-        else if (Notification.permission === "granted") {
-            activada.style.display = "block";
-            desactivada.style.display = "none";
-        }
-        else {
-            activada.style.display = "none";
-            desactivada.style.display = "block";
-        }
-   }
-   notifyMe()
-       </script>
+</script>
 {% endblock %}

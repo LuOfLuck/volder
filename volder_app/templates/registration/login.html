@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Document</title>
+	<title>Iniciar sesión</title>
 
 	<link rel="icon" href="{% static 'img/icon-volder.png' %}">
 	<link rel="stylesheet" href="{% static 'css/estilo-login.css' %}">
@@ -33,7 +33,8 @@
             </div>
 
             <form action="" method="POST">{% csrf_token %}
-
+                {{form.errors}}
+               
                 <label for="id_username">Usuario</label>
 
                 {{ form.username}}
@@ -44,7 +45,7 @@
 
                 <div class="forget-pass">
 
-                    <a href="{% url 'password_change' %}">¿Olvidaste la contraseña?</a>
+                    <a href="{% url 'password_reset' %}" target="_blank">¿Olvidaste la contraseña?</a>
 
                 </div>
 

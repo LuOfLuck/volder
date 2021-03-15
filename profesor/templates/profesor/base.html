@@ -16,31 +16,39 @@
     <header>
 
         <div class="celular"> 
+           
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+               
                 <a class="navbar-brand" href="">Volder online</a>
+               
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
+               
+                    <span class="navbar-toggler-icon"></span>
+               
                 </button>
               
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav">
-                    <div class="nav-item active">
-                        <a href="{% url 'home_profesor' %}#inicio" class="col-3 btn btn-outline-success mx-3">Inicio </a>
-                        <a href="{% url 'bandeja_de_entrada' %}" id="botones"class="col-12 btn boton-animacion my-3">
-              
-                            <i class="fas fa-inbox"></i><span>mensajes</span>
-                            
-                        </a>
-                        <a href="{% url 'home_profesor'  %}#materia" class="col-3 btn btn-outline-success mx-3">Materias </a>
-                        <!-- <a href="{% url 'grupos' %}" class="col-3 btn btn-outline-success mx-3">Grupos </a> -->
-                        <a href="{% url 'noticias_profesor' %}" class="col-3 btn btn-outline-success mx-3">Noticias </a>
-                        <a href="{% url 'ajustes_profesor' %}" class="col-3 btn btn-outline-success mx-3">ajustes </a>
-                        <a href="#" class="col-3 btn btn-outline-success mx-3">sobre nosotors </a>
-                        <a href="{% url 'logout' %}" class="col-3 btn btn-outline-success mx-3">Cerrar sesion </a>
-                    </div>
-                  </ul>
+                
+                    <ul class="navbar-nav">
+                
+                        <div class="nav-item active row">
+                
+                            <a href="{% url 'home_profesor' %}#inicio" class="col-10 btn btn-outline-success mx-auto my-2">Inicio </a>
+                            <a href="{% url 'bandeja_de_entrada' %}" class="col-10 btn btn-outline-success mx-auto my-2">Mensajes </a>
+                            <a href="{% url 'home_profesor'  %}#materia" class="col-10 btn btn-outline-success mx-auto my-2">Materias </a>
+                            <!-- <a href="{% url 'grupos' %}" class="col-10 btn btn-outline-success mx-auto my-2">Grupos </a> -->
+                            <a href="{% url 'noticias_profesor' %}" class="col-10 btn btn-outline-success mx-auto my-2">Noticias </a>
+                            <a href="{% url 'ajustes_profesor' %}" class="col-10 btn btn-outline-success mx-auto my-2">ajustes </a>
+                            <a href="#" class="col-10 btn btn-outline-success mx-auto my-2">sobre nosotros </a>
+                            <a href="{% url 'logout' %}" class="col-10 btn btn-outline-success mx-auto my-2">Cerrar sesión </a>
+                        </div>
+                    
+                    </ul>
+            
                 </div>
+            
             </nav>
+        
         </div> 
 
         <div id="nav-header" class="pc text-center header-animacion">
@@ -101,7 +109,8 @@
             {% endblock %}
 
     </div>
-   <footer class="footer" style="background-color: black;">
+   
+    <footer class="footer" style="background-color: black;">
       <br>
       <br>
       <br>

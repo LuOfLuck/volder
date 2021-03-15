@@ -2,50 +2,169 @@
 {% load static %}
 {% block content %}
 <div class="mid-contenido mid-contenido-animacion border col col-md-9 mx-auto my-4 p-4">
+   
     <h2 class="text-muted text-center"> Ajustes </h2><hr>
+   
     <div class="row">
-        <div class="col-12 col-md-5 mx-auto my-4">
+   
+        <div id="vista"  class="col-12 col-md-5 mx-auto my-4">
+   
             <p class=" h4 text-muted">Informacion personal: </p>
+   
             <div class="informacion-personal border p-3">
-
+   
+                <div class="editar-perfil">
+                    <a id="icon" onclick="editar()" class="btn"> editar <i class="fas fa-pencil-alt"></i></a>
+                </div>
+   
                 <div class="foto row">
                     <img src="{{user.preceptor.imageURL}}">
                 </div>
 
                 <div class="nombre row ">
                     <p class="mx-auto"> {{user.preceptor.apellido}}  {{user.preceptor.nombre}}  </p>
+   
                 </div>
-               
-                <div class="email row">
+               <div class="cursos row">
+                   <p>Cursos: {% for curso in user.preceptor.cursos.all %} {{curso}}/ {% endfor %}</p>
+               </div>
+   
+               <div class="email row">
                     <p> Email de contancto: {{user.email}} </p>
                 </div>
+   
                 <div class="username row">
                     <p>Nombre de usuario: {{user}} </p>
                 </div>
-                <div class="clave row">
-                    <p> Contraseña: *********** </p>
-                </div>
+   
             </div>
+   
+        </div>
+   
+        <div id="editar"  class="col-12 col-md-5 mx-auto my-4">
+   
+            <p class=" h4 text-muted">Editar Perfil: </p>
+   
+            <div class="informacion-personal border p-3">
+   
+                <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+   
+                    <div class="foto-formulario">
+   
+                        {{formulario}}
+   
+                    </div>
+   
+                    <div class="editar-perfil">
+   
+                        <a id="icon" onclick="vista()" class="btn"> cancelar <i class="fas fa-pencil-alt"></i></a>
+   
+                    </div>
+   
+                    <div class="foto row">
+   
+                        <a href="{{formulario.foto.value.url}}" class="text-center mx-auto" target="_BLANK">
+   
+                            <img src="{{user.preceptor.imageURL}}">
+   
+                        </a>
+   
+                    </div>
+
+                    <div class="nombre row ">
+   
+                        <p class="mx-auto"> {{user.preceptor.apellido}}  {{user.preceptor.nombre}}  </p>
+   
+                    </div>
+                    <div class="row cambiar-foto">
+   
+                        <label for="id_foto">cambiar foto</label>
+   
+                    </div>
+   
+                    <div class="cursos row">
+   
+                        <p>Cursos: {% for curso in user.preceptor.cursos.all %} {{curso}}/ {% endfor %}</p>
+   
+                    </div>
+   
+                    <div class="email row">
+   
+                        <label for="id_email">email:</label>
+   
+                        <input type="email" name="email" class="form-control" id="id_email" minlength="10" value="{{user.email}}" required>
+                        
+                    </div>
+   
+                    <div class="username row">
+   
+                        <label for="id_username_new">Nombre de usuario:</label>
+   
+                        <input type="text" name="username_new" class="form-control" id="id_username_new" minlength="8" value="{{user}}" required>
+   
+                    </div>
+   
+                    <a href="{% url 'password_change' %}" target="_blank" class="btn btn-outline-primary">cambiar contraseña </a>
+   
+                    <input type="submit" class="my-2 btn btn-outline-primary" value="Enviar">
+   
+                </form>
+   
+            </div>
+   
         </div>
 
         <div class="col-12 col-md-5 mx-auto my-4">
+     
             <p class=" h4 text-muted">Notificaciones: </p>
+     
             <div class="notificaciones border p-3">
+     
                 <div class="notificiones- row">
+     
                     <p> Comentarios: *activadas* </p>
+     
                 </div>  
+     
                 <div class="notificiones- row">
+     
                     <p> Nuevo mensajes: *activadas* </p>
+     
                 </div>  
+     
                 <div class="notificiones- row">
+     
                     <p> Nueva publicaciones(secretario): *activadas* </p>
+     
                 </div>  
+     
                 <div class="notificiones- row">
+     
                     <p> Nueva publicaciones(profesor): *activadas* </p>
+     
                 </div>  
 
             </div>
+     
         </div>
+    
     </div>
+
 </div>
+
+<script>
+var vistaa = document.getElementById("vista");
+var edicion = document.getElementById("editar");
+edicion.style.display = "none";
+
+function editar(){
+    edicion.style.display = "block";
+    vistaa.style.display = "none";
+}
+function vista(){
+    edicion.style.display = "none";
+    vistaa.style.display = "block";
+}
+
+</script>
 {% endblock%}

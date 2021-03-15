@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
 from usuarios.models import Preceptor, Cursoos, Estudiante, Materia, Profesor,Trabajo, Comentario
+from usuarios.forms import FormPreceptor
 from noticias.models import SecretarioNoticia, PreceptorNoticia, PreceptorNoticiaComentarios, ProfesorNoticia
 from noticias.forms import FormPreceptorNoticia
 from volder_app.decorators import RequiredUserAttribute
@@ -113,8 +114,6 @@ def agregar_materia(request,id_curso):
     return render(request, "preceptor/agregar_materia.html", cont)
 @RequiredUserAttribute(attribute = 'preceptor', redirect_to_url = '/secretario/')
 def noticias_preceptor(request):
-
-
     secretario_noticias = SecretarioNoticia.objects.filter(preceptor = True)
     preceptor_noticias = PreceptorNoticia.objects.filter(user= request.user)
     profesor_noticias = ProfesorNoticia.objects.all()
@@ -126,7 +125,7 @@ def noticias_preceptor(request):
         profesor_noticia_cursos = profesor_noticia.materia.filter()
      
         for profesor_noticia_curso in profesor_noticia_cursos:
-            if profesor_noticia_curso.curso ==  preceptor_cursos[0]:
+            if profesor_noticia_curso.curso in  preceptor_cursos:
                 profesor_noticia_filtrada += [profesor_noticia]
                 break
 
@@ -199,8 +198,7 @@ def ver_noticia_preceptor(request, id_noticia):
         "noticia":noticia,
         "comentarios":comentarios,
         "formulario":formulario,
-        "cursos_de_noticias":cursos_de_noticias,
-        
+        "cursos_de_noticias":cursos_de_noticias,   
     }
     return render(request, "preceptor/ver_noticia_preceptor.html",cont)
 
@@ -249,4 +247,29 @@ def ver_trabajos_preceptor(request, id_trabajo):
 
 @RequiredUserAttribute(attribute = 'preceptor', redirect_to_url = '/secretario/')
 def ajustes_preceptor(request):
-    return render(request, "preceptor/ajustes_preceptor.html")
+
+    if request.method == "POST":
+        formulario = FormPreceptor(request.POST, request.FILES, instance=request.user.preceptor)
+        if formulario.is_valid:
+            formulario.save()
+            try:
+                user = request.user
+                username = request.POST["username_new"]
+
+                if len(username) > 7:
+                    user.username = username
+
+                email = request.POST["email"]
+                if ("@" in email) and ("." in email):
+                    user.email = email
+                user.save()
+            except:
+                pass
+
+
+    formulario = FormPreceptor(instance=request.user.preceptor)
+    
+    cont = {
+        "formulario":formulario,
+    }
+    return render(request, "preceptor/ajustes_preceptor.html",cont)

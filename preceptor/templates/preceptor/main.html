@@ -44,7 +44,7 @@
     
     <h3 class="text-center text-muted col-12 pt-5">{{curso}}</h3> <hr>
 
-    <div class="col-10 mx-auto my-5 border estudiantes">
+    <div class="col-12 mx-auto my-5 border estudiantes">
         
         <h2 class="text-center text-muted">estudiantes:</h2><hr>
         
@@ -54,7 +54,7 @@
         
                 <a href="{% url 'agregar_estudiante' curso.id  %}">
         
-                    <p class="h4 "><img src="{% static 'img/mas.png' %}" class="logo"> agregar estudiantes</p>
+                    <p class="h4 text-center"><img src="{% static 'img/mas.png' %}" class="logo"> agregar</p>
         
                 </a>
         
@@ -62,7 +62,7 @@
         
             {% for estudiante in estudiantes%}
         
-                <div class="col-10 col-md-5 mx-auto my-3 border">
+                <div class="col-10 col-md-5 mx-auto my-3 border lista-box">
         
                     <h4 class="text-muted text-center"> 
                         
@@ -82,7 +82,7 @@
     
     </div>
         
-    <div class="col-10 mx-auto my-5 border estudiantes">
+    <div class="col-12 mx-auto my-5 border estudiantes">
         
         <h2 class="text-center text-muted">Materias:</h2><hr>
 

@@ -1,13 +1,24 @@
 {% extends 'profesor/base.html' %}
 {% load static %}
 {% block content %}
-<div class="mid-contenido mid-contenido-animacion border col col-md-9 mx-auto my-4 p-4">
-    <h2 class="text-muted text-center"> Ajustes </h2><hr>
-    <div class="row">
-        <div class="col-12 col-md-5 mx-auto">
-            <p class=" h4 text-muted">Informacion personal: </p>
-            <div class="informacion-personal border p-3">
 
+
+<div class="mid-contenido mid-contenido-animacion border col col-md-9 mx-auto my-4 p-4">
+    
+    <h2 class="text-muted text-center"> Ajustes </h2><hr>
+    
+    <div class="row">
+    
+        <div id="vista" class="col-12 col-md-5 mx-auto">
+       
+            <p class=" h4 text-muted">Información personal: </p>
+       
+            <div class="informacion-personal border p-3">
+       
+                <div class="editar-perfil">
+                    <a id="icon" onclick="editar()" class="btn"> editar <i class="fas fa-pencil-alt"></i></a>
+                </div>
+               
                 <div class="foto row">
                     <img src="{{user.profesor.imageURL}}">
                 </div>
@@ -19,14 +30,72 @@
                 <div class="email row">
                     <p> Email de contancto: {{user.email}} </p>
                 </div>
+
                 <div class="username row">
                     <p>Nombre de usuario: {{user}} </p>
                 </div>
-                <div class="clave row">
-                    <p> Contraseña: *********** </p>
-                </div>
+
             </div>
+
         </div>
+
+        <div id="editar" class="col-12 col-md-5 mx-auto">
+            <p class=" h4 text-muted">vista de edición:</p>
+          
+            <div class="informacion-personal border p-3">
+               
+                <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+               
+                    <div class="editar-perfil">
+                        <a id="icon" onclick="vista()" class="btn"> cancelar <i class="fas fa-pencil-alt"></i></a>
+                    </div>
+                
+                    <div class="foto row">
+                        <a href="{{formulario.foto.value.url}}" class="text-center mx-auto" target="_BLANK">
+                            <img src="{{user.profesor.imageURL}}" class="mx-auto">
+                        </a>
+                        
+                    </div>
+                                            
+                    <div class="foto-formulario">
+                        {{formulario}}
+                    </div>
+
+                    <div class="row cambiar-foto">
+                        <label for="id_foto">cambiar foto</label>
+                    </div>
+
+                    <div class="nombre row ">
+                        
+                        <p class="mx-auto"> {{user.profesor.apellido}}  {{user.profesor.nombre}}  </p>
+                    </div>
+                
+                    <div class="email row">
+                   
+                        <label for="id_email">email:</label>
+                   
+                        <input type="email" name="email" class="form-control" id="id_email" minlength="10" value="{{user.email}}" required>
+                        
+                    </div>
+                   
+                    <div class="username row">
+                   
+                        <label for="id_username_new">Nombre de usuario:</label>
+                   
+                        <input type="text" name="username_new" class="form-control" id="id_username_new" minlength="8" value="{{user}}" required>
+                   
+                    </div>
+                   
+                    <a href="{% url 'password_change' %}" target="_blank" class="btn btn-outline-primary">cambiar contraseña </a>
+                   
+                    <input type="submit" class="my-2 btn btn-outline-primary" value="Enviar">
+                
+                </form>
+           
+            </div>
+ 
+        </div>
+
         <div class="col-12 col-md-5 mx-auto">
             <p class=" h4 text-muted">Notificaciones: </p>
             <div class="notificaciones border p-3">
@@ -45,6 +114,26 @@
 
             </div>
         </div>
+  
     </div>
+
 </div>
+
+<script>
+    
+    var vistaa = document.getElementById("vista");
+    var edicion = document.getElementById("editar");
+    edicion.style.display = "none";
+
+    function editar(){
+        edicion.style.display = "block";
+        vistaa.style.display = "none";
+    }
+    
+    function vista(){
+        edicion.style.display = "none";
+        vistaa.style.display = "block";
+    }
+
+</script>
 {% endblock%}

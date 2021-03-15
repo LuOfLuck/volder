@@ -4,6 +4,7 @@ from volder_app.decorators import RequiredUserAttribute
 from django.contrib import messages
 from django.forms import modelformset_factory
 from usuarios.models import Profesor, Preceptor, Cursoos, Estudiante, Materia
+from usuarios.forms import FormSecretario
 from noticias.models import SecretarioNoticia, SecretarioNoticiaComentarios, PreceptorNoticia, ProfesorNoticia
 from mensajes.models import Grupo_chat
 from noticias.forms import FormSecreatarioNoticia
@@ -172,7 +173,30 @@ def ver_noticia_secretario(request, id_noticia):
     return render(request, "secretario/ver_noticia_secretario.html", cont)
 
 def ajustes_secretario(request):
-    return render(request, "secretario/ajustes_secretario.html")
+    if request.method == "POST":
+        formulario = FormSecretario(request.POST, request.FILES, instance=request.user.secretario)
+        if formulario.is_valid:
+            formulario.save()
+            try:
+                user = request.user
+                username = request.POST["username_new"]
+
+                if len(username) > 7:
+                    user.username = username
+
+                email = request.POST["email"]
+                if ("@" in email) and ("." in email):
+                    user.email = email
+                user.save()
+            except:
+                pass
+            
+    formulario = FormSecretario(instance=request.user.secretario)
+
+    cont = {
+        "formulario":formulario,
+    }
+    return render(request, "secretario/ajustes_secretario.html",cont)
 
 @RequiredUserAttribute(attribute = 'secretario', redirect_to_url = '/estudiante/')
 def secretario_cursos(request):

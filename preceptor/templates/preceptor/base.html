@@ -10,9 +10,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body id="body">
     {% include 'volder/carga.html' %}
-<header>
+<header >
 
     <div class="celular"> 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -23,14 +23,14 @@
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
-                <div class="nav-item active">
-                    <a href="{% url 'home_preceptor' %}" class="col-3 btn btn-outline-success mx-3">Inicio </a>
-                    <a href="{% url 'bandeja_de_entrada' %}" class="col-3 btn btn-outline-success mx-3">Inicio </a>
+                <div class="nav-item active row">
+                    <a href="{% url 'home_preceptor' %}" class="col-10 btn btn-outline-success mx-auto my-2">Inicio </a>
+                    <a href="{% url 'bandeja_de_entrada' %}" class="col-10 btn btn-outline-success mx-auto my-2">Mensajes </a>
     
-                    <a href="{% url 'noticias_preceptor' %}" class="col-3 btn btn-outline-success mx-3">Noticias </a>
-                    <a href="{% url 'ajustes_preceptor' %}" class="col-3 btn btn-outline-success mx-3">ajustes </a>
-                    <a href="" class="col-3 btn btn-outline-success mx-3">sobre nosotors </a>
-                    <a href="{% url 'logout' %}" class="col-3 btn btn-outline-success mx-3">Cerrar sesion </a>
+                    <a href="{% url 'noticias_preceptor' %}" class="col-10 btn btn-outline-success mx-auto my-2">Noticias </a>
+                    <a href="{% url 'ajustes_preceptor' %}" class="col-10 btn btn-outline-success mx-auto my-2">ajustes </a>
+                    <a href="" class="col-10 btn btn-outline-success mx-auto my-2">sobre nosotros </a>
+                    <a href="{% url 'logout' %}" class="col-10 btn btn-outline-success mx-auto my-2">Cerrar sesión </a>
                 </div>
               </ul>
             </div>

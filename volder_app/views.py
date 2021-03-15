@@ -95,11 +95,15 @@ def ajustes_estudiante(request):
             instancia.dni = request.user.estudiante.dni
             instancia.save()
             try:
-                username = request.POST["username_new"]
-                email = request.POST["email"]
                 user = request.user
-                user.username = username
-                user.email = email
+                username = request.POST["username_new"]
+
+                if len(username) > 7:
+                    user.username = username
+
+                email = request.POST["email"]
+                if ("@" in email) and ("." in email):
+                    user.email = email
                 user.save()
             except:
                 pass

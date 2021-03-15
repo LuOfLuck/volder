@@ -405,3 +405,38 @@ header .pc p{
     border: 0;
     transform: translateY(6px);
 }
+.editar-perfil{
+    display:block;
+    position: absolute;
+    top: 40px;
+    right: 20px;
+}
+
+div.foto-formulario{
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;   
+}
+
+.cambiar-foto label {
+    margin: 10px auto;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 700;
+    color: white;
+    background-color: rgba(92, 92, 92, 0.801);
+    border: 1px solid rgb(83, 83, 83);
+    border-radius: 5px;
+    padding:5px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.cambiar-foto label:hover {
+    border-radius: 5px;
+    padding:3px 10px;
+}

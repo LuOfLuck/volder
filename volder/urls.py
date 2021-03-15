@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('nosotros/',auth_views(template_name='registration/nosotros.html'), name="login"),
     path('estudiante/', include('volder_app.urls')),
     path('profesor/', include('profesor.urls')),
     path('preceptor/', include('preceptor.urls')),

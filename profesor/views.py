@@ -6,6 +6,7 @@ from django.contrib import messages
 from noticias.models import SecretarioNoticia, PreceptorNoticia, ProfesorNoticia, ProfesorNoticiaComentarios
 from noticias.forms import FormProfesorNoticia
 from usuarios.models import Estudiante
+from usuarios.forms import FormProfesor
 from django.core.mail import send_mail
 from django.conf import settings
 # Create your views here.
@@ -158,7 +159,30 @@ def noticias_profesor(request):
 
 @RequiredUserAttribute(attribute = 'profesor', redirect_to_url = '/preceptor/') 
 def ajustes_profesor(request):
-    return render(request, "profesor/ajustes_profesor.html")
+    if request.method == "POST":
+        formulario = FormProfesor(request.POST, request.FILES, instance=request.user.profesor)
+        if formulario.is_valid: 
+            formulario.save()
+            try:
+                user = request.user
+                username = request.POST["username_new"]
+
+                if len(username) > 7:
+                    user.username = username
+
+                email = request.POST["email"]
+                if ("@" in email) and ("." in email):
+                    user.email = email
+                user.save()
+            except:
+                pass
+            
+
+    formulario = FormProfesor(instance=request.user.profesor)
+    cont = {
+        "formulario":formulario,
+    }
+    return render(request, "profesor/ajustes_profesor.html", cont)
 
 @RequiredUserAttribute(attribute = 'profesor', redirect_to_url = '/preceptor/') 
 def ver_materia(request, id_materia):

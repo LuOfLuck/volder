@@ -23,13 +23,13 @@
               
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav">
-                    <div class="nav-item active">
-                        <a href="{% url 'home_secretario' %}" class="col-3 btn btn-outline-success mx-3">Inicio </a>
-                        <a href="{% url 'bandeja_de_entrada' %}" class="col-3 btn btn-outline-success mx-3">buzon </a>
-                        <a href="{% url 'noticias' %}" class="col-3 btn btn-outline-success mx-3">Noticias </a>
-                        <a href="" class="col-3 btn btn-outline-success mx-3">ajustes </a>
-                        <a href="" class="col-3 btn btn-outline-success mx-3">sobre nosotors </a>
-                        <a href="" class="col-3 btn btn-outline-success mx-3">Cerrar sesion </a>
+                    <div class="nav-item active row">
+                        <a href="{% url 'home_secretario' %}" class="col-10 btn btn-outline-success mx-auto my-2">Inicio </a>
+                        <a href="{% url 'bandeja_de_entrada' %}" class="col-10 btn btn-outline-success mx-auto my-2">Mensajes </a>
+                        <a href="{% url 'noticias' %}" class="col-10 btn btn-outline-success mx-auto my-2">Noticias </a>
+                        <a href="{% url 'ajustes_secretario' %}" class="col-10 btn btn-outline-success mx-auto my-2">Ajustes </a>
+                        <a href="" class="col-10 btn btn-outline-success mx-auto my-2">Sobre nosotros </a>
+                        <a href="{% url 'logout' %}" class="col-10 btn btn-outline-success mx-auto my-2">Cerrar sesión </a>
                     </div>
                   </ul>
                 </div>
@@ -66,7 +66,7 @@
                     <i class="fas fa-wrench"></i><span>ajustes</span>
                 
             </a>
-            <a href="" id="botones" class="col-12 btn boton-animacion my-3">
+            <a href="{% url 'nosotros' %}" id="botones" class="col-12 btn boton-animacion my-3">
                 
                     <i class="fas fa-user"></i> <span> nosotros </span>
                 

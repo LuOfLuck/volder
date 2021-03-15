@@ -39,6 +39,10 @@
                     {{formulario.user}}
                     {{formulario.dni}}
                     {{formulario.curso}}
+                    <div class="foto-formulario">
+                        {{formulario.foto}}
+                    </div>
+                    
                     <div class="editar-perfil">
                         <a id="icon" onclick="vista()" class="btn"> cancelar <i class="fas fa-pencil-alt"></i></a>
                     </div>
@@ -47,11 +51,12 @@
                         <img src="{{user.estudiante.imageURL}}">
                         
                     </div>
-             
-                    <div class="foto row">
-                        
-                       {{formulario.foto}}
+
+                       
+                    <div class="row cambiar-foto">
+                        <label for="id_foto">cambiar foto</label>
                     </div>
+                    
                     <div class="nombre row ">
                         <p class="mx-auto"> {{formulario.nombre}}  {{formulario.apellido}}  </p>
                     </div>
@@ -104,7 +109,7 @@
     
     var vistaa = document.getElementById("vista");
     var edicion = document.getElementById("editar");
-    vistaa.style.display = "none";
+    edicion.style.display = "none";
 
     function editar(){
         edicion.style.display = "block";

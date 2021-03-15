@@ -3,8 +3,8 @@ html.sr .load-hidden {
     visibility: hidden;
 }
 *, .row{
-    padding:0px;
-    margin:0px;
+    padding:0;
+    margin:0;
 }
 
 /****************************************************/
@@ -156,7 +156,8 @@ header .pc p{
 .agragar-estudiantes{
     background-color:rgba(97, 93, 89, 0.445);
 }
-.agragar-estudiantes h4{
+
+.agragar-estudiantes h4 .agragar-estudiantes a{
     color:white;
 }
 .logo{
@@ -331,7 +332,16 @@ header .pc p{
     border-bottom: 1px solid rgb(150, 150, 150); 
     font-size: 1rem;
     width: 100%;
+}
+@media (max-width: 768px) {
+    .cerrar-poput{
+        font-size: 1.5rem;
     }
+    .cont-popou h3{
+        font-size: 1.5rem;
+    }
+
+}
 
 
 /**/    /**/    /**/    /**/    /**/
@@ -427,7 +437,7 @@ header .pc p{
 /**/    /**/    /**/    /**/    /**/
 
 /****************************************************/
-.informacion-personal,  .notificaciones{
+.informacion-personal,  .notificaciones, .lista-box{
     box-shadow: 5px -2px 10px rgb(171, 173, 173);
 }
 .informacion-personal img{
@@ -440,3 +450,39 @@ header .pc p{
 .informacion-personal .nombre{
     text-align: center;
 }
+.editar-perfil{
+    display:block;
+    position: absolute;
+    top: 40px;
+    right: 20px;
+}
+
+div.foto-formulario{
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;   
+}
+
+.cambiar-foto label {
+    margin: 10px auto;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 700;
+    color: white;
+    background-color: rgba(92, 92, 92, 0.801);
+    border: 1px solid rgb(83, 83, 83);
+    border-radius: 5px;
+    padding:5px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.cambiar-foto label:hover {
+    border-radius: 5px;
+    padding:3px 10px;
+}
+

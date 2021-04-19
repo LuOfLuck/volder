@@ -1,0 +1,22 @@
+#comandos para django
+
+#instalar django
+-pip install django==2.2.3
+
+#crear proyecto
+-python manage.py startproyect *nombre proyecto*
+
+#crear app
+-python manage.py startapp *nombre app*
+
+#iniciar/detener servidor
+-python manage.py runserver
+-python manage.py stopserver
+
+#Actualizar base de datos
+-python manage.py makemigrations
+-python manage.py migrate
+
+
+c:/Users/alumno/PycharmProjects/SELIU/venv/Scripts/activate.bat
+

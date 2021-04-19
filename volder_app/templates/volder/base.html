@@ -24,7 +24,8 @@
     
     </head>
 
-    <body> {% include 'volder/carga.html' %}
+    <body> 
+        <!-- {% include 'volder/carga.html' %} -->
 
         <header>
 
@@ -46,7 +47,7 @@
                     
                             <div class="nav-item active">
                     
-                                <a href="{% url 'home' %}" class="col-10 btn btn-outline-success my-2 mx-3">Inicio </a>
+                                <a href="{% url 'home' %}#inicio" class="col-10 btn btn-outline-success my-2 mx-3">Inicio </a>
                     
                                 <a href="{% url 'home' %}#materias" class="col-10 btn btn-outline-success my-2 mx-3">Materias </a>
                     
@@ -79,7 +80,7 @@
 
             <div id="nav" class="contenedor contenedor-animacion col-2 my-4  mx-auto  border">
 
-                <a href="{% url 'home' %}" id="botones"class="col-12 btn boton-animacion my-3">
+                <a href="{% url 'home' %}#inicio" id="botones"class="col-12 btn boton-animacion my-3">
                 
                         <i class="fas fa-home"></i><span>Inicio</span>
                 
@@ -90,19 +91,19 @@
                         <i class="fas fa-book"></i><span> Materias </span>
                     
                 </a>
-                <a href="{% url 'bandeja_de_entrada' %}" id="botones"class="col-12 btn boton-animacion my-3">
+                <a href="{% url 'bandeja_de_entrada' %}#" id="botones"class="col-12 btn boton-animacion my-3">
               
                     <i class="fas fa-inbox"></i><span>mensajes</span>
                     
                 </a>
 
-                <a href="{% url 'noticias_estudiante' %}"  id="botones" class="col-12 btn boton-animacion my-3">
+                <a href="{% url 'noticias_estudiante' %}#"  id="botones" class="col-12 btn boton-animacion my-3">
                 
                         <i class="far fa-newspaper"></i><span> Noticias </span>
                     
                 </a>
 
-                <a href="{% url 'ajustes_estudiante' %}" id="botones" class="col-12 btn boton-animacion my-3">
+                <a href="{% url 'ajustes_estudiante' %}#" id="botones" class="col-12 btn boton-animacion my-3">
                 
                         <i class="fas fa-wrench"></i><span>ajustes</span>
                     

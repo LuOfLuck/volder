@@ -3,16 +3,47 @@
 {% block content %}
 <div class="mid-contenido mid-contenido-animacion border col-12 col-md-7 mx-auto my-5 px-4 py-3">
     
-    <h4 class="text-center text-muted">{{trabajo.titulo}}</h4><hr>
+    <p class="h2 text-center text-muted">{{trabajo.titulo}}</p><hr>
+    <div class="row"> 
+        {% if form %}
+            <p class="col-10 col-md-5 text-center m-auto">Fechas de entrega: {{trabajo.fecha_de_entrega|date:'d/m/Y'}} </p>
+            <button onclick="abrirPopou()" class="btn col-md-5 mx-auto mt-3 mt-md-0 p-0">
+                Entregar respuesta <i class="far fa-file"></i>
+            </button>
+        {% elif nota %}
+        <p class="col-12 text-left m-auto"> comentario del profesor: {{nota.comentario}}. <br> calificación: {{nota.nota}}</p>
+        {% else %}
+        <p class="col-12 col-md-12 text-center"> Esperando una calificación por parte del profesor</p>
+        {% endif %}
+    </div><hr>
+   
     
-    <span>Fechas de entrega: {{trabajo.fecha_de_entrega|date:'d/m/Y'}} </span>
     
-    <h5 class="text-center text-muted mt-2">{{trabajo.consigna}}<hr></h5>
+    <p class="h3 text-center text-muted mt-2">{{trabajo.consigna}}<hr></p>
     
     <span> {{ trabajo.contenido|linebreaks }} </span><hr>
     
     <span> fuentes: {{trabajo.fuentes}}</span>
 
+</div>
+
+<div id="popou" class="popou">
+    <div class="popou-cont col-11 col-md-6">
+        <div class="titulo">
+            <i id="cerrar-popou" onclick="cerrarPopou()" class="far fa-times-circle cerrar-popou"></i>
+            <p class="h2 text-muted text-center">Entregar trabajo</p><hr>
+        </div>
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+            <div class="form-group">
+                <center> {{form.comentario}} </center> 
+            </div> 
+            <div class="form-group">
+            <center> <label id="label_archivo" for="id_archivo"> archivo: docs/word/pdf </label></center> 
+                {{form.archivo}}
+           </div> 
+           <center> <input type="submit" class="btn btn-outline-primary col-4" value="Enviar"></center>
+        </form>
+    </div>
 </div>
     
 <div id="container-comentario" class="container-comentario container-animacion  col-12 col-md-2 mx-auto my-4 py-3 border">
@@ -79,7 +110,7 @@
         
                 <input type="text" name="comentario" class="form-control input-texto col-10 col-md-9" requerid>
         
-                <button type="submit"  class="input-sudmit btn col-2" required><i class="fas fa-dove"></i></button>
+                <button type="submit"  class="input-sudmit btn col-2"><i class="fas fa-dove"></i></button>
         
             </div>
         
@@ -89,4 +120,15 @@
 
 </div>
 
+
+<script>
+    let popou = document.getElementById("popou");
+    let popouCerrar = document.getElementById("cerrar-popou");
+    function abrirPopou(){
+        popou.style.display = "flex";
+    }
+    function cerrarPopou(){
+        popou.style.display = "none";
+    }
+</script>
 {% endblock %}

@@ -7,11 +7,6 @@ class FormEstudiante(forms.ModelForm):
     class Meta:
 
         model = Estudiante
-        # widgets = {
-        #     'titulo': forms.TextInput(attrs={'placeholder': 'Titulo'}),
-        #     'mensaje': forms.Textarea(attrs={'placeholder': '¿en que estas pensando?...'}),
-        #     'url': forms.TextInput(attrs={'placeholder': 'https://www.volder.online'}),
-        # }
         fields = '__all__'
 
 class FormProfesor(forms.ModelForm):

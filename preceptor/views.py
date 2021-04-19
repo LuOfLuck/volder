@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
 from usuarios.models import Preceptor, Cursoos, Estudiante, Materia, Profesor,Trabajo, Comentario
-from usuarios.forms import FormPreceptor
+from usuarios.forms import FormPreceptor, RespuestaTrabajo
 from noticias.models import SecretarioNoticia, PreceptorNoticia, PreceptorNoticiaComentarios, ProfesorNoticia
 from noticias.forms import FormPreceptorNoticia
 from volder_app.decorators import RequiredUserAttribute
@@ -242,6 +242,23 @@ def ver_trabajos_preceptor(request, id_trabajo):
         "trabajo":trabajo,
         "comentarios":comentarios,
         "extend":extend,
+    }
+    return render(request, "preceptor/ver_trabajos_preceptor.html",cont)
+def ver_respuestas(request, id_trabajo):
+    if hasattr(request.user, 'preceptor'):
+        extend = "preceptor/base.html"
+    elif hasattr(request.user, 'secretario'):
+        extend = "secretario/base.html"
+    else:
+        return redirect("/estudiante/")
+    trabajo = Trabajo.objects.get(id=id_trabajo)
+    respuestas = RespuestaTrabajo.objects.filter(trabajo=trabajo)
+  
+
+    cont = {
+        "trabajo":trabajo,
+        "extend":extend,
+        "respuestas":respuestas,
     }
     return render(request, "preceptor/ver_trabajos_preceptor.html",cont)
 

@@ -1,6 +1,11 @@
 html.sr .load-hidden {
     visibility: hidden;
 }
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
 .row{
     margin: 0px !important;
     padding: 0px !important;
@@ -283,7 +288,7 @@ header .pc p{
 
 /**/    /**/    /**/    /**/    /**/
 /**/                            /**/
-/**/   /* FIN TRABAJO.HTML */   /**/
+/**/   /* TRABAJO.HTML */   /**/
 /**/                            /**/
 /**/    /**/    /**/    /**/    /**/
 
@@ -296,11 +301,71 @@ header .pc p{
 .trabajos-materia{
     height: auto;
 }
-.trabajos-materia a{
-    text-align: right;
-} 
+.popou{
+    height: 100vh;
+    width: 100%;
+    display:none;
+    position: absolute;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(65, 65, 65, 0.404);
+    z-index: 1000;
+}
+.popou-cont{
+    border-radius: 20px;
+    background-color: white;
+    padding: 2rem 3rem;
+}
+.cerrar-popou{
+    position:absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color:rgba(65, 65, 65, 0.404);
+}
 
+form #id_comentario{
+    width: 70%;
+    padding: 0.3rem .5rem;
+    text-align: center;
+    border: 2px solid rgba(102, 102, 102, 0.363); 
+    border-radius: 20px;
+    margin: 0 auto;
 
+}
+form #id_archivo{
+    width: 0.001px;
+    height: 0.001px;
+    position: absolute;
+    z-index: 0;
+}
+form #label_archivo{
+    width: 50%;
+    border: 2px solid rgba(0, 132, 255, 0.829);
+    border-radius: 20px;
+    color: rgba(0, 132, 255, 0.829);
+    text-align: center;
+    cursor: pointer;
+    margin: auto;
+    padding: 0.3rem .5rem;
+    transition: .3s linear;
+}
+
+form #label_archivo:hover{
+    background-color: rgba(0, 132, 255, 0.829);
+    border: 2px solid white;
+    border-radius: 15px;
+    color: white;
+}
+@media (max-width: 768px) {
+    form #id_comentario{
+        width: 85%;
+    }
+    form #label_archivo{
+        width: 80%;
+    }
+}
 
 
 

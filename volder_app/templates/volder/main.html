@@ -64,16 +64,16 @@
                 </div>
     
                 <div class="sibitulo row">
-                   
+                    <script> var num = 0;</script>
                     <div class="col-12 col-sm">
-                   
-                        <p>trabajos entregado: 0</p>
+                        <p>trabajos entregado: {% for trabajos_entregado in trabajos_entregados %} {% ifequal trabajos_entregado.trabajo.materia materia%} 
+                            <script> num += 1;</script> {% endifequal %} {% endfor %} <script>  document.write(num); </script> </p>
                    
                     </div>
                    
                     <div class="col-12 col-sm">
                    
-                        <p class="subitulo-right">trabajos pendientes: {{materia.trabajos_entregados}}</p>
+                        <p class="subitulo-right">trabajos pendientes: <script> var totalTrabajos = "{{materia.total_trabajos}}"; document.write(totalTrabajos - num) </script> </p>
     
                     </div>
                     

@@ -45,7 +45,8 @@
                 
                     <span>  {{trabajo}}  </span><br><br>
                 
-                    <a href="{% url 'ver_trabajo' trabajo.id %}" class="btn btn-outline-primary float-right">ver mas</a>
+                    <a href="{% url 'respuesta_trabajo' trabajo.id %}" class="btn btn-outline-primary">ver respuestas</a>
+                    <a href="{% url 'ver_trabajo' trabajo.id %}" class="btn btn-outline-primary float-right">ver trabajo</a>
 
                 </div>
 

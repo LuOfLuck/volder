@@ -136,6 +136,7 @@ class Materia(models.Model):
         total_trabajos = sum([1 for trabajo in trabajos])
         return total_trabajos
 
+
 class TipoDeTarea(models.Model):
     tipo = models.CharField(max_length=50)
     def __str__(self):
@@ -163,3 +164,34 @@ class Comentario(models.Model):
     create = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     def __str__(self):
         return self.comentario
+
+class RespuestaTrabajo(models.Model):
+    estudiante = models.ForeignKey(Estudiante, on_delete = models.CASCADE)
+    comentario = models.CharField(max_length = 400, null=True, blank=True)
+    archivo = models.FileField(upload_to='respuestas-trabajo/%Y/%m/%d/')
+    trabajo = models.ForeignKey(Trabajo, on_delete = models.CASCADE)
+    create = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    def __str__(self):
+        return str(self.estudiante) + str(self.comentario) 
+
+class NotaTrabajo(models.Model):
+    estadoNota = (
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+        ('6', '6'),
+        ('7', '7'),
+        ('8', '8'),
+        ('9', '9'),
+        ('10', '10'),
+        ('rehacer', 'rehacer'),
+    )
+    respuestaTrabajo = models.ForeignKey(RespuestaTrabajo, on_delete = models.CASCADE)
+    comentario = models.TextField(max_length=200, null=True, blank=True)
+    nota = models.CharField(max_length=20, choices=estadoNota)
+    def __str__(self):
+        return str(self.respuestaTrabajo) + str(self.nota) 
+
+

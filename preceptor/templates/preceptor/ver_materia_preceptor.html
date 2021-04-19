@@ -24,7 +24,8 @@
             
                     <span>  {{trabajo }}  </span><br><br>
                 
-                    <a href="{% url 'ver_trabajos_preceptor' trabajo.id %}" class="btn btn-outline-primary float-right mb-2">ver mas</a>
+                    <a href="{% url 'ver_respuestas' trabajo.id %}" class="btn btn-outline-primary mb-2">ver respuestas</a>
+                    <a href="{% url 'ver_trabajos_preceptor' trabajo.id %}" class="btn btn-outline-primary float-right mb-2">ver trabajo</a>
 
                 </div>
                     

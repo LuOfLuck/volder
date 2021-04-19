@@ -7,6 +7,7 @@ from noticias.models import SecretarioNoticia, PreceptorNoticia, ProfesorNoticia
 from noticias.forms import FormProfesorNoticia
 from usuarios.models import Estudiante
 from usuarios.forms import FormProfesor
+from profesor.forms import FormNota
 from django.core.mail import send_mail
 from django.conf import settings
 # Create your views here.
@@ -102,6 +103,36 @@ def ver_trabajo(request,id_trabajo):
         "comentarios":comentarios,
     }
     return render(request, "profesor/ver_trabajo.html", cont)
+
+@RequiredUserAttribute(attribute = 'profesor', redirect_to_url = '/preceptor/')   
+def respuesta_trabajo(request, id_trabajo):
+    trabajo = Trabajo.objects.get(id=id_trabajo)
+    respuestasTrabajo = RespuestaTrabajo.objects.filter(trabajo = trabajo)
+    form = FormNota()
+    if request.method == "POST":
+        form = FormNota(request.POST)
+        if form.is_valid:
+            instancia = form.save(commit=False)
+
+            id_estudiante = request.POST["id_estudiante"]
+            estudiante = Estudiante.objects.get(id=id_estudiante)
+            if trabajo.materia.curso == estudiante.curso: #verificamos si el estudiante esta en el curso
+                respuestasTrabajoEstudiante = RespuestaTrabajo.objects.get(trabajo = trabajo, estudiante=estudiante)
+                instancia.estudiante = estudiante
+                instancia.respuestaTrabajo = respuestasTrabajoEstudiante
+                instancia.save()
+    notas = []
+    for respuestaTrabajo in respuestasTrabajo:
+        notas += NotaTrabajo.objects.filter(respuestaTrabajo=respuestaTrabajo)  
+
+
+    cont = {
+        "respuestas":respuestasTrabajo,
+        "form":form,
+        "notas":notas,
+    }
+    return render(request, "profesor/respuesta_trabajo.html",cont)
+
 
 @RequiredUserAttribute(attribute = 'profesor', redirect_to_url = '/preceptor/')   
 def grupos(request):

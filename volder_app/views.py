@@ -7,17 +7,34 @@ from volder_app.decorators import *
 # Create your views here.
 @RequiredUserAttribute(attribute = 'estudiante', redirect_to_url = '/profesor/')
 def main(request):
-        ultimos_trabajos = Trabajo.objects.all().order_by("-fecha_de_subida")
-        id_curso = request.user.estudiante.curso.id
-        materias = Materia.objects.filter(curso=id_curso)
-        compañero = Estudiante.objects.filter(curso=id_curso)
-        trabajos_entregados = []
-        trabajos_entregados += RespuestaTrabajo.objects.filter(estudiante=request.user.estudiante)
+        todos_los_trabajos = Trabajo.objects.all()
+        trabajos = []
+        for trabajo_filter in todos_los_trabajos:
+            if trabajo_filter.materia.curso == request.user.estudiante.curso:
+                trabajos += [trabajo_filter]
+
+
+        materias = Materia.objects.filter(curso=request.user.estudiante.curso.id)
+        compañero = Estudiante.objects.filter(curso=request.user.estudiante.curso.id)
+        nota = []
+        respuesta = None
+        total_respestas = []
+        for trabajo in trabajos:
+            try:
+                respuesta = RespuestaTrabajo.objects.get(trabajo=trabajo, estudiante=request.user.estudiante)
+                total_respestas += [respuesta]
+            except:
+                respuesta = None
+            try:
+                nota += [NotaTrabajo.objects.get(respuestaTrabajo=respuesta)]
+            except:
+                pass
         cont = {
-            "ultimos_trabajo":ultimos_trabajos,
+            "trabajos":trabajos,
             "materias":materias,
             "compañero":compañero,
-            "trabajos_entregados":trabajos_entregados
+            "notas":nota,
+            "total_respestas":total_respestas,
         }
         return render(request, "volder/main.html",cont)
 
@@ -75,6 +92,18 @@ def materia(request, id_materia):
     if request.user.estudiante.curso != materia.curso:
         return redirect("/estudiante/")
 
+    nota = []
+    respuesta = None
+    for trabajo in trabajos:
+        try:
+            respuesta = RespuestaTrabajo.objects.get(trabajo=trabajo, estudiante=request.user.estudiante)
+            print(respuesta)
+        except:
+            respuesta = None
+        try:
+            nota += [NotaTrabajo.objects.get(respuestaTrabajo=respuesta)]
+        except:
+            pass
 
     id_curso = request.user.estudiante.curso.id
     compañero = Estudiante.objects.filter(curso=id_curso)
@@ -83,6 +112,7 @@ def materia(request, id_materia):
         "trabajos":trabajos,
         "materia":materia,
         "compañero":compañero,
+        "notas":nota,
     }
 
     return render(request, "volder/materia.html", cont)

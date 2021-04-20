@@ -15,11 +15,19 @@
                 {% for nota in notas %}
                     {% if nota.respuestaTrabajo.estudiante == respuesta.estudiante %}
                         mostraBoton = false;
-                        div = document.getElementById("button-{{respuesta.id}}");
-                        div.classList += "  btn-outline-success";
+                        button = document.getElementById("button-{{respuesta.id}}");
+                      
                         div = document.getElementById("trabajo-{{respuesta.id}}");
-                        div.classList += " corregido";
-                        div.innerHTML += `<button class="btn btn-outline-success float-right">Nota: {{nota.nota}}</button>`;
+                        if("{{nota.nota}}" > 6){
+                            button.classList += "  btn-outline-success";
+                            div.classList += " aprobado";
+                            div.innerHTML += `<button class="btn btn-outline-success float-right">Nota: {{nota.nota}}</button>`;
+                        }
+                        else{
+                            button.classList += "  btn-outline-danger";
+                            div.classList += " desaprobado";
+                            div.innerHTML += `<button class="btn btn-outline-danger float-right">Nota: {{nota.nota}}</button>`;
+                        }
                     {% endif %}
                     {% if forloop.last %}
                         
@@ -29,6 +37,10 @@
                                 div.innerHTML += `<button onclick="popouAbrir({{respuesta.estudiante.id}})" class="btn btn-outline-primary float-right">calificar</button>`;
                             }
                     {% endif %}
+
+                {% empty %}
+                    div = document.getElementById("trabajo-{{respuesta.id}}");
+                    div.innerHTML += `<button onclick="popouAbrir({{respuesta.estudiante.id}})" class="btn btn-outline-primary float-right">calificar</button>`
                 {% endfor %}
             </script>
             </div> 

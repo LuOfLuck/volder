@@ -2,8 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
-from usuarios.models import Preceptor, Cursoos, Estudiante, Materia, Profesor,Trabajo, Comentario
-from usuarios.forms import FormPreceptor, RespuestaTrabajo
+from usuarios.models import Preceptor, Cursoos, Estudiante, Materia, Profesor,Trabajo, Comentario, RespuestaTrabajo
+from usuarios.forms import FormPreceptor
 from noticias.models import SecretarioNoticia, PreceptorNoticia, PreceptorNoticiaComentarios, ProfesorNoticia
 from noticias.forms import FormPreceptorNoticia
 from volder_app.decorators import RequiredUserAttribute

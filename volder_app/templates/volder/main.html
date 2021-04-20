@@ -13,11 +13,10 @@
         
         <div class="row">
             
-            {% for trabajo in ultimos_trabajo %}
-            
-                {% if trabajo.materia.curso == user.estudiante.curso %}
-                
-                    <div class="trabajos trabajos-animacion col-10 col-md-5 border my-2 mx-auto p-3">
+            {% for trabajo in trabajos %}
+
+                   
+                    <div id="trabajo-{{trabajo.id}}" class="trabajos trabajos-animacion col-10 col-md-5 border my-2 mx-auto p-3">
                                 
                     
                         <h4 class="titulo text-center">{{trabajo.materia.nombre}}</h4>
@@ -26,12 +25,28 @@
                     
                         <span>  {{trabajo}}  </span><br><br>
                     
-                        <a href="{% url 'trabajo' trabajo.id %}" class="btn btn-outline-primary float-right">ver mas</a>
-            
-                    </div>
-          
-                {% endif %}
-          
+                        <a id="button-{{trabajo.id}}" href="{% url 'trabajo' trabajo.id %}" class="btn btn-outline-primary float-right">ver trabajo</a>
+                        {% for nota in notas %}
+                            {% if nota.respuestaTrabajo.trabajo == trabajo %}
+                                <script>
+                                    trabajo = document.getElementById("trabajo-{{trabajo.id}}")
+                                    button = document.getElementById("button-{{trabajo.id}}")
+                                   
+                                    if("{{nota.nota}}" > 6){
+                                        trabajo.classList += " aprobado"
+                                        button.classList += " btn-outline-success"
+                                        trabajo.innerHTML += `<button class="btn btn-outline-success">Nota: {{nota.nota}}</button>`;
+                                    }
+                                    else{
+                                        trabajo.classList += " desaprobado"
+                                        button.classList += " btn-outline-danger"
+                                        trabajo.innerHTML += `<button class="btn btn-outline-danger">Nota: {{nota.nota}}</button>`;
+                                    }
+                                </script>
+                            {% endif %}
+                        {% endfor %}
+                    </div>  
+
             {% endfor %}
       
         </div>
@@ -66,9 +81,15 @@
                 <div class="sibitulo row">
                     <script> var num = 0;</script>
                     <div class="col-12 col-sm">
-                        <p>trabajos entregado: {% for trabajos_entregado in trabajos_entregados %} {% ifequal trabajos_entregado.trabajo.materia materia%} 
-                            <script> num += 1;</script> {% endifequal %} {% endfor %} <script>  document.write(num); </script> </p>
-                   
+                        <p>trabajos entregado: 
+                            {% for total_respesta in total_respestas %} 
+                                {% ifequal total_respesta.trabajo.materia materia %} 
+                                    <script> num += 1;</script> 
+                                {% endifequal %} 
+                            {% endfor %} 
+                            <script>  document.write(num); </script> 
+                        </p>
+
                     </div>
                    
                     <div class="col-12 col-sm">

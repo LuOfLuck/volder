@@ -152,7 +152,7 @@ class Trabajo(models.Model):
     contenido = models.TextField()
     fuentes = models.CharField(max_length=50)
     class Meta():
-        ordering = ['fecha_de_subida']
+        ordering = ['-fecha_de_subida']
         
     def __str__(self):
         return self.titulo
@@ -185,8 +185,7 @@ class NotaTrabajo(models.Model):
         ('7', '7'),
         ('8', '8'),
         ('9', '9'),
-        ('10', '10'),
-        ('rehacer', 'rehacer'),
+        ('10', '10')
     )
     respuestaTrabajo = models.ForeignKey(RespuestaTrabajo, on_delete = models.CASCADE)
     comentario = models.TextField(max_length=200, null=True, blank=True)

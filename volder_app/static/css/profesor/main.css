@@ -345,10 +345,15 @@ header .pc p{
     top: 10px;
     right:  10px;
 }
-
-.corregido{
-    background-color: rgba(0, 255, 0, 0.5);
+.aprobado, .desaprobado{
+    color:white;
     box-shadow: 0 0 0;
+}
+.aprobado{
+    background-color: rgba(0, 255, 0, 0.5); 
+}
+.desaprobado{
+    background-color: rgba(255, 0, 0, 0.5);
 }
 /**/    /**/    /**/    /**/
 /**/                    /**/

@@ -9,16 +9,15 @@
 
 	<link rel="icon" href="{% static 'img/icon-volder.png' %}">
 	<link rel="stylesheet" href="{% static 'css/estilo-login.css' %}">
+    <script src="https://kit.fontawesome.com/9ec8210292.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<header>
 		<div class="vold-logo">
 			<img src="{% static 'img/volder-logo.png' %}" alt="Volder Logo" title="Volder">
 		</div>
-		<a href="http://luofluck.rf.gd/volder" target="_blank">
-			<div class="sobre-volder">
-				<p>¿Cómo funciona Volder?</p>
-			</div>
+		<a href="http://luofluck.rf.gd/volder" title="Sobre Volder" target="_blank">
+			Sobre Volder
 		</a>
 	</header>
 
@@ -32,7 +31,7 @@
 
             </div>
 
-            <form action="" method="POST">{% csrf_token %}
+            <form action="" autocomplete="off" method="POST">{% csrf_token %}
                 {{form.errors}}
                
                 <label for="id_username">Usuario</label>
@@ -56,51 +55,33 @@
         </div>
 
     </div>
-<!-- 
-	<footer>
-
-        <div class="footer">
-
-            <div class="col-foot redes">
-
-                <div class="top-redes">
-
-                    <p>Redes</p>
-
-                </div>
-
-                <div class="redes-img">
-
-                    <img src="{% static 'img/instagram.png' %}" alt="Instagram" title="Instagram">
-
-                    <p>Instagram</p>
-
-                    <img src="{% static 'img/youtube.png' %}" alt="Youtube" title="Youtube">
-
-                    <p>Youtube</p>
-
-                </div>
-
+    <footer>
+        <div class="footer-body"> 
+            <div class="about-social" id="about-social">
+                <p class="tit">Redes</p>
+                <a href="" title="Facebook"><i class="fab fa-facebook-square"></i></a>
+                <a href="" title="Instagram"><i class="fab fa-instagram"></i></a>
+                
             </div>
 
-            <div class="col-foot politicas">
-
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita perspiciatis facilis culpa quidem qui. Illum, illo alias error saepe laborum, odio autem fugit quos, blanditiis veritatis nesciunt, qui id pariatur.</p>
-
+            <div class="about-group" id="about-group">
+                <p class="tit">Integrantes</p>
+                <p>Alvarado, Matías.</p>
+                <p>Guerrero, Lucas.</p>
+                <p>Pardo, Axel.</p>
             </div>
-
-            <div class="col-foot foot-email">
-
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium sint dignissimos corrupti, tempora vero libero facilis sit, asperiores excepturi fugiat ducimus officia magnam fugit quo quas recusandae inventore cupiditate natus!</p>
-
+        
+            <div class="foot-informacion" id="foot-informacion">
+                <p class="tit">Información legal</p>
+                <a href="">Términos y condiciones</a>
+                <a href="">Aviso legal</a>
+                <a href="">Política de cookies</a>
             </div>
-
         </div>
-
-        <div class="footer-bottom"></div>
-
-    </footer> -->
-
+        <div class="footer-bottom">
+            <p>Derechos de autor © 2021 Volder Online</p>
+        </div>
+    </footer>
 </body>
 
 </html>

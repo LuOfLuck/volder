@@ -15,67 +15,85 @@ body{
 }
 
 header{
-	height:auto;
 	width:100%;
-	padding:1rem 0;
+	height:100px;
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+
 	border-bottom:1px solid;
 	border-color:#cdcdcd;
 	box-shadow:2px 2px 4px rgba(0,0,0,0.3);
 }
+@media(max-width: 550px){
+	header{
+		height:auto;
+		flex-direction:column;
+		padding-bottom:.5rem;
+	}
+
+}
 
 header .vold-logo{
-	width:350px;
+	width:250px;
+	height:60px;
 	height:auto;
-	display:inline-block;
-
-	margin-left:10%;
+}
+@media(max-width: 550px){
+	header .vold-logo{
+		margin:1rem 0;
+	}
 }
 
 header .vold-logo img{
-	width:100%;
-	height:100%;
-	margin:auto auto;
+	width:250px;
+	height:60px;
 }
 
-header .sobre-volder{
-	width:300px;
-	height:2.3rem;
-	float:right;
-	margin-right:10%;
-	margin-top:2rem;
-	display:inline-block;
-	padding-top:.4rem;
-
-	background-color:#587699;
-	border:0;
-	transition:.4s linear;
-	cursor:pointer;
-	border-radius:5px;
-}
-
-header .sobre-volder:hover{
-	transition:.3s linear;
-	background-color:#405771;
-}
-
-header .sobre-volder p{
+header a{
+	width:200px;
+	height:2.5rem;
+	display:flex;
+	justify-content:center;
+	align-items:center;
 	font-size:1.3rem;
-	margin:0.2rem 1.7rem;
-	color:white;
 	text-decoration:none;
+	color:#353b48;
+	border-radius:5px;
+	transition:.3s ease;
 }
+header a:hover{
+	background-color:#353b48;
+	color:white;
+}
+
 .main{
 	width:80%;
 	height:auto;
 	margin: auto;
 }
 .main .login{
-	width:50%;
+	width:350px;
 	height:auto;
 	margin:4rem auto;
 
 	box-shadow:2px 2px 10px 2px rgba(0,0,0,0.3);
 }
+
+@media(max-width: 550px){
+	.main{
+		width:100%;
+	}
+	.main .login{
+		width:100%;
+		margin:0 0 2rem 0;
+		box-shadow:0px 0px 0px 0px;
+	}
+	.login form{
+		border:0;
+	}
+}
+
 .login .form-top{
 	width:100%;
 	height:auto;
@@ -83,19 +101,33 @@ header .sobre-volder p{
 
 	background-color:#404040;
 }
+
 .login .form-top p{
 	font-size:2.5rem;
 	color:white;
 	font-family: 'Hind Madurai', sans-serif;
 	text-align:center;
 }
-
+@media(max-width: 550px){
+	.login .form-top{
+		margin-top:1rem;
+		background:transparent;
+	}
+	.login .form-top p{
+		color:#404040;
+	}
+}
 .login form{
 	padding:2rem 10%;
 	border:1px solid;
 	border-color:#a7a6a6;
 	border-top:0;
 	font-family: 'Roboto', sans-serif;
+}
+@media(max-width: 550px){}
+	.login form{
+		border:0;
+	}
 }
 .login form label{
 	font-size:1.4rem;
@@ -115,7 +147,9 @@ header .sobre-volder p{
 
 .login form input:focus{
 	border-color:#6a6a6a;
+	transition:.3s ease;
 }
+
 
 .login form input[type=submit]{
 	width:35%;
@@ -160,50 +194,95 @@ header .sobre-volder p{
 footer{
 	width:100%;
 	height:auto;
+	padding:1rem 0 0 0;
 
 	font-family: 'Roboto', sans-serif;
 	border-top:1px solid;
 	border-color:#cdcdcd;
+	position:relative;
 }
-footer .footer{
+.footer-body{
+	padding:1rem 0;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:center;
+}
+.footer-body .about-social{
+	width:30%;
+	display:flex;
+	justify-content:center;
+	flex-direction:column;
+	text-align:center;
+	color:#718093;
+}
+.about-social .fab{
+	display:inline;
+	font-size:2rem;
+}
+.about-social a{
+	margin-bottom:.7rem;
+}
+
+.footer-body .about-group{
+	width:30%;
+	display:flex;
+	justify-content:center;
+	flex-direction:column;
+	text-align:center;
+	color:#718093;
+}
+.about-group p{
+	margin-bottom:.5rem;
+}
+
+.footer-body .foot-informacion{
+	width:30%;
+	display:flex;
+	justify-content:center;
+	flex-direction:column;
+	text-align:center;
+	color:#718093;
+}
+@media only screen and (max-width:560px){
+	#foot-informacion, #about-social, #about-group{
+		width:100%;
+		margin-bottom:1rem;
+	}
+}
+.footer-body .foot-informacion a{
+	padding-bottom:.5rem;
+}
+
+p.tit{
+	color:#2f3640;
+	font-size:1.8rem;
+	padding-bottom:.7rem;
+}
+.footer-body a{
+	text-decoration:none;
+	color:#718093;
+	cursor:pointer;
+}
+.footer-body a:hover{
+	color:#353b48;
+}
+
+
+.footer-bottom{
 	width:100%;
-
+	height:2rem;
+	background-color:#dcdde1;
+	display:flex;
+	justify-content:center;
+	align-items:center;
 }
 
-.footer .redes{
-	padding: 2rem;
-	height:auto;
-	display:inline;
+.footer-bottom p{
+	color:#718093;
+	cursor:pointer;
+}
+.footer-bottom p:hover{
+	color:#353b48;
 }
 
-.footer .redes .redes-img img{
-	width:30px;
-	height:auto;
-} 
 
-.footer .politicas{
-	width:25%;
-	height:auto;
-
-	background-color:red;
-	display:inline;
-}
-.footer .foot-email{
-	width:25%;
-	height:auto;
-
-	background-color:red;
-	display:inline;
-}
-
-@media(max-width: 767px){
-	header .vold-logo{
-		width:280px;
-	}
-	.main .login{
-		width:95%;
-	}
-	.login form{
-		padding:1rem 5%;
-	}
-}

@@ -11,5 +11,6 @@ urlpatterns = [
     path('noticia/<int:id_noticia>', login_required(views.ver_noticia_preceptor), name="ver_noticia_preceptor"),
     path('materia/<int:id_materia>', login_required(views.ver_materia_preceptor), name="ver_materia_preceptor"),
     path('trabajo/<int:id_trabajo>', login_required(views.ver_trabajos_preceptor), name="ver_trabajos_preceptor"),
+    path('ver_respuestas/<int:id_trabajo>', login_required(views.ver_respuestas), name="ver_respuestas"),
     path('ajustes/', login_required(views.ajustes_preceptor), name="ajustes_preceptor"),
 ]

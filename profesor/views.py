@@ -107,6 +107,9 @@ def ver_trabajo(request,id_trabajo):
 @RequiredUserAttribute(attribute = 'profesor', redirect_to_url = '/preceptor/')   
 def respuesta_trabajo(request, id_trabajo):
     trabajo = Trabajo.objects.get(id=id_trabajo)
+    if request.user.profesor != trabajo.materia.profesor:
+        return redirect("/profesor/")
+
     respuestasTrabajo = RespuestaTrabajo.objects.filter(trabajo = trabajo)
     form = FormNota()
     if request.method == "POST":

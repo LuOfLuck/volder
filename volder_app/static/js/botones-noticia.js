@@ -20,15 +20,15 @@ $imagenPrevisualizacion = document.querySelector("#input-imagen-zone");
 
 $seleccionArchivos.addEventListener("change", () => {
 const archivos = $seleccionArchivos.files;
-if (!archivos || !archivos.length) {
-    $imagenPrevisualizacion.src = "";
-    $imagenPrevisualizacion.style.display= "none";
-    return;
-}
-const primerArchivo = archivos[0];
-const objectURL = URL.createObjectURL(primerArchivo); 
-$imagenPrevisualizacion.src = objectURL;
-$imagenPrevisualizacion.style.display= "block";
+    if (!archivos || !archivos.length) {
+        $imagenPrevisualizacion.src = "";
+        $imagenPrevisualizacion.style.display= "none";
+        return;
+    }
+    const primerArchivo = archivos[0];
+    const objectURL = URL.createObjectURL(primerArchivo); 
+    $imagenPrevisualizacion.src = objectURL;
+    $imagenPrevisualizacion.style.display= "block";
 });
 
 contenedorSecretario = document.getElementById("contenedor-secretario");

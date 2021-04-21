@@ -41,6 +41,7 @@
             <center> <label id="label_archivo" for="id_archivo"> archivo: docs/word/pdf </label></center> 
                 {{form.archivo}}
            </div> 
+           <div id="local-files"></div>
            <center> <input type="submit" class="btn btn-outline-primary col-4" value="Enviar"></center>
         </form>
     </div>
@@ -130,5 +131,21 @@
     function cerrarPopou(){
         popou.style.display = "none";
     }
+
+    let archivo = document.getElementById("id_archivo");
+    let labelArchivo = document.getElementById("label_archivo");
+
+    archivo.addEventListener("change", ()=>{
+        archivos = archivo.files;
+        if (!archivos || !archivos.length){
+            labelArchivo.innerHTML="archivo: docs/word/pdf";
+        }
+        else{
+            labelArchivo.innerHTML= archivo.files[0].name;
+        }
+    
+
+    });
+
 </script>
 {% endblock %}

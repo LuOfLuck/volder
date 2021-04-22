@@ -125,7 +125,7 @@ def noticias_preceptor(request):
         profesor_noticia_cursos = profesor_noticia.materia.filter()
      
         for profesor_noticia_curso in profesor_noticia_cursos:
-            if profesor_noticia_curso.curso in  preceptor_cursos:
+            if profesor_noticia_curso.curso in preceptor_cursos:
                 profesor_noticia_filtrada += [profesor_noticia]
                 break
 
@@ -246,17 +246,27 @@ def ver_trabajos_preceptor(request, id_trabajo):
     return render(request, "preceptor/ver_trabajos_preceptor.html",cont)
 
 def ver_respuestas(request, id_trabajo):
+    trabajo = Trabajo.objects.get(id=id_trabajo)
     if hasattr(request.user, 'preceptor'):
-        extend = "preceptor/base.html"
+        extend = "preceptor/base.html" 
+        preceptorCursos = request.user.preceptor.cursos.filter()
+        if trabajo.materia.curso in preceptorCursos:
+            pass
+        else:
+            return redirect("/preceptor/")
+
     elif hasattr(request.user, 'secretario'):
         extend = "secretario/base.html"
     else:
         return redirect("/estudiante/")
-    trabajo = Trabajo.objects.get(id=id_trabajo)
+    
     respuestas = RespuestaTrabajo.objects.filter(trabajo=trabajo)
     notas = []
     for respuesta in respuestas: 
-        notas += [NotaTrabajo.objects.get(respuestaTrabajo = respuesta)]
+        try:
+            notas += [NotaTrabajo.objects.get(respuestaTrabajo = respuesta)]
+        except:
+            pass
 
     cont = {
         "trabajo":trabajo,

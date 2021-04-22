@@ -29,18 +29,7 @@
                             div.innerHTML += `<button class="btn btn-outline-danger float-right">Nota: {{nota.nota}}</button>`;
                         }
                     {% endif %}
-                    {% if forloop.last %}
-                        
-                            console.log("{{respuesta.id}}" + mostraBoton)
-                            if(mostraBoton == true){
-                                let div = document.getElementById("trabajo-{{respuesta.id}}")
-                                div.innerHTML += `<button onclick="popouAbrir({{respuesta.estudiante.id}})" class="btn btn-outline-primary float-right">calificar</button>`;
-                            }
-                    {% endif %}
-
-                {% empty %}
-                    div = document.getElementById("trabajo-{{respuesta.id}}");
-                    div.innerHTML += `<button onclick="popouAbrir({{respuesta.estudiante.id}})" class="btn btn-outline-primary float-right">calificar</button>`
+                
                 {% endfor %}
             </script>
             </div> 

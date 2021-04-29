@@ -1,0 +1,72 @@
+/**/    /**/    /**/    /**/
+/**/                    /**/
+/**/    /* HEADER */    /**/
+/**/                    /**/
+/**/    /**/    /**/    /**/
+
+
+
+header{
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .1);
+}
+header .celular{
+    display: none;
+
+}
+
+header .pc{
+    text-align:center;
+    padding:1rem 0;
+}
+header .pc img{
+    width:50px;
+    height:40px;
+}
+
+
+/**/    /**/    /**/    /**/
+/**/                    /**/
+/**/    /* Footer */    /**/
+/**/                    /**/
+/**/    /**/    /**/    /**/
+
+footer{
+    width:100%;
+    height:auto;
+    background-color:#dcdde1;
+    text-align:center;
+    padding:.3rem 0;
+}
+footer img{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    margin-bottom: .5rem;
+}
+footer p.copy{
+    font-size:1.3rem;
+    color:#353b48;
+    cursor:pointer;
+}
+footer p.copy:hover{
+    color:#2f3640;
+    transition:.3s ease;
+}
+footer .privacy{
+    margin:1rem auto;
+    width:100%;
+    height:auto;
+    color:#353b48;
+    text-align:center;
+}
+footer .privacy a{
+    color: #353b48;
+    text-align:center;
+}
+@media only screen and (max-width:600px){
+
+    footer .privacy{
+        display:flex;
+        flex-direction:column;
+    }
+}

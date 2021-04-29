@@ -21,26 +21,20 @@ html.sr .load-hidden {
 
 
 header{
-    background-color: rgb(97, 93, 89);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .1);
 }
 header .celular{
     display: none;
 
 }
+
 header .pc{
-    height: 40px;
+    text-align:center;
+    padding:1rem 0;
 }
-header .pc p{
-
-    font-size: 20px;
-    color: white;
-    text-shadow: 0  1px 0 #dddddd,
-    0  2px 0 #a3a3a3,
-    0  3px 0 #8d8d8d, 
-    0  4px 0 #6b6b6b, 
-    0 5px 0 #666666,
-    0 6px 0 #5e5e5e;
-
+header .pc img{
+    width:50px;
+    height:40px;
 }
 
 /**/    /**/    /**/    /**/
@@ -101,7 +95,7 @@ header .pc p{
 /**/    /**/    /**/    /**/    /**/
 
 .contenedor{
-    box-shadow: 10px -4px 10px rgb(171, 173, 173);
+    box-shadow: 3px -3px 5px rgb(0, 0, 0, 0.1);
 }
 .icon{
     color: black;
@@ -139,7 +133,7 @@ header .pc p{
 /**/                            /**/
 /**/    /**/    /**/    /**/    /**/
 .mid-contenido, .container-comentario{
-    box-shadow: 10px -4px 10px rgb(171, 173, 173);
+    box-shadow: 3px -3px 5px rgb(0, 0, 0, 0.1);
 
 }
 .tarea{
@@ -152,7 +146,7 @@ header .pc p{
 }
 .trabajos{
     border-radius: 20px;
-    box-shadow: 3px -1px 3px rgb(171, 173, 173);
+    box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.3);
  }
 .border{
     border-radius: 10px;
@@ -171,6 +165,7 @@ header .pc p{
 #nav, #container, #container-comentario{ 
     position: sticky;
     top: 20px; 
+    box-shadow: 3px -3px 5px rgb(0, 0, 0, 0.1);
 }
 
 
@@ -559,3 +554,51 @@ form #label_archivo:hover{
 /* .foto font{
     display: none;
 } */
+
+
+/**/    /**/    /**/    /**/
+/**/                    /**/
+/**/    /* Footer */    /**/
+/**/                    /**/
+/**/    /**/    /**/    /**/
+
+footer{
+    width:100%;
+    height:auto;
+    background-color:#dcdde1;
+    text-align:center;
+    padding:.3rem 0;
+}
+footer img{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    margin-bottom: .5rem;
+}
+footer p.copy{
+    font-size:1.3rem;
+    color:#353b48;
+    cursor:pointer;
+}
+footer p.copy:hover{
+    color:#2f3640;
+    transition:.3s ease;
+}
+footer .privacy{
+    margin:1rem auto;
+    width:100%;
+    height:auto;
+    color:#353b48;
+    text-align:center;
+}
+footer .privacy a{
+    color: #353b48;
+    text-align:center;
+}
+@media only screen and (max-width:600px){
+
+    footer .privacy{
+        display:flex;
+        flex-direction:column;
+    }
+}

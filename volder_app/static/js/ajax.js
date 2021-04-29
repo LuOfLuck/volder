@@ -1,15 +1,18 @@
+
+console.log("holamndo");
 $(document).ready(function(){
-    $("#sheare-usuario").submit(function(e){
+    $("#sheare").submit(function(e){
+        console.log("hola");
         e.preventDefault();
-        $.ajax({
-            url: $(this).attr('action'),
-            type: $(this).attr('method'),
-            data: $(this).serialize(),
+        // $.ajax({
+        //     url: $(this).attr('action'),
+        //     type: $(this).attr('method'),
+        //     data: $(this).serialize(),
 
-            success: function(json){
-                console.log(json);
-            }
+        //     success: function(json){
+        //         console.log(json);
+        //     }
 
-        })
+        // })
     })
 })

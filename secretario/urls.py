@@ -12,6 +12,7 @@ urlpatterns = [
     path('agregar_profesor', login_required(views.agregar_profesor), name="agregar_profesor"),
     path('ver_profesores/', login_required(views.ver_profesores), name="ver_profesores"),
     path('ver_estudiantes/', login_required(views.ver_estudiantes), name="ver_estudiantes"),
+    path('sheare/', login_required(views.sheare), name="sheare"),
     path('noticias/', login_required(views.noticias), name="noticias"),
     path('ajustes/', login_required(views.ajustes_secretario), name="ajustes_secretario"),
     path('cursos/', login_required(views.secretario_cursos), name="secretario_cursos"),

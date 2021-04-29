@@ -4,13 +4,13 @@
 
 <div class="mid-contenido mid-contenido-animacion border trabajos col col-md-9 mx-auto my-4 px-4">
 
-    <form action="" method="POST"> {% csrf_token %}
+    <form action="{% url 'sheare' %}" method="GET" id="sheare-usuario">{% csrf_token %}
     
         <div class="col-12 col-md-6 ml-auto my-4">
          
             <div class="row">
             
-                <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" class="col-8 form-control border " name="dni" maxlength="8" placeholder="DNI" required>
+                <input type="text" name="apellido" placeholder="apellido" required>
 
                 <button class="col-3 mx-auto  btn btn-outline-primary" type="submit">Buscar</button>
            
@@ -24,7 +24,7 @@
 
         {% for usuario in usuarios %}
 
-            <div class="col-12 col-md-5 mx-auto">
+            <!-- <div class="col-12 col-md-5 mx-auto">
 
                 <div class="informacion-personal border p-3 my-4">
 
@@ -100,10 +100,12 @@
 
                 </div>
             
-            </div>  
-
+            </div>   -->
+            {{usuario}}
         {% endfor %}
     </div>
 
 </div>
+
+
 {% endblock %}

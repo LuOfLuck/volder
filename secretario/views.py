@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from volder_app.decorators import RequiredUserAttribute
 from django.contrib import messages
 from django.forms import modelformset_factory
+from django.http import HttpResponse
 from usuarios.models import Profesor, Preceptor, Cursoos, Estudiante, Materia
 from usuarios.forms import FormSecretario
 from noticias.models import SecretarioNoticia, SecretarioNoticiaComentarios, PreceptorNoticia, ProfesorNoticia
@@ -10,6 +11,7 @@ from mensajes.models import Grupo_chat
 from noticias.forms import FormSecreatarioNoticia
 import string
 import random
+import json
 
 # Create your views here.
 @RequiredUserAttribute(attribute = 'secretario', redirect_to_url = '/estudiante/')
@@ -83,16 +85,27 @@ def ver_profesores(request):
 def ver_estudiantes(request):
 
     estudiante = Estudiante.objects.all().order_by("curso")
-    
-    if request.method == "POST":
-        dni = request.POST["dni"]
-        estudiante = Estudiante.objects.filter(dni = dni)
-
+    # try:
+    #     if request.method == "GET":
+    #         apellido = request.GET.get("apellido")
+    #         estudiante = Estudiante.objects.filter(apellido__icontains = apellido)
+    # except:
+    #     pass
     cont = {
         "usuarios":estudiante,
        
     }
     return render (request, "secretario/inspeccionar.html",cont)
+
+def sheare(request):
+  
+    apellido = request.GET.get("apellido")
+    estudiantes = Estudiante.objects.filter(apellido__icontains = apellido)
+    estudiantes = [usuario_serialize(estudiante) for estudiante in estudiantes]
+    return HttpResponse(json.dumps(estudiantes), content_type="application/json")
+
+def usuario_serialize(usuario):
+    return ({'id':usuario.id, 'nombre':usuario.nombre, 'apellido':usuario.apellido})
 
 @RequiredUserAttribute(attribute = 'secretario', redirect_to_url = '/estudiante/')
 def agregar_profesor(request):

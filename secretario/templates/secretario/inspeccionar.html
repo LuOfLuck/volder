@@ -1,4 +1,4 @@
-{% extends 'preceptor/base.html' %}
+{% extends 'secretario/base.html' %}
 {% load static %}
 {% block content %}
 
@@ -19,12 +19,14 @@
         </div>
 
     </form>
-
-    <div class="perfil row">
-
+    <div id="json" class="json">
+        
+    </div>
+    <div id="perfil" class="perfil row">
+        {{estudiantes}}<br><br>
         {% for usuario in usuarios %}
 
-            <!-- <div class="col-12 col-md-5 mx-auto">
+           <!-- <div class="col-12 col-md-5 mx-auto">
 
                 <div class="informacion-personal border p-3 my-4">
 
@@ -101,7 +103,6 @@
                 </div>
             
             </div>   -->
-            {{usuario}}
         {% endfor %}
     </div>
 
@@ -111,8 +112,6 @@
 {% endblock %}
 
 {% block javascript %}
-<script>
-    console.log("holamuendo")
-</script>
+
 
 {% endblock %}

@@ -66,17 +66,27 @@ header a:hover{
 	background-color:#353b48;
 	color:white;
 }
+.derecha{
+	float:right;
+}
 
 .main{
 	width:80%;
-	height:auto;
+	
 	margin: auto;
 }
 .main .login{
 	width:350px;
 	height:auto;
+	
+}
+.cont-popou{
+	width: 50%;
+	display:none;
+}
+.login, .cont-popou{
+	height:auto;
 	margin:4rem auto;
-
 	box-shadow:2px 2px 10px 2px rgba(0,0,0,0.3);
 }
 
@@ -84,7 +94,7 @@ header a:hover{
 	.main{
 		width:100%;
 	}
-	.main .login{
+	.main .login, .cont-popou{
 		width:100%;
 		margin:0 0 2rem 0;
 		box-shadow:0px 0px 0px 0px;
@@ -94,7 +104,7 @@ header a:hover{
 	}
 }
 
-.login .form-top{
+.login .form-top, .popou-top{
 	width:100%;
 	height:auto;
 	padding:1rem auto;
@@ -102,22 +112,22 @@ header a:hover{
 	background-color:#404040;
 }
 
-.login .form-top p{
+.login .form-top p, .popou-top p{
 	font-size:2.5rem;
 	color:white;
 	font-family: 'Hind Madurai', sans-serif;
 	text-align:center;
 }
 @media(max-width: 550px){
-	.login .form-top{
+	.login .form-top, .popou-top{
 		margin-top:1rem;
 		background:transparent;
 	}
-	.login .form-top p{
+	.login .form-top p, .popou-top p{
 		color:#404040;
 	}
 }
-.login form{
+.login form, .popou-cuerpo{
 	padding:2rem 10%;
 	border:1px solid;
 	border-color:#a7a6a6;
@@ -125,11 +135,11 @@ header a:hover{
 	font-family: 'Roboto', sans-serif;
 }
 @media(max-width: 550px){}
-	.login form{
+	.login form, .popou-cuerpo{
 		border:0;
 	}
 }
-.login form label{
+.login form label, .popou-cuerpo p{
 	font-size:1.4rem;
 }
 
@@ -150,8 +160,12 @@ header a:hover{
 	transition:.3s ease;
 }
 
-
-.login form input[type=submit]{
+.popou-button{
+	height:2.5rem;
+	margin:1rem auto;
+	font-size:1.2rem;
+}
+.login form input[type=submit], .popou-button{
 	width:35%;
 	border:0;
 	border-radius:5px;
@@ -161,12 +175,12 @@ header a:hover{
 	color:white;
 	transition:.3s linear;
 }
-.login form input[type=submit]:hover{
+.login form input[type=submit]:hover, .popou-button:hover{
 	border: 2px solid #404040;
 	background-color: white;
 	color:#404040;
 }
-.login form input[type=submit]:active{
+.login form input[type=submit]:active, .popou-button:active{
 	color:white;
 	background-color: #404040;
 }

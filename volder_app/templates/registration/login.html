@@ -21,9 +21,11 @@
 		</a>
 	</header>
 
+
+
 	<div class="main">
 
-        <div class="login">
+        <div id="login" class="login">
 
             <div class="form-top">
 
@@ -48,10 +50,32 @@
 
                 </div>
 
-                <input type="submit" value="Enviar" name="Enviar">
+                <button class="popou-button" onclick="abrirPopou()"> usuarios </button>
+
+                <input type="submit" class="derecha" value="Enviar" name="Enviar">
+
 
             </form>
 
+        </div>
+
+        <div id="cont" class="cont-popou">
+            <div class="popou-top">
+                <p> Bienvenido</p>
+            </div>
+            <div class="popou-cuerpo">
+                <p>Esta pagina es un sitio de muestra, si quiere saber <a href="http://luofluck.epizy.com/volder-explicacion" target="_blank" rel="noopener noreferrer">¿que es volder?</a> 
+                    Le recomendamos dar click en las letras azules. <br>
+                    A continuación están los siguientes usuarios con los que puede iniciar sesión: <br>
+                    <b>Estudiante:</b> Lu_Of_Luck <br>
+                    <b>Profesor:</b> Profesor1 <br>
+                    <b>preceptor:</b> preceptor1 <br>
+                    <b>secretario:</b> secretario1 <br>
+                    <br>
+                    <b>Todas las contrañas son:</b> 12345678.as <br>
+                </p>
+                <button class="popou-button" onclick="cerrarPopou()"> okey </button>
+            </div>
         </div>
 
     </div>
@@ -82,6 +106,19 @@
             <p>Derechos de autor © 2021 Volder Online</p>
         </div>
     </footer>
+
+    <script>
+        const cont = document.getElementById("cont");
+        const login = document.getElementById("login");
+        function cerrarPopou(){
+            login.style.display = "block";
+            cont.style.display ="none";
+        }
+        function abrirPopou(){
+            login.style.display = "none";
+            cont.style.display ="block";
+        }
+    </script>
 </body>
 
 </html>

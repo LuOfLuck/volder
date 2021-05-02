@@ -105,6 +105,15 @@ html.sr .load-hidden {
     scrollbar-width: thin;
     box-shadow: 10px -4px 10px rgb(171, 173, 173);
 }
+#nav-header{
+    position: sticky;
+    top: 0px; 
+ }
+#nav, #container, #container-comentario{ 
+    position: sticky;
+    top: 20px; 
+    box-shadow: 3px -3px 5px rgb(0, 0, 0, 0.1);
+}
 .estudiantes{
     overflow-y: auto;
     height: 300px;

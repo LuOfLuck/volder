@@ -20,7 +20,7 @@ in this way we divide the work of adding everyone between secretaries and precep
 
 
 Once that is done, the true Volder operation can take place. Like the classic upload / receive jobs from a lecturer. Context diagram about that system:
-
+![dfd-trabajos](https://user-images.githubusercontent.com/77320589/116849633-7d0f6500-abc5-11eb-93b4-cb9d6a363227.png)
 
 
 # **_The objectives of Volder is:_**

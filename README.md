@@ -15,6 +15,8 @@ we decided that volder will imitate the models of the secundari schools through 
 - secretary
 
 to prevent anyone outside the school from having access we decided not to use the normal registration form but to use a manual registration form based on hierarchies. Here is a context diagram that explains how it works
+![diagrama-de-fludo-de-datos-registro](https://user-images.githubusercontent.com/77320589/116844074-5b5bb100-abb8-11eb-9382-475d1692d017.png)
+
 # **_The objectives of Volder is:_**
 
 - evitate the lost of info

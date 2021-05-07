@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap");
+header {
+  width: 100%;
+  height: 10vh;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .pic {
+  width: 50px;
+  height: 8vh;
+  background-color: red;
+  border-radius: 50%;
+  margin-left: 2rem;
+  background-color: #dfe4ea;
+}
+
+header img {
+  width: 50px;
+  height: 6vh;
+}
+
+header .theme {
+  width: 60px;
+  height: 27px;
+  background-color: #dfe4ea;
+  border-radius: 1rem;
+  margin-right: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .theme .ball {
+  width: 30px;
+  height: 110%;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #4b7bec;
+}
+
+nav {
+  width: 100%;
+  height: 5vh;
+  background-color: #4b7bec;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav .nav {
+  width: 75%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-family: "Baloo Tamma 2", cursive;
+}
+
+nav .nav .option {
+  width: 10%;
+  height: 90%;
+  text-decoration: none;
+  color: white;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav .nav .option::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  display: block;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
+}
+
+nav .nav .option:hover::after {
+  width: 100%;
+}
+
+nav .nav .logout {
+  width: 12%;
+}
+
+.main {
+  width: 100%;
+  height: 85vh;
+  background-color: #dfe4ea;
+}
+/*# sourceMappingURL=base.css.map */

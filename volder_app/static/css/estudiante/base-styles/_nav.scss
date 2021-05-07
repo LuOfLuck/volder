@@ -1,0 +1,37 @@
+nav{
+    width:100%;
+    height:5vh;
+    background-color:$primary;
+    @include FlexCenterCenter;
+    .nav{
+        width:75%;
+        height:100%;
+        @include FlexCenterCenter;
+        justify-content:space-around;
+        font-family: $title-font;
+        .option{  
+            width:10%;
+            height:90%;
+            text-decoration: none;
+            color: white;
+            position:relative;
+            @include FlexCenterAround;
+            &::after{
+                content: "";
+                width:0;
+                height:2px;
+                display:block;
+                background-color:white;
+                position:absolute;
+                bottom:0;
+                transition:.3s linear;
+            }
+            &:hover::after{
+                width:100%;
+            }
+        }
+        .logout{
+            width:12%;
+        }
+    }
+}

@@ -1,153 +1,62 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en"  class="sr">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volder Online</title>
 
-    <head>
-        
-        <title> Volder Online</title>
-        
-        <link rel="stylesheet" type="text/css" href="{% static 'css/estudiante/main.css' %}">
-        
-        <script src="{% static 'js/scrollreveal.js' %}"></script>
-        
-        <!-- <link rel="stylesheet" href="{% static 'css/all.css' %}" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> -->
-        
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-        
-        <meta charset="UTF-8">
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-        <link rel="stylesheet" href="{% static 'css/header_footer.css' %}">
-
-    </head>
-
-    <body> 
-        <!-- {% include 'volder/carga.html' %} -->
-
-        <header>
-
-            <div class="celular"> 
-               
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-               
-                    <a class="navbar-brand" href="">Volder online</a>
-               
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-               
-                        <span class="navbar-toggler-icon"></span>
-               
-                    </button>
-                
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    
-                        <ul class="navbar-nav">
-                            
-                    
-                            <div class="nav-item active">
-                    
-                                <a href="{% url 'home' %}#inicio" class="col-10 btn btn-outline-success my-2 mx-3">Inicio </a>
-                    
-                                <a href="{% url 'home' %}#materias" class="col-10 btn btn-outline-success my-2 mx-3">Materias </a>
-                    
-                                <a href="{% url 'noticias_estudiante' %}" class="col-10 btn btn-outline-success my-2 mx-3">Noticias </a>
-                    
-                                <a href="{% url 'ajustes_estudiante' %}" class="col-10 btn btn-outline-success my-2 mx-3">ajustes </a>
-                    
-                                <a href="" class="col-10 btn btn-outline-success my-2 mx-3">sobre nosotros </a>
-                    
-                                <a href="{% url 'logout' %}" class="col-10 btn btn-outline-success my-2 mx-3">Cerrar sesión </a>
-                    
-                            </div>
-                    
-                        </ul>
-                    
-                    </div>
-                
-                
-                </nav>
-            
-            </div> 
-
-            <div id="nav-header" class="pc text-center header-animacion">
-                <img src="{% static 'img/icon-volder.png' %}" alt="Volder icon" title="Volder">
-            </div>
-
-        </header>
-
-        <div class="main row">
-
-            <div id="nav" class="contenedor contenedor-animacion col-2 my-4  mx-auto  border">
-
-                <a href="{% url 'home' %}#inicio" id="botones"class="col-12 btn boton-animacion my-3">
-                
-                        <i class="fas fa-home"></i><span>Inicio</span>
-                
-                </a>
-
-                <a href="{% url 'home' %}#materias" id="botones" class="col-12 btn boton-animacion my-3">
-                
-                        <i class="fas fa-book"></i><span> Materias </span>
-                    
-                </a>
-                <a href="{% url 'bandeja_de_entrada' %}#" id="botones"class="col-12 btn boton-animacion my-3">
-              
-                    <i class="fas fa-inbox"></i><span>mensajes</span>
-                    
-                </a>
-
-                <a href="{% url 'noticias_estudiante' %}#"  id="botones" class="col-12 btn boton-animacion my-3">
-                
-                        <i class="far fa-newspaper"></i><span> Noticias </span>
-                    
-                </a>
-
-                <a href="{% url 'ajustes_estudiante' %}#" id="botones" class="col-12 btn boton-animacion my-3">
-                
-                        <i class="fas fa-wrench"></i><span>ajustes</span>
-                    
-                </a>
-
-                <a href="#" id="botones" class="col-12 btn boton-animacion my-3">
-                
-                        <i class="fas fa-user"></i> <span> nosotros </span>
-                    
-                </a>
-
-                <a href="{% url 'logout' %}" id="botones" class="col-12 btn boton-animacion my-3">
-                
-                        <i class="fas fa-sign-out-alt"></i> <span>Cerrar sesion</span>
-                    
-                </a>
-
-            </div>
-
-            
-                {% block content %}
-
-                {% endblock %}
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estudiante/base.css' %}">
+</head>
+<body>
+    <div class="left-menu"></div>
+    <header>
+        <div class="pic"></div>
+        <img src="{% static 'img/icon-volder.png' %}" alt="Volder" title="Volder Online">
+        <div class="theme">
+            <div class="ball"></div>
         </div>
+    </header>
 
-    <footer id="footer">
-        <div class="privacy">
-            <a href="">Cookies</a>
-            <a href="">Privacidad</a>
-            <a href="">Términos y condiciones</a>
-        </div>   
-        <img src="{% static 'img/icon-volder.png' %}" alt="Volder Icon" title="Volder">
-        <p class="copy">Derechos de autor © 2021 Volder Online</p>
+    <nav>
+        <div class="nav">
+                <a href="{% url 'home' %}#inicio" class="option">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="{% url 'home' %}#materias" class="option">
+                    <i class="fas fa-book"></i>
+                    <span> Materias </span>
+                </a>
+                <a href="{% url 'bandeja_de_entrada' %}#" class="option">
+                    <i class="fas fa-inbox"></i>
+                    <span>mensajes</span>
+                </a>
+                <a href="{% url 'noticias_estudiante' %}" class="option">
+                    <i class="far fa-newspaper"></i>
+                    <span> Noticias </span>
+                </a>
+                <a href="{% url 'ajustes_estudiante' %}" class="option">
+                    <i class="fas fa-wrench"></i><span>ajustes</span>
+                </a>
+                <a href="" class="option">
+                    <i class="fas fa-user"></i> <span> nosotros </span>
+                </a>
+                <a href="{% url 'logout' %}" class="option logout">
+                    <i class="fas fa-sign-out-alt"></i> <span>Cerrar sesion</span>
+                </a>
+            
+        </div>
+    </nav>
+
+    <div class="main">
+        
+    </div>
+
+    <footer>
     </footer>
-   
-
-    <script src="{% static 'js/animaciones-alumno.js' %}"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-    
-    </body>
-
+</body>
 </html>

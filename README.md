@@ -41,6 +41,7 @@ Volder fue pensado exclusivamente para las escuelas segundarias. Así que ataca 
 - **HTML:** Como lenguaje de  *HyperText* para dar la estructura a todo el sitio
 - **CSS:** Para dar estilo y una buena vista al usuario
 - **JavaScript:** A fin de utilizarlo para hacer *AJAX* y animaciones
+- **Bootstrap:** responsable de la mayoria del responsive 
 
 ### **_Backend:_**
 - **Python:** Lenguaje de programación realizado para las consultar y la lógica de la pagina con el Framework *Django*

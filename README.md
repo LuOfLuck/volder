@@ -64,4 +64,16 @@ python manage.py migrate
 python runserver
 ```
 
+### **_Modelos entidad relacion_**
+![8  base de datos (volder)](https://user-images.githubusercontent.com/77320589/119431946-da409700-bce9-11eb-9fd2-e5c1f8fa0e30.jpg)
+> click a la imagen para ver en maxima calidad
+
+##### Algunas aclaraciones
+- Se utilizo una tabla *noticia* independiente para los 3 roles superiores ya que cada una de estas tienen cualidades y alcanze de manera diferente, y a largo plazo se
+van a agregar muchas cosas que sera mas sencillo y eficaz tener 3 tablas diferente
+- Cada tabla de rol tiene un nombre, apellido, dni de manera repetitiva por una mala toma de desiciones, ya se esta trabajando para arreglar eso.
+- La tabla *proyecto* es para crear trabajos grupales aunque este no esta en funcionamiento debido a que esta en desarrollo
+
+
 [Imágenes/documentos/modelos del desarrollo](https://drive.google.com/drive/folders/1ZFJ_6E2z0HjK1FPmN_XBpFfXelqbUTtl?usp=sharing)
+

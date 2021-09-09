@@ -39,25 +39,26 @@ def añadir_trabajo(request):
         contenido = request.POST['contenido']
         fuentes = request.POST['fuentes']
         trabajo = Trabajo(titulo=titulo, materia=materia, fecha_de_entrega=fecha_de_entrega, tipo_de_trabajo=tipo_de_trabajo, consigna=consigna, contenido=contenido, fuentes=fuentes)
-        # trabajo.save()
-        estudiantes = Estudiante.objects.filter(curso = materia.curso)
-        emailfrom = settings.EMAIL_HOST_USER
-        asunto = "NUEVO TRABAJO " + str(tipo_de_trabajo)
-        mensaje = f"""
-            {tipo_de_trabajo}: {titulo} 
-            fecha de entraga:{fecha_de_entrega}
-            consigna: {consigna}
-            {contenido}             
-            fuentes:{fuentes}
-            Para ver el trabajo con mayor calidad y poder comunicarte con el profesor y tus compañeros ingresa <a href="volder.online/estudiante/trabajo/{trabajo.id}
+        trabajo.save()
+        try:
+            estudiantes = Estudiante.objects.filter(curso = materia.curso)
+            emailfrom = settings.EMAIL_HOST_USER
+            asunto = "NUEVO TRABAJO " + str(tipo_de_trabajo)
+            mensaje = f"""
+                {tipo_de_trabajo}: {titulo} 
+                fecha de entraga:{fecha_de_entrega}
+                consigna: {consigna}
+                {contenido}             
+                fuentes:{fuentes}
+                Para ver el trabajo con mayor calidad y poder comunicarte con el profesor y tus compañeros ingresa <a href="volder.online/estudiante/trabajo/{trabajo.id}
 
-        """
-        emailrecipiente = ['volderprueba@gmail.com']
-        # for estudiante in estudiantes:
-        #     emailrecipiente += [estudiante.user.email]
-        # print(emailrecipiente)
-        send_mail(asunto, mensaje, emailfrom, emailrecipiente)
- 
+            """
+            emailrecipiente = []
+            for estudiante in estudiantes:
+                emailrecipiente.append(estudiante.user.email)
+            send_mail(asunto, mensaje, emailfrom, emailrecipiente)
+        except:
+            print("email no enviado")
         return redirect("/profesor/")
 
     now = datetime.now()
@@ -126,7 +127,7 @@ def respuesta_trabajo(request, id_trabajo):
                 instancia.save()
     notas = []
     for respuestaTrabajo in respuestasTrabajo:
-        notas += NotaTrabajo.objects.filter(respuestaTrabajo=respuestaTrabajo)  
+        notas.append(NotaTrabajo.objects.filter(respuestaTrabajo=respuestaTrabajo))
 
 
     cont = {

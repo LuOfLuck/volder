@@ -1,3 +1,22 @@
+:root{
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --orange: #fd7e14;
+    --green: #28a745;
+    --teal: #20c997;
+    --white: #fff;
+
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #DC3544;
+    --light: #f8f9fa;
+    --dark: #343a40;
+}
+
 html.sr .load-hidden {
     visibility: hidden;
 }
@@ -10,6 +29,22 @@ html.sr .load-hidden {
     margin: 0px !important;
     padding: 0px !important;
 }
+.main{
+    background-color: var(--light);
+}
+body::-webkit-scrollbar{
+    width: .1em;
+}
+   
+body::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+}
+ 
+body::-webkit-scrollbar-thumb {
+    background-color:var(--tirada-2-tono-5);
+    border-radius: 2px;
+}
 /****************************************************/
 
 /**/    /**/    /**/    /**/
@@ -19,23 +54,6 @@ html.sr .load-hidden {
 /**/    /**/    /**/    /**/
 
 
-
-header{
-    box-shadow: 0 3px 5px rgba(0, 0, 0, .1);
-}
-header .celular{
-    display: none;
-
-}
-
-header .pc{
-    text-align:center;
-    padding:1rem 0;
-}
-header .pc img{
-    width:50px;
-    height:40px;
-}
 
 /**/    /**/    /**/    /**/
 /**/                    /**/
@@ -94,11 +112,36 @@ header .pc img{
 /**/                            /**/
 /**/    /**/    /**/    /**/    /**/
 
-.contenedor{
-    box-shadow: 3px -3px 5px rgb(0, 0, 0, 0.1);
+.contenedor, 
+.container,
+.mid-contenido, 
+.container-comentario,
+.tarea{
+    color: var(--light);
+    border-radius: 5px;
+    background-color: var(--dark);
+    box-shadow: 3px -3px 5px var(--secondary);
 }
-.icon{
-    color: black;
+.trabajos{
+    background-color: var(--primary);
+    border-radius: 5px;
+}
+.trabajos > .btn{
+    border: 2px solid var(--orange);
+    border-radius: 8px;
+    background-color: var(--light);
+    color:var(--orange);
+}
+.trabajos > .btn:hover{
+    transition: .2s linear;
+    background-color: var(--orange);
+    color:var(--light);
+}
+.perfil > a{
+    text-decoration:none;
+}
+#botones{
+    color: var(--light);
 }
 #botones{
     text-decoration: none;
@@ -106,8 +149,7 @@ header .pc img{
 }
 #botones:hover{
     transition: 0.5s linear;
- 
-    background-color: #8282825b;
+    background-color: var(--orange);
 }
 #botones i{
     float: left;
@@ -132,31 +174,19 @@ header .pc img{
 /**/  /* CONTENEDORES INDEX */  /**/
 /**/                            /**/
 /**/    /**/    /**/    /**/    /**/
-.mid-contenido, .container-comentario{
-    box-shadow: 3px -3px 5px rgb(0, 0, 0, 0.1);
 
-}
 .tarea{
     height:auto;
     max-height: 800px;
     overflow-y: auto;
     scrollbar-color: transparent;
     scrollbar-width: thin;
-    box-shadow: 5px -2px 5px rgb(171, 173, 173);
 }
-.trabajos{
-    border-radius: 20px;
-    box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.3);
- }
-.border{
-    border-radius: 10px;
-}
-.contenedor, .container{
 
+
+.contenedor, .container{
     height: 90vh;
     overflow-y: auto;
-    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
-    scrollbar-width: thin;
 }
 #nav-header{
     position: sticky;
@@ -165,7 +195,6 @@ header .pc img{
 #nav, #container, #container-comentario{ 
     position: sticky;
     top: 20px; 
-    box-shadow: 3px -3px 5px rgb(0, 0, 0, 0.1);
 }
 
 
@@ -180,7 +209,7 @@ header .pc img{
 /***************************************************************/
 
 .sibitulo p{
-    color:#6c757d;
+    color: var(--light);
     display: inline-block;
 }
 .subitulo-right, .boton-right{
@@ -249,7 +278,7 @@ header .pc img{
     font-size: 10px;
 }
 .mensaje-recibido-profesor{
-    background-color:rgba(63, 63, 62, 0.233);
+    background-color:var(--dark);
 }
 .comentario-respuesta{
     display: block;
@@ -353,43 +382,21 @@ form #label_archivo:hover{
     border-radius: 15px;
     color: white;
 }
-.aprobado, .desaprobado{
-    /* color:white; */
+/* .aprobado, .desaprobado{
+     color:white; 
     box-shadow: 0 0 0;
 
 }
 
-.aprobado::after, .desaprobado:after{
-    position:absolute;
-    border: 2px solid;
-    padding: .5rem 1rem;
-   
-    font-size: 1.5rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    transform: rotate(22.5deg);
-    display:block;
-    top: 40%;
-    right: 50%;
-    margin-right: -25%;
-}
-.aprobado::after{
-    content: "Aprobado";
-    color: rgba(0, 255, 0, 0.5);
-    border-color:rgba(0, 255, 0, 0.5);
-}
-.desaprobado:after{
-    content: "reprobado";
-    color:rgba(255, 0, 0, 0.5);
-    border-color:rgba(255, 0, 0, 0.5);
-}
+
 .aprobado{
-    box-shadow: 3px -1px 3px rgba(0, 255, 0, 0.5);
-    border: 1px solid rgba(0, 255, 0, 0.5);
+     background-color: var(--success);
+    
 }
 .desaprobado{
-    box-shadow: 3px -1px 3px rgba(255, 0, 0, 0.5);
-    border: 1px solid rgba(255, 0, 0, 0.5);
-}
+    background-color: var(--danger); 
+   
+} */
 
 @media (max-width: 768px) {
     form #id_comentario{

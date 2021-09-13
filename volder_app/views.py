@@ -8,10 +8,7 @@ from volder_app.decorators import *
 @RequiredUserAttribute(attribute = 'estudiante', redirect_to_url = '/profesor/')
 def main(request):
         todos_los_trabajos = Trabajo.objects.all()
-        trabajos = []
-        for trabajo_filter in todos_los_trabajos:
-            if trabajo_filter.materia.curso == request.user.estudiante.curso:
-                trabajos += [trabajo_filter]
+        trabajos = Trabajo.objects.filter(materia__curso= request.user.estudiante.curso)
 
 
         materias = Materia.objects.filter(curso=request.user.estudiante.curso.id)
@@ -22,11 +19,11 @@ def main(request):
         for trabajo in trabajos:
             try:
                 respuesta = RespuestaTrabajo.objects.get(trabajo=trabajo, estudiante=request.user.estudiante)
-                total_respestas += [respuesta]
+                total_respestas.append(respuesta)
             except:
                 respuesta = None
             try:
-                nota += [NotaTrabajo.objects.get(respuestaTrabajo=respuesta)]
+                nota.append(NotaTrabajo.objects.get(respuestaTrabajo=respuesta))
             except:
                 pass
         cont = {

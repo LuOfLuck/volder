@@ -1,28 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
 :root{
-    --indigo: #6610f2;
-    --purple: #6f42c1;
-    --pink: #e83e8c;
-    --orange: #fd7e14;
-    --green: #28a745;
-    --teal: #20c997;
-    --white: #fff;
 
-    --primary: #007bff;
-    --secondary: #6c757d;
-    --success: #28a745;
-    --info: #17a2b8;
-    --warning: #ffc107;
-    --danger: #DC3544;
-    --light: #f8f9fa;
-    --dark: #343a40;
+
+    --naranja:#DAAB00;
+	--negro:#282828;
+	--bg:#404040;
+	--grey:#686868;
+	--white:#FFF;  /* ----> XD     res: sdasdnsadas jj */
 }
 
 html.sr .load-hidden {
     visibility: hidden;
 }
 *{
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     outline: none;
 }
 .row{
@@ -30,18 +22,29 @@ html.sr .load-hidden {
     padding: 0px !important;
 }
 .main{
-    background-color: var(--light);
+    background-color: var(--bg);
 }
-body::-webkit-scrollbar{
-    width: .1em;
+body{
+    font-size: 18px;
+    font-family:'Rubik', sans-serif;
+}
+
+body::-webkit-scrollbar,
+.compañeros::-webkit-scrollbar,
+.block--cont::-webkit-scrollbar{
+    width: 0;
 }
    
-body::-webkit-scrollbar-track{
+body::-webkit-scrollbar-track,
+.compañeros::-webkit-scrollbar-track,
+.block--cont::-webkit-scrollbar-track{
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
 }
  
-body::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb,
+.compañeros::-webkit--scrollbar-thumb,
+.block--cont::-webkit--scrollbar-thumb{
     background-color:var(--tirada-2-tono-5);
     border-radius: 2px;
 }
@@ -115,119 +118,235 @@ body::-webkit-scrollbar-thumb {
 .contenedor, 
 .container,
 .mid-contenido, 
-.container-comentario,
-.tarea{
-    color: var(--light);
-    border-radius: 5px;
-    background-color: var(--dark);
-    box-shadow: 3px -3px 5px var(--secondary);
+.container-comentario{
+    color: var(--white);
+    border-radius: 20px;
+    background-color: var(--negro);
+    box-shadow: 3px -3px 5px var(--negro);
 }
-.trabajos{
-    background-color: var(--primary);
-    border-radius: 5px;
-}
-.trabajos > .btn{
-    border: 2px solid var(--orange);
-    border-radius: 8px;
-    background-color: var(--light);
-    color:var(--orange);
-}
-.trabajos > .btn:hover{
-    transition: .2s linear;
-    background-color: var(--orange);
-    color:var(--light);
+.mid-contenido-animacion{
+    padding-top:50px;
 }
 .perfil > a{
     text-decoration:none;
 }
-#botones{
-    color: var(--light);
-}
-#botones{
-    text-decoration: none;
-    border-radius: 5%;
-}
-#botones:hover{
-    transition: 0.5s linear;
-    background-color: var(--orange);
-}
-#botones i{
-    float: left;
-}
-#botones span{
-    float: left;
-    margin-left: 10px;
-}
 
-
-/**/    /**/    /**/    /**/    /**/
-/**/                            /**/
-/**/   /* FIN DERECHA INDEX */  /**/
-/**/                            /**/
-/**/    /**/    /**/    /**/    /**/
-
-
-/****************************************************************/
-
-/**/    /**/    /**/    /**/    /**/
-/**/                            /**/
-/**/  /* CONTENEDORES INDEX */  /**/
-/**/                            /**/
-/**/    /**/    /**/    /**/    /**/
-
-.tarea{
-    height:auto;
-    max-height: 800px;
-    overflow-y: auto;
-    scrollbar-color: transparent;
-    scrollbar-width: thin;
-}
-
-
-.contenedor, .container{
-    height: 90vh;
-    overflow-y: auto;
-}
 #nav-header{
     position: sticky;
     top: 0px; 
- }
-#nav, #container, #container-comentario{ 
+    height: 100vh;
+}
+#nav{
     position: sticky;
-    top: 20px; 
+    height: 100vh;
+    top: 0px; 
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+#nav > .logo{   
+    height: 20vh;
+    display: flex;
+    align-items: center;
+}
+.logo > p{
+    font-weight: 800;
+    font-size: 4em;
+}
+.logo > p > span{
+    font-size: 1.2em;
+}
+.element{
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.element svg{
+    margin-right:20px;
+}
+#nav a{
+    margin:auto;
+    text-align:left;
+    max-height: 50px;
+    font-size: 1em;
+    font-weight:600;
 }
 
-
-
-/**/    /**/    /**/    /**/    /**/   /**/
-/**/                                   /**/
-/**/    /* FIN CONTENEDORES INDEX */   /**/
-/**/                                   /**/
-/**/    /**/    /**/    /**/    /**/   /**/
-
-
-/***************************************************************/
-
-.sibitulo p{
+#botones{
     color: var(--light);
-    display: inline-block;
+    text-decoration: none;
+    border-radius: 5%;
 }
-.subitulo-right, .boton-right{
-    float: right;
+#botones > p{
+    position: relative;
+    display:inline;
+    padding-bottom: .1em;
+}
+#botones > p::before{
+    content: '';
+    width: 0px;
+    height: 4px;
+    background-image: linear-gradient(45deg,  var(--white),var(--naranja));
+    position: absolute;
+    bottom: -0.1em;
+
+}
+#botones:hover p::before{
+    transition: .7s ease-in-out;
+    width: 100%;
 }
 
-.container .perfil .foto{
+.element--p--active{
+    border-bottom: 3px solid var(--naranja);
+}
+
+.contenido-block:first-child{
+    margin-top: 2em;
+}
+.contenido--block--title{
+    color:var(--white);
+    display: inline-block;
+    text-align: left;
+    padding: 0;
+    border-bottom: 2px solid var(--white) ;
+}
+
+.block--cont{
+    height:auto;
+    max-height: 360px;
+    overflow:auto;
+}
+.trabajo{
+    color: var(--white);
+    display: inline-block;
+    background-color: var(--grey);
+    border-radius: 20px;
+    padding: 5px 10px;
+    
+}
+
+.trabajo--titulo{
+    display:flex;
+    align-items: center;
+    border-bottom: 2px solid var(--white);
+}
+.titulo--nombre,
+.titulo--fecha{
+    margin-bottom:0;
+}
+.titulo--nombre{
+    font-weight:500;
+}
+.titulo--fecha{
+    text-align:center;
+    margin-left: auto;
+    font-size: .7em;
+    font-weight:100;
+}
+.trabajo--p{
+    margin: 1em 0 1em 0;
+}
+.trabajo--end{
+    display:flex;
+    margin: .5em;
+}
+.trabajo--end .btn{
+    font-size: .8em;    
+    border: 2px solid var(--naranja);
+    border-radius: 8px;
+    background-color: transparent;
+    color:var(--white);
+    padding: 5px;
+}
+.trabajo--end .btn:hover{
+    transition: .2s linear;
+    background-color: var(--naranja);
+    color:var(--white);
+}
+.trabajo--nota{
+    margin-left: auto;
+}
+
+.materia{
+    background-color: var(--grey);
+    border-radius:5px;
+    color:white;
+    padding: 15px 40px 15px 10px;
+}
+.materia--titulo{
+    font-size: 1.4em;
+    font-weight: 900;
+}
+.materia--p{
+    margin: 0;
+    font-weight: 100;
+}
+.materia--p > a{
+    color:white;
+    font-weight: 700;
+}
+.materia--a{
+    color: var(--naranja);
+    font-weight: 700;
+    margin-left: auto;
+}
+.materia--a:hover{
+    text-decoration:none;
+    color:white;
+
+}
+
+#container, #container-comentario{ 
+    position: sticky;
+    top: 15vh; 
+    height: 80vh;
+}
+
+.perfil .foto{
     display:block;
     margin:auto;
-    height: 100px;
-    width: 100px;
+    height: 125px;
+    width: 125px;
     border-radius: 50%;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.perfil p{
+    margin-bottom: 0;
+}
+.perfil .nombre{
+    font-weight: 700;
+    font-size: 1.1em;
+}
+.perfil .curso{
+    font-size: .6em;
+    font-weight: normal;
+    padding-bottom: 20px;
+    margin: 0 15px;
+    border-bottom: 1px solid var(--white);
+}
+.compañeros--titulo{
+    margin: 15px;
+    font-weight: lighter;
 }
 .container .perfil .nombre, .curso{
     text-align: center;
 }
-
-
+.compañeros{
+    height: 35vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.perfil-compañero > a{
+    display: flex;
+    align-items: center;
+    width:100%;
+    margin-left: 20px;
+    text-decoration: none;
+}
+.perfil-compañero {
+    margin-bottom: 10px;
+}
 .compañeros .foto-compañeros{
     display:block;
     float: left;
@@ -236,8 +355,15 @@ body::-webkit-scrollbar-thumb {
     border-radius: 50%;
 }
 .compañeros .nick{
-    font-size: smaller;
-    margin-left: 40px;
+    color:white;
+    font-size: 1em;
+    margin-left: 20px;
+}
+.compañeros .nick:hover{
+    transition: .2s;
+    text-decoration: none;
+    color: var(--naranja);
+    font-weight: 600;
 }
 @media (max-width: 426px) {
     .subitulo-right{
@@ -263,7 +389,6 @@ body::-webkit-scrollbar-thumb {
     height: 85vh !important;
 }
 .comentarios{
-    height: 60vh;
     overflow-y: auto;
 }
 .comentario{
@@ -278,7 +403,7 @@ body::-webkit-scrollbar-thumb {
     font-size: 10px;
 }
 .mensaje-recibido-profesor{
-    background-color:var(--dark);
+    background-color:var(--negro);
 }
 .comentario-respuesta{
     display: block;

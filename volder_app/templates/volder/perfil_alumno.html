@@ -1,9 +1,9 @@
 {% load static %}
-<div id="container"class="container container-animacion col-10 col-md-2 my-4 border" style=" box-shadow: 3px -2px 5px rgb(0, 0, 0, 0.1);">
+<div id="container" class="container container-animacion col-10 col-md-2 my-4 ">
 
     <div class="perfil">
 
-        <img class="foto mt-3" src="{{user.estudiante.imageURL}}">
+        <img class="foto" src="{{user.estudiante.imageURL}}">
 
         <div class="nombre">
         
@@ -17,24 +17,21 @@
         
         </div>
    
-    </div><hr>
+    </div>
 
-    <div class="compañeros compañeros-animacion row py-1">
-        <div class="mx-auto mb-3">
-            <h5>compañeros: </h5><hr>
+    <div class="compañeros compañeros-animacion row">
+        <div class="compañeros--titulo mx-auto mb-3">
+            <h5>Compañeros</h5>
         </div>
       
         {% for compañero in compañero %}
         
-            <div class="perfil col-6 col-md-12">
+            <div class="perfil-compañero">
                 <a href="{% url 'mensajes' compañero.user_id %}">
-                <img class="foto-compañeros" src="{{compañero.imageURL}}">
-                
-                <div class="nick">
-            
-                    <p>{{compañero}}</p><hr>
-                
-                </div>
+                    <img class="foto-compañeros" src="{{compañero.imageURL}}">
+                    <div class="nick">
+                        <p>{{compañero}}</p>
+                    </div>
                 </a>
             </div>
    

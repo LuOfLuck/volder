@@ -1,9 +1,10 @@
 {% extends 'volder/base.html' %}
 {% load static %}
 {% block content %}
-<div class="mid-contenido mid-contenido-animacion border col-12 col-md-7 mx-auto my-5 px-4 py-3">
+<div class="main-trabajo">
+<div id="mid-contenido" class="mid-contenido mid-contenido-animacion   ">
     
-    <p class="h2 text-center text-muted">{{trabajo.titulo}}</p><hr>
+    <p class="trabajo-titulo h2 text-center">{{trabajo.titulo}}</p>
     <div class="row"> 
         {% if form %}
             <p class="col-10 col-md-5 text-center m-auto">Fechas de entrega: {{trabajo.fecha_de_entrega|date:'d/m/Y'}} </p>
@@ -11,19 +12,19 @@
                 Entregar respuesta <i class="far fa-file"></i>
             </button>
         {% elif nota %}
-        <p class="col-12 text-left m-auto"> comentario del profesor: {{nota.comentario}}. <br> calificación: {{nota.nota}}</p>
+        <p class="col-12 text-left m-auto"> Comentario del profesor: <span class="nota-comentario">{{nota.comentario}}</span>. <br> Calificación: <span class="nota">{{nota.nota}}</span></p>
         {% else %}
         <p class="col-12 col-md-12 text-center"> Esperando una calificación por parte del profesor</p>
         {% endif %}
     </div><hr>
-   
+
     
     
-    <p class="h3 text-center text-muted mt-2">{{trabajo.consigna}}<hr></p>
+    <p class="trabajo-consigna h3 text-center text-muted">{{trabajo.consigna}}</p><hr>
     
-    <span> {{ trabajo.contenido|linebreaks }} </span><hr>
+    <span class="trabajo-contenido"> {{ trabajo.contenido|linebreaks }} </span>
     
-    <span> fuentes: {{trabajo.fuentes}}</span>
+    <span class="fuentes"> Fuentes: <span class="fuente-links">{{trabajo.fuentes}}</span></span><hr>
 
 </div>
 
@@ -47,7 +48,7 @@
     </div>
 </div>
     
-<div id="container-comentario" class="container-comentario container-animacion  col-12 col-md-2 mx-auto my-4 py-3 border">
+<div id="container-comentario" class="container-comentario container-animacion ">
     
     <h5 class="text-center"> Comentarios</h5><hr>
     
@@ -121,7 +122,7 @@
 
 </div>
 
-
+</div>
 <script>
     let popou = document.getElementById("popou");
     let popouCerrar = document.getElementById("cerrar-popou");

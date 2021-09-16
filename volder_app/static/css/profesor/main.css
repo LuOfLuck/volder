@@ -1,136 +1,6 @@
-html.sr .load-hidden {
-    visibility: hidden;
-}
-html {
-  font-size: 1rem;
-}
-
-@include media-breakpoint-up(sm) {
-  html {
-    font-size: 1.2rem;
-  }
-}
-
-@include media-breakpoint-up(md) {
-  html {
-    font-size: 1.4rem;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  html {
-    font-size: 1.6rem;
-  }
-}
-.row{
-    padding: 0px !important;
-    margin: 0px !important;
-}
-*{
-    padding: 0;
-    margin: 0;
-    outline: none;
-}
 
 
-
-/*******************************************/
-
-
-/**/    /**/    /**/    /**/
-/**/                    /**/
-/**/   /* CELULAR */    /**/
-/**/                    /**/
-/**/    /**/    /**/    /**/
-
-
-
-
-@media (max-width: 768px) {
-    header .celular{
-        display: block;
-    }
-    header .pc{
-        display: none;
-    }
-    .contenedor{
-        display:none;
-    }
-    .compañeros .pefil{
-        margin: auto;
-    }
-
- 
-
-}
-
-/**/    /**/    /**/    /**/
-/**/                    /**/
-/**/ /* FIN CELULAR */  /**/
-/**/                    /**/
-/**/    /**/    /**/    /**/
-
-
-/****************************************************/
-
-
-/**/    /**/    /**/    /**/    /**/
-/**/                            /**/
-/**/     /* IZQUIERDA INDEX */    /**/
-/**/                            /**/
-/**/    /**/    /**/    /**/    /**/
-.contenedor{
-    height: auto;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 10px -4px 10px rgb(171, 173, 173);
-}
-
-.icon{
-    color: black;
-}
-#botones{
-    text-decoration: none;
-    border-radius: 5%;
-}
-#botones:hover{
-    transition: 0.5s linear;
- 
-    background-color: #8282825b;
-}
-#botones i{
-    float: left;
-}
-#botones span{
-    float: left;
-    margin-left: 10px;
-}
-
-
-/**/    /**/    /**/    /**/    /**/
-/**/                            /**/
-/**/   /* FIN IZQUIERDA INDEX */  /**/
-/**/                            /**/
-/**/    /**/    /**/    /**/    /**/
-
-
-/****************************************************************/
-
-/**/    /**/    /**/    /**/    /**/
-/**/                            /**/
-/**/  /* CONTENEDORES INDEX */  /**/
-/**/                            /**/
-/**/    /**/    /**/    /**/    /**/
-.mid-contenido{
-    box-shadow: 10px -4px 10px rgb(171, 173, 173);
-}
-
-.tarea, .materias .materias-materia, .titulo p{
-    height: auto;
-    box-shadow: 5px -2px 5px rgb(171, 173, 173);
-}
-
-.trabajos, .añadir-trabajo{
+.añadir-trabajo{
     border-radius: 20px;
     height: auto;
     box-shadow: 5px -2px 5px rgb(171, 173, 173);
@@ -149,18 +19,7 @@ html {
     margin:auto;
 
  }
-.border{
-    border-radius: 10px;
-}
 
-#nav-header{
-    position: sticky;
-    top: 0px; 
- }
-#nav, #container, #container-comentario{ 
-    position: sticky;
-    top: 20px; 
-}
 
 
 /**/    /**/    /**/    /**/    /**/   /**/
@@ -172,50 +31,8 @@ html {
 
 /***************************************************************/
 
-.sibitulo p{
-    color:#6c757d;
-    display: inline-block;
-}
-.subitulo-right, .boton-right{
-    float: right;
-}
-
-.container .perfil .foto{
-    display:block;
-    margin:auto;
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-}
-.container .perfil .nombre, .curso{
-    text-align: center;
-}
 
 
-.compañeros .foto-compañeros{
-    display:block;
-    float: left;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-}
-.compañeros .nick{
-    font-size: smaller;
-    margin-left: 40px;
-}
-
-.titulo p{
-    border: 1px solid rgba(133, 133, 133, 0.308);
-    border-radius: 10px;
-    padding: 1rem;
-}
-
-
-@media (max-width: 768px) {
-    .desaparecer{
-        display:none;
-    }
-}
 
 /****************************************************/
 
@@ -228,61 +45,6 @@ html {
 
 
 
-.mid-tarea{
-    height: auto;
-    box-shadow: 10px -4px 10px rgb(171, 173, 173);
-}
-#container-comentario{
-    height: 85vh !important;
-    box-shadow: 10px -4px 10px rgb(171, 173, 173);     
-
-}
-.comentarios{
-    
-    height: 60vh;
-    overflow-y: auto;
-}
-.comentario{
-    margin-top: 10px;
-}
-.comentario .mensaje, .comentario .nombre, .input-texto{
-    font-size: 10px;
-}
-.mensaje-enviado{
-    background-color:rgba(63, 63, 62, 0.233);
-}
-.mensaje{
-    padding: 0px !important;
-}
-.mensaje-recibido{
-    border-radius:10px;
-    border-bottom: 1px solid rgba(102, 102, 102, 0.363);
-}
-.comentario-respuesta{
-    display: block;
-    float: right;
-}
-.enviar-comentario{
-    margin-top: 10px;
-    position:absolute;
-    bottom: 0px;
-}
-.comentario-form input{
-    height: 20px;
-    position: sticky;
-}
-.input-sudmit{
-    height: 30px;
-}
-
-@media (max-width: 768px) {
-    .comentario .mensaje, .comentario .nombre, .input-texto{
-        font-size: 15px;
-    }
-
-}
-
-
 
 
 /**/    /**/    /**/    /**/    /**/
@@ -292,49 +54,6 @@ html {
 /**/    /**/    /**/    /**/    /**/
 
 
-/****************************************************/
-
-
-
-
-.trabajos-materia{
-    height: 200px;
-}
-
-#icon{
-    position: absolute;
-    top: 10px;
-    right:  10px;
-}
-.aprobado, .desaprobado{
-    color:white;
-    box-shadow: 0 0 0;
-}
-.aprobado{
-    background-color: rgba(0, 255, 0, 0.5); 
-}
-.desaprobado{
-    background-color: rgba(255, 0, 0, 0.5);
-}
-/**/    /**/    /**/    /**/
-/**/                    /**/
-/**/  /* FIN TRABAJO*/  /**/
-/**/                    /**/
-/**/    /**/    /**/    /**/
-
-
-
-
-/**/    /**/    /**/    /**/
-/**/                    /**/
-/**/    /* PROYECTO*/   /**/
-/**/                    /**/
-/**/    /**/    /**/    /**/
-
-
-.proyecto-boton-derecha{
-    float: right;
-}
 
 
 

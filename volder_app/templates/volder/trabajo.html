@@ -1,9 +1,10 @@
 {% extends 'volder/base.html' %}
 {% load static %}
 {% block content %}
-<div class="mid-contenido mid-contenido-animacion border col-12 col-md-7 mx-auto my-5 px-4 py-3">
+<div class="mid-contenido mid-contenido-animacion col-12 col-md-7 mx-auto my-5 px-4 py-3">
     
-    <p class="h2 text-center text-muted">{{trabajo.titulo}}</p><hr>
+    <p class="h2 text-center">{{trabajo.titulo}}</p>
+
     <div class="row"> 
         {% if form %}
             <p class="col-10 col-md-5 text-center m-auto">Fechas de entrega: {{trabajo.fecha_de_entrega|date:'d/m/Y'}} </p>
@@ -15,13 +16,17 @@
         {% else %}
         <p class="col-12 col-md-12 text-center"> Esperando una calificación por parte del profesor</p>
         {% endif %}
-    </div><hr>
+    </div>
+
    
     
     
-    <p class="h3 text-center text-muted mt-2">{{trabajo.consigna}}<hr></p>
+    <p class="h3 text-center mt-2">{{trabajo.consigna}}
+
+    </p>
     
-    <span> {{ trabajo.contenido|linebreaks }} </span><hr>
+    <span> {{ trabajo.contenido|linebreaks }} </span>
+
     
     <span> fuentes: {{trabajo.fuentes}}</span>
 
@@ -31,7 +36,8 @@
     <div class="popou-cont col-11 col-md-6">
         <div class="titulo">
             <i id="cerrar-popou" onclick="cerrarPopou()" class="far fa-times-circle cerrar-popou"></i>
-            <p class="h2 text-muted text-center">Entregar trabajo</p><hr>
+            <p class="h2 text-muted text-center">Entregar trabajo</p>
+
         </div>
         <form method="post" enctype="multipart/form-data">{% csrf_token %}
             <div class="form-group">
@@ -47,9 +53,10 @@
     </div>
 </div>
     
-<div id="container-comentario" class="container-comentario container-animacion  col-12 col-md-2 mx-auto my-4 py-3 border">
+<div id="container-comentario" class="container container-animacion  col-12 col-md-2 mx-auto my-4 py-3">
     
-    <h5 class="text-center"> Comentarios</h5><hr>
+    <p class="titulo text-center"> Comentarios</p>
+
     
     <div class="comentarios">
     
@@ -57,15 +64,15 @@
     
             {% if comentario.autor.profesor %}
         
-                <div class="comentario mensaje-recibido mensaje-recibido-profesor col-10 my-2 col-md-11 border">
+                <div class="comentario mensaje-recibido mensaje-recibido-profesor col-10 my-2 col-md-11">
             
-                    <h6 class="nombre"> {{comentario.autor.profesor}} </h6>
+                    <p class="nombre"> {{comentario.autor.profesor}} </p>
             
-                    <span class="mensaje">
+                    <p class="mensaje">
             
                         {{comentario}}
             
-                    </span>
+                    </p>
             
                 </div>
             

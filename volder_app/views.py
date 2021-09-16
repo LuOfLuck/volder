@@ -46,14 +46,16 @@ def trabajo(request, id_trabajo):
     if request.method == "POST":
         form = FormRespuestaTrabajo(request.POST, request.FILES)
         if form.is_valid:
-            form_save = form.save(commit=False)
-            form_save.estudiante = request.user.estudiante
-            form_save.trabajo = trabajo
-            form_save.save()
-        else:
-            comentario = request.POST['comentario']
-            coment = Comentario(autor=request.user, comentario=comentario, trabajo=trabajo)
-            coment.save()
+            try:
+                form_save = form.save(commit=False)
+                form_save.estudiante = request.user.estudiante
+                form_save.trabajo = trabajo
+                form_save.save()
+            except:
+                comentario = request.POST['comentario']
+                coment = Comentario(autor=request.user, comentario=comentario, trabajo=trabajo)
+                coment.save()
+           
 
     try:
         respuesta_trabajo = RespuestaTrabajo.objects.get(estudiante=request.user.estudiante, trabajo=trabajo)

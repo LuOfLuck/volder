@@ -31,12 +31,14 @@ body{
 
 body::-webkit-scrollbar,
 .compañeros::-webkit-scrollbar,
+.comentarios::-webkit-scrollbar,
 .block--cont::-webkit-scrollbar{
     width: 0;
 }
    
 body::-webkit-scrollbar-track,
 .compañeros::-webkit-scrollbar-track,
+.comenjjjjtarios::-webkit-scrollbar-track,
 .block--cont::-webkit-scrollbar-track{
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
@@ -44,45 +46,22 @@ body::-webkit-scrollbar-track,
  
 body::-webkit-scrollbar-thumb,
 .compañeros::-webkit--scrollbar-thumb,
+.comentarios::-webkit--scrollbar-thumb,
 .block--cont::-webkit--scrollbar-thumb{
     background-color:var(--tirada-2-tono-5);
     border-radius: 2px;
 }
-/****************************************************/
-
-/**/    /**/    /**/    /**/
-/**/                    /**/
-/**/    /* HEADER */    /**/
-/**/                    /**/
-/**/    /**/    /**/    /**/
 
 
+header .celular{
+    display: none;
+}
 
-/**/    /**/    /**/    /**/
-/**/                    /**/
-/**/  /* FIN HEADER */  /**/
-/**/                    /**/
-/**/    /**/    /**/    /**/
+@media (max-width: 768px){
+    
 
-
-/*******************************************/
-
-
-/**/    /**/    /**/    /**/
-/**/                    /**/
-/**/   /* CELULAR */    /**/
-/**/                    /**/
-/**/    /**/    /**/    /**/
-
-
-
-
-@media (max-width: 768px) {
     header .celular{
         display: block;
-    }
-    header .pc{
-        display: none;
     }
     .contenedor{
         display:none;
@@ -99,21 +78,6 @@ body::-webkit-scrollbar-thumb,
     }
 }
 
-/**/    /**/    /**/    /**/
-/**/                    /**/
-/**/ /* FIN CELULAR */  /**/
-/**/                    /**/
-/**/    /**/    /**/    /**/
-
-
-/****************************************************/
-
-
-/**/    /**/    /**/    /**/    /**/
-/**/                            /**/
-/**/     /* DERECHA INDEX */    /**/
-/**/                            /**/
-/**/    /**/    /**/    /**/    /**/
 
 .contenedor, 
 .container,
@@ -125,7 +89,7 @@ body::-webkit-scrollbar-thumb,
     box-shadow: 3px -3px 5px var(--negro);
 }
 .mid-contenido-animacion{
-    padding-top:50px;
+    padding-top:70px;
 }
 .perfil > a{
     text-decoration:none;
@@ -248,6 +212,8 @@ body::-webkit-scrollbar-thumb,
 }
 .trabajo--end{
     display:flex;
+    position: relative;
+    bottom:0;
     margin: .5em;
 }
 .trabajo--end .btn{
@@ -314,7 +280,8 @@ body::-webkit-scrollbar-thumb,
 .perfil p{
     margin-bottom: 0;
 }
-.perfil .nombre{
+.perfil .nombre, 
+#container-comentario .titulo{
     font-weight: 700;
     font-size: 1.1em;
 }
@@ -365,11 +332,7 @@ body::-webkit-scrollbar-thumb,
     color: var(--naranja);
     font-weight: 600;
 }
-@media (max-width: 426px) {
-    .subitulo-right{
-        float: left;
-    }
-}
+
 
 /****************************************************/
 
@@ -385,26 +348,27 @@ body::-webkit-scrollbar-thumb,
 .mid-tarea{
     height: auto;
 }
-#container-comentario{
-    height: 85vh !important;
-}
 .comentarios{
     overflow-y: auto;
+    max-height: 55vh;
 }
 .comentario{
     margin-top: 10px;
     border-radius:10px;
-    border-bottom: 1px solid rgba(102, 102, 102, 0.363);
+    background-color: var(--grey);
+    min-height: 50px;
+}
+.comentario .mensaje,
+.comentario .nombre{
+    margin-bottom: 0px;
 }
 .comentario .nombre{
-    font-size: 10px;
+    font-size: .8em;
 }
 .comentario .mensaje{
-    font-size: 10px;
+    font-size: .7em;
 }
-.mensaje-recibido-profesor{
-    background-color:var(--negro);
-}
+
 .comentario-respuesta{
     display: block;
     float: right;

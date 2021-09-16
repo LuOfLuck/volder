@@ -389,6 +389,7 @@ body::-webkit-scrollbar-thumb,
     width: 85% !important;
     min-height: 30vh;
     max-height:auto;
+    padding-top: 2rem;
 }
 .trabajo-titulo{
     font-size: 2rem;
@@ -400,7 +401,6 @@ body::-webkit-scrollbar-thumb,
     background: transparent;
     color: var(--naranja);
     font-weight: 700;
-    margin-bottom: 5vh;
 }
 #mid-contenido .row :is(.nota-comentario, .nota){
     font-size: 18px;
@@ -428,54 +428,114 @@ body::-webkit-scrollbar-thumb,
 }
 #container-comentario{
     min-height: 30vh !important;
-    max-height: 80vh !important;
     width: 80vw;
     overflow-y: auto;
     margin-top: 2rem 0;
     color:#fff;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     flex-direction: column;
+    padding-bottom: 1.6rem;
+}
+#container-comentario h5{
+    font-size: 24px;
+    font-weight: 900;
+    margin-top: 1rem;
 }
 .comentarios{
     overflow-y: auto;
-    width: 70%;
+    width: 60%;
+    font-size: 20px !important;
 }
 .comentario{
     margin-top: 10px;
-    border-radius:10px;
-    border-bottom: 1px solid rgba(102, 102, 102, 0.363);
+    width: auto;
+    max-width: 45%;
+    height: auto;
+    padding: 0 .5rem;
+    margin: 2rem 0;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
 }
 .comentario .nombre{
-    font-size: 10px;
+    font-size: 20px;
+    font-weight:900;
+    margin-bottom: 0;
 }
 .comentario .mensaje{
-    font-size: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: .5rem;
 }
-.mensaje-recibido-profesor{
-    background-color:var(--negro);
+.mensaje-recibido-profesor h6{
+    color: var(--naranja);
+    margin-bottom: 0;
 }
-.comentario-respuesta{
-    display: block;
-    float: right;
+.comentarios .comentario .mensaje-enviado{
+    position: relative;
+    right: 0;
 }
 .enviar-comentario{
-    margin-top: 10px;
-    position:absolute;
-    bottom: 0px;
+    width: 60vw;
+    margin-top: 1.8rem;
 }
-.comentario-form input{
-    height: 20px;
-    position: sticky;
+.enviar-comentario form .send{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.input-texto{
-    font-size: 10px;
+.enviar-comentario form .send textarea{
+    border-radius: 7px;
+    min-width: 60%;
+    height: 7em;
+    padding: .7rem 1rem;
+    display: flex;
+    margin-bottom: 1rem;
+    resize: none;
+    background-color: var(--grey);
+    border: 0;
+    outline: 0;
+    color: #fff;
 }
-.input-sudmit{
-    height: 30px;
+.enviar-comentario form .send button{
+    width: auto;
+    padding: .6rem 1.3rem;
+    margin: 1rem 0;
+    background: transparent;
+    color: var(--bg);
+    background-color: var(--naranja);
+    position: relative;
+    border: 0;
+    outline: none;
+    border-radius: 10px;
+    outline: 2px solid var(--naranja);
+    outline-offset: -5px;
+    transition: .4s ease-in-out;
 }
-
+.enviar-comentario form .send button:hover{
+    background-color: transparent;
+    color: var(--naranja);
+    outline-offset: 5px;
+}
 @media (max-width: 768px) {
+    #main-trabajo{
+        width: 100vw;
+    }
+    #main-trabajo :is(#container-comentario,
+    #comentraios, #comentario, #enviar-comentario)
+    {
+        width: 100%;
+    }
+    #comentraios{
+        padding: 0 1rem;
+    }
+    #comentario{
+        padding: 0;
+    }
     .comentario .mensaje, .comentario .nombre, .input-texto{
         font-size: 15px;
     }

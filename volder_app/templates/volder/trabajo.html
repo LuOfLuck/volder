@@ -1,7 +1,7 @@
 {% extends 'volder/base.html' %}
 {% load static %}
 {% block content %}
-<div class="main-trabajo">
+<div id="main-trabajo" class="main-trabajo">
 <div id="mid-contenido" class="mid-contenido mid-contenido-animacion   ">
     
     <p class="trabajo-titulo h2 text-center">{{trabajo.titulo}}</p>
@@ -52,13 +52,13 @@
     
     <h5 class="text-center"> Comentarios</h5><hr>
     
-    <div class="comentarios">
+    <div id="comentraios" class="comentarios">
     
         {% for comentario in comentarios%}
     
             {% if comentario.autor.profesor %}
         
-                <div class="comentario mensaje-recibido mensaje-recibido-profesor col-10 my-2 col-md-11 border">
+                <div id="comentario" class="comentario mensaje-recibido mensaje-recibido-profesor">
             
                     <h6 class="nombre"> {{comentario.autor.profesor}} </h6>
             
@@ -72,9 +72,9 @@
             
             {% elif comentario.autor.estudiante == user.estudiante %}
         
-                <div class="comentario mensaje-enviado float-right my-2 col-10 col-md-11">
+                <div id="comentario" class="comentario mensaje-enviado">
             
-                    <h6 class="nombre"> Tu </h6>
+                    <h6 class="nombre"> Tú </h6>
             
                     <span class="mensaje">
             
@@ -86,7 +86,7 @@
         
             {% else %}
         
-                <div class="comentario mensaje-recibido col-10 my-2 col-md-11">
+                <div id="comentario" class="comentario mensaje-recibido col-10 my-2 col-md-11">
             
                     <h6 class="nombre"> {{comentario.autor.estudiante}} {{comentario.autor.preceptor}} {{comentario.autor.secretario}} </h6>
             
@@ -104,15 +104,16 @@
     
     </div>
 
-    <div class="enviar-comentario float-top col-12 mb-3">
+    <div id="enviar-comentario" class="enviar-comentario">
         
         <form action="" method="POST"> {% csrf_token %}
         
-            <div class="row mx-auto">
+            <div class="send row mx-auto">
         
-                <input type="text" name="comentario" class="form-control input-texto col-10 col-md-9" requerid>
+                <!-- <input type="text" name="comentario" class="" requerid> -->
+                <textarea placeholder="Comentario..." name="comentario" id="" required cols="30" rows="10"></textarea>
         
-                <button type="submit"  class="input-sudmit btn col-2"><i class="fas fa-dove"></i></button>
+                <button type="submit"  class=""><i class="fas fa-dove"></i></button>
         
             </div>
         

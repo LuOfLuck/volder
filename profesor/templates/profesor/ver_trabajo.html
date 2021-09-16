@@ -1,209 +1,233 @@
 {% extends 'profesor/base.html' %}
 {% load static %}
 {% block content %}
-<div id="vista" class="mid-tarea mid-contenido-animacion border col-10 col-md-7 mx-auto my-5 px-4 py-3">
+<div id="main-trabajo" class="main-trabajo">
+    <div id="vista">
+        <div id="mid-contenido" class="mid-contenido mid-contenido-animacion">
+            <p class="trabajo-titulo h2 text-center">{{trabajo.titulo}}</p>
+            
+            <a id="icon" onclick="editar()" class="btn float-right"> editar <i class="fas fa-pencil-alt"></i></a>
 
-    <h4 class="text-center">{{trabajo.titulo}}</h4>
+            <p class="col-10 col-md-5 m-auto">Fechas de entrega: {{trabajo.fecha_de_entrega|date:'d/m/Y'}} </p>
+                    
+            <p class="trabajo-consigna h3 text-center text-muted">{{trabajo.consigna}}</p><hr>
+            
+            <span class="trabajo-contenido"> {{ trabajo.contenido|linebreaks }} </span>
+            
+            <hr>
+            
+            <span class="fuentes"> Fuentes: <span class="fuente-links">{{trabajo.fuentes}}</span></span><hr>
 
-    <a id="icon" onclick="editar()" class="btn float-right"> editar <i class="fas fa-pencil-alt"></i></a><hr>
-
-    <span>Fechas de entrega: {{trabajo.fecha_de_entrega}}</span>
-    
-    <span class="btn float-right"> {{trabajo.tipo_de_trabajo}}</span><hr>
-    
-    <h5 class="text-center">{{trabajo.consigna}}<hr></h5>
-    
-    {{ trabajo.contenido|linebreaks }}
-    
-    <hr>
-    
-    <span> fuentes: {{trabajo.fuentes}} </span>
-
-</div>
-
-<div id="edicion" class="mid-tarea border col-10 col-md-7 mx-auto my-5 px-4 py-3">
-    
-    <a id="icon" onclick="cancelar()" class="btn float-right"> cancelar <i class="fas fa-pencil-alt"></i></a>
-    
-    <form action="" method="POST"> {% csrf_token %}
-    
-        <div class="form-group col-5 col-md-6 mx-auto">
-    
-            <input type="text" class="form-control" name="titulo" id="inputAddress" value="{{trabajo.titulo}}" placeholder="titulo" required>
-    
         </div>
-    
-        <div class="form-row">
-
-            <div class="form-group col-6">
-    
-                <label class="text-muted" for="fecha">Fecha de entrega:</label>
-    
-                <input type="date" class="form-control" name="fecha_de_entrega" min="{{trabajo.fecha_de_subida|date:'Y-m-d'}}" id="fecha" required>
-    
-            </div>
-
-            <div class="form-group col-6">
-    
-                <label class="text-muted" for="inputState">Estilo de trabajo:</label>    
-    
-                <select id="inputState" class="form-control" name="tipo_de_trabajo" required>
-    
-                    {% for tipo in tipo %}
-    
-                    <option>{{tipo}}</option>
-    
-                    {% endfor %}
-    
-                </select>
-    
-            </div>
-    
-        </div>
-    
-        <div class="form-group col-6 mx-auto">
-    
-            <label class="text-muted" for="inputState">Consigna:</label>
-    
-            <input type="text" class="form-control" name="consigna" id="inputAddress" value="{{trabajo.consigna}}" placeholder="consigna" required>
-    
-        </div><hr>
-    
-        <div class="form-group">
-    
-            <label for="textarea-contendio">Escriba la actividad:</label>
-    
-            <textarea class="form-control" name="contenido" id="textarea-contendio" rows="8">
-    
-                {{ trabajo.contenido }}
-    
-            </textarea>
-    
-        </div>
-    
-        <div class="form-group col-12 mx-auto">
-    
-            <label class="text-muted" for="inputState">Fuentes:</label>
-    
-            <input type="text" class="form-control" name="fuentes" id="inputAddress" value="{{trabajo.fuentes}}" placeholder="fuentes..." required>
-    
-        </div>
-    
-        <div class="form-row">
-    
-            <input type="submit" class="btn btn-outline-success col-12" value="actualizar">
-    
-        </div>
-    
-    </form><hr>
-
-</div>
-
-
-<script>
-    
-    var edicion = document.getElementById('edicion');  
-    var vista = document.getElementById('vista');
-    edicion.style.display = 'none';
-    
-    function editar(){
-        vista.style.display = 'none';
-        edicion.style.display = 'block';
-    }
-    
-    function cancelar(){
-        vista.style.display = 'block';
-        edicion.style.display = 'none';
-    }
-
-</script>
-
-
-    
-<div id="container-comentario" class="container-comentario container-animacion  col-10 col-md-2 mx-auto my-4 py-3 border ">
-    
-    <h5 class="text-center"> Comentarios</h5><hr>
-    
-    <div class="comentarios">
-    
-        {% for comentario in comentarios %}
-           
-            {% if comentario.autor.estudiante %}
-    
-                <div class="comentario mensaje-recibido col-10 col-md-11 my-2 ">
-        
-                    <h6 class="nombre"> <a href="{% url 'mensajes' comentario.autor.id %}"> {{comentario.autor.estudiante}} </a> </h6>
-        
-                    <span class="mensaje">
-        
-                        {{comentario}}
-        
-                    </span>
-        
-                </div>
-
-            {% elif comentario.autor.profesor %}
-    
-                <div class="comentario mensaje-enviado float-right col-10 col-md-11 my-2 border">
-        
-                    <h6 class="nombre"> Tu </h6>
-        
-                    <span class="mensaje">
-        
-                        {{comentario}}
-        
-                    </span>
-        
-                </div>
-
-            {% endif %}
-
-        {% endfor %}
-              
     </div>
 
-    <div class="enviar-comentario float-top col-12 mb-3">
-      
-            <form id="enviar-datos" method="POST" class="row"> {% csrf_token %}
-      
-                <input type="text" name="comentario" class="form-control input-texto col-10" placeholder="comentario..." required>
-                
-                <i onclick="enviar()" class="fas fa-dove btn col-2"></i>
+    <div id="edicion">
+        <div id="mid-contenido" class="mid-contenido mid-contenido-animacion">
+           
+            <a id="icon" onclick="cancelar()" class="btn float-right"> cancelar <i class="fas fa-pencil-alt"></i></a>
+            
+            <form action="" method="POST"> {% csrf_token %}
+            
+                <div class="form-group col-5 col-md-6 mx-auto">
+            
+                    <input type="text" class="form-control input" name="titulo" id="inputAddress" value="{{trabajo.titulo}}" placeholder="titulo" required>
+            
+                </div>
+            
+                <div class="form-row">
 
+                    <div class="form-group col-6">
+            
+                        <label class="text-muted" for="fecha">Fecha de entrega:</label>
+            
+                        <input type="date" class="form-control input input" name="fecha_de_entrega" min="{{trabajo.fecha_de_subida|date:'Y-m-d'}}" id="fecha" required>
+            
+                    </div>
+
+                    <div class="form-group col-6">
+            
+                        <label class="text-muted" for="inputState">Estilo de trabajo:</label>    
+            
+                        <select id="inputState" class="form-control input" name="tipo_de_trabajo" required>
+            
+                            {% for tipo in tipo %}
+            
+                            <option>{{tipo}}</option>
+            
+                            {% endfor %}
+            
+                        </select>
+            
+                    </div>
+            
+                </div>
+            
+                <div class="form-group col-6 mx-auto">
+            
+                    <label class="text-muted" for="inputState">Consigna:</label>
+            
+                    <input type="text" class="form-control input" name="consigna" id="inputAddress" value="{{trabajo.consigna}}" placeholder="consigna" required>
+            
+                </div><hr>
+            
+                <div class="form-group">
+            
+                    <label for="textarea-contendio">Escriba la actividad:</label>
+            
+                    <textarea class="form-control input" name="contenido" id="textarea-contendio" rows="8">
+            
+                        {{ trabajo.contenido }}
+            
+                    </textarea>
+            
+                </div>
+            
+                <div class="form-group col-12 mx-auto">
+            
+                    <label class="text-muted" for="inputState">Fuentes:</label>
+            
+                    <input type="text" class="form-control input" name="fuentes" id="inputAddress" value="{{trabajo.fuentes}}" placeholder="fuentes..." required>
+            
+                </div>
+            
+                <div class="form-row">
+            
+                    <input type="submit" class="btn col-12 input input--send" value="actualizar">
+            
+                </div>
+            
+            </form><hr>
+        </div>
+    </div>
+
+    <div id="container-comentario" class="container-comentario container-animacion ">
+        
+        <h5 class="titulo text-center"> Comentarios</h5><hr>
+        
+        <div id="comentraios" class="comentarios">
+       
+            {% for comentario in comentarios %}
+            
+                {% if comentario.autor.estudiante %}
+
+                    <div id="comentario" class="comentario mensaje-recibido mensaje-recibido-profesor">
+                
+                        <p class="nombre"> {{comentario.autor.estudiante}} </p>
+                
+                        <p class="mensaje">
+                
+                            {{comentario}}
+                
+                        </p>
+                
+                    </div>
+
+                {% elif comentario.autor.profesor %}
+        
+                <div id="comentario" class="comentario mensaje-enviado">
+                
+                    <h6 class="nombre"> Tú </h6>
+            
+                    <span class="mensaje">
+            
+                        {{comentario}}
+            
+                    </span>
+            
+                </div>
+                {% else %}
+            
+                <div id="comentario" class="comentario mensaje-recibido col-10 my-2 col-md-11">
+            
+                    <h6 class="nombre"> {{comentario.autor.preceptor}} {{comentario.autor.secretario}} </h6>
+            
+                    <span class="mensaje">
+            
+                        {{comentario}}
+            
+                    </span>
+            
+                </div>
+        
+           
+        
+                {% endif %}
+
+            {% endfor %}
+                
+        </div>
+
+        <div id="enviar-comentario" class="enviar-comentario">
+            
+            <form action="" method="POST"> {% csrf_token %}
+            
+                <div class="send row mx-auto">
+            
+                    <!-- <input type="text" name="comentario" class="" requerid> -->
+                    <textarea placeholder="Comentario..." name="comentario" id="" required cols="30" rows="10"></textarea>
+            
+                    <button type="submit"  class=""><i class="fas fa-dove"></i></button>
+            
+                </div>
+            
             </form>
-    
+        
+        </div>
+
+
+        <script>
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            
+            function enviar(){
+                var form = new FormData(document.getElementById('enviar-datos'));
+
+                fetch('{{trabajo.id}}',{
+                    method: 'POST',
+                    body: form,
+                    headers:{
+                        "X-CSRFToken": getCookie('csrftoken'),  
+                    }
+                })
+
+            }
+        </script>
+
     </div>
 
     <script>
-        function getCookie(name) {
-            var cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = cookies[i].trim();
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
-            }
-            return cookieValue;
+        
+        var edicion = document.getElementById('edicion');  
+        var vista = document.getElementById('vista');
+        edicion.style.display = 'none';
+        
+        function editar(){
+            vista.style.display = 'none';
+            edicion.style.display = 'block';
         }
         
-        function enviar(){
-            var form = new FormData(document.getElementById('enviar-datos'));
-
-            fetch('{{trabajo.id}}',{
-                method: 'POST',
-                body: form,
-                headers:{
-                    "X-CSRFToken": getCookie('csrftoken'),  
-                }
-            })
-
+        function cancelar(){
+            vista.style.display = 'block';
+            edicion.style.display = 'none';
         }
+
     </script>
+
+
+        
 
 </div>
 

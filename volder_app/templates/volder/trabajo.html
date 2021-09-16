@@ -2,128 +2,128 @@
 {% load static %}
 {% block content %}
 <div id="main-trabajo" class="main-trabajo">
-<div id="mid-contenido" class="mid-contenido mid-contenido-animacion   ">
-    
-    <p class="trabajo-titulo h2 text-center">{{trabajo.titulo}}</p>
-    <div class="row"> 
-        {% if form %}
-            <p class="col-10 col-md-5 text-center m-auto">Fechas de entrega: {{trabajo.fecha_de_entrega|date:'d/m/Y'}} </p>
-            <button onclick="abrirPopou()" class="btn col-md-5 mx-auto mt-3 mt-md-0 p-0">
-                Entregar respuesta <i class="far fa-file"></i>
-            </button>
-        {% elif nota %}
-        <p class="col-12 text-left m-auto"> Comentario del profesor: <span class="nota-comentario">{{nota.comentario}}</span>. <br> Calificación: <span class="nota">{{nota.nota}}</span></p>
-        {% else %}
-        <p class="col-12 col-md-12 text-center"> Esperando una calificación por parte del profesor</p>
-        {% endif %}
-    </div><hr>
-
-    
-    
-    <p class="trabajo-consigna h3 text-center text-muted">{{trabajo.consigna}}</p><hr>
-    
-    <span class="trabajo-contenido"> {{ trabajo.contenido|linebreaks }} </span>
-    
-    <span class="fuentes"> Fuentes: <span class="fuente-links">{{trabajo.fuentes}}</span></span><hr>
-
-</div>
-
-<div id="popou" class="popou">
-    <div class="popou-cont col-11 col-md-6">
-        <div class="titulo">
-            <i id="cerrar-popou" onclick="cerrarPopou()" class="far fa-times-circle cerrar-popou"></i>
-            <p class="h2 text-muted text-center">Entregar trabajo</p>
-
-        </div>
-        <form method="post" enctype="multipart/form-data">{% csrf_token %}
-            <div class="form-group">
-                <center> {{form.comentario}} </center> 
-            </div> 
-            <div class="form-group">
-            <center> <label id="label_archivo" for="id_archivo"> archivo: docs/word/pdf </label></center> 
-                {{form.archivo}}
-           </div> 
-           <div id="local-files"></div>
-           <center> <input type="submit" class="btn btn-outline-primary col-4" value="Enviar"></center>
-        </form>
-    </div>
-</div>
-    
-<div id="container-comentario" class="container-comentario container-animacion ">
-    
-    <p class="titulo text-center"> Comentarios</p>
-
-    
-    <div id="comentraios" class="comentarios">
-    
-        {% for comentario in comentarios%}
-    
-            {% if comentario.autor.profesor %}
+    <div id="mid-contenido" class="mid-contenido mid-contenido-animacion   ">
         
-                <div id="comentario" class="comentario mensaje-recibido mensaje-recibido-profesor">
-            
-                    <p class="nombre"> {{comentario.autor.profesor}} </p>
-            
-                    <p class="mensaje">
-            
-                        {{comentario}}
-            
-                    </p>
-            
-                </div>
-            
-            {% elif comentario.autor.estudiante == user.estudiante %}
-        
-                <div id="comentario" class="comentario mensaje-enviado">
-            
-                    <h6 class="nombre"> Tú </h6>
-            
-                    <span class="mensaje">
-            
-                        {{comentario}}
-            
-                    </span>
-            
-                </div>
-        
+        <p class="trabajo-titulo h2 text-center">{{trabajo.titulo}}</p>
+        <div class="row"> 
+            {% if form %}
+                <p class="col-10 col-md-5 text-center m-auto">Fechas de entrega: {{trabajo.fecha_de_entrega|date:'d/m/Y'}} </p>
+                <button onclick="abrirPopou()" class="btn col-md-5 mx-auto mt-3 mt-md-0 p-0">
+                    Entregar respuesta <i class="far fa-file"></i>
+                </button>
+            {% elif nota %}
+            <p class="col-12 text-left m-auto"> Comentario del profesor: <span class="nota-comentario">{{nota.comentario}}</span>. <br> Calificación: <span class="nota">{{nota.nota}}</span></p>
             {% else %}
+            <p class="col-12 col-md-12 text-center"> Esperando una calificación por parte del profesor</p>
+            {% endif %}
+        </div><hr>
+
         
-                <div id="comentario" class="comentario mensaje-recibido col-10 my-2 col-md-11">
+        
+        <p class="trabajo-consigna h3 text-center text-muted">{{trabajo.consigna}}</p><hr>
+        
+        <span class="trabajo-contenido"> {{ trabajo.contenido|linebreaks }} </span>
+        
+        <span class="fuentes"> Fuentes: <span class="fuente-links">{{trabajo.fuentes}}</span></span><hr>
+
+    </div>
+
+    <div id="popou" class="popou">
+        <div class="popou-cont col-11 col-md-6">
+            <div class="titulo">
+                <i id="cerrar-popou" onclick="cerrarPopou()" class="far fa-times-circle cerrar-popou"></i>
+                <p class="h2 text-muted text-center">Entregar trabajo</p>
+
+            </div>
+            <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                <div class="form-group">
+                    <center> {{form.comentario}} </center> 
+                </div> 
+                <div class="form-group">
+                <center> <label id="label_archivo" for="id_archivo"> archivo: docs/word/pdf </label></center> 
+                    {{form.archivo}}
+            </div> 
+            <div id="local-files"></div>
+            <center> <input type="submit" class="btn btn-outline-primary col-4" value="Enviar"></center>
+            </form>
+        </div>
+    </div>
+        
+    <div id="container-comentario" class="container-comentario container-animacion ">
+        
+        <p class="titulo text-center"> Comentarios</p>
+
+        
+        <div id="comentraios" class="comentarios">
+        
+            {% for comentario in comentarios%}
+        
+                {% if comentario.autor.profesor %}
             
-                    <h6 class="nombre"> {{comentario.autor.estudiante}} {{comentario.autor.preceptor}} {{comentario.autor.secretario}} </h6>
+                    <div id="comentario" class="comentario mensaje-recibido mensaje-recibido-profesor">
+                
+                        <p class="nombre"> {{comentario.autor.profesor}} </p>
+                
+                        <p class="mensaje">
+                
+                            {{comentario}}
+                
+                        </p>
+                
+                    </div>
+                
+                {% elif comentario.autor.estudiante == user.estudiante %}
             
-                    <span class="mensaje">
+                    <div id="comentario" class="comentario mensaje-enviado">
+                
+                        <h6 class="nombre"> Tú </h6>
+                
+                        <span class="mensaje">
+                
+                            {{comentario}}
+                
+                        </span>
+                
+                    </div>
             
-                        {{comentario}}
+                {% else %}
             
-                    </span>
+                    <div id="comentario" class="comentario mensaje-recibido col-10 my-2 col-md-11">
+                
+                        <h6 class="nombre"> {{comentario.autor.preceptor}} {{comentario.autor.secretario}} </h6>
+                
+                        <span class="mensaje">
+                
+                            {{comentario}}
+                
+                        </span>
+                
+                    </div>
+            
+                {% endif%}
+        
+            {% endfor%}
+        
+        </div>
+
+        <div id="enviar-comentario" class="enviar-comentario">
+            
+            <form action="" method="POST"> {% csrf_token %}
+            
+                <div class="send row mx-auto">
+            
+                    <!-- <input type="text" name="comentario" class="" requerid> -->
+                    <textarea placeholder="Comentario..." name="comentario" id="" required cols="30" rows="10"></textarea>
+            
+                    <button type="submit"  class=""><i class="fas fa-dove"></i></button>
             
                 </div>
+            
+            </form>
         
-            {% endif%}
-    
-        {% endfor%}
-    
-    </div>
+        </div>
 
-    <div id="enviar-comentario" class="enviar-comentario">
-        
-        <form action="" method="POST"> {% csrf_token %}
-        
-            <div class="send row mx-auto">
-        
-                <!-- <input type="text" name="comentario" class="" requerid> -->
-                <textarea placeholder="Comentario..." name="comentario" id="" required cols="30" rows="10"></textarea>
-        
-                <button type="submit"  class=""><i class="fas fa-dove"></i></button>
-        
-            </div>
-        
-        </form>
-    
     </div>
-
-</div>
 
 </div>
 <script>

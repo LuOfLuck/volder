@@ -18,11 +18,11 @@
         </div>  
         
 
-        <div class="row">
+        <div class="row block--cont">
             
-            <div class="añadir-trabajo trabajos-animacion col-10 col-md-5  my-2 mx-auto">
+            <div class="añadir-trabajo trabajos trabajos-animacion col-10 col-md-5  mx-auto my-2">
                 <div class="añadir-trabajo-titulo">
-                    <p class="h4 text-muted mini-titulo text-center my-2">nuevo trabajo</p><hr>
+                    <p class="h4 mini-titulo text-center">nuevo trabajo</p>
                 </div>
                 <div class="añadir-trabajo-imagen">
                     <a href="{% url 'añadir_trabajo' %}" class="text-center">
@@ -35,17 +35,17 @@
                 
                 {% if trabajo.materia.profesor == user.profesor %}
             
-                    <div class="trabajos trabajos-animacion col-10 col-md-5  my-2 mx-auto p-3">
-                                        
-                        <p class="h4 text-muted titulo text-center">{{trabajo.materia}}</p>
-                
-                        <p class="subitutlo text-muted">Del: {{ trabajo.fecha_de_subida|date:'Y-m-d' }} | para: {{trabajo.fecha_de_entrega|date:'Y-m-d'}}</p><hr>
-                    
-                        <span>  {{trabajo}}  </span><br><br>
-                    
-                        <a href="{% url 'respuesta_trabajo' trabajo.id %}" class="btn btn-outline-primary">ver respuestas</a>
-                        <a href="{% url 'ver_trabajo' trabajo.id %}" class="btn btn-outline-primary float-right">ver trabajo</a>
-
+    
+                    <div id="trabajo-{{trabajo.id}}" class="trabajo trabajos-animacion col-10 col-md-5 my-2  mx-auto "> 
+                        <div class="trabajo--titulo">
+                            <h4 class="titulo--nombre">{{trabajo.materia}}</h4>
+                            <p class="titulo--fecha"> Entrega: <br> {{trabajo.fecha_de_entrega|date:'d/m/Y'}}</p>    
+                        </div>           
+                        <p class="trabajo--p">  {{trabajo}}  </p>
+                        <div class="trabajo--end">
+                            <a id="button-2-{{trabajo.id}}" href="{% url 'respuesta_trabajo' trabajo.id %}" class="btn">ver respuestas</a>
+                            <a id="button-{{trabajo.id}}" href="{% url 'ver_trabajo' trabajo.id %}" class="btn ml-auto">ver trabajo</a>
+                        </div>
                     </div>
 
                 
@@ -56,25 +56,23 @@
         </div>
     </div>
     
-    <div id="materia" class="materias row mt-5">
+    <div  class="contenido-block tarea2-animacion col-12 mx-auto my-4">
         
-        <div class="titulo col-12">
-        
-            <p class="h2 text-muted text-center titulo-p"> Tus materias</p>
-        
-        </div>
+        <h3 id="materias" class="contenido--block--title col-12">Materias</h3>
+
         
         {% for materia in materias %}
-            
-            <div class="materias-materia col-12 col-md-5  mx-auto my-2">
-            
-                <p class="h4 text-muted text-center col-12 my-2">{{materia.nombre}}</p><hr>
-            
-                <p >curso: {{materia.curso}}</p>
 
-                <a href="{% url 'ver_materia' materia.id %}" class="btn btn-outline-primary float-right my-2">inspeccionar</a>
+  
+            <div class="materia col-12 mb-4 mx-auto">
+                <h4 class="materia--titulo">{{materia.nombre}}</h4>
+                <div class="row">
+                    <p class="materia--p">Curso: <a href="{% url 'mensajes' materia.profesor.user_id %}">{{materia.curso}} </a> </p>
+                    <a href="{% url 'ver_materia' materia.id %}" class="materia--a">Inspeccionar</a>
+                </div>
 
             </div>
+    
         
         {% endfor %}
     

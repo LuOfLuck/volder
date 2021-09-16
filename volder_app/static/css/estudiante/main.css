@@ -349,7 +349,7 @@ header .celular{
 #mid-contenido{
     background: transparent;
     box-shadow: 0px 0px 0px transparent !important;
-    width: 85% !important;
+    width: 85vh !important;
     min-height: 30vh;
     max-height:auto;
     padding-top: 2rem;
@@ -389,8 +389,14 @@ header .celular{
 .mid-tarea{
     height: auto;
 }
+.input{
+    background-color: var(--grey);
+    border: 0;
+    color: var(--white)
+}
 #container-comentario{
     min-height: 30vh !important;
+    
     width: 80vw;
     overflow-y: auto;
     margin-top: 2rem 0;
@@ -408,6 +414,7 @@ header .celular{
 }
 .comentarios{
     overflow-y: auto;
+    max-height: 50vh;
     width: 60%;
     font-size: 20px !important;
 }
@@ -465,6 +472,7 @@ header .celular{
     outline: 0;
     color: #fff;
 }
+.input--send,
 .enviar-comentario form .send button{
     width: auto;
     padding: .6rem 1.3rem;
@@ -480,6 +488,7 @@ header .celular{
     outline-offset: -5px;
     transition: .4s ease-in-out;
 }
+.input--send:hover,
 .enviar-comentario form .send button:hover{
     background-color: transparent;
     color: var(--naranja);
@@ -808,3 +817,29 @@ footer .privacy a{
         flex-direction:column;
     }
 }
+
+
+
+
+
+
+.añadir-trabajo{
+    border-radius: 20px;
+ }
+ .añadir-trabajo{
+    background-color: var(--grey);
+ }
+ .mini-titulo{
+    color: rgba(0, 0, 0, 0.534);
+ }
+ .añadir-trabajo img{
+    height: 150px; 
+    width: 150px;
+    border-radius: 50%; 
+    display: block;
+    margin:auto;
+
+ }
+ #icon{
+    color:var(--white);
+ }

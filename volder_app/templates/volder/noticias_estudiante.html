@@ -2,14 +2,16 @@
 {% load static %}
 {% block content %}
 
-<div class="mid-contenido mid-contenido-animacion col-12 col-md-9 mx-auto my-4 p-4">
+<div class="mid-contenido-animacion col-12 col-md-9 mx-auto my-4 p-4">
  
     
 
-    <div class="row botones-filtros" role="group" aria-label="Basic mixed styles example">
-        <button type="button" onclick="ocultar(), mostrarSecretario()" id="boton-secretario" class="col">secretario</button>
-        <button type="button" onclick="ocultar(), mostrarPreceptor()" id="boton-preceptor" class="col">preceptor</button>
-        <button type="button" onclick="ocultar(), mostrarProfesor()" id="boton-profesor" class="col">profesor</button>
+    <div class="col-12 col-md-10 mx-auto" >
+        <div class="row  botones-filtros" role="group">
+            <button type="button" onclick="ocultar(), mostrarSecretario()" id="boton-secretario" class="button-active col col-md-3 mx-md-auto">secretario</button>
+            <button type="button" onclick="ocultar(), mostrarPreceptor()" id="boton-preceptor" class="col col-md-3 mx-md-auto">preceptor</button>
+            <button type="button" onclick="ocultar(), mostrarProfesor()" id="boton-profesor" class="col col-md-3 mx-md-auto">profesor</button>
+        </div>
     </div>
 
     <div id="contenedor-secretario">
@@ -27,46 +29,48 @@
 
                 <div class="col-md publicaciones-top-nick my-1  p-0">
         
-                    <h4 class="text-muted"> Secretario: {{noticia.user.secretario.apellido}} {{noticia.user.secretario.nombre}} </h4>
+                    <p> Secretario: <span> {{noticia.user.secretario.apellido}} {{noticia.user.secretario.nombre}} </span> </p>
 
                 </div>
 
             </div>
 
-            <div class="col-md-6 publicaciones-titulo mx-auto my-2 ">
+            <div class="publicaciones-cuerpo">
 
-                <h3 class="text-center text-muted">{{noticia}}</h3><hr>
+                <div class="col-md-6 publicaciones-titulo mx-auto my-2 ">
 
-            </div>
-
-            <div class="publicaciones-contenido">
-
-                <p>{{ noticia.mensaje|linebreaks }}</p>
-
-            </div>
-            {% if noticia.url %}
-            
-                <div class="publicaciones-link">
-
-                    <p> link:  <a href="{{noticia.url}}">{{noticia.url}}</a> </p>
+                    <h3 class="text-center">{{noticia}}</h3>
 
                 </div>
 
-            {% endif %}
-            
-            {% if noticia.imagen %}
+                <div class="publicaciones-contenido">
 
-                <div class="publicaciones-imagen">
-
-                    <img src="{{ noticia.imagen.url }}">
+                    <p>{{ noticia.mensaje|linebreaks }}</p>
 
                 </div>
+                {% if noticia.url %}
+                
+                    <div class="publicaciones-link">
 
-            {% endif%}
+                        <p> link:  <a href="{{noticia.url}}">{{noticia.url}}</a> </p>
 
+                    </div>
+
+                {% endif %}
+                
+                {% if noticia.imagen %}
+
+                    <div class="publicaciones-imagen">
+
+                        <img src="{{ noticia.imagen.url }}">
+
+                    </div>
+
+                {% endif%}
+            </div>
             <div class="publicaciones-comentarios">
 
-                <a href="{% url 'ver_noticia_secre' noticia.id %}" class="btn mx-auto my-2 col-6"> Comentarios </a>
+                <a href="{% url 'ver_noticia_secre' noticia.id %}" class="btn input--send mx-auto my-4 col-4"> Comentarios </a>
 
             </div>
 
@@ -89,48 +93,52 @@
 
                 </div>
 
-                <div class="col-md publicaciones-top-nick my-1  p-0">
+                <div class="col-md publicaciones-top-nick my-3  p-0">
         
-                    <h4 class="text-muted"> Preceptor: {{noticia.user.preceptor.apellido}} {{noticia.user.preceptor.nombre}} </h4>
+                    <p> Preceptor: <span> {{noticia.user.preceptor.apellido}} {{noticia.user.preceptor.nombre}} </span> </p>
 
                 </div>
 
             </div>
 
-            <div class="col-md-6 publicaciones-titulo mx-auto my-2 ">
+            <div class="publicaciones-cuerpo">
 
-                <h4 class="text-center text-muted">{{noticia}}</h4><hr>
+                <div class="col-md-6 publicaciones-titulo mx-auto my-2 ">
 
-            </div>
+                    <h4 class="text-center ">{{noticia}}</h4>
 
-            <div class="publicaciones-contenido">
+                </div>
 
-                <p> {{ noticia.mensaje|linebreaks }}  </p>
+                <div class="publicaciones-contenido">
 
-            </div>
-            {% if noticia.url %}
+                    <p> {{ noticia.mensaje|linebreaks }}  </p>
+
+                </div>
+                {% if noticia.url %}
+                
+                    <div class="publicaciones-link">
+
+                        <p>  link: <a href="#">{{noticia.url}}</a> </p>
+
+                    </div>
+
+                {% endif %}
+                
+                {% if noticia.imagen %}
+
+                    <div class="publicaciones-imagen">
+
+                        <img src="{{ noticia.imagen.url }}">
+
+                    </div>
+
+                {% endif%}
             
-                <div class="publicaciones-link">
-
-                    <p>  link: <a href="#">{{noticia.url}}</a> </p>
-
                 </div>
-
-            {% endif %}
-            
-            {% if noticia.imagen %}
-
-                <div class="publicaciones-imagen">
-
-                    <img src="{{ noticia.imagen.url }}">
-
-                </div>
-
-            {% endif%}
 
             <div class="publicaciones-comentarios">
 
-                <a href="{% url 'ver_noticia_prece' noticia.id %}" class="btn mx-auto my-2 col-6"> Comentarios </a>
+                <a href="{% url 'ver_noticia_prece' noticia.id %}" class="btn input--send mx-auto my-2 col-4"> Comentarios </a>
 
             </div>
 
@@ -155,46 +163,47 @@
 
                     <div class="col-md-6 publicaciones-top-nick my-1  p-0">
             
-                        <h4 class="text-muted"> Profesor: {{noticia.user.profesor.apellido}} {{noticia.user.profesor.nombre}}</h4>
+                        <p > Profesor: <span> {{noticia.user.profesor.apellido}} {{noticia.user.profesor.nombre}} </span></p>
 
                     </div>
 
                 </div>
+                <div class="publicaciones-cuerpo">
+                    <div class="col-md-6 publicaciones-titulo mx-auto my-2 ">
 
-                <div class="col-md-6 publicaciones-titulo mx-auto my-2 ">
-
-                    <h3 class="text-center text-muted">{{noticia}}</h3><hr>
-
-                </div>
-
-                <div class="publicaciones-contenido">
-
-                    <p>  {{ noticia.mensaje|linebreaks }}</p>
-
-                </div>
-                {% if noticia.url %}
-                
-                    <div class="publicaciones-link">
-
-                        <p> link: <a href="#">{{noticia.url}}</a>   </p>
+                        <h3 class="text-center ">{{noticia}}</h3>
 
                     </div>
 
-                {% endif %}
-                
-                {% if noticia.imagen %}
+                    <div class="publicaciones-contenido">
 
-                    <div class="publicaciones-imagen">
-
-                        <img src="{{ noticia.imagen.url }}">
+                        <p>  {{ noticia.mensaje|linebreaks }}</p>
 
                     </div>
+                    {% if noticia.url %}
+                    
+                        <div class="publicaciones-link">
 
-                {% endif%}
+                            <p> link: <a href="#">{{noticia.url}}</a>   </p>
 
+                        </div>
+
+                    {% endif %}
+                    
+                    {% if noticia.imagen %}
+
+                        <div class="publicaciones-imagen">
+
+                            <img src="{{ noticia.imagen.url }}">
+
+                        </div>
+
+                    {% endif%}
+
+                </div>
                 <div class="publicaciones-comentarios">
 
-                    <a href="{% url 'ver_noticia_p' noticia.id %}" class="btn mx-auto my-2 col-6"> Comentarios </a>
+                    <a href="{% url 'ver_noticia_p' noticia.id %}" class="btn input--send mx-auto my-2 col-6"> Comentarios </a>
 
                 </div>
 
@@ -214,35 +223,27 @@ contenedorProfesor = document.getElementById("contenedor-profesor");
 botonSecretario = document.getElementById("boton-secretario");
 botonProfesor = document.getElementById("boton-profesor");
 botonPreceptor = document.getElementById("boton-preceptor");
-estiloCLick = `
-    background-color: rgba(89, 89, 182, 0.795);
-    box-shadow: 0 3px rgba(68, 68, 184, 0.795);;
-: none;
-    transform: translateY(4px);
-    color: white;
-    
-`
-botonSecretario.style = estiloCLick;
+
 function mostrarSecretario(){
     contenedorSecretario.style.display = "block";
-    botonSecretario.style = estiloCLick;
+    botonSecretario.classList.add("button-active");
 }
 function mostrarProfesor(){
     contenedorProfesor.style.display = "block";
-    botonProfesor.style= estiloCLick;
+    botonProfesor.classList.add("button-active");
 }
 function mostrarPreceptor(){
     contenedorPreceptor.style.display = "block";
-    botonPreceptor.style= estiloCLick;
+    botonPreceptor.classList.add("button-active");
 }
 
 function ocultar(){
     contenedorSecretario.style.display = "none";
     contenedorPreceptor.style.display = "none";
     contenedorProfesor.style.display = "none";
-    botonProfesor.style -= estiloCLick;
-    botonPreceptor.style -= estiloCLick;
-    botonSecretario.style -= estiloCLick;
+    botonProfesor.classList.remove("button-active");
+    botonPreceptor.classList.remove("button-active");
+    botonSecretario.classList.remove("button-active");
 }
 </script>
 

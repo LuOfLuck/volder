@@ -108,20 +108,79 @@
 
         <div id="enviar-comentario" class="enviar-comentario">
             
-            <form action="" method="POST"> {% csrf_token %}
+            <form action="" id="enviar-datos" method="POST" onsubmit="return false"> {% csrf_token %}
             
                 <div class="send row mx-auto">
             
                     <!-- <input type="text" name="comentario" class="" requerid> -->
-                    <textarea placeholder="Comentario..." name="comentario" id="" required cols="30" rows="10"></textarea>
-            
-                    <button type="submit"  class=""><i class="fas fa-dove"></i></button>
+                    <textarea placeholder="Comentario..." name="comentario" id="texto-comentario" required cols="30" rows="10"></textarea>
+                    <button onclick="enviar()"  class="" ><i class="fas fa-dove"></i></button>
             
                 </div>
             
             </form>
         
         </div>
+        <script>
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            
+            function enviar(){
+                var form = new FormData(document.getElementById('enviar-datos'));
+                const contComentario = document.getElementById("comentraios");
+                const comentarioText = document.getElementById("texto-comentario")
+                
+                if(comentarioText.value.length > 0){
+                    fetch('{{trabajo.id}}',{
+                        method: 'POST',
+                        body: form,
+                        headers:{
+                            "X-CSRFToken": getCookie('csrftoken'),  
+                        }}).then(function(response) {
+                            const comentario = document.createElement("div")
+                            comentario.id = "comentario";
+                            comentario.classList.add("comentario", "mensaje-enviado");
+                            const comentarioH6 = document.createElement("h6")
+                            comentarioH6.classList.add("nombre");
+                            comentarioH6.innerText="Tú";
+                            const comentarioSpan = document.createElement("span")
+                            comentarioSpan.classList.add("mensaje")
+                            comentarioSpan.innerText = comentarioText.value;
+                            comentario.appendChild(comentarioH6);
+                            comentario.appendChild(comentarioSpan);
+                            contComentario.appendChild(comentario);
+                            comentarioText.value = "";
+                            contComentario.scroll({
+                            top: contComentario.scrollHeight,
+                            left: 0,
+                            behavior: 'smooth'
+                        })
+
+                        });
+                    }
+                else{
+                    
+                    alert("no puede dejar espacios en blanco")
+                }
+            }
+
+        
+            
+            
+        </script>
 
     </div>
 

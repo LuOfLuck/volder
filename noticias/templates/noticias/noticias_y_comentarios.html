@@ -10,11 +10,11 @@
         font-size: 1.5rem;
     }
 </style>
-<div class="mid-contenido mid-contenido-animacion border col-12 col-md-9 mx-auto my-4 p-4">
+<div class="mid-contenido mid-contenido-animacion col-12 col-md-8 mx-auto my-4 p-4">
 
     <div class="col col-md-6 mx-auto">
 
-        <p class="h2 text-center text-muted">{{noticia}}</p>
+        <h2 class="text-center">{{noticia}}</h2>
         
     </div>
 
@@ -22,7 +22,7 @@
 
         <div class="cuerpo">
         
-            <p> autor: <a href="#">{{noticia.user.profesor}}{{noticia.user.preceptor}}{{noticia.user.secretario}} </a></p>
+            <p> Autor: <a href="#">{{noticia.user.profesor}}{{noticia.user.preceptor}}{{noticia.user.secretario}} </a></p>
             <p> {{noticia.mensaje|linebreaks}} </p>
 
             {% if noticia.url %}
@@ -42,57 +42,141 @@
     
     </div>
 
-    <div class="comentario my-3">
+    <div class="container-comentario container-animacion ">
  
-        <div class="titulo col">
-            <hr>
-            <p class="h3 text-muted ">comentarios:</p>
- 
-        </div>
- 
-        <div class="comentarios p-3 col col-md-10 mx-auto border">
- 
-            {% for comentario in comentarios %}
- 
-               <div class="comentario-persona">
-                    
-                    <div class="comentario-persona-nombre">
+        <p class="titulo text-center"> Comentarios</p>
 
-                        <a href="{% url 'mensajes' comentario.user.id %}"><p class="h5 text-muted">{{comentario.user.estudiante}}{{comentario.user.profesor}}{{comentario.user.preceptor}}{{comentario.user.secretario}}:</p></a>
+        
+        <div id="comentraios" class="comentarios mx-auto">
+        
+            {% for comentario in comentarios%}
+        
+                {% if comentario.user.profesor %}
+            
+                    <div id="comentario" class="comentario mensaje-recibido mensaje-recibido-profesor">
+                
+                        <p class="nombre"> {{comentario.user.profesor}} </p>
+                
+                        <p class="mensaje">
+                
+                            {{comentario.mensaje}}
+                
+                        </p>
                 
                     </div>
-
-    
-                    <div class="comentario-persona-mensaje ml-2">
-    
-                        <p>  {{comentario.mensaje}} </p> <hr>
-    
+                
+                {% elif comentario.user.estudiante == user.estudiante %}
+            
+                    <div id="comentario" class="comentario mensaje-enviado">
+                
+                        <h6 class="nombre"> Tú </h6>
+                
+                        <span class="mensaje">
+                
+                            {{comentario.mensaje}}
+                
+                        </span>
+                
                     </div>
-    
-                </div>
-    
-            {% endfor %}
-
+            
+                {% else %}
+            
+                    <div id="comentario" class="comentario mensaje-recibido col-10 my-2 col-md-11">
+                
+                        <h6 class="nombre"> {{comentario.user.preceptor}} {{comentario.user.secretario}} </h6>
+                
+                        <span class="mensaje">
+                
+                            {{comentario.mensaje}}
+                
+                        </span>
+                
+                    </div>
+            
+                {% endif%}
+        
+            {% endfor%}
+        
         </div>
 
-        <div class="nuevo-comentario p-3 col col-md-10 mx-auto border">
-           
-            <form action="" method="POST">{% csrf_token %}
-                
-                <div class="row">
-                
-                    <textarea name="comentario" rows="2" maxlength="400" class="form-control col-10 mx-left" required></textarea>
-                
-                    <button class="btn mx-auto"><i class="enviar far fa-paper-plane"></i></button>
+        <div id="enviar-comentario" class="enviar-comentario">
+            
+            <form action="" id="enviar-datos" method="POST" onsubmit="return false"> {% csrf_token %}
+            
+                <div class="send row mx-auto">
+            
+                    <!-- <input type="text" name="comentario" class="" requerid> -->
+                    <textarea placeholder="Comentario..." name="comentario" id="texto-comentario" required cols="30" rows="10"></textarea>
+                    <button onclick="enviar()"  class="" ><i class="fas fa-dove"></i></button>
             
                 </div>
-       
+            
             </form>
-       
+        
         </div>
     
     </div>
 </div>
 
+<script>
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function enviar(){
+    var form = new FormData(document.getElementById('enviar-datos'));
+    const contComentario = document.getElementById("comentraios");
+    const comentarioText = document.getElementById("texto-comentario")
+    
+    if(comentarioText.value.length > 0){
+        fetch('{{noticia.id}}',{
+            method: 'POST',
+            body: form,
+            headers:{
+                "X-CSRFToken": getCookie('csrftoken'),  
+            }}).then(function(response) {
+                 console.log(response)
+                const comentario = document.createElement("div")
+                comentario.id = "comentario";
+                comentario.classList.add("comentario", "mensaje-enviado");
+                const comentarioH6 = document.createElement("h6")
+                comentarioH6.classList.add("nombre");
+                comentarioH6.innerText="Tú";
+                const comentarioSpan = document.createElement("span")
+                comentarioSpan.classList.add("mensaje")
+                comentarioSpan.innerText = comentarioText.value;
+                comentario.appendChild(comentarioH6);
+                comentario.appendChild(comentarioSpan);
+                contComentario.appendChild(comentario);
+                comentarioText.value = "";
+                contComentario.scroll({
+                top: contComentario.scrollHeight,
+                left: 0,
+                behavior: 'smooth'
+            })
+
+            });
+        }
+    else{
+        
+        alert("no puede dejar espacios en blanco")
+    }
+}
+
+
+</script>
 {% endblock %}
     

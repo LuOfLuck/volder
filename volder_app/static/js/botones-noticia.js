@@ -37,33 +37,24 @@ contenedorProfesor = document.getElementById("contenedor-profesor");
 botonSecretario = document.getElementById("boton-secretario");
 botonProfesor = document.getElementById("boton-profesor");
 botonPreceptor = document.getElementById("boton-preceptor");
-estiloCLick = `
-    background-color: rgba(89, 89, 182, 0.795);
-    box-shadow: 0 3px rgba(68, 68, 184, 0.795);;
-    border: none;
-    transform: translateY(4px);
-    color: white;
-    
-`
-botonSecretario.style = estiloCLick;
 function mostrarSecretario(){
     contenedorSecretario.style.display = "block";
-    botonSecretario.style = estiloCLick;
+    botonSecretario.classList.add("button-active");
 }
 function mostrarProfesor(){
     contenedorProfesor.style.display = "block";
-    botonProfesor.style= estiloCLick;
+    botonProfesor.classList.add("button-active");
 }
 function mostrarPreceptor(){
     contenedorPreceptor.style.display = "block";
-    botonPreceptor.style= estiloCLick;
+    botonPreceptor.classList.add("button-active");
 }
 
 function ocultar(){
     contenedorSecretario.style.display = "none";
     contenedorPreceptor.style.display = "none";
     contenedorProfesor.style.display = "none";
-    botonProfesor.style -= estiloCLick;
-    botonPreceptor.style -= estiloCLick;
-    botonSecretario.style -= estiloCLick;
+    botonProfesor.classList.remove("button-active");
+    botonPreceptor.classList.remove("button-active");
+    botonSecretario.classList.remove("button-active");
 }

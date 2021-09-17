@@ -2,19 +2,36 @@
 {% load static %}
 {% block content %}
 
-<div class=" mid-contenido-animacion col col-md-9 mx-auto my-4 px-4">
+<div class=" mid-contenido-animacion col-12 col-md-9 mx-auto my-4 px-4">
     <div class="row">
-
         {% for respuesta in respuestas %}
-            <div id="trabajo-{{respuesta.id}}" class="trabajos trabajos-animacion col-10 col-md-5 border my-2 p-2 mx-auto">
-                <p class="h3 text-center text-muted">{{respuesta.estudiante}}</p><hr>
-                <p><span class="text-muted">comentario: </span> {{respuesta.comentario}}</p>
-                <p><span class="text-muted">entregado el: </span> {{respuesta.create}}</p>
-                <a href="{{respuesta.archivo.url}}" id="button-{{respuesta.id}}" class="btn btn-outline-primary">descargar respuesta</a>
-               
-                <script> var mostraBoton = true;
+                
+               <!-- 
+                    gracias por testear la pagina, si estas leyendo esto pliss escribe en mi instagram @lugically_cosmic2.2
+                    y mostrame, te lo agradeceria mucho.
+
+                    esto lo estoy escribiendo el 17/07/2021 el dia en el que probaremos la pagina en la escuela E.E.S.T N°14 
+                    por primera ves
+
+                    Hacer todo esto no es facil <3
+                    
+                -->
+                <div id="trabajo-{{respuesta.id}}" class="trabajo trabajos-animacion col-10 p-3 my-2 ml-4"> 
+                    <div class="trabajo--titulo">
+                        <h4 class="titulo--nombre">{{respuesta.estudiante}}</h4>
+                    </div>           
+                    <p class="trabajo--p">  {{respuesta.comentario}}  </p>
+                    <p><span >entregado el: </span> {{respuesta.create}}</p>
+                    <div class="trabajo--end">
+                        <a id="button-{{respuesta.id}}" href="{{respuesta.archivo.url}}" target="_BLANK" class="btn">Descargar respuestas</a>
+                    </div>
+                </div>   
+                <script> 
+                var mostraBoton = true;
+                
                 {% for nota in notas %}
-                    {% if nota.respuestaTrabajo.estudiante == respuesta.estudiante %}
+                    console.log("{{nota.respuestaTrabajo.estudiante}}")
+                    if ("{{nota.respuestaTrabajo}}" == "{{respuesta.estudiante}}"){
                         mostraBoton = false;
                         button = document.getElementById("button-{{respuesta.id}}");
                       
@@ -29,7 +46,7 @@
                             div.classList += " desaprobado";
                             div.innerHTML += `<button class="btn btn-outline-danger float-right">Nota: {{nota.nota}}</button>`;
                         }
-                    {% endif %}
+                    }
                     {% if forloop.last %}
                         
                             console.log("{{respuesta.id}}" + mostraBoton)
@@ -43,15 +60,14 @@
                     div = document.getElementById("trabajo-{{respuesta.id}}");
                     div.innerHTML += `<button onclick="popouAbrir({{respuesta.estudiante.id}})" class="btn btn-outline-primary float-right">calificar</button>`
                 {% endfor %}
-            </script>
-            </div> 
+                </script>
         {% endfor %}
 
         
     </div>
 </div>
 
-<div id="cont" class="cont-popou cont-popou"></div>
+<div id="cont" class="popou"></div>
 
 <script>
     let cont = document.getElementById("cont");
@@ -64,9 +80,9 @@
     function popouAbrir(id_estudiante){
         cont.style.display ="flex";
         cont.innerHTML = `
-        <div class="cont-poput-form col-11 col-md-6 pb-4 px-4 pt-4">
+        <div class="popou-cont col-11 col-md-6 pb-4 px-4 pt-4">
 
-            <h3 class="text-muted text-center">Calificar trabajo</h3><i id="cerrar-popou" onclick="cerrarPopou()" class="far fa-times-circle cerrar-poput"></i><hr>
+            <h3 class=" text-center">Calificar trabajo</h3><i id="cerrar-popou" onclick="cerrarPopou()" class="far fa-times-circle cerrar-poput"></i><hr>
 
             <form action="" method="POST" class="formulario-publicacion" > {% csrf_token %}
 

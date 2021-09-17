@@ -17,6 +17,9 @@ html.sr .load-hidden {
     padding: 0px;
     outline: none;
 }
+p{
+    margin:0
+}
 .row{
     margin: 0px !important;
     padding: 0px !important;
@@ -25,6 +28,8 @@ html.sr .load-hidden {
     background-color: var(--bg);
 }
 body{
+    max-width: 100vw;
+    overflow-x: hidden;
     font-size: 18px;
     font-family:'Rubik', sans-serif;
 }
@@ -32,23 +37,26 @@ body{
 body::-webkit-scrollbar,
 .compañeros::-webkit-scrollbar,
 .comentarios::-webkit-scrollbar,
+.publicaciones-cuerpo::-webkit-scrollbar,
 .block--cont::-webkit-scrollbar{
-    width: 0;
+    width: 5px;
 }
    
 body::-webkit-scrollbar-track,
 .compañeros::-webkit-scrollbar-track,
-.comenjjjjtarios::-webkit-scrollbar-track,
+.comentarios::-webkit-scrollbar-track,
+.publicaciones-cuerpo::-webkit-scrollbar-track,
 .block--cont::-webkit-scrollbar-track{
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 6px var(--grey) ;
     border-radius: 20px;
 }
  
 body::-webkit-scrollbar-thumb,
 .compañeros::-webkit--scrollbar-thumb,
 .comentarios::-webkit--scrollbar-thumb,
+.publicaciones-cuerpo::-webkit--scrollbar-thumb,
 .block--cont::-webkit--scrollbar-thumb{
-    background-color:var(--tirada-2-tono-5);
+    background-color: var(--naranja);
     border-radius: 2px;
 }
 
@@ -389,11 +397,7 @@ header .celular{
 .mid-tarea{
     height: auto;
 }
-.input{
-    background-color: var(--grey);
-    border: 0;
-    color: var(--white)
-}
+
 #container-comentario{
     min-height: 30vh !important;
     
@@ -472,13 +476,19 @@ header .celular{
     outline: 0;
     color: #fff;
 }
+.input{
+    background-color: var(--grey);
+    border: 0;
+    color: var(--white)
+}
 .input--send,
 .enviar-comentario form .send button{
     width: auto;
     padding: .6rem 1.3rem;
     margin: 1rem 0;
     background: transparent;
-    color: var(--bg);
+    color: var(--white);
+    font-weight: 600;
     background-color: var(--naranja);
     position: relative;
     border: 0;
@@ -533,15 +543,17 @@ header .celular{
 .trabajos-materia{
     height: auto;
 }
+
+.cont-popou,
 .popou{
     height: 100vh;
     width: 100%;
     display:none;
-    position: absolute;
+    position: fixed;
     top: 0;
     align-items: center;
     justify-content: center;
-    background-color: rgba(65, 65, 65, 0.404);
+    background-color: rgba(182, 129, 129, 0.404);
     z-index: 1000;
 }
 .popou-cont{
@@ -590,6 +602,90 @@ form #label_archivo:hover{
     border-radius: 15px;
     color: white;
 }
+.formulario-publicacion #id_titulo,  .formulario-publicacion #id_comentario{
+    border: 0; 
+    width: 100%;
+    border-bottom: 1px solid rgba(94, 94, 94, 0.363); 
+    font-size: 1.2rem;
+    text-align: center;
+    margin:auto;
+  }
+  .formulario-publicacion #nota {
+
+  }
+  .formulario-publicacion textarea,
+  .formulario-publicacion #id_titulo,
+  .formulario-publicacion #id_url,
+  .formulario-publicacion #id_comentario{
+      outline: none;
+  }
+  
+  .formulario-publicacion #id_imagen, .invisible {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    }
+#input-imagen-zone{
+    width: 80%;
+    height: 300px;
+    display: none;
+    margin:auto
+}
+.formulario-publicacion label[for="id_imagen"], .formulario-publicacion label[for="id_url"], .input-sudmit-icon   {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: black;
+    display: inline-block;
+    transition: linear all .5s;
+    cursor: pointer;
+    padding: 15px 40px;
+    text-align: center;
+  
+    }
+.formulario-publicacion label[for="id_imagen"]:hover, .formulario-publicacion label[for="id_url"]:hover, .input-sudmit-icon:hover{
+    font-size: 2rem;
+    color: rgb(93, 93, 204);
+}
+.formulario-publicacion label[for="id_url"]{
+    float: center;
+}
+.formulario-publicacion .input-sudmit-icon {
+    height: 0px !important;
+}
+.formulario-publicacion #id_url{
+    display: none;
+    border:0px;
+    border-bottom: 1px solid rgb(150, 150, 150); 
+    font-size: 1rem;
+    width: 100%;
+    }
+    #id_titulo, #id_comentario{
+    text-align: center;
+    font-size: 1.3rem;
+}
+#id_titulo, #id_mensaje,#id_url, #id_materia,#id_nota{
+    padding: 1rem;
+    border: 1px solid rgba(126, 126, 126, 0.384);
+    border-radius: 10px;
+}
+#id_nota{  
+    padding: .5rem;
+    width: 100%;
+}
+#id_titulo, #id_mensaje,#id_materia{
+    width: 100%;
+}
+#id_url{
+    width: 70%;
+}
+#id_titulo:focus, #id_mensaje:focus,#id_url:focus, #id_imagen:focus,#id_materia:focus,#id_comentario,#id_nota{
+    border: 3px solid rgba(39, 224, 209, 0.555);
+    border-radius: 10px !important;
+
+}
 /* .aprobado, .desaprobado{
      color:white; 
     box-shadow: 0 0 0;
@@ -634,16 +730,20 @@ form #label_archivo:hover{
 
 /****************************************************/
 .botones-filtros button{
-   
+    border: 0px transparent;
     background-color: transparent;
-   
-    border: 1px solid rgb(170, 170, 170);
-    border-top-left-radius: 100px !important;
-    border-bottom-right-radius: 100px !important;
     padding: 10px;
-    box-shadow: 0 5px #999;
     text-decoration: none;
+    font-weight: 800;
+    font-size: 1.5em;
+    color:var(--grey);
    
+}
+.button-active{
+    border-bottom: 3px var(--naranja) solid !important;
+    transform: translateY(4px);
+    color: var(--white) !important;
+    
 }
 .botones-filtros, .informacion-materias button:focus{
     outline:none;
@@ -657,7 +757,14 @@ form #label_archivo:hover{
     display: none;
 }
 .publicaciones{
-    box-shadow: 10px -4px 10px rgb(171, 173, 173);
+   
+    padding: 0;
+    color: var(--white);
+}
+
+.publicaciones-top{
+    background-color: var(--grey);
+    border-radius: 15px 15px 0 0;
 }
 .publicaciones-top-foto img{
     border-radius: 50%;
@@ -666,11 +773,22 @@ form #label_archivo:hover{
     display:block;
     margin: auto;
 }
-.publicaciones-top-nick h4{
-    display:block;
-    position:absolute;
-    bottom: 25%;
-    margin: auto;
+.publicaciones-top-nick{
+    display:flex;
+    align-items: center;
+    font-size: 1em;
+}
+.publicaciones-top-nick span{
+    font-weight: 600;
+}
+.publicaciones-cuerpo{
+    padding: 20px 40px;
+    border: 1px solid var(--grey);
+    max-height: 60vh;
+    overflow-y: auto;
+}
+.publicaciones-titulo{
+    font-weight: 800;
 }
 .publicaciones-imagen img{
     width: 100%;
@@ -678,14 +796,9 @@ form #label_archivo:hover{
     border-radius: 10px;
 }
 .publicaciones-comentarios a{
-    border: 2px solid rgba(128, 128, 128, 0.308);
     display: block;
-    transition: all .5s;
 }
-.publicaciones-comentarios a:hover{
-    background-color:rgba(45, 127, 182, 0.774);
-    color:white;
-}
+
 
 .text-derecha{
     float: right;

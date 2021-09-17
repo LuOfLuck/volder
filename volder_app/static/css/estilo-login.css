@@ -6,65 +6,30 @@
 
     font-family: 'Roboto', sans-serif;  
 **/
+
+:root{
+
+
+    --naranja:#DAAB00;
+	--negro:#282828;
+	--bg:#404040;
+	--grey:#686868;
+	--white:#FFF;  /* ----> XD     res: sdasdnsadas jj */
+}
 *{
 	margin:0;
 	padding:0;
 }
 body{
 	font-family: 'ABeeZee', sans-serif;
+	background-color: var(--bg);
+	color:#FFF;
 }
 
 header{
 	width:100%;
-	height:100px;
-	display:flex;
-	justify-content:space-around;
-	align-items:center;
-
-	border-bottom:1px solid;
-	border-color:#cdcdcd;
-	box-shadow:2px 2px 4px rgba(0,0,0,0.3);
-}
-@media(max-width: 550px){
-	header{
-		height:auto;
-		flex-direction:column;
-		padding-bottom:.5rem;
-	}
-
-}
-
-header .vold-logo{
-	width:250px;
-	height:60px;
-	height:auto;
-}
-@media(max-width: 550px){
-	header .vold-logo{
-		margin:1rem 0;
-	}
-}
-
-header .vold-logo img{
-	width:250px;
-	height:60px;
-}
-
-header a{
-	width:200px;
-	height:2.5rem;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	font-size:1.3rem;
-	text-decoration:none;
-	color:#353b48;
-	border-radius:5px;
-	transition:.3s ease;
-}
-header a:hover{
-	background-color:#353b48;
-	color:white;
+	height:12vh;
+	background-color: var(--grey);
 }
 .derecha{
 	float:right;
@@ -134,11 +99,6 @@ header a:hover{
 	border-top:0;
 	font-family: 'Roboto', sans-serif;
 }
-@media(max-width: 550px){}
-	.login form, .popou-cuerpo{
-		border:0;
-	}
-}
 .login form label, .popou-cuerpo p{
 	font-size:1.4rem;
 }
@@ -198,105 +158,3 @@ header a:hover{
 .login form a:hover{
 	color:#3e3e3e;
 }
-
-/*******************/
-/*                 */
-/*     Footer      */
-/*                 */
-/*******************/
-
-footer{
-	width:100%;
-	height:auto;
-	padding:1rem 0 0 0;
-
-	font-family: 'Roboto', sans-serif;
-	border-top:1px solid;
-	border-color:#cdcdcd;
-	position:relative;
-}
-.footer-body{
-	padding:1rem 0;
-	display:flex;
-	flex-wrap:wrap;
-	justify-content:center;
-}
-.footer-body .about-social{
-	width:30%;
-	display:flex;
-	justify-content:center;
-	flex-direction:column;
-	text-align:center;
-	color:#718093;
-}
-.about-social .fab{
-	display:inline;
-	font-size:2rem;
-}
-.about-social a{
-	margin-bottom:.7rem;
-}
-
-.footer-body .about-group{
-	width:30%;
-	display:flex;
-	justify-content:center;
-	flex-direction:column;
-	text-align:center;
-	color:#718093;
-}
-.about-group p{
-	margin-bottom:.5rem;
-}
-
-.footer-body .foot-informacion{
-	width:30%;
-	display:flex;
-	justify-content:center;
-	flex-direction:column;
-	text-align:center;
-	color:#718093;
-}
-@media only screen and (max-width:560px){
-	#foot-informacion, #about-social, #about-group{
-		width:100%;
-		margin-bottom:1rem;
-	}
-}
-.footer-body .foot-informacion a{
-	padding-bottom:.5rem;
-}
-
-p.tit{
-	color:#2f3640;
-	font-size:1.8rem;
-	padding-bottom:.7rem;
-}
-.footer-body a{
-	text-decoration:none;
-	color:#718093;
-	cursor:pointer;
-}
-.footer-body a:hover{
-	color:#353b48;
-}
-
-
-.footer-bottom{
-	width:100%;
-	height:2rem;
-	background-color:#dcdde1;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-}
-
-.footer-bottom p{
-	color:#718093;
-	cursor:pointer;
-}
-.footer-bottom p:hover{
-	color:#353b48;
-}
-
-

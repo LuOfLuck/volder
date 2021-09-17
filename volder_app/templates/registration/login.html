@@ -13,40 +13,24 @@
 </head>
 <body>
 	<header>
-		<div class="vold-logo">
-			<img src="{% static 'img/volder-logo.png' %}" alt="Volder Logo" title="Volder">
-		</div>
-		<a href="http://luofluck.epizy.com/volder-explicacion" target="_blank" rel="noopener noreferrer">
-			Sobre Volder
-		</a>
 	</header>
-
-
-
 	<div class="main">
 
         <div id="login" class="login">
 
-            <div class="form-top">
-
-                <p>Iniciar Sesión</p>
-
-            </div>
-
             <form action="" autocomplete="off" method="POST">{% csrf_token %}
                 {{form.errors}}
-               
-                <label for="id_username">Usuario</label>
+                <!--<label for="id_username">Usuario</label> -->
 
                 {{ form.username}}
 
-                <label for="id_password">Contraseña</label>
+                <!-- <label for="id_password">Contraseña</label> -->
 
                 {{ form.password}}
 
                 <div class="forget-pass">
 
-                    <a href="{% url 'password_reset' %}" target="_blank">¿Olvidaste la contraseña?</a>
+                    <a href="{% url 'password_reset' %}" target="_blank">¿Olvidaste tú contraseña? <span>Click aquí</span></a>
 
                 </div>
 
@@ -79,34 +63,6 @@
         </div>
 
     </div>
-    <footer>
-        <div class="footer-body"> 
-            <div class="about-social" id="about-social">
-                <p class="tit">Redes</p>
-                <a href="" title="Facebook"><i class="fab fa-facebook-square"></i></a>
-                <a href="" title="Instagram"><i class="fab fa-instagram"></i></a>
-                
-            </div>
-
-            <div class="about-group" id="about-group">
-                <p class="tit">Integrantes - contacto</p>
-		    <p><a href="https://github.com/m-alvarado" target"_BLANK">Alvarado Matías.</a></p>
-                <p><a href="https://github.com/LuOfLuck/" target"_BLANK">Guerrero Lucas.</p>
-                
-            </div>
-        
-            <div class="foot-informacion" id="foot-informacion">
-                <p class="tit">Información legal</p>
-                <a href="">Términos y condiciones</a>
-                <a href="">Aviso legal</a>
-                <a href="">Política de cookies</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>Derechos de autor © 2021 Volder Online</p>
-        </div>
-    </footer>
-
     <script>
         const cont = document.getElementById("cont");
         const login = document.getElementById("login");

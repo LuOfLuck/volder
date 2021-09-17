@@ -43,7 +43,8 @@ header{
 .main .login{
 	width:350px;
 	height:auto;
-	
+	background-color: var(--negro);
+	border-radius: 10px;
 }
 .cont-popou{
 	width: 50%;
@@ -52,7 +53,6 @@ header{
 .login, .cont-popou{
 	height:auto;
 	margin:4rem auto;
-	box-shadow:2px 2px 10px 2px rgba(0,0,0,0.3);
 }
 
 @media(max-width: 550px){
@@ -94,67 +94,87 @@ header{
 }
 .login form, .popou-cuerpo{
 	padding:2rem 10%;
-	border:1px solid;
-	border-color:#a7a6a6;
-	border-top:0;
+	border:0;
 	font-family: 'Roboto', sans-serif;
+	display: flex;
+	flex-direction:column;
+	align-items: center;
+	justify-content: space-around;
+}
+.login form .buttons{
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 }
 .login form label, .popou-cuerpo p{
 	font-size:1.4rem;
 }
 
 .login form input{
-	width:100%;
-	height:2.5rem;
-	margin:1rem auto;
-	font-size:1.2rem;
-	color:#6a6a6a;
-	background-color:#f2f2f2;
+	width:80%;
+	height:3rem;
+	margin:1rem 0;
 	border:0;
-	border-bottom:3px solid #c3c3c3;
-	outline:none;
+	outline: none;
+	background-color: var(--grey);
+	border-radius: 7px;
+	text-align: center;
+	color:#FFF;
+	position: relative;
+	font-size: 1em;
 }
-
-.login form input:focus{
-	border-color:#6a6a6a;
-	transition:.3s ease;
-}
-
+.forget-pass
 .popou-button{
 	height:2.5rem;
 	margin:1rem auto;
 	font-size:1.2rem;
 }
-.login form input[type=submit], .popou-button{
-	width:35%;
-	border:0;
-	border-radius:5px;
-	display:inline-block;
+.login form input[type=submit]{
+	width:auto;
+	border:1px var(--grey) solid;
+	border-radius: 7px;
+	color:var(--naranja);
 	cursor:pointer;
-	background-color:#404040;
-	color:white;
-	transition:.3s linear;
+	font-weight: 700;
+	padding:.3rem 1rem;
+	font-family: 'roboto';
+	background-color: transparent;
+	transition: .3s ease;
+}	
+.login form input[type=submit]:hover{
+	background-color: transparent;
+	color:var(--naranja);
 }
-.login form input[type=submit]:hover, .popou-button:hover{
-	border: 2px solid #404040;
-	background-color: white;
-	color:#404040;
+.login form button.popou-button{
+	color:var(--grey);
+	background: transparent;
+	border:0;
+	outline:none;
+	font-size: 1.3em;
+	font-weight: 100;
+	text-decoration: underline;
+	cursor: pointer;
 }
-.login form input[type=submit]:active, .popou-button:active{
-	color:white;
-	background-color: #404040;
+.login form button.popou-button:hover{
+	color:var(--white);
 }
-
 .login form .forget-pass{
 	width:100%;
 	margin-bottom:1rem;
+}
+.forget-pass span{
+	color:var(--naranja);
+	font-weight: 600;
+	
+}
+.forget-pass span:hover{
+	text-decoration: underline;
 }
 
 .login form a{
 	text-decoration:none;
 	color:#747474;
-}
-
-.login form a:hover{
-	color:#3e3e3e;
 }

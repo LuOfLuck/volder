@@ -33,12 +33,10 @@
                     <a href="{% url 'password_reset' %}" target="_blank">¿Olvidaste tú contraseña? <span>Click aquí</span></a>
 
                 </div>
-
-                <button class="popou-button" onclick="abrirPopou()"> usuarios </button>
-
-                <input type="submit" class="derecha" value="Enviar" name="Enviar">
-
-
+                <div class="buttons">
+                    <input type="submit" class="derecha" value="Iniciar Sesión" name="Enviar">
+                    <button class="popou-button" onclick="abrirPopou()"> usuarios </button>
+                </div>
             </form>
 
         </div>
@@ -64,6 +62,8 @@
 
     </div>
     <script>
+        const username = document.getElementById('id_username');
+        const password = document.getElementById('id_password');
         const cont = document.getElementById("cont");
         const login = document.getElementById("login");
         function cerrarPopou(){
@@ -74,6 +74,9 @@
             login.style.display = "none";
             cont.style.display ="block";
         }
+
+        username.setAttribute("placeholder", "Nombre de usuario");
+        password.setAttribute("placeholder", "Contraseña");
     </script>
 </body>
 

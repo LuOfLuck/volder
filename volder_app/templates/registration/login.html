@@ -13,6 +13,7 @@
 </head>
 <body>
 	<header>
+        <p>V</p>
 	</header>
 	<div class="main">
 
@@ -35,9 +36,9 @@
                 </div>
                 <div class="buttons">
                     <input type="submit" class="derecha" value="Iniciar Sesión" name="Enviar">
-                    <button class="popou-button" onclick="abrirPopou()"> usuarios </button>
                 </div>
             </form>
+            <button class="popou-button" onclick="abrirPopou()"> usuarios </button>
 
         </div>
 
@@ -67,7 +68,7 @@
         const cont = document.getElementById("cont");
         const login = document.getElementById("login");
         function cerrarPopou(){
-            login.style.display = "block";
+            login.style.display = "flex";
             cont.style.display ="none";
         }
         function abrirPopou(){

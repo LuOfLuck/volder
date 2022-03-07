@@ -191,6 +191,6 @@ class NotaTrabajo(models.Model):
     comentario = models.TextField(max_length=200, null=True, blank=True)
     nota = models.CharField(max_length=20, choices=estadoNota)
     def __str__(self):
-        return str(self.respuestaTrabajo) + str(self.nota) 
+        return str(self.respuestaTrabajo) + " " + str(self.nota) 
 
 

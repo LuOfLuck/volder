@@ -4,8 +4,7 @@
 
 <div class=" mid-contenido-animacion col-12 col-md-9 mx-auto my-4 px-4">
     <div class="row">
-        {% for respuesta in respuestas %}
-                
+        {% for respuesta in respuestas %}              
                <!-- 
                     gracias por testear la pagina, si estas leyendo esto pliss escribe en mi instagram @lugically_cosmic2.2
                     y mostrame, te lo agradeceria mucho.
@@ -16,49 +15,59 @@
                     Hacer todo esto no es facil <3
                     
                 -->
-                <div id="trabajo-{{respuesta.id}}" class="trabajo trabajos-animacion col-10 p-3 my-2 ml-4"> 
+
+                <!--
+                    Mi suerte nunca fue la mejor, nunca pudimos testear la pagina, esto lo escribo 8 meses despues el 06/03/2022 10:36.
+
+                    Al final por tema de cambios en el profesor de practicas nunca lo pudimos hacer, hoy estoy arreglando errores de adaptacion asi puedo tenerlo mejor en mi portafolios personal
+
+                    siento que aun asi puedo conseguir buenas reseñas gracias a volder
+
+                    pienso en agregar un modo para personas no videntes, vamos a ver que sale
+                -->
+                <div  class="trabajo trabajos-animacion col-10 p-3 my-2 ml-4"> 
                     <div class="trabajo--titulo">
                         <h4 class="titulo--nombre">{{respuesta.estudiante}}</h4>
                     </div>           
                     <p class="trabajo--p">  {{respuesta.comentario}}  </p>
                     <p><span >entregado el: </span> {{respuesta.create}}</p>
-                    <div class="trabajo--end">
+                    <div id="trabajo-{{respuesta.id}}" class="trabajo--end">
                         <a id="button-{{respuesta.id}}" href="{{respuesta.archivo.url}}" target="_BLANK" class="btn">Descargar respuestas</a>
                     </div>
-                </div>   
+                </div>
                 <script> 
                 var mostraBoton = true;
-                
                 {% for nota in notas %}
-                    console.log("{{nota.respuestaTrabajo.estudiante}}")
-                    if ("{{nota.respuestaTrabajo}}" == "{{respuesta.estudiante}}"){
+                    if ("{{nota.respuestaTrabajo.estudiante}}" == "{{respuesta.estudiante}}"){
                         mostraBoton = false;
                         button = document.getElementById("button-{{respuesta.id}}");
-                      
                         div = document.getElementById("trabajo-{{respuesta.id}}");
                         if("{{nota.nota}}" > 6){
-                            button.classList += "  btn-outline-success";
-                            div.classList += " aprobado";
-                            div.innerHTML += `<button class="btn btn-outline-success float-right">Nota: {{nota.nota}}</button>`;
+                            button.classList.add("btn-outline-success");
+                            div.classList.add("aprobado");
+                            div.innerHTML += `<button class="btn btn-outline-success ml-auto">Nota: {{nota.nota}}</button>`;
                         }
                         else{
-                            button.classList += "  btn-outline-danger";
-                            div.classList += " desaprobado";
-                            div.innerHTML += `<button class="btn btn-outline-danger float-right">Nota: {{nota.nota}}</button>`;
+                            button.classList.add("btn-outline-danger");
+                            div.classList.add("desaprobado");
+                            div.innerHTML += `
+                                <button class="btn btn-outline-danger ml-auto">
+                                    Nota: {{nota.nota}}
+                                </button>`;
                         }
                     }
                     {% if forloop.last %}
                         
                             console.log("{{respuesta.id}}" + mostraBoton)
-                            if(mostraBoton == true){
+                            if(mostraBoton){
                                 let div = document.getElementById("trabajo-{{respuesta.id}}")
-                                div.innerHTML += `<button onclick="popouAbrir({{respuesta.estudiante.id}})" class="btn btn-outline-primary float-right">calificar</button>`;
+                                div.innerHTML += `<button onclick="popouAbrir({{respuesta.estudiante.id}})" class="btn btn-outline-primary ml-auto">calificar</button>`;
                             }
                     {% endif %}
 
                 {% empty %}
                     div = document.getElementById("trabajo-{{respuesta.id}}");
-                    div.innerHTML += `<button onclick="popouAbrir({{respuesta.estudiante.id}})" class="btn btn-outline-primary float-right">calificar</button>`
+                    div.innerHTML += `<button onclick="popouAbrir({{respuesta.estudiante.id}})" class="btn btn-outline-primary ml-auto">calificar</button>`
                 {% endfor %}
                 </script>
         {% endfor %}
@@ -82,24 +91,20 @@
         cont.innerHTML = `
         <div class="popou-cont col-11 col-md-6 pb-4 px-4 pt-4">
 
-            <h3 class=" text-center">Calificar trabajo</h3><i id="cerrar-popou" onclick="cerrarPopou()" class="far fa-times-circle cerrar-poput"></i><hr>
+            <h3 class=" text-center">Calificar trabajo</h3><i id="cerrar-popou" onclick="cerrarPopou()" class="far fa-times-circle cerrar-popou"></i><hr>
 
             <form action="" method="POST" class="formulario-publicacion" > {% csrf_token %}
-
+                <input type="text" class="invisible col-12" name="id_estudiante" value="${id_estudiante}" readonly>
                 <div class="row">
-                
                     <div class="col-6 mx-auto">
-
                         {{form.comentario}}
-
                     </div>
                 </div>
                 <div class="row my-3">
-                    <div class="col-8 col-md-5 m-auto">
+                    <div class="col-8 col-md-12 col-md-5 m-auto">
                         {{form.nota}}
                     </div>
-                    <input type="text" class="invisible" name="id_estudiante" value="${id_estudiante}" readonly>
-                    <div class="col-3 m-auto">
+                    <div class="m-auto">
                         <input type="submit" class="m-auto btn btn-outline-primary" value="Califiacar">    
                     </div>
                 </div>

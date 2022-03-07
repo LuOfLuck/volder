@@ -1,5 +1,5 @@
 {% load static %}
-<div id="container" class="container container-animacion col-10 col-md-2 my-4 ">
+<div id="container" class="container container-animacion col-10 col-ms-2 my-4 ">
 
     <div class="perfil">
 
@@ -26,8 +26,8 @@
       
         {% for compañero in compañero %}
         
-            <div class="perfil-compañero">
-                <a href="{% url 'mensajes' compañero.user_id %}">
+            <div class="col-12 perfil-compañero">
+                <a class="text-center" href="{% url 'mensajes' compañero.user_id %}">
                     <img class="foto-compañeros" src="{{compañero.imageURL}}">
                     <div class="nick">
                         <p>{{compañero}}</p>

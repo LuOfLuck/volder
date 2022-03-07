@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<div class="mid-contenido mid-contenido-animacion border col col-md-9 mx-auto my-4 p-4">
+<div class="mid-contenido mid-contenido-animacion col col-md-9 mx-auto my-4 p-4">
     
     <h2 class="text-muted text-center"> Ajustes </h2><hr>
     
@@ -13,7 +13,7 @@
        
             <p class=" h4 text-muted">Información personal: </p>
        
-            <div class="informacion-personal border p-3">
+            <div class="informacion-personal p-3">
        
                 <div class="editar-perfil">
                     <a id="icon" onclick="editar()" class="btn"> editar <i class="fas fa-pencil-alt"></i></a>
@@ -42,7 +42,7 @@
         <div id="editar" class="col-12 col-md-5 mx-auto">
             <p class=" h4 text-muted">vista de edición:</p>
           
-            <div class="informacion-personal border p-3">
+            <div class="informacion-personal p-3">
                
                 <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
                
@@ -82,13 +82,13 @@
                    
                         <label for="id_username_new">Nombre de usuario:</label>
                    
-                        <input type="text" name="username_new" class="form-control" id="id_username_new" minlength="8" value="{{user}}" required>
+                        <input type="text" name="username_new" class="form-control mb-2" id="id_username_new" minlength="8" value="{{user}}" required>
                    
                     </div>
-                   
-                    <a href="{% url 'password_change' %}" target="_blank" class="btn btn-outline-primary">cambiar contraseña </a>
-                   
-                    <input type="submit" class="my-2 btn btn-outline-primary" value="Enviar">
+                    <div class="row">
+                        <a href="{% url 'password_change' %}" target="_blank" class="materia--a ">cambiar contraseña </a>
+                        <input type="submit" class=" ml-auto btn button--especial" value="Enviar">
+                    </div>
                 
                 </form>
            
@@ -98,7 +98,7 @@
 
         <div class="col-12 col-md-5 mx-auto">
             <p class=" h4 text-muted">Notificaciones: </p>
-            <div class="notificaciones border p-3">
+            <div class="notificaciones p-3">
                 <div class="notificiones- row">
                     <p> Comentarios: *activadas* </p>
                 </div>  

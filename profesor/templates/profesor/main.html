@@ -16,11 +16,8 @@
                 <a id="button-{{ultimo_trabajo.id}}" href="{% url 'ver_trabajo' ultimo_trabajo.id %}" class="btn">ver trabajo</a>
             </div>
         </div>  
-        
-
         <div class="row block--cont">
-            
-            <div class="añadir-trabajo trabajos trabajos-animacion col-10 col-md-5  mx-auto my-2">
+            <div class="añadir-trabajo trabajos trabajos-animacion col-10 col-md-8 col-lg-5  mx-auto my-2">
                 <div class="añadir-trabajo-titulo">
                     <p class="h4 mini-titulo text-center">nuevo trabajo</p>
                 </div>
@@ -30,13 +27,9 @@
                     </a>
                 </div>
             </div>
-            
             {% for trabajo in trabajos %}
-                
                 {% if trabajo.materia.profesor == user.profesor %}
-            
-    
-                    <div id="trabajo-{{trabajo.id}}" class="trabajo trabajos-animacion col-10 col-md-5 my-2  mx-auto "> 
+                    <div id="trabajo-{{trabajo.id}}" class="trabajo trabajos-animacion col-10 col-md-8 col-lg-5 my-2  mx-auto "> 
                         <div class="trabajo--titulo">
                             <h4 class="titulo--nombre">{{trabajo.materia}}</h4>
                             <p class="titulo--fecha"> Entrega: <br> {{trabajo.fecha_de_entrega|date:'d/m/Y'}}</p>    

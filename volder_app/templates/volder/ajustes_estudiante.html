@@ -2,12 +2,13 @@
 {% load static %}
 {% block content %}
 
-<div class="mid-contenido mid-contenido-animacion border col col-md-9 mx-auto my-4 p-4">
-    <h2 class="text-muted text-center"> Ajustes </h2><hr>
+<div class="mid-contenido-animacion col col-md-9 mx-auto my-4 p-4">
+    <h3 class="contenido--block--title col-12 mb-4">Ajustes</h3>
+        
     <div class="row">
-        <div id="vista" class=" col-12 col-md-5 mx-auto">
-            <p class=" h4 text-muted">Informacion personal: </p>
-            <div class="informacion-personal border p-3">
+        <div id="vista" class="informacion-personal col-12 col-md-5 mx-auto">
+            <h4 class="trabajo--titulo">Informacion personal: </h4>
+            <div class=" p-3">
                 <div class="editar-perfil">
                     <a id="icon" onclick="editar()" class="btn"> editar <i class="fas fa-pencil-alt"></i></a>
                 </div>
@@ -33,8 +34,8 @@
             </div>
         </div>
         <div id="editar" class="edicion col-12 col-md-5 mx-auto">
-            <p class=" h4 text-muted">vista de editar: </p>
-            <div class="informacion-personal border p-3">
+            <div class="informacion-personal p-3">
+                <h4 class="trabajo--titulo">vista de editar: </h4>
                 <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
                     {{formulario.user}}
                     {{formulario.dni}}
@@ -73,16 +74,18 @@
                     </div>
                     <div class="username row">
                         <label for="id_username_new">Nombre de usuario:</label>
-                        <input type="text" name="username_new" class="form-control" id="id_username_new" minlength="8" value="{{user}}" required>
+                        <input type="text" name="username_new" class="form-control mb-2" id="id_username_new" minlength="8" value="{{user}}" required>
                     </div>
-                    <a href="{% url 'password_change' %}" target="_blank" class="btn btn-outline-primary">cambiar contraseña </a>
-                    <input type="submit" class="my-2 btn btn-outline-primary" value="Enviar">
+                    <div class="row">
+                        <a href="{% url 'password_change' %}" target="_blank" class="materia--a">cambiar contraseña </a>
+                        <input type="submit" class="mx-auto button--especial" value="Enviar">
+                    </div>
                 </form>
             </div>
         </div>
-        <div class="col-12 col-md-5 mx-auto">
-            <p class=" h4 text-muted">Notificaciones: </p>
-            <div id="activadas" class="notificaciones border p-3">
+        <div class="notificaciones p-2 col-12 col-md-5 my-2 mx-auto">
+            
+                <h4 class="trabajo--titulo">Notificaciones: </h4>
                 <div class="notificiones- row">
                     <p> Nuevo trabajo: *activadas* </p>
                 </div>  
@@ -98,10 +101,7 @@
                 <div class="notificiones- row">
                     <p> Nueva publicacion(profesor): *activadas* </p>
                 </div>
-                  <button onclick="Notification.permission = 'denied', notifyMe()">apagar</button>
-            </div>
-
-          
+                  <button class=" button--especial" onclick="Notification.permission = 'denied', notifyMe()">apagar</button>       
         </div>
     </div>
 </div>
@@ -119,6 +119,5 @@
         edicion.style.display = "none";
         vistaa.style.display = "block";
     }
-
 </script>
 {% endblock %}

@@ -8,7 +8,9 @@
 	--grey:#686868;
 	--white:#FFF;  /* ----> XD     res: sdasdnsadas jj */
 }
-
+html{
+   
+}
 html.sr .load-hidden {
     visibility: hidden;
 }
@@ -26,6 +28,7 @@ p{
 }
 .main{
     background-color: var(--bg);
+    min-height: 100vh;
 }
 body{
     max-width: 100vw;
@@ -220,7 +223,8 @@ header .celular{
     bottom:0;
     margin: .5em;
 }
-.trabajo--end .btn{
+.trabajo--end .btn, 
+.button--especial{
     font-size: .8em;    
     border: 2px solid var(--naranja);
     border-radius: 8px;
@@ -228,7 +232,8 @@ header .celular{
     color:var(--white);
     padding: 5px;
 }
-.trabajo--end .btn:hover{
+.trabajo--end .btn:hover, 
+.button--especial:hover{
     transition: .2s linear;
     background-color: var(--naranja);
     color:var(--white);
@@ -269,7 +274,7 @@ header .celular{
 #container{ 
     position: sticky;
     top: 15vh; 
-    height: 80vh;
+    max-height: 80vh;
 }
 
 .perfil .foto{
@@ -357,7 +362,6 @@ header .celular{
 #mid-contenido{
     background: transparent;
     box-shadow: 0px 0px 0px transparent !important;
-    width: 85vh !important;
     min-height: 30vh;
     max-height:auto;
     padding-top: 2rem;
@@ -385,7 +389,7 @@ header .celular{
 }
 #mid-contenido .trabajo-contenido{
     display: flex;
-    min-height: 40vh;
+    min-height: 40%;
     padding: .7rem 0;
 }
 #mid-contenido .fuentes{
@@ -419,7 +423,7 @@ header .celular{
 .comentarios{
     overflow-y: auto;
     max-height: 50vh;
-    width: 60%;
+    width: 90%;
     font-size: 20px !important;
 }
 .comentario{
@@ -476,10 +480,17 @@ header .celular{
     outline: 0;
     color: #fff;
 }
-.input{
+.input,
+#id_titulo,
+#id_mensaje,
+#id_url{
     background-color: var(--grey);
     border: 0;
     color: var(--white)
+}
+input::placeholder,
+textarea::placeholder{
+    color: white;
 }
 .input--send,
 .enviar-comentario form .send button{
@@ -551,9 +562,9 @@ header .celular{
     display:none;
     position: fixed;
     top: 0;
+    left: 0;
     align-items: center;
     justify-content: center;
-    background-color: rgba(182, 129, 129, 0.404);
     z-index: 1000;
 }
 .popou-cont{
@@ -834,7 +845,9 @@ form #label_archivo:hover{
 
 /****************************************************/
 .informacion-personal,  .notificaciones{
-    box-shadow: 5px -2px 10px rgb(171, 173, 173);
+    background-color: var(--grey);
+    border-radius: 4px;
+    color: white;
 }
 .informacion-personal img{
     width: 80px;

@@ -117,7 +117,6 @@ def respuesta_trabajo(request, id_trabajo):
         form = FormNota(request.POST)
         if form.is_valid:
             instancia = form.save(commit=False)
-
             id_estudiante = request.POST["id_estudiante"]
             estudiante = Estudiante.objects.get(id=id_estudiante)
             if trabajo.materia.curso == estudiante.curso: #verificamos si el estudiante esta en el curso
@@ -127,7 +126,10 @@ def respuesta_trabajo(request, id_trabajo):
                 instancia.save()
     notas = []
     for respuestaTrabajo in respuestasTrabajo:
-        notas.append(NotaTrabajo.objects.filter(respuestaTrabajo=respuestaTrabajo))
+        try:
+            notas += [NotaTrabajo.objects.get(respuestaTrabajo = respuestaTrabajo)]
+        except:
+            pass
 
 
     cont = {

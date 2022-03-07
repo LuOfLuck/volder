@@ -2,48 +2,55 @@
 {% load static %}
 {% block content %}
 
-<div class="contenido-block mid-contenido-animacion col-12 col-md-7 mx-auto my-5 px-4 py-3">
-    
-    <h3 id="materias" class="contenido--block--title col-12 pt-3">{{materia.nombre}}</h3>  
-    
-    {% for trabajo in trabajos %}
+<div class="contenido-block mid-contenido-animacion col-12 col-md-10 mx-auto my-5 px-4 py-3">
+    <div class="row">
+        <div class="col-12 col-xl-8 mx-auto">
+            <h3 id="materias" class="contenido--block--title col-12 pt-3">{{materia.nombre}}</h3>  
+            {% if trabajo %}
+                {% for trabajo in trabajos %}
 
-        <div id="trabajo-{{trabajo.id}}" class="trabajo  trabajos-animacion col-10 my-4 p-3 mx-auto">
-        
-            <div class="trabajo--titulo">
-                <h4 class="titulo--nombre">{{trabajo.titulo}}</h4>
-                <p class="titulo--fecha"> Entrega: {{trabajo.fecha_de_entrega|date:'d/m/Y'}}</p>    
-            </div>      
-            <p class="trabajo--p">   {{trabajo.consigna}}  </p>
-            <div class="trabajo--end">
-                <a id="button-{{trabajo.id}}" href="{% url 'trabajo' trabajo.id %}" class="btn">ver trabajo</a>
-                {% for nota in notas %}
-                    {% if nota.respuestaTrabajo.trabajo == trabajo %}
-                        <div class="trabajo--nota">
-                            <span>Nota: {{nota.nota}}</span> 
-                            {% if nota.nota > '6' %}
-                                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5.71171 11.3418L0.128742 5.76414C0.0410494 5.66174 -0.00477382 5.53002 0.000429719 5.3953C0.00563326 5.26058 0.0614803 5.13279 0.156811 5.03746C0.252141 4.94213 0.379933 4.88628 0.51465 4.88108C0.649368 4.87588 0.781087 4.9217 0.883487 5.00939L5.701 9.82691L15.1166 0.422047C15.219 0.334354 15.3507 0.288531 15.4854 0.293734C15.6201 0.298938 15.7479 0.354785 15.8432 0.450115C15.9386 0.545445 15.9944 0.673238 15.9996 0.807955C16.0048 0.942672 15.959 1.07439 15.8713 1.17679L5.71171 11.3418Z" fill="#1CB319"/>
-                                </svg>
-                            {% else %}
-                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M14.0002 0.294739L7.99932 6.29421L1.99985 0.294739L3.05176e-05 2.29456L5.9995 8.29403L3.05176e-05 14.2935L1.99985 16.2933L7.99932 10.2939L14.0002 16.2933L16 14.2935L10.0006 8.29403L16 2.29456L14.0002 0.294739Z" fill="#C74343" fill-opacity="0.91"/>
-                                </svg>
-                            {% endif %}  
-                        
+                    <div id="trabajo-{{trabajo.id}}" class="trabajo  trabajos-animacion col-10 my-4 p-3 mx-auto">
+                    
+                        <div class="trabajo--titulo">
+                            <h4 class="titulo--nombre">{{trabajo.titulo}}</h4>
+                            <p class="titulo--fecha"> Entrega: {{trabajo.fecha_de_entrega|date:'d/m/Y'}}</p>    
+                        </div>      
+                        <p class="trabajo--p">   {{trabajo.consigna}}  </p>
+                        <div class="trabajo--end">
+                            <a id="button-{{trabajo.id}}" href="{% url 'trabajo' trabajo.id %}" class="btn">ver trabajo</a>
+                            {% for nota in notas %}
+                                {% if nota.respuestaTrabajo.trabajo == trabajo %}
+                                    <div class="trabajo--nota">
+                                        <span>Nota: {{nota.nota}}</span> 
+                                        {% if nota.nota > '6' %}
+                                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.71171 11.3418L0.128742 5.76414C0.0410494 5.66174 -0.00477382 5.53002 0.000429719 5.3953C0.00563326 5.26058 0.0614803 5.13279 0.156811 5.03746C0.252141 4.94213 0.379933 4.88628 0.51465 4.88108C0.649368 4.87588 0.781087 4.9217 0.883487 5.00939L5.701 9.82691L15.1166 0.422047C15.219 0.334354 15.3507 0.288531 15.4854 0.293734C15.6201 0.298938 15.7479 0.354785 15.8432 0.450115C15.9386 0.545445 15.9944 0.673238 15.9996 0.807955C16.0048 0.942672 15.959 1.07439 15.8713 1.17679L5.71171 11.3418Z" fill="#1CB319"/>
+                                            </svg>
+                                        {% else %}
+                                            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M14.0002 0.294739L7.99932 6.29421L1.99985 0.294739L3.05176e-05 2.29456L5.9995 8.29403L3.05176e-05 14.2935L1.99985 16.2933L7.99932 10.2939L14.0002 16.2933L16 14.2935L10.0006 8.29403L16 2.29456L14.0002 0.294739Z" fill="#C74343" fill-opacity="0.91"/>
+                                            </svg>
+                                        {% endif %}  
+                                    
+                                    </div>
+                           
+                                {% endif %}
+                            {% endfor %}
                         </div>
-               
-                    {% endif %}
+                    </div>
+                    
                 {% endfor %}
-            </div>
-          
+            {% else %}
 
+                <div class="notification">
+                    <p class="h2 text-center text-muted my-5"> Aun no hay trabajos </p>         
+                </div>
+                
+            {% endif %}
         </div>
-        
-    {% endfor %}
-
+        <div class="col-12 col-xl-4 mx-auto">
+             {% include 'volder/perfil_alumno.html' %}
+        </div>
+    </div>
 </div>
-
-{% include 'volder/perfil_alumno.html' %}
-
 {% endblock %}

@@ -12,7 +12,11 @@
                     Entregar respuesta <i class="far fa-file"></i>
                 </button>
             {% elif nota %}
-            <p class="col-12 text-left m-auto"> Comentario del profesor: <span class="nota-comentario">{{nota.comentario}}</span>. <br> Calificación: <span class="nota">{{nota.nota}}</span></p>
+                <p class="col-12 text-left m-auto"> 
+                    Comentario del profesor: 
+                    <span class="nota-comentario">{{nota.comentario}}</span> <br> Calificación: 
+                    <span class="nota">{{nota.nota}}</span>
+                </p>
             {% else %}
             <p class="col-12 col-md-12 text-center"> Esperando una calificación por parte del profesor</p>
             {% endif %}

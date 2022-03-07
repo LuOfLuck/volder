@@ -30,6 +30,13 @@ header{
 	width:100%;
 	height:12vh;
 	background-color: var(--grey);
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header > p{
+	font-weight: 800;
+    font-size: 5em;
 }
 .derecha{
 	float:right;
@@ -45,6 +52,10 @@ header{
 	height:auto;
 	background-color: var(--negro);
 	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 1.5em;
 }
 .cont-popou{
 	width: 50%;
@@ -62,6 +73,7 @@ header{
 	}
 	.main .login{
 		height: 100%;
+
 	}
 	.main .login, .cont-popou{
 		width:100%;
@@ -97,7 +109,7 @@ header{
 	}
 }
 .login form, .popou-cuerpo{
-	padding:2rem 10%;
+	padding:2rem 10% 0px 10%;
 	border:0;
 	font-family: 'Roboto', sans-serif;
 	display: flex;
@@ -120,7 +132,6 @@ header{
 	background-color: transparent;
 	border: 0;
 	outline: 0;
-	margin-top: 1.5rem;
 	font-size: 1.5em;
 	color:var(--naranja);
 	text-decoration: underline;
@@ -140,16 +151,11 @@ header{
 	position: relative;
 	font-size: 1em;
 }
-.forget-pass
-.popou-button{
-	height:2.5rem;
-	margin:1rem auto;
-	font-size:1.2rem;
-}
+
 .login form input[type=submit]{
 	width:auto;
 	border:1px var(--grey) solid;
-	border-radius: 7px;
+	border-radius: 0px;
 	color:var(--naranja);
 	cursor:pointer;
 	font-weight: 700;
@@ -158,14 +164,18 @@ header{
 	background-color: transparent;
 	transition: .3s ease;
 }
+
 .login form input::placeholder{
-	color:var(--negro);
+	color:var(--white);
 }	
 .login form input[type=submit]:hover{
-	background-color: transparent;
-	color:var(--naranja);
+	transition: .3s linear box-shadow;
+	box-shadow: 0px 0px 7px white;
+	transition: .5s linear text-shadow;
+	text-shadow: 0px 0px 20px var(--naranja);
+	
 }
-.login form button.popou-button{
+.popou-button{
 	color:var(--grey);
 	background: transparent;
 	border:0;
@@ -175,20 +185,24 @@ header{
 	text-decoration: underline;
 	cursor: pointer;
 }
-.login form button.popou-button:hover{
+.popou-button:hover{
 	color:var(--white);
 }
 .login form .forget-pass{
 	width:100%;
-	margin-bottom:1rem;
 }
 .forget-pass span{
 	color:var(--naranja);
 	font-weight: 600;
 	
 }
+.forget-pass a:hover{
+	transition: 1s;
+	color: white;
+}
 .forget-pass span:hover{
-	text-decoration: underline;
+	transition: .5s linear;
+	text-shadow: 0px 0px 10px var(--naranja);
 }
 
 .login form a{
